@@ -19,6 +19,7 @@ jobs:
   build:
     environment:
       name: github-pages
+      url: /lending/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
