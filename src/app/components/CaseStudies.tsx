@@ -1,6 +1,8 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import case2Image from '../../assets/case2.jpg';
+import case3Image from '../../assets/case3.jpg';
 import {
   Carousel,
   CarouselContent,
@@ -21,17 +23,17 @@ const projects = [
   },
   {
     name: 'Luna Deep',
-    description: 'Luna Deep presents a selection of music channels, designed for every life situation or emotional state. We collect the best tracks from all over the world to bring you an incredible musical delight. It’s not just music; it`s energy, inspiration, and the guiding soundtrack to your life.',
+    description: 'Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.',
     platform: 'iOS / Android',
-    image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/09/a1/c8/09a1c81a-5546-bce9-d650-19a59b06ca2a/Slice_1-2.jpg/600x1300bb-60.jpg',
+    image: case2Image,
     results: ['1M+ users', '$10M GMV', '40% growth MoM', '4.9★ rating',],
     site: 'https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218'
   },
   {
-    name: 'TaskMaster',
+    name: 'Equilibrium',
     description: 'Enterprise productivity suite with team collaboration and project management tools',
     platform: 'iOS / Android / Web',
-    image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ab/5c/fb/ab5cfbb0-7258-2047-0cbf-118e186c86d1/iPhone_16_-_4.jpg/460x996bb.webp',
+    image: case3Image,
     results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249'
   }
@@ -74,37 +76,44 @@ export function CaseStudies() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
-                  <div className="aspect-[9/9] bg-zinc-900 overflow-hidden">
-                    <ImageWithFallback
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-white">
-                        {project.name}
-                      </h3>
-                      <span className="text-xs text-white/40 border border-white/20 px-2 py-1">
-                        {project.platform}
-                      </span>
+                  <a 
+                    href={project.site} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                  >
+                    <div className="aspect-[9/9] bg-zinc-900 overflow-hidden">
+                      <ImageWithFallback
+                        src={project.image}
+                        alt={project.name}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      />
                     </div>
                     
-                    <p className="text-white/60 text-sm mb-4">
-                      {project.description}
-                    </p>
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-white">
+                          {project.name}
+                        </h3>
+                        <span className="text-xs text-white/40 border border-white/20 px-2 py-1">
+                          {project.platform}
+                        </span>
+                      </div>
+                      
+                      <p className="text-white/60 text-sm mb-4">
+                        {project.description}
+                      </p>
 
-                    <div className="space-y-2">
-                      {project.results.map((result) => (
-                        <div key={result} className="flex items-center gap-2">
-                          <div className="w-1 h-1 bg-white/40 rounded-full" />
-                          <span className="text-white/50 text-sm">{result}</span>
-                        </div>
-                      ))}
+                      <div className="space-y-2">
+                        {project.results.map((result) => (
+                          <div key={result} className="flex items-center gap-2">
+                            <div className="w-1 h-1 bg-white/40 rounded-full" />
+                            <span className="text-white/50 text-sm">{result}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </motion.div>
               </CarouselItem>
             ))}
