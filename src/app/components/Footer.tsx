@@ -18,26 +18,19 @@ export function Footer() {
               href="mailto:hello@mobileforge.dev" 
               className="text-white/70 hover:text-white transition-colors"
             >
-              hello@mobileforge.dev
+              alexganbert@gmail.com
             </a>
 
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/bangertstudio/" 
                 className="text-white/50 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="#" 
-                className="text-white/50 hover:text-white transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a 
-                href="#" 
+                href="https://t.me/bangertstudio" 
                 className="text-white/50 hover:text-white transition-colors"
                 aria-label="Telegram"
               >

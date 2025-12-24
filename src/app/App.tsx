@@ -13,7 +13,7 @@ import { MobileScrollButton } from './components/MobileScrollButton';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black relative">
+    <div className="min-h-screen bg-neutral-950 relative">
       <AnimatedBackground />
       <Header />
       <div className="relative">
