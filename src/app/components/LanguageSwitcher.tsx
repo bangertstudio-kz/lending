@@ -1,7 +1,6 @@
 import { Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { changeLanguage } from 'i18next';
 
 interface LanguageSwitcherProps {
   onLanguageChange?: () => void;
@@ -13,7 +12,6 @@ export function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ru' : 'en';
     i18n.changeLanguage(newLang);
-    changeLanguage(newLang);
     
     // Закрываем мобильное меню если callback передан
     if (onLanguageChange) {
