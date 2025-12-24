@@ -25,7 +25,7 @@ export function ContactForm() {
     <section id="contact" className="bg-black py-24 px-6">
       <div className="max-w-2xl mx-auto">
         <motion.h2 
-          className="text-white text-center mb-4"
+          className="text-white text-center mb-4 text-3xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -64,29 +64,8 @@ export function ContactForm() {
           </div>
 
           <div>
-            <Input
-              type="email"
-              placeholder={t('contact.email')}
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
-              required
-            />
-          </div>
-
-          <div>
-            <Input
-              type="text"
-              placeholder={t('contact.company')}
-              value={formData.company}
-              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
-            />
-          </div>
-
-          <div>
             <Textarea
-              placeholder={t('contact.description')}
+              placeholder={t('contact.howContactWithYou')}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-32"

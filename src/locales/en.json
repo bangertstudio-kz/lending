@@ -41,8 +41,8 @@
   "whyChooseUs": {
     "title": "Why Choose Us",
     "experienced": {
-      "title": "Experienced mobile engineers",
-      "description": "Senior developers with 5+ years in mobile development"
+      "title": "Experienced development team",
+      "description": "Professionals with more than 10 years"
     },
     "cleanCode": {
       "title": "Clean architecture & scalable code",
@@ -103,7 +103,8 @@
     "email": "Email",
     "company": "Company",
     "description": "Project Description",
-    "send": "Send Message"
+    "send": "Send Message",
+    "howContactWithYou": "How can we contact you?"
   },
   "footer": {
     "description": "Professional mobile app development for your business",

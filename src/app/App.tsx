@@ -9,6 +9,7 @@ import { Testimonials } from './components/Testimonials';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { AnimatedBackground } from './components/AnimatedBackground';
+import { MobileScrollButton } from './components/MobileScrollButton';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
 
         <Footer />
       </div>
+      <MobileScrollButton />
     </div>
   );
 }

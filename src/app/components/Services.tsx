@@ -37,7 +37,7 @@ export function Services() {
     <section id="services" className=" py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
-          className="text-white text-center mb-16"
+          className="text-white text-center mb-16 text-3xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -50,20 +50,22 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div 
               key={service.titleKey}
-              className="bg-black border border-white/10 p-8 hover:border-white/30 transition-colors group"
+              className="bg-black border border-white/10 p-6 hover:border-white/30 transition-colors group flex md:flex-col items-start gap-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <service.icon className="w-12 h-12 text-white mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-white mb-4">
-                {t(service.titleKey)}
-              </h3>
-              <p className="text-white/60">
-                {t(service.descriptionKey)}
-              </p>
+              <service.icon className="w-8 h-8 text-white flex-shrink-0 group-hover:scale-110 transition-transform" />
+              <div className="flex-1 md:flex-none">
+                <h3 className="text-white mb-4">
+                  {t(service.titleKey)}
+                </h3>
+                <p className="text-white/60">
+                  {t(service.descriptionKey)}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

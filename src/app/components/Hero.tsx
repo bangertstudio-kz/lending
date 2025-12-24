@@ -42,7 +42,7 @@ export function Hero() {
         style={{ opacity, scale }}
       >
         <motion.h1 
-          className="text-white mb-6 max-w-4xl mx-auto leading-tight"
+          className="text-white mb-6 max-w-4xl mx-auto leading-tight text-3xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

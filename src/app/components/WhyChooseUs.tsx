@@ -12,11 +12,6 @@ export function WhyChooseUs() {
       description: t('whyChooseUs.experienced.description')
     },
     {
-      icon: Code,
-      title: t('whyChooseUs.cleanCode.title'),
-      description: t('whyChooseUs.cleanCode.description')
-    },
-    {
       icon: MessageCircle,
       title: t('whyChooseUs.communication.title'),
       description: t('whyChooseUs.communication.description')
@@ -36,7 +31,7 @@ export function WhyChooseUs() {
     <section id="why-choose-us" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
-          className="text-white text-center mb-16"
+          className="text-white text-center mb-16 text-3xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
