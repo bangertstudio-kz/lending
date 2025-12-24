@@ -15,7 +15,7 @@ export function Footer() {
 
           <div className="flex flex-col items-center md:items-end gap-4">
             <a 
-              href="mailto:hello@mobileforge.dev" 
+              href="mailto:alexganbert@gmail.com" 
               className="text-white/70 hover:text-white transition-colors"
             >
               alexganbert@gmail.com
