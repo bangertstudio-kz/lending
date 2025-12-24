@@ -17,15 +17,15 @@ export default function App() {
       <Header />
       <div className="relative">
         <Hero />
-        <CaseStudies />
-
         <Services />
+        <CaseStudies />
         <WhyChooseUs />
-        <Testimonials />
 
         {/* <Process /> */}
         {/* <Technologies /> */}
         <ContactForm />
+        <Testimonials />
+
         <Footer />
       </div>
     </div>

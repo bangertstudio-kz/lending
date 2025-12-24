@@ -68,6 +68,12 @@ export function Hero() {
           <Button 
             size="lg"
             className="bg-white text-black hover:bg-white/90 px-8"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             {t('hero.ctaConsultation')}
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -76,7 +82,13 @@ export function Hero() {
           <Button 
             size="lg"
             variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 px-8"
+            className="border-white/30 text-white hover:bg-white/10 px-8 hover:text-white"
+            onClick={() => {
+              const workSection = document.getElementById('case-studies');
+              if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             {t('hero.ctaWork')}
           </Button>

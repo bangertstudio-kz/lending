@@ -1,6 +1,13 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from './ui/carousel';
 
 const projects = [
   {
@@ -31,12 +38,6 @@ const projects = [
 
 export function CaseStudies() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section id="case-studies" ref={sectionRef} className="bg-black py-24 px-6">
@@ -51,51 +52,72 @@ export function CaseStudies() {
           Case Studies
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div 
-              key={project.name}
-              className="border border-white/10 overflow-hidden hover:border-white/30 transition-colors group"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              style={{ y: index === 1 ? y : 0 }}
-            >
-              <div className="aspect-[9/16] bg-zinc-900 overflow-hidden">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-              
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-white">
-                    {project.name}
-                  </h3>
-                  <span className="text-xs text-white/40 border border-white/20 px-2 py-1">
-                    {project.platform}
-                  </span>
-                </div>
-                
-                <p className="text-white/60 text-sm mb-4">
-                  {project.description}
-                </p>
-
-                <div className="space-y-2">
-                  {project.results.map((result) => (
-                    <div key={result} className="flex items-center gap-2">
-                      <div className="w-1 h-1 bg-white/40 rounded-full" />
-                      <span className="text-white/50 text-sm">{result}</span>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {projects.map((project, index) => (
+              <CarouselItem 
+                key={project.name}
+                className="pl-4 md:basis-1/3"
+              >
+                <motion.div 
+                  className="border border-white/10 overflow-hidden hover:border-white/30 transition-colors group h-full"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                >
+                  <div className="aspect-[9/9] bg-zinc-900 overflow-hidden">
+                    <ImageWithFallback
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                  
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-white">
+                        {project.name}
+                      </h3>
+                      <span className="text-xs text-white/40 border border-white/20 px-2 py-1">
+                        {project.platform}
+                      </span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                    
+                    <p className="text-white/60 text-sm mb-4">
+                      {project.description}
+                    </p>
+
+                    <div className="space-y-2">
+                      {project.results.map((result) => (
+                        <div key={result} className="flex items-center gap-2">
+                          <div className="w-1 h-1 bg-white/40 rounded-full" />
+                          <span className="text-white/50 text-sm">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          
+          {/* Кнопки навигации */}
+          <div className="flex justify-center md:justify-start gap-4 mt-8">
+            <CarouselPrevious 
+              className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30"
+            />
+            <CarouselNext 
+              className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30"
+            />
+          </div>
+        </Carousel>
       </div>
     </section>
   );
