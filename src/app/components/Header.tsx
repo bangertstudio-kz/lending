@@ -78,7 +78,7 @@ export function Header() {
                   {t(item.label)}
                 </motion.a>
               ))}
-              <LanguageSwitcher />
+              <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
             </div>
 
             {/* Mobile Menu Button */}
@@ -128,7 +128,7 @@ export function Header() {
                   </motion.a>
                 ))}
                 <div className="pt-4 border-t border-white/10">
-                  <LanguageSwitcher />
+                  <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
                 </div>
               </nav>
             </motion.div>
