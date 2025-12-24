@@ -1,4 +1,5 @@
 import { Linkedin, Github, MessageCircle } from 'lucide-react';
+import { Logo } from './Logo';
 
 export function Footer() {
   return (
@@ -6,9 +7,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
-            <h3 className="text-white text-xl mb-2">
-              MobileForge
-            </h3>
+            <Logo  />
             <p className="text-white/50 text-sm">
               Premium mobile app development outsourcing
             </p>
@@ -50,7 +49,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} MobileForge. All rights reserved.
+            © {new Date().getFullYear()} Bangert Studio. All rights reserved.
           </p>
         </div>
       </div>

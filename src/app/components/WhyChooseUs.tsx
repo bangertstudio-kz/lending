@@ -31,7 +31,7 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-zinc-950 py-24 px-6">
+    <section id="why-choose-us" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           className="text-white text-center mb-16"

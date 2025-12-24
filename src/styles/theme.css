@@ -2,7 +2,6 @@
 
 :root {
   --font-size: 16px;
-  --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
@@ -178,4 +177,8 @@
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
+}
+
+html, body {
+  background-color: #000 !important;
 }

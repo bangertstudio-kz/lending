@@ -4,25 +4,28 @@ import { useRef } from 'react';
 
 const projects = [
   {
-    name: 'FitnessPro',
-    description: 'Health & fitness tracking app with social features and AI-powered workout plans',
-    platform: 'iOS / Android',
-    image: 'https://images.unsplash.com/photo-1707836916010-3c4ad261936c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBzY3JlZW4lMjBtb2NrdXB8ZW58MXx8fHwxNzY2MzkwNDE4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    results: ['500K+ downloads', '4.8★ rating', '85% user retention']
+    name: 'Pings Ai',
+    description: 'Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.',
+    platform: 'iOS',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c7/56/d3/c756d329-c04e-aa67-541e-463f3a829f94/Slice_5.jpg/460x998bb-60.jpg',
+    results: ['500K+ downloads', '4.8★ rating', '85% user retention'],
+    site: 'https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937'
   },
   {
-    name: 'ShopLocal',
-    description: 'E-commerce marketplace connecting local businesses with customers in real-time',
-    platform: 'Flutter',
-    image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpcGhvbmUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY2MzkwNDE5fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    results: ['1M+ users', '$10M GMV', '40% growth MoM']
+    name: 'Luna Deep',
+    description: 'Luna Deep presents a selection of music channels, designed for every life situation or emotional state. We collect the best tracks from all over the world to bring you an incredible musical delight. It’s not just music; it`s energy, inspiration, and the guiding soundtrack to your life.',
+    platform: 'iOS / Android',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/09/a1/c8/09a1c81a-5546-bce9-d650-19a59b06ca2a/Slice_1-2.jpg/600x1300bb-60.jpg',
+    results: ['1M+ users', '$10M GMV', '40% growth MoM', '4.9★ rating',],
+    site: 'https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218'
   },
   {
     name: 'TaskMaster',
     description: 'Enterprise productivity suite with team collaboration and project management tools',
     platform: 'iOS / Android / Web',
-    image: 'https://images.unsplash.com/photo-1547027072-332f09bd6bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydHBob25lJTIwdWklMjBkZXNpZ258ZW58MXx8fHwxNzY2MzkwNDE5fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant']
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ab/5c/fb/ab5cfbb0-7258-2047-0cbf-118e186c86d1/iPhone_16_-_4.jpg/460x996bb.webp',
+    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
+    site: 'https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249'
   }
 ];
 
@@ -36,7 +39,7 @@ export function CaseStudies() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section ref={sectionRef} className="bg-black py-24 px-6">
+    <section id="case-studies" ref={sectionRef} className="bg-black py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           className="text-white text-center mb-16"

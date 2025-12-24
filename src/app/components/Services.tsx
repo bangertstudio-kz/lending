@@ -31,7 +31,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="bg-black py-24 px-6">
+    <section id="services" className=" py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           className="text-white text-center mb-16"
@@ -47,7 +47,7 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div 
               key={service.title}
-              className="border border-white/10 p-8 hover:border-white/30 transition-colors group"
+              className="bg-black border border-white/10 p-8 hover:border-white/30 transition-colors group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

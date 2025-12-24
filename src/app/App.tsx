@@ -1,3 +1,4 @@
+import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { WhyChooseUs } from './components/WhyChooseUs';
@@ -13,13 +14,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black relative">
       <AnimatedBackground />
-      <div className="relative z-10">
+      <Header />
+      <div className="relative">
         <Hero />
         <Services />
         <WhyChooseUs />
         <CaseStudies />
         <Process />
-        <Technologies />
+        {/* <Technologies /> */}
         <Testimonials />
         <ContactForm />
         <Footer />

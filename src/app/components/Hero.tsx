@@ -9,7 +9,7 @@ export function Hero() {
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden ">
       {/* Abstract geometric background */}
       <div className="absolute inset-0 opacity-10">
         <motion.div 

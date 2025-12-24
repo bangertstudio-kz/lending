@@ -20,7 +20,7 @@ export function ContactForm() {
   };
 
   return (
-    <section className="bg-black py-24 px-6">
+    <section id="contact" className="bg-black py-24 px-6">
       <div className="max-w-2xl mx-auto">
         <motion.h2 
           className="text-white text-center mb-4"
