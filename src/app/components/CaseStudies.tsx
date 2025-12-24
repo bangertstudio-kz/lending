@@ -47,7 +47,7 @@ export function CaseStudies() {
     <section id="case-studies" ref={sectionRef} className="bg-black py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
-          className="text-white text-center mb-16 text-3xl"
+          className="text-white text-center mb-16 text-4xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

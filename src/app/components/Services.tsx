@@ -1,22 +1,22 @@
-import { Apple, Smartphone, MonitorSmartphone, Palette, Shield } from 'lucide-react';
+import { Apple, Smartphone, Palette, Shield, Globe, BarChart3 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 
 const services = [
-  {
-    icon: Apple,
-    titleKey: 'services.iosDev.title',
-    descriptionKey: 'services.iosDev.description'
-  },
   {
     icon: Smartphone,
     titleKey: 'services.androidDev.title',
     descriptionKey: 'services.androidDev.description'
   },
   {
-    icon: MonitorSmartphone,
-    titleKey: 'services.crossPlatform.title',
-    descriptionKey: 'services.crossPlatform.description'
+    icon: Apple,
+    titleKey: 'services.iosDev.title',
+    descriptionKey: 'services.iosDev.description'
+  },
+  {
+    icon: Globe,
+    titleKey: 'services.webDev.title',
+    descriptionKey: 'services.webDev.description'
   },
   {
     icon: Palette,
@@ -24,10 +24,18 @@ const services = [
     descriptionKey: 'services.uiux.description'
   },
   {
+    icon: BarChart3,
+    titleKey: 'services.analytics.title',
+    descriptionKey: 'services.analytics.description'
+  },
+  {
     icon: Shield,
     titleKey: 'services.maintenance.title',
     descriptionKey: 'services.maintenance.description'
-  }
+  },
+  
+  
+
 ];
 
 export function Services() {
@@ -37,7 +45,7 @@ export function Services() {
     <section id="services" className=" py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
-          className="text-white text-center mb-16 text-3xl"
+          className="text-white text-center mb-16 text-4xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

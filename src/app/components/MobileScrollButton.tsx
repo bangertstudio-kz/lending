@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 
 const sections = [
   'hero',
-  'services',
-  'case-studies',
   'why-choose-us',
+  'case-studies',
+  'services',
   'contact',
   'testimonials',
 ];

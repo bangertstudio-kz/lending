@@ -42,12 +42,14 @@ export function Hero() {
         style={{ opacity, scale }}
       >
         <motion.h1 
-          className="text-white mb-6 max-w-4xl mx-auto leading-tight text-3xl"
+          className="text-white mb-6 max-w-4xl mx-auto leading-tight md:text-6xl text-4xl font-bold"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           {t('hero.title')}
+          <span className="text-blue-500">{t('hero.title1')}</span>
+          {t('hero.title2')}
         </motion.h1>
         
         <motion.p 

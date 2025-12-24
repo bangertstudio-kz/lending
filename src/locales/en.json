@@ -10,8 +10,10 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "We Build High-Quality Mobile Applications",
-    "subtitle": "Outsourcing mobile development for startups and businesses worldwide",
+    "title": "We help startups and businesses launch turnkey",
+    "title1": " MOBILE/WEB ",
+    "title2": "applications.",
+    "subtitle": "From idea to release — without the hassle.",
     "ctaConsultation": "Get a Free Consultation",
     "ctaWork": "View Our Work"
   },
@@ -19,23 +21,27 @@
     "title": "Our Services",
     "iosDev": {
       "title": "iOS App Development",
-      "description": "Native Swift applications for iPhone and iPad with pixel-perfect design"
+      "description": "High performance and compliance with Apple requirements."
     },
     "androidDev": {
       "title": "Android App Development",
-      "description": "Kotlin-based Android apps optimized for performance and user experience"
-    },
-    "crossPlatform": {
-      "title": "Flutter / Cross-platform",
-      "description": "Build once, deploy everywhere with modern cross-platform frameworks"
+      "description": "Free of charge when ordering the iOS version."
     },
     "uiux": {
       "title": "UI/UX Design",
-      "description": "User-centered design that drives engagement and conversions"
+      "description": "We create designs that boost engagement, conversion, and retention in mobile and web products."
     },
     "maintenance": {
       "title": "Maintenance & Support",
       "description": "Ongoing updates, bug fixes, and technical support for your app"
+    },
+    "webDev": {
+      "title": "Web Development",
+      "description": "Modern websites and web applications. Landing pages, corporate sites, and web services focused on speed, SEO, and conversion"
+    },
+    "analytics": {
+      "title": "Product Analytics & Design",
+      "description": "Define functionality before development begins. We formulate requirements to avoid unnecessary costs"
     }
   },
   "whyChooseUs": {

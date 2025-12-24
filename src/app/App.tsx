@@ -18,9 +18,11 @@ export default function App() {
       <Header />
       <div className="relative">
         <Hero />
-        <Services />
-        <CaseStudies />
         <WhyChooseUs />
+
+        <CaseStudies />
+        <Services />
+
 
         {/* <Process /> */}
         {/* <Technologies /> */}

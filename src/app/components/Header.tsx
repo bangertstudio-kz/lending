@@ -7,13 +7,14 @@ import { useTranslation } from 'react-i18next';
 
 const navItems = [
   { label: 'header.home', href: '#hero' },
+  { label: 'header.whyChooseUs', href: '#why-choose-us' },
+
   { label: 'header.caseStudies', href: '#case-studies' },
   { label: 'header.services', href: '#services' },
-  { label: 'header.whyChooseUs', href: '#why-choose-us' },
 //   { label: 'header.process', href: '#process' },
 //   { label: 'header.technologies', href: '#technologies' },
-  { label: 'header.testimonials', href: '#testimonials' },
   { label: 'header.contact', href: '#contact' },
+  { label: 'header.testimonials', href: '#testimonials' },
 ];
 
 export function Header() {
