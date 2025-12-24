@@ -2,19 +2,22 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './Logo';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const navItems = [
-  { label: 'Главная', href: '#hero' },
-  { label: 'Услуги', href: '#services' },
-  { label: 'Преимущества', href: '#why-choose-us' },
-  { label: 'Кейсы', href: '#case-studies' },
-  { label: 'Процесс', href: '#process' },
-//   { label: 'Технологии', href: '#technologies' },
-  { label: 'Отзывы', href: '#testimonials' },
-  { label: 'Контакты', href: '#contact' },
+  { label: 'header.home', href: '#hero' },
+  { label: 'header.caseStudies', href: '#case-studies' },
+  { label: 'header.services', href: '#services' },
+  { label: 'header.whyChooseUs', href: '#why-choose-us' },
+//   { label: 'header.process', href: '#process' },
+//   { label: 'header.technologies', href: '#technologies' },
+  { label: 'header.testimonials', href: '#testimonials' },
+  { label: 'header.contact', href: '#contact' },
 ];
 
 export function Header() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -71,9 +74,10 @@ export function Header() {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   whileHover={{ y: -2 }}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </motion.a>
               ))}
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -119,9 +123,12 @@ export function Header() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
-                    {item.label}
+                    {t(item.label)}
                   </motion.a>
                 ))}
+                <div className="pt-4 border-t border-white/10">
+                  <LanguageSwitcher />
+                </div>
               </nav>
             </motion.div>
           </motion.div>

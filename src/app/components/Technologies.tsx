@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 const technologies = [
   { name: 'Flutter', category: 'Framework' },
@@ -16,6 +17,8 @@ const technologies = [
 ];
 
 export function Technologies() {
+  const { t } = useTranslation();
+
   return (
     <section id="technologies" className="bg-black py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -26,7 +29,7 @@ export function Technologies() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Technologies We Use
+          {t('technologies.title')}
         </motion.h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">

@@ -1,34 +1,36 @@
 import { motion } from 'motion/react';
-
-const steps = [
-  {
-    number: '01',
-    title: 'Discovery & Requirements',
-    description: 'We analyze your business goals and define project scope'
-  },
-  {
-    number: '02',
-    title: 'Design & Prototyping',
-    description: 'Creating wireframes and interactive prototypes for validation'
-  },
-  {
-    number: '03',
-    title: 'Development',
-    description: 'Agile sprints with continuous integration and delivery'
-  },
-  {
-    number: '04',
-    title: 'Testing & QA',
-    description: 'Comprehensive testing across devices and scenarios'
-  },
-  {
-    number: '05',
-    title: 'Launch & Support',
-    description: 'App store deployment and ongoing maintenance'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 export function Process() {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      number: '01',
+      title: t('process.step1.title'),
+      description: t('process.step1.description')
+    },
+    {
+      number: '02',
+      title: t('process.step2.title'),
+      description: t('process.step2.description')
+    },
+    {
+      number: '03',
+      title: t('process.step3.title'),
+      description: t('process.step3.description')
+    },
+    {
+      number: '04',
+      title: t('process.step4.title'),
+      description: t('process.step4.description')
+    },
+    {
+      number: '05',
+      title: t('process.step5.title'),
+      description: t('process.step5.description')
+    }
+  ];
   return (
     <section id="process" className="bg-black py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -39,7 +41,7 @@ export function Process() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Our Process
+          {t('process.title')}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">

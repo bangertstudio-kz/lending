@@ -4,8 +4,10 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 export function ContactForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,7 +31,7 @@ export function ContactForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Let's Build Something Great
+          {t('contact.title')}
         </motion.h2>
         
         <motion.p 
@@ -39,7 +41,7 @@ export function ContactForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Tell us about your project and we'll get back to you within 24 hours
+          {t('contact.subtitle')}
         </motion.p>
 
         <motion.form 
@@ -53,7 +55,7 @@ export function ContactForm() {
           <div>
             <Input
               type="text"
-              placeholder="Your Name"
+              placeholder={t('contact.name')}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
@@ -64,7 +66,7 @@ export function ContactForm() {
           <div>
             <Input
               type="email"
-              placeholder="Email Address"
+              placeholder={t('contact.email')}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
@@ -75,7 +77,7 @@ export function ContactForm() {
           <div>
             <Input
               type="text"
-              placeholder="Company Name"
+              placeholder={t('contact.company')}
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
@@ -84,7 +86,7 @@ export function ContactForm() {
 
           <div>
             <Textarea
-              placeholder="Tell us about your project..."
+              placeholder={t('contact.description')}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-32"
@@ -97,7 +99,7 @@ export function ContactForm() {
             size="lg"
             className="w-full bg-white text-black hover:bg-white/90"
           >
-            Send Request
+            {t('contact.send')}
             <Send className="ml-2 h-5 w-5" />
           </Button>
         </motion.form>

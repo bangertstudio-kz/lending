@@ -1,35 +1,38 @@
 import { Apple, Smartphone, MonitorSmartphone, Palette, Shield } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 const services = [
   {
     icon: Apple,
-    title: 'iOS App Development',
-    description: 'Native Swift applications for iPhone and iPad with pixel-perfect design'
+    titleKey: 'services.iosDev.title',
+    descriptionKey: 'services.iosDev.description'
   },
   {
     icon: Smartphone,
-    title: 'Android App Development',
-    description: 'Kotlin-based Android apps optimized for performance and user experience'
+    titleKey: 'services.androidDev.title',
+    descriptionKey: 'services.androidDev.description'
   },
   {
     icon: MonitorSmartphone,
-    title: 'Flutter / Cross-platform',
-    description: 'Build once, deploy everywhere with modern cross-platform frameworks'
+    titleKey: 'services.crossPlatform.title',
+    descriptionKey: 'services.crossPlatform.description'
   },
   {
     icon: Palette,
-    title: 'UI/UX Design',
-    description: 'User-centered design that drives engagement and conversions'
+    titleKey: 'services.uiux.title',
+    descriptionKey: 'services.uiux.description'
   },
   {
     icon: Shield,
-    title: 'Maintenance & Support',
-    description: 'Ongoing updates, bug fixes, and technical support for your app'
+    titleKey: 'services.maintenance.title',
+    descriptionKey: 'services.maintenance.description'
   }
 ];
 
 export function Services() {
+  const { t } = useTranslation();
+  
   return (
     <section id="services" className=" py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -40,13 +43,13 @@ export function Services() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Our Services
+          {t('services.title')}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div 
-              key={service.title}
+              key={service.titleKey}
               className="bg-black border border-white/10 p-8 hover:border-white/30 transition-colors group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -56,10 +59,10 @@ export function Services() {
             >
               <service.icon className="w-12 h-12 text-white mb-6 group-hover:scale-110 transition-transform" />
               <h3 className="text-white mb-4">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
               <p className="text-white/60">
-                {service.description}
+                {t(service.descriptionKey)}
               </p>
             </motion.div>
           ))}

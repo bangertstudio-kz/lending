@@ -1,0 +1,121 @@
+{
+  "header": {
+    "home": "Home",
+    "services": "Services",
+    "whyChooseUs": "Why Choose Us",
+    "caseStudies": "Case Studies",
+    "process": "Process",
+    "technologies": "Technologies",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "We Build High-Quality Mobile Applications",
+    "subtitle": "Outsourcing mobile development for startups and businesses worldwide",
+    "ctaConsultation": "Get a Free Consultation",
+    "ctaWork": "View Our Work"
+  },
+  "services": {
+    "title": "Our Services",
+    "iosDev": {
+      "title": "iOS App Development",
+      "description": "Native Swift applications for iPhone and iPad with pixel-perfect design"
+    },
+    "androidDev": {
+      "title": "Android App Development",
+      "description": "Kotlin-based Android apps optimized for performance and user experience"
+    },
+    "crossPlatform": {
+      "title": "Flutter / Cross-platform",
+      "description": "Build once, deploy everywhere with modern cross-platform frameworks"
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "User-centered design that drives engagement and conversions"
+    },
+    "maintenance": {
+      "title": "Maintenance & Support",
+      "description": "Ongoing updates, bug fixes, and technical support for your app"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "experienced": {
+      "title": "Experienced mobile engineers",
+      "description": "Senior developers with 5+ years in mobile development"
+    },
+    "cleanCode": {
+      "title": "Clean architecture & scalable code",
+      "description": "Following industry best practices and design patterns"
+    },
+    "communication": {
+      "title": "Transparent communication",
+      "description": "Regular updates, daily standups, and clear documentation"
+    },
+    "agile": {
+      "title": "Agile development process",
+      "description": "Fast iterations, continuous delivery, and adaptive planning"
+    },
+    "support": {
+      "title": "Long-term support",
+      "description": "We stay with you beyond launch to ensure success"
+    }
+  },
+  "caseStudies": {
+    "title": "Our Projects",
+    "platform": "Platform",
+    "results": "Results",
+    "viewSite": "View Site"
+  },
+  "process": {
+    "title": "Our Process",
+    "step1": {
+      "title": "Discovery & Requirements",
+      "description": "We analyze your business goals and define project scope"
+    },
+    "step2": {
+      "title": "Design & Prototyping",
+      "description": "Creating wireframes and interactive prototypes for validation"
+    },
+    "step3": {
+      "title": "Development",
+      "description": "Agile sprints with continuous integration and delivery"
+    },
+    "step4": {
+      "title": "Testing & QA",
+      "description": "Comprehensive testing across devices and scenarios"
+    },
+    "step5": {
+      "title": "Launch & Support",
+      "description": "App store deployment and ongoing maintenance"
+    }
+  },
+  "technologies": {
+    "title": "Technologies We Use"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say"
+  },
+  "contact": {
+    "title": "Start Your Project",
+    "subtitle": "Tell us about your idea and we'll bring it to life",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "description": "Project Description",
+    "send": "Send Message"
+  },
+  "footer": {
+    "description": "Professional mobile app development for your business",
+    "services": "Services",
+    "company": "Company",
+    "about": "About Us",
+    "careers": "Careers",
+    "blog": "Blog",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved"
+  }
+}

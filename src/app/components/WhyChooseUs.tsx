@@ -1,35 +1,37 @@
 import { Users, Code, Shield, Zap, MessageCircle } from 'lucide-react';
 import { motion } from 'motion/react';
-
-const reasons = [
-  {
-    icon: Users,
-    title: 'Experienced mobile engineers',
-    description: 'Senior developers with 5+ years in mobile development'
-  },
-  {
-    icon: Code,
-    title: 'Clean architecture & scalable code',
-    description: 'Following industry best practices and design patterns'
-  },
-  {
-    icon: MessageCircle,
-    title: 'Transparent communication',
-    description: 'Regular updates, daily standups, and clear documentation'
-  },
-  {
-    icon: Zap,
-    title: 'Agile development process',
-    description: 'Fast iterations, continuous delivery, and adaptive planning'
-  },
-  {
-    icon: Shield,
-    title: 'Long-term support',
-    description: 'We stay with you beyond launch to ensure success'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 export function WhyChooseUs() {
+  const { t } = useTranslation();
+
+  const reasons = [
+    {
+      icon: Users,
+      title: t('whyChooseUs.experienced.title'),
+      description: t('whyChooseUs.experienced.description')
+    },
+    {
+      icon: Code,
+      title: t('whyChooseUs.cleanCode.title'),
+      description: t('whyChooseUs.cleanCode.description')
+    },
+    {
+      icon: MessageCircle,
+      title: t('whyChooseUs.communication.title'),
+      description: t('whyChooseUs.communication.description')
+    },
+    {
+      icon: Zap,
+      title: t('whyChooseUs.agile.title'),
+      description: t('whyChooseUs.agile.description')
+    },
+    {
+      icon: Shield,
+      title: t('whyChooseUs.support.title'),
+      description: t('whyChooseUs.support.description')
+    }
+  ];
   return (
     <section id="why-choose-us" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -40,7 +42,7 @@ export function WhyChooseUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Why Choose Us
+          {t('whyChooseUs.title')}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">

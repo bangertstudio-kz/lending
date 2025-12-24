@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 const testimonials = [
   {
@@ -22,6 +23,8 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const { t } = useTranslation();
+
   return (
     <section id="testimonials" className="bg-black py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -32,7 +35,7 @@ export function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          What Our Clients Say
+          {t('testimonials.title')}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

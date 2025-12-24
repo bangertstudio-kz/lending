@@ -1,8 +1,10 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 export function Hero() {
+  const { t } = useTranslation();
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -45,7 +47,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          We Build High-Quality Mobile Applications
+          {t('hero.title')}
         </motion.h1>
         
         <motion.p 
@@ -54,7 +56,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Outsourcing mobile development for startups and businesses worldwide
+          {t('hero.subtitle')}
         </motion.p>
 
         <motion.div 
@@ -67,7 +69,7 @@ export function Hero() {
             size="lg"
             className="bg-white text-black hover:bg-white/90 px-8"
           >
-            Get a Free Consultation
+            {t('hero.ctaConsultation')}
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           
@@ -76,7 +78,7 @@ export function Hero() {
             variant="outline"
             className="border-white/30 text-white hover:bg-white/10 px-8"
           >
-            View Our Work
+            {t('hero.ctaWork')}
           </Button>
         </motion.div>
       </motion.div>
