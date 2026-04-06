@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import case2Image from '../../assets/case2.jpg';
 import case3Image from '../../assets/case3.jpg';
+import case4Image from '../../assets/case4.png';
+
 import {
   Carousel,
   CarouselContent,
@@ -36,6 +38,14 @@ const projects = [
     image: case3Image,
     results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249'
+  },
+  {
+    name: 'Sapian',
+    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    platform: 'iOS / Android',
+    image: case4Image,
+    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
+    site: 'https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831'
   }
 ];
 
