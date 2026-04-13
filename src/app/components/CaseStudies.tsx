@@ -37,6 +37,20 @@ const projects = [
     site: 'https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937'
   },
   {
+    name: 'QOR',
+    description: 'QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.',
+    platform: 'iOS / Android / Web',
+    image: case11Image,
+    site: 'https://digest.qor.oro.ad'
+  },
+  {
+    name: 'Oro',
+    description: 'Oro rents your computing power for AI agents. Fair pricing, transparent billing.',
+    platform: 'Web / Kubernetes',
+    image: case12Image,
+    site: 'https://cli.master.oro.ad'
+  },
+  {
     name: 'Luna Deep',
     description: 'Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.',
     platform: 'iOS / Android',
@@ -79,40 +93,13 @@ const projects = [
     site: 'https://apps.apple.com/kz/app/eiva/id6474634288'
   },
   {
-    name: 'AINA',
-    description: 'Almaty\'s most popular shopping centers—right on your phone: discounts, coworking spaces, and everything you need, all in one place',
-    platform: 'iOS / Android',
-    image: case9Image,
-    site: 'https://apps.apple.com/kz/app/aina/id6478210836'
-  },
-  {
-    name: 'Smartdeal',
-    description: 'A B2C/B2B marketplace with auctions is a platform where individuals and companies buy and sell through bidding: users place bids, and the price is determined by demand.',
-    platform: 'iOS / Android',
-    image: case10Image,
-    site: 'https://apps.apple.com/kz/app/smartdeal-%D0%B0%D1%83%D0%BA%D1%86%D0%B8%D0%BE%D0%BD-%D0%B7%D0%B0-10%E2%82%B8/id6479311597'
-  },
-  {
     name: 'В гостях у Хив',
     description: 'An exclusive health club',
     platform: 'iOS / Android / Web',
     image: case7Image,
     site: 'https://hivclub.ru'
   },
-  {
-    name: 'QOR',
-    description: 'QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.',
-    platform: 'iOS / Android / Web',
-    image: case11Image,
-    site: 'https://digest.qor.oro.ad'
-  },
-  {
-    name: 'Oro',
-    description: 'Oro rents your computing power for AI agents. Fair pricing, transparent billing.',
-    platform: 'Web / Kubernetes',
-    image: case12Image,
-    site: 'https://cli.master.oro.ad'
-  },
+  
 ];
 
 export function CaseStudies() {
