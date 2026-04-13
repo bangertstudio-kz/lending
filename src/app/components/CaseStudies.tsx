@@ -108,7 +108,7 @@ const projects = [
   },
   {
     name: 'Oro',
-    description: 'Oro rents your computing power for AI agents. Fair pricing, transparent billing.Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.',
+    description: 'Oro rents your computing power for AI agents. Fair pricing, transparent billing.',
     platform: 'Web / Kubernetes',
     image: case12Image,
     site: 'https://cli.master.oro.ad'
