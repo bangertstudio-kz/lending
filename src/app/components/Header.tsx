@@ -14,7 +14,7 @@ const navItems = [
 //   { label: 'header.process', href: '#process' },
 //   { label: 'header.technologies', href: '#technologies' },
   { label: 'header.contact', href: '#contact' },
-  { label: 'header.testimonials', href: '#testimonials' },
+  // { label: 'header.testimonials', href: '#testimonials' },
 ];
 
 export function Header() {

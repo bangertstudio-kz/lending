@@ -8,6 +8,10 @@ import case5Image from '../../assets/case5.png';
 import case6Image from '../../assets/case6.png';
 import case7Image from '../../assets/case7.png';
 import case1Image from '../../assets/case1.png';
+import case8Image from '../../assets/case8.png';
+import case9Image from '../../assets/case9.png';
+import case10Image from '../../assets/case10.jpg';
+import case11Image from '../../assets/case11.png';
 
 
 
@@ -27,7 +31,6 @@ const projects = [
     description: 'Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.',
     platform: 'iOS',
     image: case1Image,
-    results: ['500K+ downloads', '4.8★ rating', '85% user retention'],
     site: 'https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937'
   },
   {
@@ -35,7 +38,6 @@ const projects = [
     description: 'Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.',
     platform: 'iOS / Android',
     image: case2Image,
-    results: ['1M+ users', '$10M GMV', '40% growth MoM', '4.9★ rating',],
     site: 'https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218'
   },
   {
@@ -43,7 +45,6 @@ const projects = [
     description: 'Enterprise productivity suite with team collaboration and project management tools',
     platform: 'iOS / Android / Web',
     image: case3Image,
-    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249'
   },
   {
@@ -51,33 +52,57 @@ const projects = [
     description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
     platform: 'iOS / Android',
     image: case4Image,
-    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831'
   },
   {
     name: 'Ocean',
-    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    description: 'A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase). Advertisers pay for results, while affiliates or partners earn revenue by driving targeted actions.',
     platform: 'iOS / Android / Web',
     image: case5Image,
-    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1'
   },
   {
     name: 'Toptom',
-    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    description: 'A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services, with prices determined by supply and demand.',
     platform: 'iOS / Android / Web',
     image: case6Image,
-    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1'
   },
   {
+    name: 'Eiva',
+    description: 'Find fitness clubs, sign up for workouts, and purchase gym memberships',
+    platform: 'iOS / Android',
+    image: case8Image,
+    site: 'https://apps.apple.com/kz/app/eiva/id6474634288'
+  },
+  {
+    name: 'AINA',
+    description: 'Almaty\'s most popular shopping centers—right on your phone: discounts, coworking spaces, and everything you need, all in one place',
+    platform: 'iOS / Android',
+    image: case9Image,
+    site: 'https://apps.apple.com/kz/app/aina/id6478210836'
+  },
+  {
+    name: 'Smartdeal',
+    description: 'A B2C/B2B marketplace with auctions is a platform where individuals and companies buy and sell through bidding: users place bids, and the price is determined by demand.',
+    platform: 'iOS / Android',
+    image: case10Image,
+    site: 'https://apps.apple.com/kz/app/smartdeal-%D0%B0%D1%83%D0%BA%D1%86%D0%B8%D0%BE%D0%BD-%D0%B7%D0%B0-10%E2%82%B8/id6479311597'
+  },
+  {
     name: 'В гостях у Хив',
-    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    description: 'An exclusive health club',
     platform: 'iOS / Android / Web',
     image: case7Image,
-    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://hivclub.ru'
-  }
+  },
+  {
+    name: 'QOR',
+    description: 'QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.',
+    platform: 'iOS / Android / Web',
+    image: case11Image,
+    site: 'https://digest.qor.oro.ad'
+  },
 ];
 
 export function CaseStudies() {
@@ -146,7 +171,7 @@ export function CaseStudies() {
                       </p>
 
                       <div className="space-y-2">
-                        {project.results.map((result) => (
+                        { project && project.results && project.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
                             <div className="w-1 h-1 bg-white/40 rounded-full" />
                             <span className="text-white/50 text-sm">{result}</span>

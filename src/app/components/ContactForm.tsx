@@ -1,10 +1,32 @@
 import { useState } from 'react';
-import { Send, MessageCircle, Phone, Linkedin } from 'lucide-react';
+import { Send, MessageCircle, Phone, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
+async function sendToTelegram(name: string, description: string) {
+  const text = `📩 *Новая заявка с сайта*\n\n👤 *Имя:* ${name}\n\n💬 *Сообщение:*\n${description}`;
+  const response = await fetch(
+    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text,
+        parse_mode: 'Markdown',
+      }),
+    }
+  );
+  if (!response.ok) {
+    throw new Error('Telegram API error');
+  }
+}
 
 const socialLinks = [
   {
@@ -31,15 +53,20 @@ export function ContactForm() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    company: '',
     description: ''
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission
+    setStatus('loading');
+    try {
+      await sendToTelegram(formData.name, formData.description);
+      setStatus('success');
+      setFormData({ name: '', description: '' });
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -96,12 +123,26 @@ export function ContactForm() {
               />
             </div>
 
-            <Button 
+            {status === 'success' && (
+              <div className="flex items-center gap-2 text-green-400 text-sm">
+                <CheckCircle className="w-4 h-4" />
+                <span>Заявка отправлена!</span>
+              </div>
+            )}
+            {status === 'error' && (
+              <div className="flex items-center gap-2 text-red-400 text-sm">
+                <AlertCircle className="w-4 h-4" />
+                <span>Ошибка отправки. Попробуйте ещё раз.</span>
+              </div>
+            )}
+
+            <Button
               type="submit"
               size="lg"
-              className="w-full bg-white text-black hover:bg-white/90"
+              disabled={status === 'loading'}
+              className="w-full bg-white text-black hover:bg-white/90 disabled:opacity-60"
             >
-              {t('contact.send')}
+              {status === 'loading' ? 'Отправка...' : t('contact.send')}
               <Send className="ml-2 h-5 w-5" />
             </Button>
           </motion.form>
