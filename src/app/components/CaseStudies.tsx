@@ -12,6 +12,8 @@ import case8Image from '../../assets/case8.png';
 import case9Image from '../../assets/case9.png';
 import case10Image from '../../assets/case10.jpg';
 import case11Image from '../../assets/case11.png';
+import case12Image from '../../assets/case12.png';
+
 
 
 
@@ -26,6 +28,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 const projects = [
+  
   {
     name: 'Pings Ai',
     description: 'Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.',
@@ -103,6 +106,13 @@ const projects = [
     image: case11Image,
     site: 'https://digest.qor.oro.ad'
   },
+  {
+    name: 'Oro',
+    description: 'Oro rents your computing power for AI agents. Fair pricing, transparent billing.Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.',
+    platform: 'Web / Kubernetes',
+    image: case12Image,
+    site: 'https://cli.master.oro.ad'
+  },
 ];
 
 export function CaseStudies() {
@@ -170,14 +180,14 @@ export function CaseStudies() {
                         {project.description}
                       </p>
 
-                      <div className="space-y-2">
+                      {/* <div className="space-y-2">
                         { project && project.results && project.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
                             <div className="w-1 h-1 bg-white/40 rounded-full" />
                             <span className="text-white/50 text-sm">{result}</span>
                           </div>
                         ))}
-                      </div>
+                      </div> */}
                     </div>
                   </a>
                 </motion.div>
