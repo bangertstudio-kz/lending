@@ -4,6 +4,13 @@ import { useRef } from 'react';
 import case2Image from '../../assets/case2.jpg';
 import case3Image from '../../assets/case3.jpg';
 import case4Image from '../../assets/case4.png';
+import case5Image from '../../assets/case5.png';
+import case6Image from '../../assets/case6.png';
+import case7Image from '../../assets/case7.png';
+import case1Image from '../../assets/case1.png';
+
+
+
 
 import {
   Carousel,
@@ -19,7 +26,7 @@ const projects = [
     name: 'Pings Ai',
     description: 'Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.',
     platform: 'iOS',
-    image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c7/56/d3/c756d329-c04e-aa67-541e-463f3a829f94/Slice_5.jpg/460x998bb-60.jpg',
+    image: case1Image,
     results: ['500K+ downloads', '4.8★ rating', '85% user retention'],
     site: 'https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937'
   },
@@ -46,6 +53,30 @@ const projects = [
     image: case4Image,
     results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
     site: 'https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831'
+  },
+  {
+    name: 'Ocean',
+    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    platform: 'iOS / Android / Web',
+    image: case5Image,
+    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
+    site: 'https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1'
+  },
+  {
+    name: 'Toptom',
+    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    platform: 'iOS / Android / Web',
+    image: case6Image,
+    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
+    site: 'https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1'
+  },
+  {
+    name: 'В гостях у Хив',
+    description: 'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
+    platform: 'iOS / Android / Web',
+    image: case7Image,
+    results: ['250+ companies', '99.9% uptime', 'SOC 2 compliant'],
+    site: 'https://hivclub.ru'
   }
 ];
 
