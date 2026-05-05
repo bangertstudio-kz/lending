@@ -148,9 +148,17 @@ export function CaseStudies() {
             ))}
           </CarouselContent>
 
-          <div className="flex justify-center md:justify-start gap-4 mt-8">
-            <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30" />
-            <CarouselNext className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30" />
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-4 mt-8">
+            <div className="flex gap-4">
+              <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30" />
+              <CarouselNext className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30" />
+            </div>
+            <a
+              href="/cases"
+              className="text-white/60 text-sm border-b border-white/20 pb-px hover:text-white hover:border-white/60 transition-colors"
+            >
+              {t('caseStudies.viewAll')} →
+            </a>
           </div>
         </Carousel>
       </div>
