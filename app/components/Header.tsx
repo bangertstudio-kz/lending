@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 const navItems = [
   { label: 'header.home', href: '#hero' },
   { label: 'header.whyChooseUs', href: '#why-choose-us' },
-  { label: 'header.caseStudies', href: '#case-studies' },
+  { label: 'header.caseStudies', href: '/cases' },
   { label: 'header.services', href: '#services' },
   { label: 'header.contact', href: '#contact' },
 ];
@@ -27,6 +27,7 @@ export function Header() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return;
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
