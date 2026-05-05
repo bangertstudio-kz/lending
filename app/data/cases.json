@@ -1,24 +1,31 @@
 [
   {
+    "name": "Sapian",
+    "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",
+    "platform": "iOS / Android",
+    "image": "/assets/case4.png",
+    "site": "https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831"
+  },
+  {
     "name": "Pings Ai",
     "description": "Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.",
     "platform": "iOS",
     "image": "/assets/case1.png",
     "site": "https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937"
   },
-  {
-    "name": "QOR",
-    "description": "QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.",
+   {
+    "name": "Ocean",
+    "description": "A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).",
     "platform": "iOS / Android / Web",
-    "image": "/assets/case11.png",
-    "site": "https://digest.qor.oro.ad"
+    "image": "/assets/case5.png",
+    "site": "https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"
   },
   {
-    "name": "Oro",
-    "description": "Oro rents your computing power for AI agents. Fair pricing, transparent billing.",
-    "platform": "Web / Kubernetes",
-    "image": "/assets/case12.png",
-    "site": "https://cli.master.oro.ad"
+    "name": "Toptom",
+    "description": "A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.",
+    "platform": "iOS / Android / Web",
+    "image": "/assets/case6.png",
+    "site": "https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"
   },
   {
     "name": "Luna Deep",
@@ -35,25 +42,18 @@
     "site": "https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249"
   },
   {
-    "name": "Sapian",
-    "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",
-    "platform": "iOS / Android",
-    "image": "/assets/case4.png",
-    "site": "https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831"
+    "name": "QOR",
+    "description": "QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.",
+    "platform": "iOS / Android / Web",
+    "image": "/assets/case11.png",
+    "site": "https://digest.qor.oro.ad"
   },
   {
-    "name": "Ocean",
-    "description": "A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).",
-    "platform": "iOS / Android / Web",
-    "image": "/assets/case5.png",
-    "site": "https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"
-  },
-  {
-    "name": "Toptom",
-    "description": "A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.",
-    "platform": "iOS / Android / Web",
-    "image": "/assets/case6.png",
-    "site": "https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"
+    "name": "Oro",
+    "description": "Oro rents your computing power for AI agents. Fair pricing, transparent billing.",
+    "platform": "Web / Kubernetes",
+    "image": "/assets/case12.png",
+    "site": "https://cli.master.oro.ad"
   },
   {
     "name": "Eiva",

@@ -8,11 +8,11 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
 const navItems = [
-  { label: 'header.home', href: '#hero' },
-  { label: 'header.whyChooseUs', href: '#why-choose-us' },
+  { label: 'header.home', href: '/#hero' },
+  { label: 'header.whyChooseUs', href: '/#why-choose-us' },
   { label: 'header.caseStudies', href: '/cases' },
-  { label: 'header.services', href: '#services' },
-  { label: 'header.contact', href: '#contact' },
+  { label: 'header.services', href: '/#services' },
+  { label: 'header.contact', href: '/#contact' },
 ];
 
 export function Header() {

@@ -1,0 +1,6 @@
+{"type":"server-started","port":50038,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:50038","screen_dir":"/Users/aleksandrbangert/my_project/bangertstudio-next/.superpowers/brainstorm/26157-1777960329/content","state_dir":"/Users/aleksandrbangert/my_project/bangertstudio-next/.superpowers/brainstorm/26157-1777960329/state"}
+{"type":"screen-added","file":"/Users/aleksandrbangert/my_project/bangertstudio-next/.superpowers/brainstorm/26157-1777960329/content/cases-layout.html"}
+{"type":"screen-added","file":"/Users/aleksandrbangert/my_project/bangertstudio-next/.superpowers/brainstorm/26157-1777960329/content/waiting.html"}
+{"type":"screen-added","file":"/Users/aleksandrbangert/my_project/bangertstudio-next/.superpowers/brainstorm/26157-1777960329/content/cases-page.html"}
+{"type":"screen-added","file":"/Users/aleksandrbangert/my_project/bangertstudio-next/.superpowers/brainstorm/26157-1777960329/content/waiting-2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

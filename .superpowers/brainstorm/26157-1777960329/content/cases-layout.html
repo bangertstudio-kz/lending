@@ -1,0 +1,76 @@
+<h2>Какая раскладка для страницы кейсов?</h2>
+<p class="subtitle">Все 10 проектов, хранящихся в JSON</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#111;min-height:180px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="background:#222;border:1px solid #333;aspect-ratio:1"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:1"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:1"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:1"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:1"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:1"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Сетка 3 колонки</h3>
+      <p>Компактно, все кейсы сразу видны. Изображение + название + платформа.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#111;min-height:180px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#222;border:1px solid #333;height:44px;display:flex;align-items:center;padding:0 12px;gap:12px">
+          <div style="width:40px;height:32px;background:#333"></div>
+          <div style="flex:1">
+            <div style="height:8px;background:#444;width:60%;margin-bottom:4px"></div>
+            <div style="height:6px;background:#333;width:40%"></div>
+          </div>
+          <div style="width:60px;height:20px;border:1px solid #444"></div>
+        </div>
+        <div style="background:#222;border:1px solid #333;height:44px;display:flex;align-items:center;padding:0 12px;gap:12px">
+          <div style="width:40px;height:32px;background:#333"></div>
+          <div style="flex:1">
+            <div style="height:8px;background:#444;width:70%;margin-bottom:4px"></div>
+            <div style="height:6px;background:#333;width:50%"></div>
+          </div>
+          <div style="width:60px;height:20px;border:1px solid #444"></div>
+        </div>
+        <div style="background:#222;border:1px solid #333;height:44px;display:flex;align-items:center;padding:0 12px;gap:12px">
+          <div style="width:40px;height:32px;background:#333"></div>
+          <div style="flex:1">
+            <div style="height:8px;background:#444;width:55%;margin-bottom:4px"></div>
+            <div style="height:6px;background:#333;width:35%"></div>
+          </div>
+          <div style="width:60px;height:20px;border:1px solid #444"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Список (горизонтальные строки)</h3>
+      <p>Миниатюра слева, название + описание + платформа + ссылка справа. Читабельно.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:20px;background:#111;min-height:180px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="background:#222;border:1px solid #333;grid-column:1/-1;height:60px;display:flex;align-items:center;justify-content:center">
+          <div style="width:80px;height:40px;background:#333"></div>
+        </div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:4/3"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:4/3"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:4/3"></div>
+        <div style="background:#222;border:1px solid #333;aspect-ratio:4/3"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Masonry / смешанная сетка</h3>
+      <p>Первый кейс крупный (featured), остальные в сетке 2 колонки. Выделяет лучшие проекты.</p>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:16px">Кликни на карточку, потом ответь в терминале</p>
