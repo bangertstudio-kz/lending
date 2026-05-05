@@ -13,20 +13,6 @@
     "image": "/assets/case1.png",
     "site": "https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937"
   },
-   {
-    "name": "Ocean",
-    "description": "A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).",
-    "platform": "iOS / Android / Web",
-    "image": "/assets/case5.png",
-    "site": "https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"
-  },
-  {
-    "name": "Toptom",
-    "description": "A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.",
-    "platform": "iOS / Android / Web",
-    "image": "/assets/case6.png",
-    "site": "https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"
-  },
   {
     "name": "Luna Deep",
     "description": "Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.",
@@ -40,6 +26,20 @@
     "platform": "iOS / Android / Web",
     "image": "/assets/case3.jpg",
     "site": "https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249"
+  },
+  {
+    "name": "Ocean",
+    "description": "A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).",
+    "platform": "iOS / Android / Web",
+    "image": "/assets/case5.png",
+    "site": "https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"
+  },
+  {
+    "name": "Toptom",
+    "description": "A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.",
+    "platform": "iOS / Android / Web",
+    "image": "/assets/case6.png",
+    "site": "https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"
   },
   {
     "name": "QOR",
