@@ -18,11 +18,20 @@ interface Case {
 export default function CasesPage() {
   const { t } = useTranslation();
   const [cases, setCases] = useState<Case[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/cases')
-      .then((res) => res.json())
-      .then((data: Case[]) => setCases(data));
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+      })
+      .then((data: unknown) => {
+        if (Array.isArray(data)) setCases(data as Case[]);
+      })
+      .catch(() => setError('Could not load cases.'))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -39,41 +48,49 @@ export default function CasesPage() {
           {t('caseStudies.title')}
         </motion.h1>
 
-        <div className="flex flex-col">
-          {cases.map((project, index) => (
-            <motion.a
-              key={project.name}
-              href={project.site}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-6 py-6 border-b border-white/10 group hover:border-white/30 transition-colors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <div className="w-24 h-24 flex-shrink-0 overflow-hidden bg-zinc-900">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
+        {loading && (
+          <p className="text-white/40 text-center text-sm">Loading...</p>
+        )}
+        {error && (
+          <p className="text-red-400 text-center text-sm">{error}</p>
+        )}
+        {!loading && !error && (
+          <div className="flex flex-col">
+            {cases.map((project, index) => (
+              <motion.a
+                key={project.name}
+                href={project.site}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-6 py-6 border-b border-white/10 group hover:border-white/30 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <div className="w-24 h-24 flex-shrink-0 overflow-hidden bg-zinc-900">
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
 
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-white text-lg">{project.name}</h2>
-                  <span className="text-xs text-white/40 border border-white/20 px-2 py-0.5 flex-shrink-0">
-                    {project.platform}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h2 className="text-white text-lg">{project.name}</h2>
+                    <span className="text-xs text-white/40 border border-white/20 px-2 py-0.5 flex-shrink-0">
+                      {project.platform}
+                    </span>
+                  </div>
+                  <p className="text-white/50 text-sm leading-relaxed mb-3">{project.description}</p>
+                  <span className="text-white/40 text-xs border-b border-white/20 pb-px group-hover:text-white/70 group-hover:border-white/40 transition-colors">
+                    {t('caseStudies.viewSite')} →
                   </span>
                 </div>
-                <p className="text-white/50 text-sm leading-relaxed mb-3">{project.description}</p>
-                <span className="text-white/40 text-xs border-b border-white/20 pb-px group-hover:text-white/70 group-hover:border-white/40 transition-colors">
-                  {t('caseStudies.viewSite')} →
-                </span>
-              </div>
-            </motion.a>
-          ))}
-        </div>
+              </motion.a>
+            ))}
+          </div>
+        )}
       </main>
 
       <Footer />
