@@ -20,7 +20,7 @@ function AnimatedNumber({ value }: { value: number }) {
   }, [value, spring]);
 
   const display = useTransform(spring, (latest) => {
-    return Math.round(latest).toLocaleString();
+    return Math.round(latest).toLocaleString('en-US');
   });
 
   return (

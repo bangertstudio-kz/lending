@@ -105,12 +105,12 @@
   },
   "contact": {
     "title": "Start Your Project",
-    "subtitle": "Tell us about your idea and we'll bring it to life",
+    "subtitle": "Leave a request and we'll get back to you during business hours",
     "name": "Name",
     "email": "Email",
     "company": "Company",
     "description": "Project Description",
-    "send": "Get in Touch & Quick Analysis",
+    "send": "Send",
     "howContactWithYou": "How can we contact you?",
     "getInTouch": "Get In Touch",
     "reachOut": "Reach out to us through any of these channels and we'll get back to you shortly."

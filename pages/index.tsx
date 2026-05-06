@@ -5,12 +5,12 @@ import { Hero } from '../app/components/Hero';
 import { WhyChooseUs } from '../app/components/WhyChooseUs';
 import { CaseStudies } from '../app/components/CaseStudies';
 import { Services } from '../app/components/Services';
+import { CalculatorCTA } from '../app/components/CalculatorCTA';
 import { ContactForm } from '../app/components/ContactForm';
 import { Footer } from '../app/components/Footer';
 import { MobileScrollButton } from '../app/components/MobileScrollButton';
-import CostCalculator from '@/app/components/Calculator/CostCalculator';
 
-export default function Home({ data }: { data: any }) {
+export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-950 relative">
       <Header />
@@ -18,6 +18,7 @@ export default function Home({ data }: { data: any }) {
         <Hero />
         <WhyChooseUs />
         <CaseStudies />
+        <CalculatorCTA />
         <Services />
         <ContactForm />
         <Footer />
