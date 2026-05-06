@@ -8,6 +8,7 @@ import { Services } from '../app/components/Services';
 import { ContactForm } from '../app/components/ContactForm';
 import { Footer } from '../app/components/Footer';
 import { MobileScrollButton } from '../app/components/MobileScrollButton';
+import CostCalculator from '@/app/components/Calculator/CostCalculator';
 
 export default function Home({ data }: { data: any }) {
   return (

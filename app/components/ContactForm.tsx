@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, MessageCircle, Phone, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, MessageCircle, Phone, AlertCircle } from 'lucide-react';
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -10,17 +10,19 @@ function LinkedinIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import CostCalculator from './Calculator/CostCalculator';
 
-async function sendToTelegram(name: string, description: string) {
+async function sendToTelegram(name: string, contact: string, projectDescription: string) {
   const response = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, description }),
+    body: JSON.stringify({ name, contact, description: projectDescription }),
   });
   if (!response.ok) throw new Error('API error');
 }
@@ -33,16 +35,17 @@ const socialLinks = [
 
 export function ContactForm() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({ name: '', description: '' });
+  const [formData, setFormData] = useState({ name: '', contact: '', projectDescription: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
     try {
-      await sendToTelegram(formData.name, formData.description);
+      await sendToTelegram(formData.name, formData.contact, formData.projectDescription);
       setStatus('success');
-      setFormData({ name: '', description: '' });
+      setIsCalculatorOpen(true);
     } catch {
       setStatus('error');
     }
@@ -74,39 +77,43 @@ export function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <motion.form
             onSubmit={handleSubmit}
-            className="space-y-6 flex flex-col h-full"
+            className="space-y-6"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div>
-              <Input
-                type="text"
-                placeholder={t('contact.name')}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
-                required
-              />
-            </div>
+            <Input
+              type="text"
+              placeholder={t('contact.name')}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+              required
+            />
 
-            <div className="flex-1">
-              <Textarea
-                placeholder={t('contact.howContactWithYou')}
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 h-full min-h-[300px]"
-                required
-              />
-            </div>
+            <Input
+              type="text"
+              placeholder={t('contact.howContactWithYou')}
+              value={formData.contact}
+              onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+              className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+              required
+            />
 
-            {status === 'success' && (
-              <div className="flex items-center gap-2 text-green-400 text-sm">
-                <CheckCircle className="w-4 h-4" />
-                <span>Заявка отправлена!</span>
+            <div className="space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-white/50">{t('contact.description')}</span>
+                <span className="text-xs text-white/30">опционально</span>
               </div>
-            )}
+              <Textarea
+                placeholder="e.g. MVP mobile app with payments and admin panel"
+                value={formData.projectDescription}
+                onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[120px]"
+              />
+            </div>
+
             {status === 'error' && (
               <div className="flex items-center gap-2 text-red-400 text-sm">
                 <AlertCircle className="w-4 h-4" />
@@ -164,6 +171,14 @@ export function ContactForm() {
           </motion.div>
         </div>
       </div>
+
+      <CostCalculator
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+        projectDescription={formData.projectDescription}
+        name={formData.name}
+        contact={formData.contact}
+      />
     </section>
   );
 }

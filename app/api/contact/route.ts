@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  const { name, description } = await request.json();
+  const { name, contact, description } = await request.json();
 
-  if (!name || !description) {
+  if (!name || !contact) {
     return Response.json({ error: 'Missing fields' }, { status: 400 });
   }
 
@@ -14,7 +14,8 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: 'Server misconfigured' }, { status: 500 });
   }
 
-  const text = `📩 *Новая заявка с сайта*\n\n👤 *Имя:* ${name}\n\n💬 *Сообщение:*\n${description}`;
+  const descriptionLine = description ? `\n\n📋 *Описание проекта:*\n${description}` : '';
+  const text = `📩 *Новая заявка с сайта*\n\n👤 *Имя:* ${name}\n\n📞 *Как связаться:* ${contact}${descriptionLine}`;
 
   const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',

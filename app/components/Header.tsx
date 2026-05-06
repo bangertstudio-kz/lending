@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Calculator } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import CostCalculator from './Calculator/CostCalculator';
 
 const navItems = [
   { label: 'header.whyChooseUs', href: '/#why-choose-us' },
@@ -18,6 +19,7 @@ export function Header() {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -65,6 +67,17 @@ export function Header() {
                   {t(item.label)}
                 </motion.a>
               ))}
+              <motion.button
+                onClick={() => setIsCalculatorOpen(true)}
+                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium border border-white/20 px-3 py-1.5 hover:border-white/40"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: navItems.length * 0.1 }}
+                whileHover={{ y: -2 }}
+              >
+                <Calculator className="w-4 h-4" />
+                Calculator
+              </motion.button>
               <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
             </div>
 
@@ -112,6 +125,13 @@ export function Header() {
                     {t(item.label)}
                   </motion.a>
                 ))}
+                <button
+                  onClick={() => { setIsCalculatorOpen(true); setIsMobileMenuOpen(false); }}
+                  className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-lg font-medium py-2"
+                >
+                  <Calculator className="w-5 h-5" />
+                  Calculator
+                </button>
                 <div className="pt-4 border-t border-white/10">
                   <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
                 </div>
@@ -120,6 +140,11 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+      <CostCalculator
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+        projectDescription=""
+      />
     </>
   );
 }
