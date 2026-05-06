@@ -1,0 +1,109 @@
+{
+  "stages": [
+    { "id": "mvp", "tKey": "calculator.stage.mvpLabel", "descKey": "calculator.stage.mvpDesc" },
+    { "id": "mature", "tKey": "calculator.stage.matureLabel", "descKey": "calculator.stage.matureDesc" }
+  ],
+  "platforms": [
+    { "key": "Web App", "tKey": "calculator.platforms.webApp", "descKey": "calculator.platforms.webAppDesc", "icon": "Monitor" },
+    { "key": "Mobile App", "tKey": "calculator.platforms.mobileApp", "descKey": "calculator.platforms.mobileAppDesc", "icon": "Smartphone" },
+    { "key": "macOS", "tKey": "calculator.platforms.macos", "descKey": "calculator.platforms.macosDesc", "icon": "Laptop" },
+    { "key": "Windows", "tKey": "calculator.platforms.windows", "descKey": "calculator.platforms.windowsDesc", "icon": "Laptop" }
+  ],
+  "features": [
+    { "key": "Landing Page", "tKey": "calculator.features.landingPage", "cost": 1500 },
+    { "key": "Authentication", "tKey": "calculator.features.authentication", "cost": 2000 },
+    { "key": "Payments", "tKey": "calculator.features.payments", "cost": 3500 },
+    { "key": "Admin Panel", "tKey": "calculator.features.adminPanel", "cost": 5000 },
+    { "key": "API Integration", "tKey": "calculator.features.apiIntegration", "cost": 2000 },
+    { "key": "Notifications", "tKey": "calculator.features.notifications", "cost": 1500 },
+    { "key": "Analytics", "tKey": "calculator.features.analytics", "cost": 3000 },
+    { "key": "Chat/Messaging", "tKey": "calculator.features.chat", "cost": 6000 },
+    { "key": "File Upload", "tKey": "calculator.features.fileUpload", "cost": 800 },
+    { "key": "Search", "tKey": "calculator.features.search", "cost": 1800 },
+    { "key": "Social Login", "tKey": "calculator.features.socialLogin", "cost": 800 },
+
+    { "key": "User Profiles", "tKey": "calculator.features.userProfiles", "cost": 1500 },
+    { "key": "Role Management", "tKey": "calculator.features.roleManagement", "cost": 2000 },
+    { "key": "Permissions System", "tKey": "calculator.features.permissions", "cost": 2500 },
+    { "key": "Dashboard", "tKey": "calculator.features.dashboard", "cost": 3000 },
+    { "key": "Settings Page", "tKey": "calculator.features.settings", "cost": 800 },
+
+    { "key": "2FA Authentication", "tKey": "calculator.features.twoFactorAuth", "cost": 1500 },
+    { "key": "Password Recovery", "tKey": "calculator.features.passwordRecovery", "cost": 800 },
+    { "key": "Email Verification", "tKey": "calculator.features.emailVerification", "cost": 600 },
+    { "key": "Session Management", "tKey": "calculator.features.sessionManagement", "cost": 1200 },
+    { "key": "Audit Logs", "tKey": "calculator.features.auditLogs", "cost": 2000 },
+
+    { "key": "Subscription Billing", "tKey": "calculator.features.subscriptionBilling", "cost": 4500 },
+    { "key": "Invoices", "tKey": "calculator.features.invoices", "cost": 2000 },
+    { "key": "Coupons & Discounts", "tKey": "calculator.features.coupons", "cost": 1500 },
+    { "key": "Multi-currency", "tKey": "calculator.features.multiCurrency", "cost": 2000 },
+    { "key": "Checkout Flow", "tKey": "calculator.features.checkout", "cost": 2500 },
+
+    { "key": "Product Catalog", "tKey": "calculator.features.productCatalog", "cost": 4000 },
+    { "key": "Shopping Cart", "tKey": "calculator.features.shoppingCart", "cost": 2500 },
+    { "key": "Order Management", "tKey": "calculator.features.orderManagement", "cost": 4500 },
+    { "key": "Wishlist", "tKey": "calculator.features.wishlist", "cost": 800 },
+    { "key": "Product Reviews", "tKey": "calculator.features.productReviews", "cost": 1500 },
+    { "key": "Inventory Management", "tKey": "calculator.features.inventory", "cost": 4500 },
+
+    { "key": "Push Notifications", "tKey": "calculator.features.pushNotifications", "cost": 1800 },
+    { "key": "Activity Feed", "tKey": "calculator.features.activityFeed", "cost": 2500 },
+    { "key": "Comments System", "tKey": "calculator.features.comments", "cost": 1500 },
+    { "key": "Likes & Reactions", "tKey": "calculator.features.likes", "cost": 800 },
+    { "key": "User Following", "tKey": "calculator.features.following", "cost": 1500 },
+    { "key": "Live Updates", "tKey": "calculator.features.liveUpdates", "cost": 4000 },
+
+    { "key": "Custom Reports", "tKey": "calculator.features.customReports", "cost": 3000 },
+    { "key": "Data Visualization", "tKey": "calculator.features.dataVisualization", "cost": 2500 },
+    { "key": "User Tracking", "tKey": "calculator.features.userTracking", "cost": 2000 },
+    { "key": "Event Tracking", "tKey": "calculator.features.eventTracking", "cost": 1500 },
+    { "key": "Export Data", "tKey": "calculator.features.exportData", "cost": 1200 },
+
+    { "key": "CRM Integration", "tKey": "calculator.features.crm", "cost": 2500 },
+    { "key": "Email Service", "tKey": "calculator.features.emailService", "cost": 800 },
+    { "key": "SMS Service", "tKey": "calculator.features.sms", "cost": 800 },
+    { "key": "Google Maps", "tKey": "calculator.features.maps", "cost": 1200 },
+    { "key": "Webhook Support", "tKey": "calculator.features.webhooks", "cost": 1500 },
+
+    { "key": "Media Management", "tKey": "calculator.features.media", "cost": 2000 },
+    { "key": "Document Storage", "tKey": "calculator.features.documents", "cost": 1500 },
+    { "key": "Rich Text Editor", "tKey": "calculator.features.richText", "cost": 800 },
+    { "key": "CMS", "tKey": "calculator.features.cms", "cost": 5000 },
+    { "key": "Version History", "tKey": "calculator.features.versionHistory", "cost": 2000 },
+
+    { "key": "Multi-language", "tKey": "calculator.features.multiLanguage", "cost": 2000 },
+    { "key": "Timezone Support", "tKey": "calculator.features.timezone", "cost": 600 },
+
+    { "key": "AI Recommendations", "tKey": "calculator.features.ai", "cost": 8000 },
+    { "key": "Advanced Search", "tKey": "calculator.features.advancedSearch", "cost": 4000 },
+    { "key": "Background Jobs", "tKey": "calculator.features.backgroundJobs", "cost": 2000 },
+    { "key": "Caching Layer", "tKey": "calculator.features.caching", "cost": 1800 },
+    { "key": "Scalability Optimization", "tKey": "calculator.features.scalability", "cost": 5000 },
+
+    { "key": "Offline Mode", "tKey": "calculator.features.offline", "cost": 3500 },
+    { "key": "Biometric Auth", "tKey": "calculator.features.biometric", "cost": 2000 },
+    { "key": "App Deployment", "tKey": "calculator.features.appDeployment", "cost": 1200 },
+
+    { "key": "Automated Testing", "tKey": "calculator.features.testing", "cost": 2500 },
+    { "key": "CI/CD Setup", "tKey": "calculator.features.cicd", "cost": 2000 },
+    { "key": "Monitoring & Logging", "tKey": "calculator.features.monitoring", "cost": 1500 },
+    { "key": "Error Tracking", "tKey": "calculator.features.errorTracking", "cost": 800 },
+    { "key": "Performance Optimization", "tKey": "calculator.features.performance", "cost": 3000 },
+    { "key": "Security Hardening", "tKey": "calculator.features.security", "cost": 2800 },
+
+    { "key": "Multi-tenant Architecture", "tKey": "calculator.features.multitenant", "cost": 9000 },
+    { "key": "White-label", "tKey": "calculator.features.whitelabel", "cost": 6000 },
+    { "key": "Enterprise Security", "tKey": "calculator.features.enterpriseSecurity", "cost": 7000 }
+  ],
+  "team": [
+    { "key": "Project Manager", "tKey": "calculator.team.projectManager", "rate": 40, "defaultCount": 1 },
+    { "key": "UI/UX Designer", "tKey": "calculator.team.designer", "rate": 25, "defaultCount": 0 },
+    { "key": "Fullstack Developer", "tKey": "calculator.team.fullstack", "rate": 50, "defaultCount": 1 },
+    { "key": "Frontend Developer", "tKey": "calculator.team.frontend", "rate": 30, "defaultCount": 0 },
+    { "key": "Backend Developer", "tKey": "calculator.team.backend", "rate": 35, "defaultCount": 0 },
+    { "key": "Mobile Developer", "tKey": "calculator.team.mobile", "rate": 35, "defaultCount": 0 },
+    { "key": "QA Engineer", "tKey": "calculator.team.qa", "rate": 15, "defaultCount": 0 },
+    { "key": "DevOps Engineer", "tKey": "calculator.team.devops", "rate": 45, "defaultCount": 0 }
+  ]
+}

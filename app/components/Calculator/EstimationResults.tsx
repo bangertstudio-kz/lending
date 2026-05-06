@@ -1,6 +1,7 @@
 import { DollarSign, Clock, Users } from 'lucide-react';
 import { motion, useSpring, useTransform } from 'motion/react';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface EstimationResultsProps {
   estimates: {
@@ -19,36 +20,22 @@ function AnimatedNumber({ value }: { value: number }) {
     spring.set(value);
   }, [value, spring]);
 
-  const display = useTransform(spring, (latest) => {
-    return Math.round(latest).toLocaleString('en-US');
-  });
+  const display = useTransform(spring, (latest) => Math.round(latest).toLocaleString('en-US'));
 
-  return (
-    <motion.span className="inline-block tabular-nums">
-      {display}
-    </motion.span>
-  );
+  return <motion.span className="inline-block tabular-nums">{display}</motion.span>;
 }
 
 export default function EstimationResults({ estimates }: EstimationResultsProps) {
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
+  const { t } = useTranslation();
 
   return (
     <div className="bg-black border border-white/10 p-6 hover:border-white/20 transition-colors">
-      <h3 className="text-xl font-bold text-white mb-6">Estimated Cost</h3>
+      <h3 className="text-xl font-bold text-white mb-6">{t('calculator.results.title')}</h3>
 
-      {/* Price Range */}
       <div className="mb-8">
         <div className="flex items-center gap-2 text-white/60 mb-2">
           <DollarSign className="w-5 h-5" />
-          <span className="text-sm font-medium">Budget Range</span>
+          <span className="text-sm font-medium">{t('calculator.results.budget')}</span>
         </div>
         <div className="text-4xl font-bold text-white mb-1">
           $<AnimatedNumber value={estimates.minCost} />
@@ -58,33 +45,28 @@ export default function EstimationResults({ estimates }: EstimationResultsProps)
         </div>
       </div>
 
-      {/* Timeline */}
       <div className="mb-8 pb-8 border-b border-white/10">
         <div className="flex items-center gap-2 text-white/60 mb-2">
           <Clock className="w-5 h-5" />
-          <span className="text-sm font-medium">Timeline</span>
+          <span className="text-sm font-medium">{t('calculator.results.timeline')}</span>
         </div>
         <div className="text-2xl font-bold text-white">
-          <AnimatedNumber value={estimates.minWeeks} /> - <AnimatedNumber value={estimates.maxWeeks} /> weeks
+          <AnimatedNumber value={estimates.minWeeks} /> - <AnimatedNumber value={estimates.maxWeeks} /> {t('calculator.results.weeks')}
         </div>
       </div>
 
-      {/* Team Summary */}
       <div>
         <div className="flex items-center gap-2 text-white/60 mb-2">
           <Users className="w-5 h-5" />
-          <span className="text-sm font-medium">Team Size</span>
+          <span className="text-sm font-medium">{t('calculator.results.teamSize')}</span>
         </div>
         <div className="text-2xl font-bold text-white mb-4">
-          <AnimatedNumber value={estimates.teamSize} /> {estimates.teamSize === 1 ? 'person' : 'people'}
+          <AnimatedNumber value={estimates.teamSize} /> {estimates.teamSize === 1 ? t('calculator.results.person') : t('calculator.results.people')}
         </div>
       </div>
 
-      {/* Info Box */}
       <div className="mt-6 p-4 bg-white/5 border border-white/10">
-        <p className="text-sm text-white/60">
-          💡 These estimates are based on industry averages. Final costs may vary based on specific requirements and team rates.
-        </p>
+        <p className="text-sm text-white/60">💡 {t('calculator.results.disclaimer')}</p>
       </div>
     </div>
   );

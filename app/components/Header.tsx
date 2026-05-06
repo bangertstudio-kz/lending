@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Calculator } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -12,6 +12,7 @@ const navItems = [
   { label: 'header.caseStudies', href: '/cases' },
   { label: 'header.services', href: '/#services' },
   { label: 'header.contact', href: '/#contact' },
+  { label: 'header.calculator', href: '/calculator' },
 ];
 
 export function Header() {
@@ -65,17 +66,6 @@ export function Header() {
                   {t(item.label)}
                 </motion.a>
               ))}
-              <motion.a
-                href="/calculator"
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium border border-white/20 px-3 py-1.5 hover:border-white/40"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: navItems.length * 0.1 }}
-                whileHover={{ y: -2 }}
-              >
-                <Calculator className="w-4 h-4" />
-                Calculator
-              </motion.a>
               <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
             </div>
 
@@ -123,14 +113,6 @@ export function Header() {
                     {t(item.label)}
                   </motion.a>
                 ))}
-                <a
-                  href="/calculator"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-lg font-medium py-2"
-                >
-                  <Calculator className="w-5 h-5" />
-                  Calculator
-                </a>
                 <div className="pt-4 border-t border-white/10">
                   <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
                 </div>

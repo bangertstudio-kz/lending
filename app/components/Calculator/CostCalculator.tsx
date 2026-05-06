@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, ArrowLeft } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
+import { useTranslation } from 'react-i18next';
+import calculatorData from '@/app/data/calculator.json';
 import StageSelector from './StageSelector';
 import PlatformSelector from './PlatformSelector';
 import FeatureSelector from './FeatureSelector';
@@ -26,21 +28,13 @@ export default function CostCalculator({
   inline = false,
 }: CostCalculatorProps) {
   const [description, setDescription] = useState(projectDescription);
-  const [platforms, setPlatforms] = useState<Record<string, number>>({
-    'Web App': 0,
-    'Mobile App': 0,
-    'macOS': 0,
-    'Windows': 0,
-  });
+  const [platforms, setPlatforms] = useState<Record<string, number>>(
+    Object.fromEntries(calculatorData.platforms.map((p) => [p.key, 0]))
+  );
   const [stage, setStage] = useState('mvp');
-  const [team, setTeam] = useState<Record<string, number>>({
-    'Project Manager': 1,
-    'UI/UX Designer': 1,
-    'Frontend Developer': 1,
-    'Backend Developer': 1,
-    'Mobile Developer': 0,
-    'QA Engineer': 1,
-  });
+  const [team, setTeam] = useState<Record<string, number>>(
+    Object.fromEntries(calculatorData.team.map((r) => [r.key, r.defaultCount]))
+  );
   const [features, setFeatures] = useState<string[]>([]);
 
   const calculateEstimates = () => {
@@ -60,6 +54,7 @@ export default function CostCalculator({
   };
 
   const estimates = calculateEstimates();
+  const { t } = useTranslation();
 
   const content = (
     <div className="min-h-screen p-6">
@@ -76,7 +71,7 @@ export default function CostCalculator({
               className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm font-medium">Назад</span>
+              <span className="text-sm font-medium">{t('calculator.back')}</span>
             </button>
           </motion.div>
         )}
@@ -89,10 +84,10 @@ export default function CostCalculator({
         >
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white/80 px-4 py-2 rounded-full mb-4">
             <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">AI-Powered Estimation</span>
+            <span className="text-sm font-medium">{t('calculator.badge')}</span>
           </div>
-          <h1 className="text-5xl font-bold text-white mb-3">IT Project Cost Calculator</h1>
-          <p className="text-xl text-white/60">Get instant estimates for your next software project</p>
+          <h1 className="text-5xl font-bold text-white mb-3">{t('calculator.title')}</h1>
+          <p className="text-xl text-white/60">{t('calculator.subtitle')}</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -104,13 +99,13 @@ export default function CostCalculator({
               className="bg-black border border-white/10 p-6 space-y-1"
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm text-white/50">Описание проекта</span>
-                <span className="text-xs text-white/30">опционально</span>
+                <span className="text-sm text-white/50">{t('calculator.description')}</span>
+                <span className="text-xs text-white/30">{t('calculator.optional')}</span>
               </div>
               <Textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="e.g. MVP mobile app with payments and admin panel"
+                placeholder={t('calculator.descriptionPlaceholder')}
                 className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[120px]"
               />
             </motion.div>
@@ -138,11 +133,11 @@ export default function CostCalculator({
               <EstimationResults estimates={estimates} />
               <div className="mt-6 space-y-6">
                 <div>
-                  <p className="text-white text-sm font-medium mb-4">Связаться с нами</p>
+                  <p className="text-white text-sm font-medium mb-4">{t('calculator.contactUs')}</p>
                   <ContactLinks />
                 </div>
                 <div>
-                  <p className="text-white text-sm font-medium mb-4">Оставить заявку</p>
+                  <p className="text-white text-sm font-medium mb-4">{t('calculator.leaveRequest')}</p>
                   <ContactInlineForm />
                 </div>
               </div>
