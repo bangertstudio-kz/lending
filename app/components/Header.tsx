@@ -7,12 +7,10 @@ import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
-const navItems = [
-  { label: 'header.whyChooseUs', href: '/#why-choose-us' },
+const navItems: { label: string; href: string; external?: boolean }[] = [
   { label: 'header.caseStudies', href: '/cases' },
-  { label: 'header.services', href: '/#services' },
-  { label: 'header.contact', href: '/#contact' },
   { label: 'header.calculator', href: '/calculator' },
+  { label: 'header.news', href: 'https://t.me/bangertstudio', external: true },
 ];
 
 export function Header() {
@@ -57,6 +55,8 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
                   className="text-white/80 hover:text-white transition-colors text-sm font-medium"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}

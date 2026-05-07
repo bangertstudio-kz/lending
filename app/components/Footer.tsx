@@ -34,6 +34,8 @@ export function Footer() {
             <div className="flex gap-4">
               <a
                 href="https://www.linkedin.com/company/bangertstudio/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/50 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
@@ -41,8 +43,19 @@ export function Footer() {
               </a>
               <a
                 href="https://t.me/bangertstudio"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/50 hover:text-white transition-colors"
-                aria-label="Telegram"
+                aria-label="Новости"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
+              <a
+                href="https://t.me/alexanderbangert"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/50 hover:text-white transition-colors"
+                aria-label="Написать"
               >
                 <MessageCircle className="w-5 h-5" />
               </a>
