@@ -1,15 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowLeft } from 'lucide-react';
+import { Sparkles, ArrowLeft, Wand2, Loader2 } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
 import { useTranslation } from 'react-i18next';
-import calculatorData from '@/app/data/calculator.json';
+import { useCalculatorStore } from '@/app/store/calculatorStore';
 import StageSelector from './StageSelector';
-import PlatformSelector from './PlatformSelector';
 import FeatureSelector from './FeatureSelector';
-import TeamComposition from './TeamComposition';
 import EstimationResults from './EstimationResults';
 import { ContactInlineForm } from '../ContactInlineForm';
 import { ContactLinks } from '../ContactLinks';
@@ -27,34 +25,22 @@ export default function CostCalculator({
   projectDescription = '',
   inline = false,
 }: CostCalculatorProps) {
-  const [description, setDescription] = useState(projectDescription);
-  const [platforms, setPlatforms] = useState<Record<string, number>>(
-    Object.fromEntries(calculatorData.platforms.map((p) => [p.key, 0]))
-  );
-  const [stage, setStage] = useState('mvp');
-  const [team, setTeam] = useState<Record<string, number>>(
-    Object.fromEntries(calculatorData.team.map((r) => [r.key, r.defaultCount]))
-  );
-  const [features, setFeatures] = useState<string[]>([]);
-
-  const calculateEstimates = () => {
-    const baseRate = 80;
-    const teamSize = Object.values(team).reduce((a, b) => a + b, 0);
-    const weeksMultiplier = stage === 'mature' ? 2 : 1;
-    const platformCount = Object.values(platforms).reduce((a, b) => a + b, 0);
-    const platformMultiplier = 1 + platformCount * 0.3;
-    const featureMultiplier = 1 + features.length * 0.15;
-    const baseWeeks = 8 * weeksMultiplier * platformMultiplier * featureMultiplier;
-    const minWeeks = Math.floor(baseWeeks * 0.8);
-    const maxWeeks = Math.ceil(baseWeeks * 1.3);
-    const hoursPerWeek = 40;
-    const minCost = Math.floor(minWeeks * hoursPerWeek * teamSize * baseRate);
-    const maxCost = Math.ceil(maxWeeks * hoursPerWeek * teamSize * baseRate);
-    return { minCost, maxCost, minWeeks, maxWeeks, teamSize };
-  };
-
-  const estimates = calculateEstimates();
+  const { description, setDescription, features, estimates, isAnalyzing, analyzeError, analyzeDescription } = useCalculatorStore();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (projectDescription) {
+      setDescription(projectDescription);
+      analyzeDescription();
+    }
+  }, [projectDescription]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const contactDescription = [
+    description && `📋 Описание: ${description}`,
+    features.length > 0 && `⚙️ Функции: ${features.join(', ')}`,
+    estimates.minCost > 0 && `💰 Оценка: $${estimates.minCost.toLocaleString()} – $${estimates.maxCost.toLocaleString()}`,
+    estimates.minWeeks > 0 && `🕐 Сроки: ${estimates.minWeeks}–${estimates.maxWeeks} нед.`,
+  ].filter(Boolean).join('\n\n');
 
   const content = (
     <div className="min-h-screen p-6">
@@ -91,7 +77,7 @@ export default function CostCalculator({
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-6">
+          <div className={`lg:col-span-2 space-y-6 transition-opacity duration-300 ${isAnalyzing ? 'pointer-events-none opacity-50' : ''}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,18 +94,25 @@ export default function CostCalculator({
                 placeholder={t('calculator.descriptionPlaceholder')}
                 className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[120px]"
               />
+              <div className="flex items-center gap-3 mt-3">
+                <button
+                  onClick={analyzeDescription}
+                  disabled={isAnalyzing || !description.trim()}
+                  className="flex items-center gap-2 px-4 py-2 bg-white text-black text-sm font-medium hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
+                  {isAnalyzing ? t('calculator.analyzing') : t('calculator.analyze')}
+                </button>
+                {analyzeError && (
+                  <span className="text-sm text-red-400">{t('calculator.analyzeError')}</span>
+                )}
+              </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
-              <StageSelector selected={stage} onChange={setStage} />
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}>
-              <PlatformSelector selected={platforms} onChange={setPlatforms} />
+              <StageSelector />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 }}>
-              <FeatureSelector selected={features} onChange={setFeatures} />
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.5 }}>
-              <TeamComposition team={team} onChange={setTeam} />
+              <FeatureSelector />
             </motion.div>
           </div>
 
@@ -138,7 +131,7 @@ export default function CostCalculator({
                 </div>
                 <div>
                   <p className="text-white text-sm font-medium mb-4">{t('calculator.leaveRequest')}</p>
-                  <ContactInlineForm />
+                  <ContactInlineForm description={contactDescription || undefined} />
                 </div>
               </div>
             </motion.div>

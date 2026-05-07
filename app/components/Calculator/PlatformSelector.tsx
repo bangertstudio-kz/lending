@@ -1,21 +1,13 @@
-import { Monitor, Smartphone, Laptop, Plus, Minus } from 'lucide-react';
+import { Monitor, Smartphone, Laptop } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import data from '@/app/data/calculator.json';
+import { useCalculatorStore } from '@/app/store/calculatorStore';
 
 const iconMap: Record<string, React.ElementType> = { Monitor, Smartphone, Laptop };
 
-interface PlatformSelectorProps {
-  selected: Record<string, number>;
-  onChange: (platforms: Record<string, number>) => void;
-}
-
-export default function PlatformSelector({ selected, onChange }: PlatformSelectorProps) {
+export default function PlatformSelector() {
   const { t } = useTranslation();
-
-  const updatePlatform = (key: string, delta: number) => {
-    const newCount = Math.max(0, Math.min(5, (selected[key] || 0) + delta));
-    onChange({ ...selected, [key]: newCount });
-  };
+  const { platforms, updatePlatform } = useCalculatorStore();
 
   return (
     <div className="bg-black border border-white/10 p-6 hover:border-white/20 transition-colors">
@@ -23,7 +15,7 @@ export default function PlatformSelector({ selected, onChange }: PlatformSelecto
       <div className="space-y-3">
         {data.platforms.map((platform) => {
           const Icon = iconMap[platform.icon] ?? Monitor;
-          const count = selected[platform.key] || 0;
+          const count = platforms[platform.key] || 0;
           const isSelected = count > 0;
           return (
             <div
@@ -38,12 +30,20 @@ export default function PlatformSelector({ selected, onChange }: PlatformSelecto
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <button onClick={() => updatePlatform(platform.key, -1)} disabled={count === 0} className="w-8 h-8 bg-white/5 border border-white/20 flex items-center justify-center hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
-                  <Minus className="w-4 h-4 text-white" />
+                <button
+                  onClick={() => updatePlatform(platform.key, -1)}
+                  disabled={count === 0}
+                  className="w-8 h-8 bg-white/5 border border-white/20 flex items-center justify-center hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  <span className="text-white text-lg leading-none">−</span>
                 </button>
                 <span className="w-8 text-center font-semibold text-white">{count}</span>
-                <button onClick={() => updatePlatform(platform.key, 1)} disabled={count >= 5} className="w-8 h-8 bg-white/5 border border-white/20 flex items-center justify-center hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
-                  <Plus className="w-4 h-4 text-white" />
+                <button
+                  onClick={() => updatePlatform(platform.key, 1)}
+                  disabled={count >= 5}
+                  className="w-8 h-8 bg-white/5 border border-white/20 flex items-center justify-center hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  <span className="text-white text-lg leading-none">+</span>
                 </button>
               </div>
             </div>

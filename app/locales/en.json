@@ -137,6 +137,9 @@
     "description": "Project Description",
     "optional": "optional",
     "descriptionPlaceholder": "e.g. MVP mobile app with payments and admin panel",
+    "analyze": "Analyze with AI",
+    "analyzing": "Analyzing...",
+    "analyzeError": "An error occurred. Please try again.",
     "contactUs": "Get in Touch",
     "leaveRequest": "Leave a Request",
     "stage": {

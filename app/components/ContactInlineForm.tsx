@@ -7,16 +7,20 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useTranslation } from 'react-i18next';
 
-async function sendToTelegram(name: string, contact: string) {
+async function sendToTelegram(name: string, contact: string, description?: string) {
   const response = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, contact, description: '' }),
+    body: JSON.stringify({ name, contact, description: description ?? '' }),
   });
   if (!response.ok) throw new Error('API error');
 }
 
-export function ContactInlineForm() {
+interface ContactInlineFormProps {
+  description?: string;
+}
+
+export function ContactInlineForm({ description }: ContactInlineFormProps) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: '', contact: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -25,7 +29,7 @@ export function ContactInlineForm() {
     e.preventDefault();
     setStatus('loading');
     try {
-      await sendToTelegram(formData.name, formData.contact);
+      await sendToTelegram(formData.name, formData.contact, description);
       setStatus('success');
       setFormData({ name: '', contact: '' });
     } catch {

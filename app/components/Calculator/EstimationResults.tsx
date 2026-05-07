@@ -1,4 +1,4 @@
-import { DollarSign, Clock, Users } from 'lucide-react';
+import { DollarSign, Clock } from 'lucide-react';
 import { motion, useSpring, useTransform } from 'motion/react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,6 @@ interface EstimationResultsProps {
     maxCost: number;
     minWeeks: number;
     maxWeeks: number;
-    teamSize: number;
   };
 }
 
@@ -45,23 +44,13 @@ export default function EstimationResults({ estimates }: EstimationResultsProps)
         </div>
       </div>
 
-      <div className="mb-8 pb-8 border-b border-white/10">
+      <div className="mb-8">
         <div className="flex items-center gap-2 text-white/60 mb-2">
           <Clock className="w-5 h-5" />
           <span className="text-sm font-medium">{t('calculator.results.timeline')}</span>
         </div>
         <div className="text-2xl font-bold text-white">
           <AnimatedNumber value={estimates.minWeeks} /> - <AnimatedNumber value={estimates.maxWeeks} /> {t('calculator.results.weeks')}
-        </div>
-      </div>
-
-      <div>
-        <div className="flex items-center gap-2 text-white/60 mb-2">
-          <Users className="w-5 h-5" />
-          <span className="text-sm font-medium">{t('calculator.results.teamSize')}</span>
-        </div>
-        <div className="text-2xl font-bold text-white mb-4">
-          <AnimatedNumber value={estimates.teamSize} /> {estimates.teamSize === 1 ? t('calculator.results.person') : t('calculator.results.people')}
         </div>
       </div>
 
