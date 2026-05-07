@@ -1,30 +1,21 @@
 import { NextRequest } from 'next/server';
+import { sendTelegramMessage } from '../send_telegram_message';
 
 export async function POST(request: NextRequest) {
-  const { name, description } = await request.json();
+  const { name, contact, description } = await request.json();
 
-  if (!name || !description) {
+  if (!name || !contact) {
     return Response.json({ error: 'Missing fields' }, { status: 400 });
   }
+  const descriptionLine = description ? `\n\n📋 *Описание проекта:*\n${description}` : '';
+  const text = `📩 *Новая заявка с сайта*\n\n👤 *Имя:* ${name}\n\n📞 *Как связаться:* ${contact}\n\n${descriptionLine}`;
 
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const res = await sendTelegramMessage(text);
 
-  if (!token || !chatId) {
-    return Response.json({ error: 'Server misconfigured' }, { status: 500 });
-  }
-
-  const text = `📩 *Новая заявка с сайта*\n\n👤 *Имя:* ${name}\n\n💬 *Сообщение:*\n${description}`;
-
-  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' }),
-  });
-
-  if (!res.ok) {
+  if (!res?.ok) {
     return Response.json({ error: 'Telegram error' }, { status: 502 });
   }
 
   return Response.json({ ok: true });
 }
+

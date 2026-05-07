@@ -12,6 +12,7 @@ const navItems = [
   { label: 'header.caseStudies', href: '/cases' },
   { label: 'header.services', href: '/#services' },
   { label: 'header.contact', href: '/#contact' },
+  { label: 'header.calculator', href: '/calculator' },
 ];
 
 export function Header() {
@@ -48,7 +49,7 @@ export function Header() {
       >
         <nav className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Logo handleNavClick={handleNavClick} />
+            <Logo />
 
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item, index) => (

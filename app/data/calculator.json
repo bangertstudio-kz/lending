@@ -1,0 +1,53 @@
+{
+  "stages": [
+    { "id": "mvp",    "tKey": "calculator.stage.mvpLabel",    "descKey": "calculator.stage.mvpDesc",    "multiplier": 0.7 },
+    { "id": "mature", "tKey": "calculator.stage.matureLabel", "descKey": "calculator.stage.matureDesc", "multiplier": 1.0 }
+  ],
+  "features": [
+    { "key": "Landing Page",          "tKey": "calculator.features.landingPage",        "cost": 680,  "hours": 10 },
+    { "key": "Authentication",        "tKey": "calculator.features.authentication",     "cost": 1160, "hours": 10 },
+    { "key": "Payments",              "tKey": "calculator.features.payments",           "cost": 1490, "hours": 18 },
+    { "key": "Admin Panel",           "tKey": "calculator.features.adminPanel",         "cost": 2090, "hours": 20 },
+    { "key": "Notifications",         "tKey": "calculator.features.notifications",      "cost": 760,  "hours": 8  },
+    { "key": "Analytics",             "tKey": "calculator.features.analytics",          "cost": 1410, "hours": 16 },
+    { "key": "Chat/Messaging",        "tKey": "calculator.features.chat",               "cost": 2750, "hours": 32 },
+    { "key": "File Upload",           "tKey": "calculator.features.fileUpload",         "cost": 630,  "hours": 6  },
+    { "key": "Search",                "tKey": "calculator.features.search",             "cost": 860,  "hours": 10 },
+    { "key": "Social Login",          "tKey": "calculator.features.socialLogin",        "cost": 730,  "hours": 8  },
+    { "key": "User Profiles",         "tKey": "calculator.features.userProfiles",       "cost": 860,  "hours": 8  },
+    { "key": "Dashboard",             "tKey": "calculator.features.dashboard",          "cost": 1410, "hours": 16 },
+    { "key": "Settings Page",         "tKey": "calculator.features.settings",           "cost": 580,  "hours": 6  },
+    { "key": "Password Recovery",     "tKey": "calculator.features.passwordRecovery",   "cost": 530,  "hours": 6  },
+    { "key": "2FA Authentication",    "tKey": "calculator.features.twoFactorAuth",      "cost": 760,  "hours": 8  },
+    { "key": "Subscription Billing",  "tKey": "calculator.features.subscriptionBilling","cost": 1590, "hours": 20 },
+    { "key": "Invoices",              "tKey": "calculator.features.invoices",           "cost": 960,  "hours": 10 },
+    { "key": "Coupons & Discounts",   "tKey": "calculator.features.coupons",            "cost": 760,  "hours": 8  },
+    { "key": "Multi-currency",        "tKey": "calculator.features.multiCurrency",      "cost": 860,  "hours": 10 },
+    { "key": "Checkout Flow",         "tKey": "calculator.features.checkout",           "cost": 1090, "hours": 10 },
+    { "key": "Product Catalog",       "tKey": "calculator.features.productCatalog",     "cost": 1640, "hours": 18 },
+    { "key": "Shopping Cart",         "tKey": "calculator.features.shoppingCart",       "cost": 990,  "hours": 10 },
+    { "key": "Order Management",      "tKey": "calculator.features.orderManagement",    "cost": 1890, "hours": 18 },
+    { "key": "Wishlist",              "tKey": "calculator.features.wishlist",           "cost": 530,  "hours": 6  },
+    { "key": "Product Reviews",       "tKey": "calculator.features.productReviews",     "cost": 660,  "hours": 6  },
+    { "key": "Inventory Management",  "tKey": "calculator.features.inventory",          "cost": 1940, "hours": 18 },
+    { "key": "Push Notifications",    "tKey": "calculator.features.pushNotifications",  "cost": 1140, "hours": 10 },
+    { "key": "Activity Feed",         "tKey": "calculator.features.activityFeed",       "cost": 1060, "hours": 10 },
+    { "key": "Comments System",       "tKey": "calculator.features.comments",           "cost": 660,  "hours": 6  },
+    { "key": "Likes & Reactions",     "tKey": "calculator.features.likes",              "cost": 430,  "hours": 4  },
+    { "key": "User Following",        "tKey": "calculator.features.following",          "cost": 660,  "hours": 6  },
+
+    { "key": "Custom Reports",        "tKey": "calculator.features.customReports",      "cost": 1460, "hours": 16 },
+    { "key": "Data Visualization",    "tKey": "calculator.features.dataVisualization",  "cost": 1010, "hours": 16 },
+    { "key": "Export Data",           "tKey": "calculator.features.exportData",         "cost": 530,  "hours": 6  },
+
+    { "key": "Google Maps",           "tKey": "calculator.features.maps",               "cost": 530,  "hours": 6  },
+    { "key": "Multi-language",        "tKey": "calculator.features.multiLanguage",      "cost": 860,  "hours": 10 },
+    { "key": "Document Storage",      "tKey": "calculator.features.documents",          "cost": 760,  "hours": 8  },
+    { "key": "Version History",       "tKey": "calculator.features.versionHistory",     "cost": 860,  "hours": 10 },
+
+    { "key": "AI Recommendations",   "tKey": "calculator.features.ai",                 "cost": 2750, "hours": 36 },
+    { "key": "Advanced Search",       "tKey": "calculator.features.advancedSearch",     "cost": 1590, "hours": 20 },
+    { "key": "Offline Mode",          "tKey": "calculator.features.offline",            "cost": 1190, "hours": 20 },
+    { "key": "Biometric Auth",        "tKey": "calculator.features.biometric",          "cost": 610,  "hours": 10 }
+  ]
+}

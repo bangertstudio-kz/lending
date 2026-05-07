@@ -2,16 +2,11 @@
 
 import { motion } from 'motion/react';
 
-export function Logo({
-  handleNavClick,
-}: {
-  handleNavClick?: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
-}) {
+export function Logo() {
   return (
     <motion.a
       href="/#hero"
       className="flex items-center gap-3"
-      onClick={(e) => handleNavClick && handleNavClick(e, '#hero')}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
