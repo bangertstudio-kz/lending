@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'motion/react';
 import { useRef } from 'react';
@@ -11,89 +12,14 @@ import {
   CarouselPrevious,
 } from './ui/carousel';
 import { useTranslation } from 'react-i18next';
-
-const projects = [
-  {
-    name: 'Pings Ai',
-    description:
-      'Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.',
-    platform: 'iOS',
-    image: '/assets/case1.png',
-    site: 'https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937',
-  },
-  {
-    name: 'QOR',
-    description:
-      'QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.',
-    platform: 'iOS / Android / Web',
-    image: '/assets/case11.png',
-    site: 'https://digest.qor.oro.ad',
-  },
-  {
-    name: 'Oro',
-    description: 'Oro rents your computing power for AI agents. Fair pricing, transparent billing.',
-    platform: 'Web / Kubernetes',
-    image: '/assets/case12.png',
-    site: 'https://cli.master.oro.ad',
-  },
-  {
-    name: 'Luna Deep',
-    description:
-      'Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.',
-    platform: 'iOS / Android',
-    image: '/assets/case2.jpg',
-    site: 'https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218',
-  },
-  {
-    name: 'Equilibrium',
-    description: 'Enterprise productivity suite with team collaboration and project management tools',
-    platform: 'iOS / Android / Web',
-    image: '/assets/case3.jpg',
-    site: 'https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249',
-  },
-  {
-    name: 'Sapian',
-    description:
-      'Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.',
-    platform: 'iOS / Android',
-    image: '/assets/case4.png',
-    site: 'https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831',
-  },
-  {
-    name: 'Ocean',
-    description:
-      'A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).',
-    platform: 'iOS / Android / Web',
-    image: '/assets/case5.png',
-    site: 'https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1',
-  },
-  {
-    name: 'Toptom',
-    description:
-      'A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.',
-    platform: 'iOS / Android / Web',
-    image: '/assets/case6.png',
-    site: 'https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1',
-  },
-  {
-    name: 'Eiva',
-    description: 'Find fitness clubs, sign up for workouts, and purchase gym memberships',
-    platform: 'iOS / Android',
-    image: '/assets/case8.png',
-    site: 'https://apps.apple.com/kz/app/eiva/id6474634288',
-  },
-  {
-    name: 'В гостях у Хив',
-    description: 'An exclusive health club',
-    platform: 'iOS / Android / Web',
-    image: '/assets/case7.png',
-    site: 'https://hivclub.ru',
-  },
-];
+import { useCasesStore } from '@/app/store/casesStore';
 
 export function CaseStudies() {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
+  const { cases, fetch } = useCasesStore();
+
+  useEffect(() => { fetch(); }, [fetch]);
 
   return (
     <section id="case-studies" ref={sectionRef} className="bg-black py-24 px-6">
@@ -110,7 +36,7 @@ export function CaseStudies() {
 
         <Carousel opts={{ align: 'start', loop: true }} className="w-full">
           <CarouselContent className="-ml-4">
-            {projects.map((project, index) => (
+            {cases.map((project, index) => (
               <CarouselItem key={project.name} className="pl-4 md:basis-1/3">
                 <motion.div
                   className="border border-white/10 overflow-hidden hover:border-white/30 transition-colors group h-full"
