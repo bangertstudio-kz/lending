@@ -32,7 +32,6 @@ export default function Home() {
         <Header />
         <div className="relative">
           <Hero />
-          <WhyChooseUs />
           <CaseStudies />
           <CalculatorCTA />
           <Services />

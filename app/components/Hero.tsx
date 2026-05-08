@@ -8,34 +8,11 @@ import { useTranslation } from 'react-i18next';
 export function Hero() {
   const { t } = useTranslation();
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute top-20 left-10 w-64 h-64 border border-white/20 rotate-45"
-          style={{ y }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 border border-white/20 rounded-full"
-          style={{ y: useTransform(scrollY, [0, 500], [0, -100]) }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/3 w-48 h-48 border border-white/30"
-          style={{ y: useTransform(scrollY, [0, 500], [0, 80]) }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-          }}
-        />
-      </div>
 
       <motion.div
         className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center"
