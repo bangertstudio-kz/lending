@@ -7,20 +7,23 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useTranslation } from 'react-i18next';
 
-async function sendToTelegram(name: string, contact: string, description?: string) {
-  const response = await fetch('/api/contact', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, contact, description: description ?? '' }),
-  });
+async function sendToTelegram(name: string, contact: string, description?: string, file?: File | null) {
+  const body = new FormData();
+  body.append('name', name);
+  body.append('contact', contact);
+  if (description) body.append('description', description);
+  if (file) body.append('files', file, file.name);
+
+  const response = await fetch('/api/contact', { method: 'POST', body });
   if (!response.ok) throw new Error('API error');
 }
 
 interface ContactInlineFormProps {
   description?: string;
+  file?: File | null;
 }
 
-export function ContactInlineForm({ description }: ContactInlineFormProps) {
+export function ContactInlineForm({ description, file }: ContactInlineFormProps) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: '', contact: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -29,7 +32,7 @@ export function ContactInlineForm({ description }: ContactInlineFormProps) {
     e.preventDefault();
     setStatus('loading');
     try {
-      await sendToTelegram(formData.name, formData.contact, description);
+      await sendToTelegram(formData.name, formData.contact, description, file);
       setStatus('success');
       setFormData({ name: '', contact: '' });
     } catch {

@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowLeft, Wand2, Loader2 } from 'lucide-react';
+import { Sparkles, ArrowLeft, Wand2, Loader2, Paperclip, X } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
 import { useTranslation } from 'react-i18next';
 import { useCalculatorStore } from '@/app/store/calculatorStore';
@@ -27,6 +27,13 @@ export default function CostCalculator({
 }: CostCalculatorProps) {
   const { description, setDescription, features, estimates, isAnalyzing, analyzeError, analyzeDescription } = useCalculatorStore();
   const { t } = useTranslation();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [attachedFile, setAttachedFile] = useState<File | null>(null);
+
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAttachedFile(e.target.files?.[0] ?? null);
+    e.target.value = '';
+  };
 
   useEffect(() => {
     if (projectDescription) {
@@ -92,17 +99,35 @@ export default function CostCalculator({
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder={t('calculator.descriptionPlaceholder')}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[120px]"
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[120px] max-h-[240px] overflow-y-auto resize-none"
               />
               <div className="flex items-center gap-3 mt-3">
                 <button
-                  onClick={analyzeDescription}
+                  onClick={() => analyzeDescription(attachedFile ? [attachedFile] : [])}
                   disabled={isAnalyzing || !description.trim()}
                   className="flex items-center gap-2 px-4 py-2 bg-white text-black text-sm font-medium hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
                   {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
                   {isAnalyzing ? t('calculator.analyzing') : t('calculator.analyze')}
                 </button>
+                <input ref={fileInputRef} type="file" className="hidden" onChange={handleFile} />
+                {attachedFile ? (
+                  <div className="flex items-center gap-2 px-3 py-2 border border-white/30 bg-white/5 text-sm text-white">
+                    <Paperclip className="w-4 h-4 shrink-0" />
+                    <span className="max-w-[160px] truncate">{attachedFile.name}</span>
+                    <button type="button" onClick={() => setAttachedFile(null)} className="text-white/50 hover:text-white transition-colors">
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center gap-2 px-3 py-2 border border-white/10 text-white/50 text-sm hover:border-white/30 hover:text-white transition-colors"
+                  >
+                    <Paperclip className="w-4 h-4" />
+                  </button>
+                )}
                 {analyzeError && (
                   <span className="text-sm text-red-400">{t('calculator.analyzeError')}</span>
                 )}
@@ -131,7 +156,7 @@ export default function CostCalculator({
                 </div>
                 <div>
                   <p className="text-white text-sm font-medium mb-4">{t('calculator.leaveRequest')}</p>
-                  <ContactInlineForm description={contactDescription || undefined} />
+                  <ContactInlineForm description={contactDescription || undefined} file={attachedFile} />
                 </div>
               </div>
             </motion.div>

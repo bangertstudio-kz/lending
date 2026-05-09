@@ -3,10 +3,18 @@ import OpenAI from 'openai';
 import calculatorData from '@/app/data/calculator.json';
 import { sendTelegramMessage } from '../../send_telegram_message';
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+type ContentPart =
+  | { type: 'input_text'; text: string }
+  | { type: 'input_file'; file_id: string }
+  | { type: 'input_image'; image_url: string; detail: 'auto' | 'low' | 'high' | 'original' };
 
 export async function POST(request: NextRequest) {
-  const { description } = await request.json();
+  const form = await request.formData();
+  const description = form.get('description') as string | null;
+  const locale = form.get('locale') as string | null;
+  const uploadedFiles = form.getAll('files') as File[];
+
+  const lang = typeof locale === 'string' && locale ? locale : 'en';
 
   if (!description?.trim()) {
     return Response.json({ error: 'Missing description' }, { status: 400 });
@@ -16,8 +24,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: 'Server misconfigured' }, { status: 500 });
   }
 
-
-  sendTelegramMessage(`🧮 Calculator analysis requested\n\n📋 Description:\n${description}...`);
+  sendTelegramMessage(`🧮 Calculator analysis requested\n\n📋 Description:\n${description}...`, uploadedFiles);
 
   const featureKeys = calculatorData.features.map((f) => f.key);
   const stageIds = calculatorData.stages.map((s) => s.id);
@@ -29,16 +36,38 @@ Available stages: ${stageIds.join(', ')} (mvp = minimal viable product, mature =
 
 Project description: "${description}"
 
-Only include features that are clearly relevant to the description. Choose stage based on project maturity.`;
+Include only those functions that closely match the meaning of the technical specifications, or that the customer might need but is simply not aware of.
+If the project requires functionality not covered by the available features, add it to customFeatures with a descriptive name, estimated cost in USD, and estimated development hours.
+Use locale "${lang}" for customFeature names. Keep all feature names concise — 1 to 3 words maximum.`;
+
+  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+  const contentParts: ContentPart[] = [{ type: 'input_text', text: prompt }];
+
+  for (const file of uploadedFiles) {
+    if (file.type.startsWith('image/')) {
+      const buffer = Buffer.from(await file.arrayBuffer());
+      contentParts.push({
+        type: 'input_image',
+        image_url: `data:${file.type};base64,${buffer.toString('base64')}`,
+        detail: 'auto',
+      });
+    } else {
+      const uploaded = await client.files.create({ file, purpose: 'user_data' });
+      contentParts.push({ type: 'input_file', file_id: uploaded.id });
+    }
+  }
 
   let response;
+
   try {
-    response = await client.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: {
-        type: 'json_schema',
-        json_schema: {
+    response = await client.responses.create({
+      model: 'gpt-4.1',
+      input: [{ role: 'user', content: contentParts }],
+      temperature: 0.2,
+      text: {
+        format: {
+          type: 'json_schema',
           name: 'calculator_recommendation',
           strict: true,
           schema: {
@@ -47,7 +76,21 @@ Only include features that are clearly relevant to the description. Choose stage
               features: {
                 type: 'array',
                 items: { type: 'string' },
-                description: 'List of selected feature keys',
+                description: 'List of selected feature keys from the available list',
+              },
+              customFeatures: {
+                type: 'array',
+                description: 'Features not in the available list that the project requires',
+                items: {
+                  type: 'object',
+                  properties: {
+                    key: { type: 'string', description: 'Short descriptive feature name in English' },
+                    cost: { type: 'number', description: 'Estimated cost in USD' },
+                    hours: { type: 'number', description: 'Estimated development hours' },
+                  },
+                  required: ['key', 'cost', 'hours'],
+                  additionalProperties: false,
+                },
               },
               stage: {
                 type: 'string',
@@ -55,27 +98,33 @@ Only include features that are clearly relevant to the description. Choose stage
                 description: 'Project stage',
               },
             },
-            required: ['features', 'stage'],
+            required: ['features', 'customFeatures', 'stage'],
             additionalProperties: false,
           },
         },
       },
-      temperature: 0.2,
     });
   } catch (err: unknown) {
-    const e = err as { status?: number; error?: { type?: string } };
+    const e = err as { status?: number };
     return Response.json({ error: 'error' }, { status: e?.status === 429 ? 429 : 502 });
   }
 
-  const content = response.choices[0]?.message?.content;
+  const content = response.output_text;
   if (!content) {
     return Response.json({ error: 'No response from AI' }, { status: 502 });
   }
 
-  const parsed = JSON.parse(content) as { features?: string[]; stage?: string };
+  const parsed = JSON.parse(content) as {
+    features?: string[];
+    customFeatures?: { key: string; cost: number; hours: number }[];
+    stage?: string;
+  };
 
   const validFeatures = (parsed.features ?? []).filter((k) => featureKeys.includes(k));
   const validStage = stageIds.includes(parsed.stage ?? '') ? parsed.stage : 'mvp';
+  const customFeatures = (parsed.customFeatures ?? []).filter(
+    (f) => f.key && typeof f.cost === 'number' && typeof f.hours === 'number'
+  );
 
-  return Response.json({ features: validFeatures, stage: validStage });
+  return Response.json({ features: validFeatures, customFeatures, stage: validStage });
 }

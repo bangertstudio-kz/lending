@@ -6,7 +6,7 @@ import { useCalculatorStore } from '@/app/store/calculatorStore';
 
 export default function FeatureSelector() {
   const { t } = useTranslation();
-  const { features, toggleFeature, addCustomFeature } = useCalculatorStore();
+  const { features, customFeatureData, toggleFeature, addCustomFeature } = useCalculatorStore();
   const [customInput, setCustomInput] = useState('');
 
   const predefinedKeys = data.features.map((f) => f.key);
@@ -54,16 +54,24 @@ export default function FeatureSelector() {
         <div className="mb-4">
           <div className="text-sm font-medium text-white/60 mb-2">{t('calculator.features.customTitle')}:</div>
           <div className="flex flex-wrap gap-2">
-            {customSelected.map((key) => (
-              <button
-                key={key}
-                onClick={() => toggleFeature(key)}
-                className="px-4 py-2 border border-white/30 bg-white/5 text-white flex items-center gap-2"
-              >
-                <Check className="w-4 h-4" />
-                {key}
-              </button>
-            ))}
+            {customSelected.map((key) => {
+              const data = customFeatureData[key];
+              return (
+                <button
+                  key={key}
+                  onClick={() => toggleFeature(key)}
+                  className="px-3 py-2 border transition-all flex items-center gap-2 border-white/30 bg-white/5 text-white"
+                >
+                  <Check className="w-4 h-4" />
+                  <span className="font-medium text-sm">{key}</span>
+                  {data && (
+                    <span className="text-xs font-semibold text-white/80">
+                      {formatCurrency(data.cost)}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
