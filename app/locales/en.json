@@ -76,7 +76,19 @@
     "results": "Results",
     "viewSite": "Open project",
     "viewAll": "All projects",
-    "inAppStore": "On the App Store"
+    "inAppStore": "On the App Store",
+    "items": {
+      "sapian": "Meet people nearby: find someone close by, send a request, and plan a meeting when the interest is mutual.",
+      "pings": "A personal feed of ideas, guides and practices, curated by AI.",
+      "luna": "Music channels for any mood — handpicked tracks from around the world.",
+      "equilibrium": "Tasks and wellbeing in one app: planning your work alongside tracking how you actually feel.",
+      "ocean": "A CPA platform: advertisers pay only for a completed action — a sign-up, a lead or a purchase.",
+      "toptom": "A marketplace for businesses and individuals buying and selling on one platform.",
+      "qor": "A rapid-response platform bringing private clients, businesses, security agencies and independent consultants together.",
+      "oro": "Rent out computing power to AI agents, with transparent pricing and clear billing.",
+      "eiva": "Gyms nearby: book workouts and buy memberships in a couple of taps.",
+      "hiv": "A private health club."
+    }
   },
   "packages": {
     "title": "Developer Solutions",

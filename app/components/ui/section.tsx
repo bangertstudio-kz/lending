@@ -29,7 +29,7 @@ export function Section({
       id={id}
       className={cn(
         'px-6',
-        size === 'compact' ? 'py-12' : 'py-24 md:py-32',
+        size === 'compact' ? 'py-14' : 'py-32 md:py-44',
         TONE_CLASS[tone],
         glow && 'glow-warm',
         className,
@@ -65,7 +65,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        'flex flex-col gap-4',
+        'flex flex-col gap-5',
         align === 'center' ? 'items-center text-center max-w-2xl mx-auto' : 'items-start text-left',
         className,
       )}

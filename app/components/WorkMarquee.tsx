@@ -3,6 +3,9 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import cases from '@/app/data/cases.json';
 
+const EDGE_FADE =
+  'linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%)';
+
 export function WorkMarquee() {
   // Кейсы лежат статичным файлом, а /api/cases просто его отдаёт. Прямой импорт
   // ставит работы в серверный HTML: нет пустой дыры на первом экране и нет
@@ -12,14 +15,20 @@ export function WorkMarquee() {
 
   return (
     <div
-      className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+      className="group relative overflow-hidden"
+      // Растворение по краям задаём стилем: арбитрарная маска Tailwind
+      // с запятыми внутри градиента до CSS не доезжала.
+      style={{
+        maskImage: EDGE_FADE,
+        WebkitMaskImage: EDGE_FADE,
+      }}
       aria-hidden
     >
       <ul className="work-marquee flex w-max gap-5 group-hover:[animation-play-state:paused]">
         {track.map((project, index) => (
           <li
             key={`${project.name}-${index}`}
-            className="h-[clamp(200px,26vw,340px)] w-[clamp(200px,26vw,340px)] shrink-0 overflow-hidden bg-surface"
+            className="h-[clamp(170px,19vw,250px)] w-[clamp(170px,19vw,250px)] shrink-0 overflow-hidden bg-surface"
           >
             <ImageWithFallback
               src={project.image}

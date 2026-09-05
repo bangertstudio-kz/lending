@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
 export interface Case {
+  id: string;
   name: string;
   description: string;
   platform: string;

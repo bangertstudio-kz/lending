@@ -37,12 +37,12 @@ export function DevSolutions() {
           eyebrow={<Eyebrow>{t('packages.home.badge')}</Eyebrow>}
           title={t('packages.home.title')}
           subtitle={t('packages.home.subtitle')}
-          className="mb-12"
+          className="mb-16"
         />
 
-        <dl className="mb-14 grid grid-cols-3 divide-x divide-hairline border-y border-hairline">
+        <dl className="mb-20 grid grid-cols-3 divide-x divide-hairline border-y border-hairline">
           {stats.map((stat) => (
-            <div key={stat.label} className="px-5 py-8">
+            <div key={stat.label} className="px-6 py-10">
               <dt className="font-mono text-h2 tabular-nums text-accent">
                 {loaded ? format(stat.value) : '—'}
               </dt>
@@ -51,7 +51,7 @@ export function DevSolutions() {
           ))}
         </dl>
 
-        <div className="mb-12 grid gap-10 md:grid-cols-3">
+        <div className="mb-16 grid gap-14 md:grid-cols-3">
           {BENEFITS.map((key) => (
             <div key={key}>
               <h3 className="mb-3 font-display font-semibold text-h3 text-fg">

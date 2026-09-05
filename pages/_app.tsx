@@ -3,7 +3,7 @@ import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../app/i18n';
-import { fontVariables } from '../app/fonts';
+import { display, geistMono, geistSans } from '../app/fonts';
 import '../app/globals.css';
 
 const jsonLd = {
@@ -55,9 +55,19 @@ export default function App({ Component, pageProps }: AppProps) {
           ym(105997418, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', accurateTrackBounce:true, trackLinks:true});
         `}
       </Script>
-      <div className={fontVariables}>
-        <Component {...pageProps} />
-      </div>
+      {/* Переменные шрифтов обязаны жить на :root. В @theme объявлено
+          --font-display: var(--font-display-family), и var() внутри кастомного
+          свойства подставляется на том элементе, где свойство объявлено —
+          то есть на :root. С переменными на внутреннем div вся декларация
+          становилась невалидной и заголовки молча падали в Geist. */}
+      <style jsx global>{`
+        :root {
+          --font-geist-sans: ${geistSans.style.fontFamily};
+          --font-geist-mono: ${geistMono.style.fontFamily};
+          --font-display-family: ${display.style.fontFamily};
+        }
+      `}</style>
+      <Component {...pageProps} />
     </I18nextProvider>
   );
 }

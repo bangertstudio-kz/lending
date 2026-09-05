@@ -11,7 +11,7 @@ export function ContactForm() {
   return (
     <Section id="contact" tone="bg">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 items-start gap-14 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-20 md:grid-cols-2">
           <div className="space-y-6">
             <div>
               <h2 className="mb-4 font-display font-semibold text-h2 text-fg">{t('contact.title')}</h2>

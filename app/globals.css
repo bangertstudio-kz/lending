@@ -22,14 +22,14 @@
   --color-accent: #D9A566;
   --color-accent-soft: rgba(217, 165, 102, 0.12);
 
-  /* Шрифты. --font-cormorant и --font-geist-* приходят из next/font
+  /* Шрифты. --font-display-family и --font-geist-* приходят из next/font
      и объявлены на <html> в app/layout.tsx. */
-  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-display: var(--font-display-family), system-ui, sans-serif;
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* Типографическая шкала. Кегли задаются здесь, не в компонентах. */
-  --text-display: clamp(3rem, 7vw, 5.5rem);
+  --text-display: clamp(2.25rem, 4.4vw, 3.75rem);
   --text-display--line-height: 1.02;
   --text-display--letter-spacing: -0.015em;
 
@@ -38,7 +38,8 @@
   --text-h1--letter-spacing: -0.01em;
 
   --text-h2: clamp(1.875rem, 3.5vw, 2.75rem);
-  --text-h2--line-height: 1.12;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.025em;
 
   --text-h3: 1.1875rem;
   --text-h3--line-height: 1.35;
@@ -120,4 +121,18 @@
 @utility work-marquee {
   animation: work-drift 64s linear infinite;
   will-change: transform;
+}
+
+/* Появление на первом экране — чистым CSS, без участия React.
+   fill-mode both держит финальное состояние, поэтому даже при отключённых
+   анимациях (см. prefers-reduced-motion выше) контент остаётся видимым.
+   Раньше это делал motion через initial={{opacity:0}}, и до гидратации
+   страница была буквально пустой. */
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+@utility rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

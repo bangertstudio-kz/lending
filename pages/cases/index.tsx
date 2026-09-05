@@ -50,7 +50,7 @@ export default function CasesPage() {
                   rel="noopener noreferrer"
                   className="group flex flex-col border border-hairline bg-surface transition-colors hover:border-hairline-strong"
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-raised">
+                  <div className="aspect-square overflow-hidden bg-raised">
                     <ImageWithFallback
                       src={project.image}
                       alt={project.name}
@@ -60,7 +60,7 @@ export default function CasesPage() {
 
                   <div className="flex flex-1 flex-col gap-3 p-6">
                     <h2 className="font-display font-semibold text-h3 text-fg">{project.name}</h2>
-                    <p className="flex-1 text-small leading-relaxed text-muted">{project.description}</p>
+                    <p className="flex-1 text-small leading-relaxed text-muted">{t(`caseStudies.items.${project.id}`, { defaultValue: project.description })}</p>
                     <div className="flex flex-wrap items-center gap-2 pt-1">
                       <span className="border border-hairline px-2 py-0.5 text-xs text-faint">
                         {project.platform}

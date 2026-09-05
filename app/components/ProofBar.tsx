@@ -30,7 +30,7 @@ export function ProofBar() {
     <div className="border-y border-hairline bg-surface">
       <dl className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-hairline md:grid-cols-4 md:divide-y-0">
         {items.map((item) => (
-          <div key={item.label} className="px-5 py-9">
+          <div key={item.label} className="px-6 py-12">
             <dt className="font-mono text-h2 tabular-nums text-accent">
               {typeof item.value === 'number' && item.value === 0 ? '—' : item.value}
             </dt>

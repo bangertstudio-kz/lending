@@ -1,5 +1,6 @@
 [
   {
+    "id": "sapian",
     "name": "Sapian",
     "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",
     "platform": "iOS / Android",
@@ -7,6 +8,7 @@
     "site": "https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831"
   },
   {
+    "id": "pings",
     "name": "Pings Ai",
     "description": "Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.",
     "platform": "iOS",
@@ -14,6 +16,7 @@
     "site": "https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937"
   },
   {
+    "id": "luna",
     "name": "Luna Deep",
     "description": "Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.",
     "platform": "iOS / Android",
@@ -21,6 +24,7 @@
     "site": "https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218"
   },
   {
+    "id": "equilibrium",
     "name": "Equilibrium",
     "description": "Enterprise productivity suite with team collaboration and project management tools",
     "platform": "iOS / Android / Web",
@@ -28,6 +32,7 @@
     "site": "https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249"
   },
   {
+    "id": "ocean",
     "name": "Ocean",
     "description": "A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).",
     "platform": "iOS / Android / Web",
@@ -35,6 +40,7 @@
     "site": "https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"
   },
   {
+    "id": "toptom",
     "name": "Toptom",
     "description": "A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.",
     "platform": "iOS / Android / Web",
@@ -42,6 +48,7 @@
     "site": "https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"
   },
   {
+    "id": "qor",
     "name": "QOR",
     "description": "QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.",
     "platform": "iOS / Android / Web",
@@ -49,6 +56,7 @@
     "site": "https://digest.qor.oro.ad"
   },
   {
+    "id": "oro",
     "name": "Oro",
     "description": "Oro rents your computing power for AI agents. Fair pricing, transparent billing.",
     "platform": "Web / Kubernetes",
@@ -56,6 +64,7 @@
     "site": "https://cli.master.oro.ad"
   },
   {
+    "id": "eiva",
     "name": "Eiva",
     "description": "Find fitness clubs, sign up for workouts, and purchase gym memberships",
     "platform": "iOS / Android",
@@ -63,6 +72,7 @@
     "site": "https://apps.apple.com/kz/app/eiva/id6474634288"
   },
   {
+    "id": "hiv",
     "name": "В гостях у Хив",
     "description": "An exclusive health club",
     "platform": "iOS / Android / Web",

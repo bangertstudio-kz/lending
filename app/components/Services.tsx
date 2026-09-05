@@ -17,7 +17,7 @@ export function Services() {
 
   return (
     <Section id="services" tone="surface">
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-20">
+      <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-28">
         <SectionHeading
           title={t('services.title')}
           subtitle={t('services.subtitle')}
@@ -28,7 +28,7 @@ export function Services() {
             меньше линий, плотнее блок. */}
         <div className="grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
           {services.map((key) => (
-            <article key={key} className="flex flex-col gap-3 bg-bg p-7 transition-colors hover:bg-raised">
+            <article key={key} className="flex flex-col gap-4 bg-bg p-10 transition-colors hover:bg-raised">
               <h3 className="font-display font-semibold text-h3 text-fg text-balance">
                 {t(`services.${key}.title`)}
               </h3>
