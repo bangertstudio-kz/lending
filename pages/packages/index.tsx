@@ -56,7 +56,7 @@ export default function PackagesPage() {
           {error && <p role="alert" className="text-center text-small text-red-400">{t(error)}</p>}
 
           <div className="grid gap-4 md:grid-cols-2">
-            {packages.map((pkg, index) => (
+            {packages.map((pkg) => (
               <article
                 key={pkg.name}
                 className="flex flex-col border border-hairline bg-surface p-6 transition-colors hover:border-hairline-strong"
