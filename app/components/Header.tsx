@@ -40,7 +40,7 @@ export function Header() {
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-black/80 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
+          isScrolled ? 'bg-bg/85 backdrop-blur-xl border-b border-hairline' : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -58,7 +58,7 @@ export function Header() {
                   onClick={(e) => handleNavClick(e, item.href)}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+                  className="text-muted hover:text-fg transition-colors text-small"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -71,7 +71,7 @@ export function Header() {
             </div>
 
             <button
-              className="md:hidden text-white p-2"
+              className="md:hidden text-fg p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -90,11 +90,11 @@ export function Header() {
             exit={{ opacity: 0 }}
           >
             <div
-              className="absolute inset-0 bg-black/90 backdrop-blur-lg"
+              className="absolute inset-0 bg-bg/90 backdrop-blur-xl"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="absolute top-20 left-6 right-6 bg-black/95 border border-white/10 rounded-lg p-6"
+              className="absolute top-20 left-6 right-6 bg-raised border border-hairline p-6"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -106,7 +106,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-white/80 hover:text-white transition-colors text-lg font-medium py-2 border-b border-white/10 last:border-0"
+                    className="text-muted hover:text-fg transition-colors text-body-lg py-2 border-b border-hairline last:border-0"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -114,7 +114,7 @@ export function Header() {
                     {t(item.label)}
                   </motion.a>
                 ))}
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-4 border-t border-hairline">
                   <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
                 </div>
               </nav>

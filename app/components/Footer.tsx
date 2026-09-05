@@ -16,12 +16,12 @@ export function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-zinc-950 border-t border-white/10 py-12 px-6">
+    <footer className="bg-surface border-t border-hairline py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <Logo />
-            <p className="text-white/50 text-sm mt-2">
+            <p className="text-muted text-small mt-3">
               {t('footer.description')}
             </p>
           </div>
@@ -29,7 +29,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-end gap-4">
             <a
               href="mailto:alexganbert@gmail.com"
-              className="text-white/70 hover:text-white transition-colors"
+              className="text-muted hover:text-accent transition-colors"
             >
               alexganbert@gmail.com
             </a>
@@ -39,7 +39,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/bangertstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/50 hover:text-white transition-colors"
+                className="text-faint hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
                 <LinkedinIcon className="w-5 h-5" />
@@ -48,7 +48,7 @@ export function Footer() {
                 href="https://t.me/bangertstudio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/50 hover:text-white transition-colors"
+                className="text-faint hover:text-accent transition-colors"
                 aria-label={t('footer.news')}
               >
                 <MessageCircle className="w-5 h-5" />
@@ -57,7 +57,7 @@ export function Footer() {
                 href="https://t.me/alexanderbangert"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/50 hover:text-white transition-colors"
+                className="text-faint hover:text-accent transition-colors"
                 aria-label={t('footer.writeToUs')}
               >
                 <MessageCircle className="w-5 h-5" />
@@ -66,8 +66,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 text-center">
-          <p className="text-white/40 text-sm">
+        <div className="mt-12 pt-8 border-t border-hairline text-center">
+          <p className="text-faint text-small">
             © {new Date().getFullYear()} Bangert Studio. {t('footer.rights')}.
           </p>
         </div>
