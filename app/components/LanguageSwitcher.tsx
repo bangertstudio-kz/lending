@@ -3,6 +3,7 @@
 import { Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
+import { LANGUAGE_STORAGE_KEY } from '@/app/i18n';
 
 interface LanguageSwitcherProps {
   onLanguageChange?: () => void;
@@ -14,6 +15,13 @@ export function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ru' : 'en';
     i18n.changeLanguage(newLang);
+    // Раньше выбор языка не переживал перезагрузку: сюда ничего не писалось,
+    // хотя инициализация из этого ключа читала.
+    try {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, newLang);
+    } catch {
+      // хранилище может быть недоступно — переключение всё равно сработало
+    }
     if (onLanguageChange) onLanguageChange();
   };
 

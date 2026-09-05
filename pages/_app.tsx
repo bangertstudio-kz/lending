@@ -3,6 +3,7 @@ import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../app/i18n';
+import { useStoredLanguage } from '../app/useStoredLanguage';
 import { display, geistMono, geistSans } from '../app/fonts';
 import '../app/globals.css';
 
@@ -29,6 +30,8 @@ const jsonLd = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
+  useStoredLanguage();
+
   return (
     <I18nextProvider i18n={i18n}>
       <Head>
