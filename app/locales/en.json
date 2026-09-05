@@ -86,25 +86,21 @@
     "points": "points",
     "downloads": "downloads / 30 days",
     "sdkFlutter": "Flutter",
-    "sdkDart": "Dart CLI",
+    "sdkDart": "Dart",
     "allOnPub": "All packages on pub.dev",
-    "categories": {
-      "state": "State & architecture",
-      "forms": "Forms & navigation",
-      "ui": "UI & responsiveness",
-      "tooling": "Developer tooling"
-    },
     "items": {
       "pike": "Event-driven state management: state changes flow through events instead of direct mutations.",
       "apollon": "Riverpod-inspired state management with a much smaller API surface — fewer concepts, faster start.",
       "depend": "Dependency initialization and injection through the widget tree — no codegen, no global singletons.",
       "fform": "Form builder with typed fields, sync and async validation, and clear error handling.",
+      "fform_validator": "A ready-made set of form checks: email, URL, credit card, IP, length and text format — the usual rules no longer get rewritten in every project.",
       "safe_route": "Type-safe navigation: route arguments and results are checked at compile time.",
       "map_route": "Visualizes the app's route graph — see the whole navigation at once while debugging and testing.",
       "responsive_breakpoints": "Responsive layouts driven by your own breakpoints, declared as a plain enum.",
       "enum_picker": "A ready-made picker widget for enum values — no boilerplate for every list.",
       "herdsman": "Centralized Git hooks management for Dart and Flutter projects — the husky analog.",
-      "markup_analyzer": "CLI analyzer for Flutter markup: finds hardcoded strings and styles and generates a report."
+      "markup_analyzer": "CLI analyzer for Flutter markup: finds hardcoded strings and styles and generates a report.",
+      "background_geo_tracker": "Background route tracking on iOS and Android: points are collected and uploaded by native code, even while the app is in the background."
     },
     "home": {
       "badge": "Our open-source libraries",

@@ -1,10 +1,12 @@
 import { create } from 'zustand';
 
+/** A package as published on pub.dev — nothing about it is stored in this repo. */
 export interface DevPackage {
   name: string;
-  category: string;
   sdk: 'flutter' | 'dart';
-  repo: string;
+  repo: string | null;
+  /** pub.dev summary, used when the package has no curated translation yet. */
+  description: string;
   version: string;
   likes: number;
   points: number;
