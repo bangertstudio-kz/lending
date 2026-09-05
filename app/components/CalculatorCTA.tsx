@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 export function CalculatorCTA() {
+  const { t } = useTranslation();
   const [description, setDescription] = useState('');
   const router = useRouter();
 
@@ -26,13 +28,13 @@ export function CalculatorCTA() {
         >
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white/70 px-4 py-2 rounded-full mb-6 text-sm">
             <Sparkles className="w-4 h-4 text-white/60" />
-            AI-генерация оценки проекта
+            {t('calculator.cta.badge')}
           </div>
           <h2 className="text-white text-4xl font-bold mb-4">
-            Узнайте стоимость вашего проекта
+            {t('calculator.cta.title')}
           </h2>
           <p className="text-white/50 text-lg">
-            Опишите идею — ИИ рассчитает бюджет, сроки и состав команды за секунды
+            {t('calculator.cta.subtitle')}
           </p>
         </motion.div>
 
@@ -47,13 +49,15 @@ export function CalculatorCTA() {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Например: мобильное приложение для доставки еды с оплатой и личным кабинетом..."
+              placeholder={t('calculator.cta.placeholder')}
               rows={4}
               className="w-full bg-transparent px-6 pt-6 pb-4 text-white placeholder:text-white/30 resize-none focus:outline-none text-base"
             />
             <div className="flex items-center justify-between px-6 pb-4">
               <span className="text-white/20 text-xs">
-                {description.length > 0 ? `${description.length} символов` : 'Описание не обязательно'}
+                {description.length > 0
+                  ? t('calculator.cta.charsLength', { length: description.length })
+                  : t('calculator.cta.optional')}
               </span>
               <motion.button
                 onClick={handleSubmit}
@@ -62,7 +66,7 @@ export function CalculatorCTA() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Sparkles className="w-4 h-4" />
-                Рассчитать с AI
+                {t('calculator.cta.button')}
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
             </div>
@@ -76,7 +80,7 @@ export function CalculatorCTA() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center text-white/25 text-xs mt-4"
         >
-          Бесплатно · Без регистрации · Результат мгновенно
+          {t('calculator.cta.note')}
         </motion.p>
       </div>
     </section>

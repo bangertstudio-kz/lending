@@ -1,6 +1,7 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -12,6 +13,8 @@ function LinkedinIcon({ className }: { className?: string }) {
 import { Logo } from './Logo';
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-zinc-950 border-t border-white/10 py-12 px-6">
       <div className="max-w-6xl mx-auto">
@@ -19,7 +22,7 @@ export function Footer() {
           <div className="text-center md:text-left">
             <Logo />
             <p className="text-white/50 text-sm mt-2">
-              Premium mobile app development outsourcing
+              {t('footer.description')}
             </p>
           </div>
 
@@ -46,7 +49,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/50 hover:text-white transition-colors"
-                aria-label="Новости"
+                aria-label={t('footer.news')}
               >
                 <MessageCircle className="w-5 h-5" />
               </a>
@@ -55,7 +58,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/50 hover:text-white transition-colors"
-                aria-label="Написать"
+                aria-label={t('footer.writeToUs')}
               >
                 <MessageCircle className="w-5 h-5" />
               </a>
@@ -65,7 +68,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Bangert Studio. All rights reserved.
+            © {new Date().getFullYear()} Bangert Studio. {t('footer.rights')}.
           </p>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { WhyChooseUs } from '../app/components/WhyChooseUs';
 import { CaseStudies } from '../app/components/CaseStudies';
 import { Services } from '../app/components/Services';
 import { CalculatorCTA } from '../app/components/CalculatorCTA';
+import { DevSolutions } from '../app/components/DevSolutions';
 import { ContactForm } from '../app/components/ContactForm';
 import { Footer } from '../app/components/Footer';
 import { MobileScrollButton } from '../app/components/MobileScrollButton';
@@ -35,6 +36,7 @@ export default function Home() {
           <CaseStudies />
           <CalculatorCTA />
           <Services />
+          <DevSolutions />
           <ContactForm />
           <Footer />
         </div>

@@ -9,7 +9,8 @@
     "testimonials": "Testimonials",
     "contact": "Contact",
     "calculator": "Calculator",
-    "news": "News"
+    "news": "News",
+    "packages": "For developers"
   },
   "hero": {
     "title": "We help startups and businesses launch turnkey",
@@ -76,6 +77,62 @@
     "viewSite": "View Site",
     "viewAll": "View All Projects"
   },
+  "packages": {
+    "title": "Developer Solutions",
+    "subtitle": "Open-source libraries for Flutter and Dart that we build and maintain. Every package is published on pub.dev under the bangertstudio.kz publisher.",
+    "viewOnPub": "View on pub.dev",
+    "viewOnGithub": "GitHub",
+    "likes": "likes",
+    "points": "points",
+    "downloads": "downloads / 30 days",
+    "sdkFlutter": "Flutter",
+    "sdkDart": "Dart CLI",
+    "allOnPub": "All packages on pub.dev",
+    "categories": {
+      "state": "State & architecture",
+      "forms": "Forms & navigation",
+      "ui": "UI & responsiveness",
+      "tooling": "Developer tooling"
+    },
+    "items": {
+      "pike": "Event-driven state management: state changes flow through events instead of direct mutations.",
+      "apollon": "Riverpod-inspired state management with a much smaller API surface — fewer concepts, faster start.",
+      "depend": "Dependency initialization and injection through the widget tree — no codegen, no global singletons.",
+      "fform": "Form builder with typed fields, sync and async validation, and clear error handling.",
+      "safe_route": "Type-safe navigation: route arguments and results are checked at compile time.",
+      "map_route": "Visualizes the app's route graph — see the whole navigation at once while debugging and testing.",
+      "responsive_breakpoints": "Responsive layouts driven by your own breakpoints, declared as a plain enum.",
+      "enum_picker": "A ready-made picker widget for enum values — no boilerplate for every list.",
+      "herdsman": "Centralized Git hooks management for Dart and Flutter projects — the husky analog.",
+      "markup_analyzer": "CLI analyzer for Flutter markup: finds hardcoded strings and styles and generates a report."
+    },
+    "home": {
+      "badge": "Our open-source libraries",
+      "title": "We don't start your project from scratch",
+      "subtitle": "Part of your app is already written, tested and running in real projects. We publish this work in the open — and reuse it when we build your app.",
+      "statPackages": "ready-made solutions, published openly",
+      "statDownloads": "downloads per month",
+      "statLikes": "likes from developers",
+      "benefits": {
+        "budget": {
+          "title": "Saves budget and time",
+          "description": "Forms, screens, navigation, adapting to different screen sizes — every app needs the same building blocks. Ours are already built and proven, so you don't pay for work that would otherwise be redone from scratch."
+        },
+        "quality": {
+          "title": "You don't have to take our word for it",
+          "description": "We publish this work in the open: any developer can open the code and see how it's made. Other teams already use it in their own apps — sloppy code doesn't spread like that.",
+          "proof": "{{perfect}} of our {{total}} solutions earn top marks in an independent automated review: whether there are tests, whether the documentation is written, whether everything works across devices."
+        },
+        "freedom": {
+          "title": "No lock-in to us",
+          "description": "This work is open and free to use — it isn't locked inside our studio. If you ever want to switch teams, the new one can pick it up and carry on."
+        }
+      },
+      "cta": "See our solutions"
+    },
+    "loading": "Loading…",
+    "loadError": "Could not load our solutions."
+  },
   "process": {
     "title": "Our Process",
     "step1": {
@@ -115,7 +172,10 @@
     "send": "Send",
     "howContactWithYou": "How can we contact you?",
     "getInTouch": "Get In Touch",
-    "reachOut": "Reach out to us through any of these channels and we'll get back to you shortly."
+    "reachOut": "Reach out to us through any of these channels and we'll get back to you shortly.",
+    "sent": "Request sent!",
+    "sendError": "Couldn't send. Please try again.",
+    "sending": "Sending..."
   },
   "footer": {
     "description": "Professional mobile app development for your business",
@@ -128,7 +188,9 @@
     "legal": "Legal",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "news": "News",
+    "writeToUs": "Write to us"
   },
   "calculator": {
     "badge": "AI-Powered Estimation",
@@ -259,6 +321,16 @@
       "person": "person",
       "people": "people",
       "disclaimer": "These estimates are based on industry averages. Final costs may vary based on specific requirements and team rates."
+    },
+    "cta": {
+      "badge": "AI-powered project estimate",
+      "title": "Find out what your project will cost",
+      "subtitle": "Describe your idea — AI works out the budget, timeline and team in seconds",
+      "placeholder": "For example: a food delivery app with payments and a personal account...",
+      "charsLength": "{{length}} characters",
+      "optional": "Description is optional",
+      "button": "Estimate with AI",
+      "note": "Free · No sign-up · Instant result"
     }
   }
 }

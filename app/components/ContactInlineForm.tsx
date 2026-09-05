@@ -60,13 +60,13 @@ export function ContactInlineForm({ description, file }: ContactInlineFormProps)
       {status === 'success' && (
         <div className="flex items-center gap-2 text-green-400 text-sm">
           <CheckCircle className="w-4 h-4" />
-          <span>Заявка отправлена!</span>
+          <span>{t('contact.sent')}</span>
         </div>
       )}
       {status === 'error' && (
         <div className="flex items-center gap-2 text-red-400 text-sm">
           <AlertCircle className="w-4 h-4" />
-          <span>Ошибка отправки. Попробуйте ещё раз.</span>
+          <span>{t('contact.sendError')}</span>
         </div>
       )}
       <Button
@@ -75,7 +75,7 @@ export function ContactInlineForm({ description, file }: ContactInlineFormProps)
         disabled={status === 'loading'}
         className="w-full bg-white text-black hover:bg-white/90 disabled:opacity-60"
       >
-        {status === 'loading' ? 'Отправка...' : t('contact.send')}
+        {status === 'loading' ? t('contact.sending') : t('contact.send')}
         <Send className="ml-2 h-4 w-4" />
       </Button>
     </form>

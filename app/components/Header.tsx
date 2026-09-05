@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 const navItems: { label: string; href: string; external?: boolean }[] = [
   { label: 'header.caseStudies', href: '/cases' },
+  { label: 'header.packages', href: '/packages' },
   { label: 'header.calculator', href: '/calculator' },
   { label: 'header.news', href: 'https://t.me/bangertstudio', external: true },
 ];

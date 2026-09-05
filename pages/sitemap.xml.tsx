@@ -5,6 +5,7 @@ const SITE_URL = 'https://bangertstudio.kz';
 const pages = [
   { path: '/',           changefreq: 'weekly',  priority: '1.0' },
   { path: '/cases',      changefreq: 'weekly',  priority: '0.8' },
+  { path: '/packages',   changefreq: 'weekly',  priority: '0.8' },
   { path: '/calculator', changefreq: 'monthly', priority: '0.7' },
 ];
 
