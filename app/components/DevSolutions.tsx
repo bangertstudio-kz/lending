@@ -95,11 +95,6 @@ export function DevSolutions() {
               <p className="text-white/50 text-sm leading-relaxed">
                 {t(`packages.home.benefits.${key}.description`)}
               </p>
-              {key === 'quality' && loaded && (
-                <p className="text-white/30 text-sm leading-relaxed mt-2">
-                  {t('packages.home.benefits.quality.proof', benefitCounts)}
-                </p>
-              )}
             </motion.div>
           ))}
         </div>
