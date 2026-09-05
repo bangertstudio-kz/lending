@@ -42,14 +42,14 @@ export function CaseRow({ project, index }: { project: Case; index: number }) {
       href={project.site}
       target="_blank"
       rel="noopener noreferrer"
-      className="group grid items-center gap-10 md:grid-cols-12 md:gap-20"
+      className="group grid items-start gap-10 md:grid-cols-12 md:gap-20"
     >
       <div
         ref={frameRef}
         onPointerMove={handlePointerMove}
         onPointerEnter={() => setHovered(true)}
         onPointerLeave={() => setHovered(false)}
-        className={`relative overflow-hidden bg-surface md:col-span-6 ${
+        className={`reveal-wipe relative overflow-hidden bg-surface md:col-span-6 ${
           flipped ? 'md:order-2 md:col-start-7' : ''
         }`}
       >
@@ -73,7 +73,11 @@ export function CaseRow({ project, index }: { project: Case; index: number }) {
         </motion.span>
       </div>
 
-      <div className={`md:col-span-5 ${flipped ? 'md:order-1 md:col-start-1' : ''}`}>
+      <div
+        className={`md:sticky md:top-32 md:col-span-5 md:self-start ${
+          flipped ? 'md:order-1 md:col-start-1' : ''
+        }`}
+      >
         <span className="font-mono text-small tabular-nums text-faint">
           {String(index + 1).padStart(2, '0')}
         </span>

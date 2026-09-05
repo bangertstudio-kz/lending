@@ -65,7 +65,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        'flex flex-col gap-5',
+        'reveal-wipe flex flex-col gap-5',
         align === 'center' ? 'items-center text-center max-w-2xl mx-auto' : 'items-start text-left',
         className,
       )}

@@ -28,13 +28,20 @@ export function Services() {
             меньше линий, плотнее блок. */}
         <div className="grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
           {services.map((key) => (
-            <article key={key} className="flex flex-col gap-4 bg-bg p-10 transition-colors hover:bg-raised">
-              <h3 className="font-display font-semibold text-h3 text-fg text-balance">
-                {t(`services.${key}.title`)}
-              </h3>
-              <p className="text-small leading-relaxed text-muted">
-                {t(`services.${key}.description`)}
-              </p>
+            <article key={key} className="group relative isolate overflow-hidden bg-bg p-10">
+              {/* Заливка выезжает снизу — вместо простой смены цвета фона */}
+              <span
+                aria-hidden
+                className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-raised transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
+              />
+              <div className="flex flex-col gap-4">
+                <h3 className="font-display font-semibold text-h3 text-fg text-balance transition-colors duration-300 group-hover:text-accent">
+                  {t(`services.${key}.title`)}
+                </h3>
+                <p className="text-small leading-relaxed text-muted">
+                  {t(`services.${key}.description`)}
+                </p>
+              </div>
             </article>
           ))}
         </div>

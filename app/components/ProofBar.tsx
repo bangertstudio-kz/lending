@@ -2,28 +2,27 @@
 
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useCasesStore } from '@/app/store/casesStore';
+import { CountUp } from './CountUp';
+import cases from '@/app/data/cases.json';
 import { usePackagesStore } from '@/app/store/packagesStore';
+
+// Кейсы лежат статичным файлом — считаем из него, чтобы числа попадали
+// в серверный HTML. Пакеты приходят с живого pub.dev, их до ответа API
+// показать нечем.
+const PROJECT_COUNT = cases.length;
+const APP_STORE_COUNT = cases.filter((item) => item.site.includes('apps.apple.com')).length;
 
 export function ProofBar() {
   const { t } = useTranslation();
-  const { cases, fetch: fetchCases } = useCasesStore();
-  const { packages, fetch: fetchPackages } = usePackagesStore();
+  const { packages, fetch } = usePackagesStore();
 
-  useEffect(() => {
-    fetchCases();
-    fetchPackages();
-  }, [fetchCases, fetchPackages]);
-
-  // Числа считаются из данных: захардкоженные цифры разъезжаются с правдой,
-  // как только в cases.json или на pub.dev что-то меняется.
-  const appStoreCount = cases.filter((item) => item.site.includes('apps.apple.com')).length;
+  useEffect(() => { fetch(); }, [fetch]);
 
   const items = [
-    { value: cases.length, label: t('proof.projects') },
-    { value: appStoreCount, label: t('proof.appstore') },
-    { value: packages.length, label: t('proof.packages') },
-    { value: '10+', label: t('proof.years') },
+    { value: PROJECT_COUNT, label: t('proof.projects') },
+    { value: APP_STORE_COUNT, label: t('proof.appstore') },
+    { value: packages.length || null, label: t('proof.packages') },
+    { value: null, label: t('proof.years'), literal: '10+' },
   ];
 
   return (
@@ -32,7 +31,7 @@ export function ProofBar() {
         {items.map((item) => (
           <div key={item.label} className="px-6 py-12">
             <dt className="font-mono text-h2 tabular-nums text-accent">
-              {typeof item.value === 'number' && item.value === 0 ? '—' : item.value}
+              {item.literal ?? (item.value === null ? '—' : <CountUp value={item.value} format={String} />)}
             </dt>
             <dd className="mt-2 text-small leading-snug text-faint">{item.label}</dd>
           </div>

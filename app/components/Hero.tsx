@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import { MagneticButton } from './MagneticButton';
 import { RevealWords } from './RevealWords';
 import { WorkMarquee } from './WorkMarquee';
 
@@ -24,13 +25,12 @@ export function Hero() {
           <p className="text-body-lg text-muted text-pretty">{t('hero.subtitle')}</p>
 
           <div className="mt-11 flex flex-col gap-4 sm:flex-row">
-            <button
-              type="button"
+            <MagneticButton
               onClick={() => scrollTo('contact')}
               className="bg-fg px-8 py-4 text-small font-medium text-bg transition-colors hover:bg-accent"
             >
               {t('hero.ctaConsultation')}
-            </button>
+            </MagneticButton>
             <button
               type="button"
               onClick={() => scrollTo('case-studies')}

@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { ReadingProgress } from './ReadingProgress';
 import { useTranslation } from 'react-i18next';
 
 const navItems: { label: string; href: string; external?: boolean }[] = [
@@ -72,6 +73,7 @@ export function Header() {
             </button>
           </div>
         </nav>
+        <ReadingProgress />
       </header>
 
       <AnimatePresence>

@@ -155,3 +155,26 @@
   display: inline-block;
   animation: word-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* Раскрытие шторкой, привязанное к прокрутке средствами самого CSS.
+   Без JS: где animation-timeline не поддерживается, блок просто виден. */
+@keyframes wipe-up {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 32px, 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+@layer components {
+  @supports (animation-timeline: view()) {
+    .reveal-wipe {
+      animation: wipe-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+  }
+}
