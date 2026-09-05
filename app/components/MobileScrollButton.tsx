@@ -48,7 +48,7 @@ export function MobileScrollButton() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={scrollToNext}
-          className="fixed bottom-8 right-6 z-50 rounded-full bg-fg p-4 text-bg transition-colors hover:bg-accent active:scale-95"
+          className="fixed bottom-8 right-6 z-50 rounded-full bg-fg p-4 text-bg transition-colors hover:bg-accent active:scale-95 md:hidden"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >

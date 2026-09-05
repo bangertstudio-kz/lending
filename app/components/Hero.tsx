@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import { RevealWords } from './RevealWords';
 import { WorkMarquee } from './WorkMarquee';
 
 export function Hero() {
@@ -15,11 +16,11 @@ export function Hero() {
       className="glow-warm relative overflow-hidden pt-36"
     >
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
-        <h1 className="rise max-w-[19ch] font-display font-semibold text-display text-fg text-balance">
-          {t('hero.title')}
+        <h1 className="max-w-[19ch] font-display font-semibold text-display text-fg text-balance">
+          <RevealWords text={t('hero.title')} />
         </h1>
 
-        <div className="rise mt-10 max-w-[46ch] [animation-delay:150ms]">
+        <div className="rise mt-10 max-w-[46ch] [animation-delay:450ms]">
           <p className="text-body-lg text-muted text-pretty">{t('hero.subtitle')}</p>
 
           <div className="mt-11 flex flex-col gap-4 sm:flex-row">
@@ -43,7 +44,7 @@ export function Hero() {
 
       {/* Работы на первом экране: студия мобильных приложений должна показывать
           приложения, а не заголовок в пустоте. */}
-      <div className="rise relative z-10 mt-24 pb-20 [animation-delay:300ms]">
+      <div className="rise relative z-10 mt-24 pb-20 [animation-delay:600ms]">
         <WorkMarquee />
       </div>
     </section>

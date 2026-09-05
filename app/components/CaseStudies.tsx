@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { CaseRow } from './CaseRow';
 import { Section, SectionHeading } from './ui/section';
 import cases from '@/app/data/cases.json';
 
@@ -34,48 +34,7 @@ export function CaseStudies() {
 
         <div className="flex flex-col gap-28 md:gap-40">
           {featured.map((project, index) => (
-            <a
-              key={project.name}
-              href={project.site}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group grid items-center gap-10 md:grid-cols-12 md:gap-20"
-            >
-              <div
-                className={`overflow-hidden bg-surface md:col-span-6 ${
-                  index % 2 === 1 ? 'md:order-2 md:col-start-7' : ''
-                }`}
-              >
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.name}
-                  className="aspect-square w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-                />
-              </div>
-
-              <div className={`md:col-span-5 ${index % 2 === 1 ? 'md:order-1 md:col-start-1' : ''}`}>
-                <span className="font-mono text-small tabular-nums text-faint">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-
-                <h3 className="mt-5 font-display font-semibold text-h2 text-fg transition-colors group-hover:text-accent">
-                  {project.name}
-                </h3>
-
-                <p className="mt-6 text-body text-muted">{t(`caseStudies.items.${project.id}`, { defaultValue: project.description })}</p>
-
-                <div className="mt-8 flex flex-wrap items-center gap-2">
-                  <span className="border border-hairline px-2 py-0.5 text-xs text-faint">
-                    {project.platform}
-                  </span>
-                  {project.site.includes('apps.apple.com') && (
-                    <span className="border border-accent/40 bg-accent-soft px-2 py-0.5 text-xs text-accent">
-                      {t('caseStudies.inAppStore')}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </a>
+            <CaseRow key={project.name} project={project} index={index} />
           ))}
         </div>
 

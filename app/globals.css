@@ -136,3 +136,22 @@
 @utility rise {
   animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Построчное раскрытие заголовка: каждое слово выезжает из-под маски.
+   Чистый CSS, поэтому работает до гидратации и не зависит от React. */
+@keyframes word-rise {
+  from { transform: translate3d(0, 105%, 0); }
+  to   { transform: none; }
+}
+
+@utility word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+}
+
+@utility word-inner {
+  display: inline-block;
+  animation: word-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
