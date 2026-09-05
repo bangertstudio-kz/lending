@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const sections = ['hero', 'why-choose-us', 'case-studies', 'services', 'contact', 'testimonials'];
+const sections = ['hero', 'case-studies', 'services', 'contact'];
 
 export function MobileScrollButton() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -48,7 +48,7 @@ export function MobileScrollButton() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={scrollToNext}
-          className="fixed bottom-8 right-6 z-50 bg-white text-black p-4 rounded-full shadow-lg hover:bg-white/90 active:scale-95 transition-all"
+          className="fixed bottom-8 right-6 z-50 rounded-full bg-fg p-4 text-bg transition-colors hover:bg-accent active:scale-95"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
