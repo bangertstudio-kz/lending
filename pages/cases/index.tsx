@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { SeoHead } from '@/app/components/SeoHead';
 import { useEffect } from 'react';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
@@ -14,20 +14,7 @@ export default function CasesPage() {
 
   return (
     <>
-      <Head>
-        <title>Кейсы — Bangert Studio</title>
-        <meta name="description" content="Приложения, которые уже стоят у людей на телефонах. Мобильные и веб-проекты Bangert Studio." />
-        <link rel="canonical" href="https://bangertstudio.kz/cases" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bangertstudio.kz/cases" />
-        <meta property="og:title" content="Кейсы — Bangert Studio" />
-        <meta property="og:description" content="Приложения, которые уже стоят у людей на телефонах." />
-        <meta property="og:image" content="https://bangertstudio.kz/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Кейсы — Bangert Studio" />
-        <meta name="twitter:description" content="Приложения, которые уже стоят у людей на телефонах." />
-        <meta name="twitter:image" content="https://bangertstudio.kz/og-image.png" />
-      </Head>
+      <SeoHead page="cases" path="/cases" />
       <div className="min-h-screen bg-bg">
         <Header />
 

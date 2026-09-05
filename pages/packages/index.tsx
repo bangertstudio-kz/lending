@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { SeoHead } from '@/app/components/SeoHead';
 import { useEffect } from 'react';
 import { Heart, BadgeCheck, Download, ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -16,29 +16,7 @@ export default function PackagesPage() {
 
   return (
     <>
-      <Head>
-        <title>Решения для разработчиков — Bangert Studio</title>
-        <meta
-          name="description"
-          content="Открытые библиотеки Bangert Studio для Flutter и Dart: состояние, формы, навигация, адаптивная вёрстка и инструменты разработки."
-        />
-        <link rel="canonical" href="https://bangertstudio.kz/packages" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bangertstudio.kz/packages" />
-        <meta property="og:title" content="Решения для разработчиков — Bangert Studio" />
-        <meta
-          property="og:description"
-          content="Open-source библиотеки Bangert Studio для Flutter и Dart, опубликованные на pub.dev."
-        />
-        <meta property="og:image" content="https://bangertstudio.kz/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Решения для разработчиков — Bangert Studio" />
-        <meta
-          name="twitter:description"
-          content="Open-source библиотеки Bangert Studio для Flutter и Dart, опубликованные на pub.dev."
-        />
-        <meta name="twitter:image" content="https://bangertstudio.kz/og-image.png" />
-      </Head>
+      <SeoHead page="packages" path="/packages" />
 
       <div className="min-h-screen bg-bg">
         <Header />

@@ -1,8 +1,7 @@
 import { statSync } from 'node:fs';
 import path from 'node:path';
 import { GetServerSideProps } from 'next';
-
-const SITE_URL = 'https://bangertstudio.kz';
+import { DEFAULT_LOCALE, LOCALES, urlFor } from '@/app/seo';
 
 // lastmod берём из времени изменения файлов, которые реально формируют страницу.
 // Проставлять сюда текущую дату — значит врать краулеру на каждом запросе.
@@ -32,16 +31,29 @@ function Sitemap() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(({ path: urlPath, changefreq, priority, sources }) => {
+  const entries = pages.flatMap(({ path: urlPath, changefreq, priority, sources }) => {
     const lastmod = lastModified(sources);
-    return `  <url>
-    <loc>${SITE_URL}${urlPath}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
+
+    // Каждая языковая версия — отдельный адрес, и каждая перечисляет все
+    // остальные через xhtml:link. Без этого версии конкурируют друг с другом.
+    return LOCALES.map((locale) => {
+      const alternates = LOCALES.map(
+        (alt) => `    <xhtml:link rel="alternate" hreflang="${alt}" href="${urlFor(alt, urlPath)}"/>`,
+      ).join('\n');
+
+      return `  <url>
+    <loc>${urlFor(locale, urlPath)}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
+${alternates}
+    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(DEFAULT_LOCALE, urlPath)}"/>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
-  }).join('\n')}
+    });
+  });
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries.join('\n')}
 </urlset>`;
 
   res.setHeader('Content-Type', 'text/xml');

@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import { I18nextProvider } from 'react-i18next';
-import i18n from '../app/i18n';
-import { useStoredLanguage } from '../app/useStoredLanguage';
+import { useRouter } from 'next/router';
+import { DEFAULT_LOCALE, getI18n, isLocale } from '../app/i18n';
 import { display, geistMono, geistSans } from '../app/fonts';
 import '../app/globals.css';
 
@@ -48,7 +48,9 @@ const jsonLd = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  useStoredLanguage();
+  const { locale } = useRouter();
+  const activeLocale = isLocale(locale) ? locale : DEFAULT_LOCALE;
+  const i18n = getI18n(activeLocale);
 
   return (
     <I18nextProvider i18n={i18n}>

@@ -347,5 +347,23 @@
     "appstore": "apps on the App Store",
     "packages": "open-source solutions",
     "years": "years of development"
+  },
+  "meta": {
+    "home": {
+      "title": "Bangert Studio — mobile and web development",
+      "description": "Full-cycle mobile and web development. You know the timeline and the budget before the work starts, not after."
+    },
+    "cases": {
+      "title": "Work — Bangert Studio",
+      "description": "Apps that are already on people's phones. Mobile and web projects by Bangert Studio."
+    },
+    "packages": {
+      "title": "Open-source solutions — Bangert Studio",
+      "description": "Open-source Flutter and Dart libraries: state, forms, navigation, responsive layouts and developer tooling."
+    },
+    "calculator": {
+      "title": "Project cost calculator — Bangert Studio",
+      "description": "Describe your idea and get a budget range, a timeline and a team breakdown. No calls, no sign-up."
+    }
   }
 }

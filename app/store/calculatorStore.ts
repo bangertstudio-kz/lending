@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import calculatorData from '@/app/data/calculator.json';
-import i18n from '@/app/i18n';
+import { getCurrentLanguage } from '@/app/i18n';
 
 const HOURS_PER_WEEK = 40;
 const FALLBACK_STAGE_MULTIPLIER = 1.0;
@@ -93,7 +93,7 @@ export const useCalculatorStore = create<CalculatorState>((set, get) => ({
     try {
       const form = new FormData();
       form.append('description', description);
-      form.append('locale', i18n.language);
+      form.append('locale', getCurrentLanguage());
       (files ?? []).forEach(f => form.append('files', f));
 
       const res = await fetch('/api/calculator/recommend', {
