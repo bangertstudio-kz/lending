@@ -20,7 +20,7 @@ export function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
   return (
     <motion.button
       onClick={toggleLanguage}
-      className="flex items-center gap-2 text-white/80 hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/5"
+      className="flex items-center gap-2 px-3 py-2 text-small text-muted transition-colors hover:text-fg"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Switch language"

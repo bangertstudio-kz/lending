@@ -3,6 +3,7 @@ import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../app/i18n';
+import { fontVariables } from '../app/fonts';
 import '../app/globals.css';
 
 const jsonLd = {
@@ -36,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#0A0908" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -54,7 +55,9 @@ export default function App({ Component, pageProps }: AppProps) {
           ym(105997418, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', accurateTrackBounce:true, trackLinks:true});
         `}
       </Script>
-      <Component {...pageProps} />
+      <div className={fontVariables}>
+        <Component {...pageProps} />
+      </div>
     </I18nextProvider>
   );
 }

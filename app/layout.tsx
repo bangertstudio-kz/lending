@@ -1,26 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Cormorant_Garamond } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
+import { fontVariables } from './fonts';
 import { Providers } from './providers';
-
-// subsets обязательно включает 'cyrillic': без него весь русский текст
-// рендерится системным запасным шрифтом, а не Geist.
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin', 'cyrillic'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin', 'cyrillic'],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: '--font-cormorant',
-  subsets: ['latin', 'cyrillic'],
-  weight: ['500', '600'],
-});
 
 export const metadata: Metadata = {
   title: 'Bangert Studio — Mobile & Web Development',
@@ -34,10 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ru"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
-    >
+    <html lang="ru" className={`${fontVariables} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
         <Script id="yandex-metrika" strategy="afterInteractive">
