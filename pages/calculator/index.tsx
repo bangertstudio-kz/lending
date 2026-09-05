@@ -23,7 +23,7 @@ export default function CalculatorPage() {
         <meta name="twitter:description" content="Рассчитайте стоимость и сроки разработки вашего приложения." />
         <meta name="twitter:image" content="https://bangertstudio.kz/og-image.png" />
       </Head>
-      <div className="min-h-screen bg-neutral-950">
+      <div className="min-h-screen bg-bg">
         <Header />
         <div className="pt-20">
           <CostCalculator isOpen inline projectDescription={description} />

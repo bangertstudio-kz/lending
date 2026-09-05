@@ -24,8 +24,8 @@ export default function FeatureSelector() {
   };
 
   return (
-    <div className="bg-black border border-white/10 p-6 hover:border-white/20 transition-colors">
-      <h3 className="text-lg font-semibold text-white mb-4">{t('calculator.features.title')}</h3>
+    <div className="bg-bg border border-hairline p-6 hover:border-hairline-strong transition-colors">
+      <h3 className="mb-4 font-display font-semibold text-h3 text-fg">{t('calculator.features.title')}</h3>
 
       <div className="flex flex-wrap gap-2 mb-4">
         {[...data.features].sort((a, b) => {
@@ -38,11 +38,11 @@ export default function FeatureSelector() {
             <button
               key={feature.key}
               onClick={() => toggleFeature(feature.key)}
-              className={`px-3 py-2 border transition-all flex items-center gap-2 ${isSelected ? 'border-white/30 bg-white/5 text-white' : 'border-white/10 bg-transparent text-white/70 hover:border-white/20'}`}
+              className={`px-3 py-2 border transition-all flex items-center gap-2 ${isSelected ? 'border-hairline-strong bg-raised text-fg' : 'border-hairline bg-transparent text-muted hover:border-hairline-strong'}`}
             >
               {isSelected && <Check className="w-4 h-4" />}
-              <span className="font-medium text-sm">{t(feature.tKey)}</span>
-              <span className={`text-xs font-semibold ${isSelected ? 'text-white/80' : 'text-white/50'}`}>
+              <span className="font-medium text-small">{t(feature.tKey)}</span>
+              <span className={`text-xs font-semibold ${isSelected ? 'text-fg/80' : 'text-muted'}`}>
                 {formatCurrency(feature.cost)}
               </span>
             </button>
@@ -52,7 +52,7 @@ export default function FeatureSelector() {
 
       {customSelected.length > 0 && (
         <div className="mb-4">
-          <div className="text-sm font-medium text-white/60 mb-2">{t('calculator.features.customTitle')}:</div>
+          <div className="text-small font-medium text-muted mb-2">{t('calculator.features.customTitle')}:</div>
           <div className="flex flex-wrap gap-2">
             {customSelected.map((key) => {
               const data = customFeatureData[key];
@@ -60,12 +60,12 @@ export default function FeatureSelector() {
                 <button
                   key={key}
                   onClick={() => toggleFeature(key)}
-                  className="px-3 py-2 border transition-all flex items-center gap-2 border-white/30 bg-white/5 text-white"
+                  className="px-3 py-2 border transition-all flex items-center gap-2 border-hairline-strong bg-raised text-fg"
                 >
                   <Check className="w-4 h-4" />
-                  <span className="font-medium text-sm">{key}</span>
+                  <span className="font-medium text-small">{key}</span>
                   {data && (
-                    <span className="text-xs font-semibold text-white/80">
+                    <span className="text-xs font-semibold text-fg/80">
                       {formatCurrency(data.cost)}
                     </span>
                   )}
@@ -83,11 +83,11 @@ export default function FeatureSelector() {
           onChange={(e) => setCustomInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
           placeholder={t('calculator.features.addPlaceholder')}
-          className="flex-1 px-4 py-2 border border-white/10 bg-white/5 focus:outline-none focus:border-white/30 text-white placeholder:text-white/40 transition-colors"
+          className="flex-1 px-4 py-2 border border-hairline bg-raised focus:outline-none focus:border-accent text-fg placeholder:text-faint transition-colors"
         />
         <button
           onClick={handleAdd}
-          className="px-4 py-2 bg-white text-black hover:bg-white/90 transition-colors flex items-center gap-2"
+          className="px-4 py-2 bg-fg text-bg hover:bg-accent transition-colors flex items-center gap-2"
         >
           <Plus className="w-4 h-4" />
           {t('calculator.features.add')}
