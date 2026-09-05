@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Logo } from './Logo';
@@ -8,12 +9,51 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { ReadingProgress } from './ReadingProgress';
 import { useTranslation } from 'react-i18next';
 
-const navItems: { label: string; href: string; external?: boolean }[] = [
+type NavItem = { label: string; href: string; external?: boolean };
+
+const navItems: NavItem[] = [
   { label: 'header.caseStudies', href: '/cases' },
   { label: 'header.packages', href: '/packages' },
   { label: 'header.calculator', href: '/calculator' },
   { label: 'header.news', href: 'https://t.me/bangertstudio', external: true },
 ];
+
+/**
+ * Внутренние переходы идут через next/link: он подставляет активную локаль в
+ * адрес. Обычный <a href="/cases"> уводил на дефолтный (русский) префикс, и
+ * язык сбрасывался при каждом переходе по меню.
+ */
+function NavLink({
+  item,
+  onClick,
+  className,
+  children,
+}: {
+  item: NavItem;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  className: string;
+  children: React.ReactNode;
+}) {
+  if (item.external) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        className={className}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} onClick={onClick} className={className}>
+      {children}
+    </Link>
+  );
+}
 
 export function Header() {
   const { t } = useTranslation();
@@ -27,13 +67,13 @@ export function Header() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMobileMenuOpen(false);
     if (!href.startsWith('#')) return;
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: elementPosition - 80, behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
     }
   };
 
@@ -50,16 +90,14 @@ export function Header() {
 
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
-                <a
+                <NavLink
                   key={item.href}
-                  href={item.href}
+                  item={item}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
                   className="text-small text-muted transition-colors hover:text-fg"
                 >
                   {t(item.label)}
-                </a>
+                </NavLink>
               ))}
               <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
             </div>
@@ -97,14 +135,14 @@ export function Header() {
             >
               <nav className="flex flex-col gap-4">
                 {navItems.map((item) => (
-                  <a
+                  <NavLink
                     key={item.href}
-                    href={item.href}
+                    item={item}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className="border-b border-hairline py-2 text-body-lg text-muted transition-colors last:border-0 hover:text-fg"
                   >
                     {t(item.label)}
-                  </a>
+                  </NavLink>
                 ))}
                 <div className="pt-4 border-t border-hairline">
                   <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
