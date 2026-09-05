@@ -1,32 +1,93 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { Globe } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'motion/react';
+import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'motion/react';
+import { DEFAULT_LOCALE, LOCALES, LOCALE_LABELS, isLocale, type Locale } from '@/app/seo';
 
 interface LanguageSwitcherProps {
   onLanguageChange?: () => void;
 }
 
 export function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
-  const { i18n } = useTranslation();
+  const router = useRouter();
+  const current = isLocale(router.locale) ? router.locale : DEFAULT_LOCALE;
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ru' : 'en';
-    i18n.changeLanguage(newLang);
-    if (onLanguageChange) onLanguageChange();
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
+
+  const select = (locale: Locale) => {
+    setOpen(false);
+    if (locale === current) return;
+    // Язык — часть адреса, а не состояние в браузере: так каждая версия
+    // существует по своему URL и попадает в индекс.
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale, scroll: false });
+    onLanguageChange?.();
   };
 
   return (
-    <motion.button
-      onClick={toggleLanguage}
-      className="flex items-center gap-2 text-white/80 hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/5"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      aria-label="Switch language"
-    >
-      <Globe size={18} />
-      <span className="text-sm font-medium uppercase">{i18n.language}</span>
-    </motion.button>
+    <div ref={rootRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={LOCALE_LABELS[current]}
+        className="flex items-center gap-2 px-3 py-2 text-small text-muted transition-colors hover:text-fg"
+      >
+        <Globe size={18} aria-hidden />
+        <span className="text-sm font-medium uppercase">{current}</span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute right-0 top-full z-50 mt-2 min-w-44 border border-hairline bg-raised py-1"
+          >
+            {LOCALES.map((locale) => (
+              <li key={locale}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={locale === current}
+                  lang={locale}
+                  onClick={() => select(locale)}
+                  className={`flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-small transition-colors hover:text-accent ${
+                    locale === current ? 'text-fg' : 'text-muted'
+                  }`}
+                >
+                  {LOCALE_LABELS[locale]}
+                  <span className="font-mono text-xs uppercase text-faint">{locale}</span>
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

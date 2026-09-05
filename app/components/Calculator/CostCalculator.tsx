@@ -61,10 +61,10 @@ export default function CostCalculator({
           >
             <button
               onClick={onClose}
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-muted hover:text-fg transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="text-sm font-medium">{t('calculator.back')}</span>
+              <span className="text-small font-medium">{t('calculator.back')}</span>
             </button>
           </motion.div>
         )}
@@ -75,12 +75,12 @@ export default function CostCalculator({
           transition={{ duration: 0.4, delay: 0.2 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white/80 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-raised border border-hairline text-fg/80 px-4 py-2 rounded-full mb-4">
             <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">{t('calculator.badge')}</span>
+            <span className="text-small font-medium">{t('calculator.badge')}</span>
           </div>
-          <h1 className="text-5xl font-bold text-white mb-3">{t('calculator.title')}</h1>
-          <p className="text-xl text-white/60">{t('calculator.subtitle')}</p>
+          <h1 className="mb-3 font-display font-semibold text-h1 text-fg">{t('calculator.title')}</h1>
+          <p className="text-h3 text-muted">{t('calculator.subtitle')}</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -89,33 +89,33 @@ export default function CostCalculator({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-black border border-white/10 p-6 space-y-1"
+              className="bg-bg border border-hairline p-6 space-y-1"
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm text-white/50">{t('calculator.description')}</span>
-                <span className="text-xs text-white/30">{t('calculator.optional')}</span>
+                <span className="text-small text-muted">{t('calculator.description')}</span>
+                <span className="text-xs text-faint">{t('calculator.optional')}</span>
               </div>
               <Textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder={t('calculator.descriptionPlaceholder')}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[120px] max-h-[240px] overflow-y-auto resize-none"
+                className="bg-raised border-hairline text-fg placeholder:text-faint focus:border-accent min-h-[120px] max-h-[240px] overflow-y-auto resize-none"
               />
               <div className="flex items-center gap-3 mt-3">
                 <button
                   onClick={() => analyzeDescription(attachedFile ? [attachedFile] : [])}
                   disabled={isAnalyzing || !description.trim()}
-                  className="flex items-center gap-2 px-4 py-2 bg-white text-black text-sm font-medium hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-fg text-bg text-small font-medium hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
                   {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
                   {isAnalyzing ? t('calculator.analyzing') : t('calculator.analyze')}
                 </button>
                 <input ref={fileInputRef} type="file" className="hidden" onChange={handleFile} />
                 {attachedFile ? (
-                  <div className="flex items-center gap-2 px-3 py-2 border border-white/30 bg-white/5 text-sm text-white">
+                  <div className="flex items-center gap-2 px-3 py-2 border border-hairline-strong bg-raised text-small text-fg">
                     <Paperclip className="w-4 h-4 shrink-0" />
                     <span className="max-w-[160px] truncate">{attachedFile.name}</span>
-                    <button type="button" onClick={() => setAttachedFile(null)} className="text-white/50 hover:text-white transition-colors">
+                    <button type="button" onClick={() => setAttachedFile(null)} className="text-muted hover:text-fg transition-colors">
                       <X className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -123,13 +123,13 @@ export default function CostCalculator({
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center gap-2 px-3 py-2 border border-white/10 text-white/50 text-sm hover:border-white/30 hover:text-white transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 border border-hairline text-muted text-small hover:border-accent hover:text-fg transition-colors"
                   >
                     <Paperclip className="w-4 h-4" />
                   </button>
                 )}
                 {analyzeError && (
-                  <span className="text-sm text-red-400">{t('calculator.analyzeError')}</span>
+                  <span className="text-small text-red-400">{t('calculator.analyzeError')}</span>
                 )}
               </div>
             </motion.div>
@@ -151,11 +151,11 @@ export default function CostCalculator({
               <EstimationResults estimates={estimates} />
               <div className="mt-6 space-y-6">
                 <div>
-                  <p className="text-white text-sm font-medium mb-4">{t('calculator.contactUs')}</p>
+                  <p className="text-fg text-small font-medium mb-4">{t('calculator.contactUs')}</p>
                   <ContactLinks />
                 </div>
                 <div>
-                  <p className="text-white text-sm font-medium mb-4">{t('calculator.leaveRequest')}</p>
+                  <p className="text-fg text-small font-medium mb-4">{t('calculator.leaveRequest')}</p>
                   <ContactInlineForm description={contactDescription || undefined} file={attachedFile} />
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function CostCalculator({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-neutral-950 z-50 overflow-y-auto"
+          className="fixed inset-0 bg-bg z-50 overflow-y-auto"
         >
           {content}
         </motion.div>

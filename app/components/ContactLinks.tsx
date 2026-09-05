@@ -25,14 +25,14 @@ export function ContactLinks() {
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 p-4 border border-white/10 hover:border-white/30 transition-colors group"
+          className="group flex items-center gap-4 border border-hairline bg-surface p-4 transition-colors hover:border-accent"
         >
-          <div className="bg-white/5 p-3 rounded-full group-hover:bg-white/10 transition-colors">
-            <social.icon className="w-5 h-5 text-white" />
+          <div className="rounded-full bg-raised p-3 transition-colors group-hover:bg-accent-soft">
+            <social.icon className="h-5 w-5 text-muted transition-colors group-hover:text-accent" />
           </div>
           <div>
-            <p className="text-white/50 text-xs">{social.name}</p>
-            <p className="text-white text-sm">{social.label}</p>
+            <p className="text-xs text-faint">{social.name}</p>
+            <p className="text-small text-fg">{social.label}</p>
           </div>
         </a>
       ))}

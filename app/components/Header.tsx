@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { ReadingProgress } from './ReadingProgress';
 import { useTranslation } from 'react-i18next';
 
 const navItems: { label: string; href: string; external?: boolean }[] = [
@@ -38,40 +39,33 @@ export function Header() {
 
   return (
     <>
-      <motion.header
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-black/80 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
+          isScrolled ? 'bg-bg/85 backdrop-blur-xl border-b border-hairline' : 'bg-transparent'
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
       >
         <nav className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Logo />
 
             <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item, index) => (
-                <motion.a
+              {navItems.map((item) => (
+                <a
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="text-white/80 hover:text-white transition-colors text-sm font-medium"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ y: -2 }}
+                  className="text-small text-muted transition-colors hover:text-fg"
                 >
                   {t(item.label)}
-                </motion.a>
+                </a>
               ))}
               <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
             </div>
 
             <button
-              className="md:hidden text-white p-2"
+              className="md:hidden text-fg p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -79,7 +73,8 @@ export function Header() {
             </button>
           </div>
         </nav>
-      </motion.header>
+        <ReadingProgress />
+      </header>
 
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -90,31 +85,28 @@ export function Header() {
             exit={{ opacity: 0 }}
           >
             <div
-              className="absolute inset-0 bg-black/90 backdrop-blur-lg"
+              className="absolute inset-0 bg-bg/90 backdrop-blur-xl"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="absolute top-20 left-6 right-6 bg-black/95 border border-white/10 rounded-lg p-6"
+              className="absolute top-20 left-6 right-6 bg-raised border border-hairline p-6"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
               <nav className="flex flex-col gap-4">
-                {navItems.map((item, index) => (
-                  <motion.a
+                {navItems.map((item) => (
+                  <a
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-white/80 hover:text-white transition-colors text-lg font-medium py-2 border-b border-white/10 last:border-0"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="border-b border-hairline py-2 text-body-lg text-muted transition-colors last:border-0 hover:text-fg"
                   >
                     {t(item.label)}
-                  </motion.a>
+                  </a>
                 ))}
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-4 border-t border-hairline">
                   <LanguageSwitcher onLanguageChange={() => setIsMobileMenuOpen(false)} />
                 </div>
               </nav>

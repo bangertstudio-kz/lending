@@ -10,8 +10,8 @@ export default function StageSelector() {
   const { stage, setStage } = useCalculatorStore();
 
   return (
-    <div className="bg-black border border-white/10 p-6 hover:border-white/20 transition-colors">
-      <h3 className="text-lg font-semibold text-white mb-4">{t('calculator.stage.title')}</h3>
+    <div className="bg-bg border border-hairline p-6 hover:border-hairline-strong transition-colors">
+      <h3 className="mb-4 font-display font-semibold text-h3 text-fg">{t('calculator.stage.title')}</h3>
       <div className="grid grid-cols-2 gap-4">
         {data.stages.map((s) => {
           const Icon = stageIcons[s.id] ?? Rocket;
@@ -20,11 +20,11 @@ export default function StageSelector() {
             <button
               key={s.id}
               onClick={() => setStage(s.id)}
-              className={`p-4 border transition-all text-left ${isSelected ? 'border-white/30 bg-white/5' : 'border-white/10 bg-transparent hover:border-white/20'}`}
+              className={`p-4 border transition-all text-left ${isSelected ? 'border-hairline-strong bg-raised' : 'border-hairline bg-transparent hover:border-hairline-strong'}`}
             >
-              <Icon className={`w-8 h-8 mb-3 ${isSelected ? 'text-white' : 'text-white/40'}`} />
-              <div className={`font-semibold mb-1 ${isSelected ? 'text-white' : 'text-white/70'}`}>{t(s.tKey)}</div>
-              <div className="text-xs text-white/50">{t(s.descKey)}</div>
+              <Icon className={`w-8 h-8 mb-3 ${isSelected ? 'text-fg' : 'text-faint'}`} />
+              <div className={`font-semibold mb-1 ${isSelected ? 'text-fg' : 'text-muted'}`}>{t(s.tKey)}</div>
+              <div className="text-xs text-muted">{t(s.descKey)}</div>
             </button>
           );
         })}

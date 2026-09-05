@@ -12,8 +12,8 @@ export function Logo() {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/assets/image.png" alt="Bangert Studio Logo" className="h-10 w-10 object-contain" />
-      <span className="text-white text-2xl font-bold tracking-tight">
-        Bangert<span className="text-white/60">Studio</span>
+      <span className="font-display font-semibold text-fg text-h3 tracking-tight">
+        Bangert<span className="text-faint">Studio</span>
       </span>
     </motion.a>
   );

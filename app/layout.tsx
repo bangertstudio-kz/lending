@@ -1,22 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
+import { fontVariables } from './fonts';
 import { Providers } from './providers';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'Bangert Studio — Mobile & Web Development',
-  description: 'We help startups and businesses launch turnkey Mobile/Web applications. From idea to release.',
+  description:
+    'Full-cycle mobile and web development. You know the timeline and the budget before the work starts.',
 };
 
 export default function RootLayout({
@@ -25,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="ru" className={`${fontVariables} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
         <Script id="yandex-metrika" strategy="afterInteractive">

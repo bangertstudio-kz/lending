@@ -13,38 +13,37 @@
     "packages": "For developers"
   },
   "hero": {
-    "title": "We help startups and businesses launch turnkey",
-    "title1": " Mobile/Web ",
-    "title2": "applications.",
-    "subtitle": "From idea to release — without the hassle.",
-    "ctaConsultation": "Get a Free Consultation",
-    "ctaWork": "View Our Work"
+    "title": "We turn an idea into a working product",
+    "subtitle": "Full-cycle mobile and web development. You know the timeline and the budget before the work starts, not after.",
+    "ctaConsultation": "Discuss your project",
+    "ctaWork": "See our work"
   },
   "services": {
-    "title": "Our Services",
+    "title": "What we do",
+    "subtitle": "Full cycle: from requirements to release and support after launch.",
     "iosDev": {
-      "title": "iOS App Development",
-      "description": "High performance and compliance with Apple requirements."
+      "title": "An app on the App Store",
+      "description": "We handle the build, Apple's requirements and the release — you never touch the review process."
     },
     "androidDev": {
-      "title": "Android App Development",
-      "description": "Free of charge when ordering the iOS version."
-    },
-    "uiux": {
-      "title": "UI/UX Design",
-      "description": "We create designs that boost engagement, conversion, and retention in mobile and web products."
-    },
-    "maintenance": {
-      "title": "Maintenance & Support",
-      "description": "Ongoing updates, bug fixes, and technical support for your app"
+      "title": "Android at no extra cost",
+      "description": "Order the iOS version and the Android build comes with it, at no additional charge."
     },
     "webDev": {
-      "title": "Web Development",
-      "description": "Modern websites and web applications. Landing pages, corporate sites, and web services focused on speed, SEO, and conversion"
+      "title": "A site that brings in leads",
+      "description": "Landing pages, corporate sites and web services built for load speed, search and conversion."
+    },
+    "uiux": {
+      "title": "An interface that needs no manual",
+      "description": "We design screens so people reach the action that matters instead of closing the app."
     },
     "analytics": {
-      "title": "Product Analytics & Design",
-      "description": "Define functionality before development begins. We formulate requirements to avoid unnecessary costs"
+      "title": "We scope it before the first line of code",
+      "description": "Requirements are locked down early, so you don't pay twice for a rewrite halfway through."
+    },
+    "maintenance": {
+      "title": "Your app won't be left unattended",
+      "description": "We keep it current with new iOS and Android releases, so it doesn't stop launching six months from now."
     }
   },
   "whyChooseUs": {
@@ -71,11 +70,25 @@
     }
   },
   "caseStudies": {
-    "title": "Our Projects",
+    "title": "Work",
+    "subtitle": "Apps that are already on people's phones.",
     "platform": "Platform",
     "results": "Results",
-    "viewSite": "View Site",
-    "viewAll": "View All Projects"
+    "viewSite": "Open project",
+    "viewAll": "All projects",
+    "inAppStore": "On the App Store",
+    "items": {
+      "sapian": "Meet people nearby: find someone close by, send a request, and plan a meeting when the interest is mutual.",
+      "pings": "A personal feed of ideas, guides and practices, curated by AI.",
+      "luna": "Music channels for any mood — handpicked tracks from around the world.",
+      "equilibrium": "Tasks and wellbeing in one app: planning your work alongside tracking how you actually feel.",
+      "ocean": "A CPA platform: advertisers pay only for a completed action — a sign-up, a lead or a purchase.",
+      "toptom": "A marketplace for businesses and individuals buying and selling on one platform.",
+      "qor": "A rapid-response platform bringing private clients, businesses, security agencies and independent consultants together.",
+      "oro": "Rent out computing power to AI agents, with transparent pricing and clear billing.",
+      "eiva": "Gyms nearby: book workouts and buy memberships in a couple of taps.",
+      "hiv": "A private health club."
+    }
   },
   "packages": {
     "title": "Developer Solutions",
@@ -103,9 +116,9 @@
       "background_geo_tracker": "Background route tracking on iOS and Android: points are collected and uploaded by native code, even while the app is in the background."
     },
     "home": {
-      "badge": "Our open-source libraries",
-      "title": "We don't start your project from scratch",
-      "subtitle": "Part of your app is already written, tested and running in real projects. We publish this work in the open — and reuse it when we build your app.",
+      "badge": "Open source",
+      "title": "Your project doesn't start from zero",
+      "subtitle": "Part of your app's code is already written, tested and running in real projects. We publish it openly and reuse it in your product.",
       "statPackages": "ready-made solutions, published openly",
       "statDownloads": "downloads per month",
       "statLikes": "likes from developers",
@@ -124,7 +137,7 @@
           "description": "This work is open and free to use — it isn't locked inside our studio. If you ever want to switch teams, the new one can pick it up and carry on."
         }
       },
-      "cta": "See our solutions"
+      "cta": "See the solutions"
     },
     "loading": "Loading…",
     "loadError": "Could not load our solutions."
@@ -159,22 +172,22 @@
     "title": "What Our Clients Say"
   },
   "contact": {
-    "title": "Start Your Project",
-    "subtitle": "Leave a request and we'll get back to you during business hours",
+    "title": "Tell us about your project",
+    "subtitle": "Describe the task in a couple of lines and we'll come back with an estimate and follow-up questions during business hours.",
     "name": "Name",
     "email": "Email",
     "company": "Company",
     "description": "Project Description",
     "send": "Send",
     "howContactWithYou": "How can we contact you?",
-    "getInTouch": "Get In Touch",
-    "reachOut": "Reach out to us through any of these channels and we'll get back to you shortly.",
+    "getInTouch": "Or reach out directly",
+    "reachOut": "Pick whichever channel suits you. We reply during business hours.",
     "sent": "Request sent!",
     "sendError": "Couldn't send. Please try again.",
     "sending": "Sending..."
   },
   "footer": {
-    "description": "Professional mobile app development for your business",
+    "description": "Full-cycle mobile and web development",
     "services": "Services",
     "company": "Company",
     "about": "About Us",
@@ -319,14 +332,38 @@
       "disclaimer": "These estimates are based on industry averages. Final costs may vary based on specific requirements and team rates."
     },
     "cta": {
-      "badge": "AI-powered project estimate",
-      "title": "Find out what your project will cost",
-      "subtitle": "Describe your idea — AI works out the budget, timeline and team in seconds",
+      "badge": "A 30-second estimate",
+      "title": "Know the budget before the first call",
+      "subtitle": "Describe your idea and get a budget range, a timeline and a team breakdown. No calls, no sign-up.",
       "placeholder": "For example: a food delivery app with payments and a personal account...",
       "charsLength": "{{length}} characters",
       "optional": "Description is optional",
-      "button": "Estimate with AI",
-      "note": "Free · No sign-up · Instant result"
+      "button": "Estimate",
+      "note": "Free, no sign-up, the result appears right on the page"
+    }
+  },
+  "proof": {
+    "projects": "projects in the portfolio",
+    "appstore": "apps on the App Store",
+    "packages": "open-source solutions",
+    "years": "years of development"
+  },
+  "meta": {
+    "home": {
+      "title": "Bangert Studio — mobile and web development",
+      "description": "Full-cycle mobile and web development. You know the timeline and the budget before the work starts, not after."
+    },
+    "cases": {
+      "title": "Work — Bangert Studio",
+      "description": "Apps that are already on people's phones. Mobile and web projects by Bangert Studio."
+    },
+    "packages": {
+      "title": "Open-source solutions — Bangert Studio",
+      "description": "Open-source Flutter and Dart libraries: state, forms, navigation, responsive layouts and developer tooling."
+    },
+    "calculator": {
+      "title": "Project cost calculator — Bangert Studio",
+      "description": "Describe your idea and get a budget range, a timeline and a team breakdown. No calls, no sign-up."
     }
   }
 }

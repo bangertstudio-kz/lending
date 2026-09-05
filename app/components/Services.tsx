@@ -1,54 +1,51 @@
 'use client';
 
-import { Apple, Smartphone, Palette, Shield, Globe, BarChart3 } from 'lucide-react';
-import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { Section, SectionHeading } from './ui/section';
 
 const services = [
-  { icon: Smartphone, titleKey: 'services.androidDev.title', descriptionKey: 'services.androidDev.description' },
-  { icon: Apple, titleKey: 'services.iosDev.title', descriptionKey: 'services.iosDev.description' },
-  { icon: Globe, titleKey: 'services.webDev.title', descriptionKey: 'services.webDev.description' },
-  { icon: Palette, titleKey: 'services.uiux.title', descriptionKey: 'services.uiux.description' },
-  { icon: BarChart3, titleKey: 'services.analytics.title', descriptionKey: 'services.analytics.description' },
-  { icon: Shield, titleKey: 'services.maintenance.title', descriptionKey: 'services.maintenance.description' },
-];
+  'iosDev',
+  'androidDev',
+  'webDev',
+  'uiux',
+  'analytics',
+  'maintenance',
+] as const;
 
 export function Services() {
   const { t } = useTranslation();
 
   return (
-    <section id="services" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-white text-center mb-16 text-4xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {t('services.title')}
-        </motion.h2>
+    <Section id="services" tone="surface">
+      <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-28">
+        <SectionHeading
+          title={t('services.title')}
+          subtitle={t('services.subtitle')}
+          className="lg:sticky lg:top-32 lg:self-start"
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.titleKey}
-              className="bg-black border border-white/10 p-6 hover:border-white/30 transition-colors group flex md:flex-col items-start gap-4"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-            >
-              <service.icon className="w-8 h-8 text-white flex-shrink-0 group-hover:scale-110 transition-transform" />
-              <div className="flex-1 md:flex-none">
-                <h3 className="text-white mb-4">{t(service.titleKey)}</h3>
-                <p className="text-white/60">{t(service.descriptionKey)}</p>
+        {/* Сетка на зазорах: границы рисует фон, а не рамка у каждой карточки —
+            меньше линий, плотнее блок. */}
+        <div className="grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
+          {services.map((key) => (
+            <article key={key} className="group relative isolate overflow-hidden bg-bg p-10">
+              {/* Заливка выезжает снизу — вместо простой смены цвета фона */}
+              <span
+                aria-hidden
+                className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-raised transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
+              />
+              <div className="flex flex-col gap-4">
+                <h3 className="font-display font-semibold text-h3 text-fg text-balance transition-colors duration-300 group-hover:text-accent">
+                  {t(`services.${key}.title`)}
+                </h3>
+                <p className="text-small leading-relaxed text-muted">
+                  {t(`services.${key}.description`)}
+                </p>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

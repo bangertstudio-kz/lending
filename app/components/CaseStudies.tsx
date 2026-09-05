@@ -1,93 +1,50 @@
 'use client';
 
-import { useEffect } from 'react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { motion } from 'motion/react';
-import { useRef } from 'react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from './ui/carousel';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { useCasesStore } from '@/app/store/casesStore';
+import { CaseRow } from './CaseRow';
+import { Section, SectionHeading } from './ui/section';
+import cases from '@/app/data/cases.json';
+
+// Крупным планом показываем только те работы, у которых исходник это выдержит.
+// Мелкие картинки живут в сетке на /cases, где они не разваливаются.
+const LARGE_ENOUGH = new Set([
+  '/assets/case1.png',
+  '/assets/case2.jpg',
+  '/assets/case3.jpg',
+  '/assets/case4.png',
+  '/assets/case6.png',
+  '/assets/case10.jpg',
+  '/assets/case12.png',
+]);
 
 export function CaseStudies() {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
-  const { cases, fetch } = useCasesStore();
 
-  useEffect(() => { fetch(); }, [fetch]);
+  const featured = cases.filter((project) => LARGE_ENOUGH.has(project.image)).slice(0, 6);
 
   return (
-    <section id="case-studies" ref={sectionRef} className="bg-black py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-white text-center mb-16 text-4xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+    <Section id="case-studies" tone="bg">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          title={t('caseStudies.title')}
+          subtitle={t('caseStudies.subtitle')}
+          className="mb-24"
+        />
+
+        <div className="flex flex-col gap-28 md:gap-40">
+          {featured.map((project, index) => (
+            <CaseRow key={project.name} project={project} index={index} />
+          ))}
+        </div>
+
+        <Link
+          href="/cases"
+          className="mt-28 inline-block border-b border-hairline pb-1 text-small text-muted transition-colors hover:border-accent hover:text-accent"
         >
-          {t('caseStudies.title')}
-        </motion.h2>
-
-        <Carousel opts={{ align: 'start', loop: true }} className="w-full">
-          <CarouselContent className="-ml-4">
-            {cases.map((project, index) => (
-              <CarouselItem key={project.name} className="pl-4 md:basis-1/3">
-                <motion.div
-                  className="border border-white/10 overflow-hidden hover:border-white/30 transition-colors group h-full"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <a
-                    href={project.site}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block cursor-pointer"
-                  >
-                    <div className="aspect-square bg-zinc-900 overflow-hidden">
-                      <ImageWithFallback
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-cover transition-all duration-500"
-                      />
-                    </div>
-
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-white">{project.name}</h3>
-                        <span className="text-xs text-white/40 border border-white/20 px-2 py-1">
-                          {project.platform}
-                        </span>
-                      </div>
-                      <p className="text-white/60 text-sm mb-4">{project.description}</p>
-                    </div>
-                  </a>
-                </motion.div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          <div className="flex flex-col md:flex-row items-center md:items-center gap-4 mt-8">
-            <div className="flex gap-4">
-              <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30" />
-              <CarouselNext className="static translate-y-0 bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white disabled:opacity-30" />
-            </div>
-            <a
-              href="/cases"
-              className="text-white/60 text-sm border-b border-white/20 pb-px hover:text-white hover:border-white/60 transition-colors"
-            >
-              {t('caseStudies.viewAll')} →
-            </a>
-          </div>
-        </Carousel>
+          {t('caseStudies.viewAll')}
+        </Link>
       </div>
-    </section>
+    </Section>
   );
 }
