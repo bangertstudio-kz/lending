@@ -1,0 +1,369 @@
+{
+  "header": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "whyChooseUs": "Ventajas",
+    "caseStudies": "Proyectos",
+    "process": "Proceso",
+    "technologies": "Tecnologías",
+    "testimonials": "Testimonios",
+    "contact": "Contacto",
+    "calculator": "Calculadora",
+    "news": "Novedades",
+    "packages": "Para desarrolladores"
+  },
+  "hero": {
+    "title": "Convertimos la idea en un producto que funciona",
+    "subtitle": "Desarrollo móvil y web de ciclo completo. Conoces el plazo y el presupuesto antes de empezar el trabajo, no después.",
+    "ctaConsultation": "Hablar del proyecto",
+    "ctaWork": "Ver trabajos"
+  },
+  "services": {
+    "title": "Qué hacemos",
+    "subtitle": "Ciclo completo: de los requisitos a la publicación y al soporte después del lanzamiento.",
+    "iosDev": {
+      "title": "Una app en la App Store",
+      "description": "Nos ocupamos de la compilación, de los requisitos de Apple y de la publicación: no tienes que lidiar con la revisión."
+    },
+    "androidDev": {
+      "title": "Android sin presupuesto aparte",
+      "description": "Al encargar la versión de iOS, la compilación de Android va sin coste adicional."
+    },
+    "webDev": {
+      "title": "Una web que trae solicitudes",
+      "description": "Landings, sitios corporativos y servicios web centrados en la velocidad de carga, la búsqueda y la conversión."
+    },
+    "uiux": {
+      "title": "Una interfaz que se entiende sin manual",
+      "description": "Diseñamos las pantallas para que la persona llegue a la acción que importa en lugar de cerrar la aplicación."
+    },
+    "analytics": {
+      "title": "Calculamos el alcance antes de la primera línea de código",
+      "description": "Fijamos los requisitos de antemano para que no pagues dos veces por rehacer trabajo a mitad del proyecto."
+    },
+    "maintenance": {
+      "title": "La aplicación no queda desatendida",
+      "description": "La actualizamos para las nuevas versiones de iOS y Android, para que dentro de medio año siga abriéndose."
+    }
+  },
+  "whyChooseUs": {
+    "title": "Por qué nos eligen",
+    "experienced": {
+      "title": "Equipo de desarrollo con experiencia",
+      "description": "Profesionales con más de 10 años de experiencia"
+    },
+    "cleanCode": {
+      "title": "Arquitectura limpia y código escalable",
+      "description": "Seguimos las mejores prácticas del sector y patrones de diseño"
+    },
+    "communication": {
+      "title": "Comunicación transparente",
+      "description": "Actualizaciones regulares, llamadas diarias y documentación clara"
+    },
+    "agile": {
+      "title": "Proceso de desarrollo flexible",
+      "description": "Iteraciones rápidas, entrega continua y planificación adaptativa"
+    },
+    "support": {
+      "title": "Soporte a largo plazo",
+      "description": "Seguimos contigo después del lanzamiento para asegurar el éxito"
+    }
+  },
+  "caseStudies": {
+    "title": "Trabajos",
+    "subtitle": "Aplicaciones que ya están en el móvil de la gente.",
+    "platform": "Plataforma",
+    "results": "Resultados",
+    "viewSite": "Abrir proyecto",
+    "viewAll": "Todos los proyectos",
+    "inAppStore": "En la App Store",
+    "items": {
+      "sapian": "Conocer gente cerca: encuentras a quien está próximo, envías una solicitud y quedáis si el interés es mutuo.",
+      "pings": "Un feed personal de ideas, análisis y prácticas, reunido por inteligencia artificial.",
+      "luna": "Canales de música según el momento: temas escogidos de todo el mundo.",
+      "equilibrium": "Tareas y bienestar en la misma app: planificar el trabajo junto al seguimiento del estado emocional.",
+      "ocean": "Plataforma CPA: el anunciante paga solo por la acción completada — registro, solicitud o compra.",
+      "toptom": "Marketplace para empresas y particulares: vender y comprar productos en una sola plataforma.",
+      "qor": "Plataforma de respuesta rápida: clientes particulares, empresas, agencias de seguridad y consultores independientes en un mismo circuito.",
+      "oro": "Alquiler de capacidad de cómputo para agentes de IA, con tarifas transparentes y facturación clara.",
+      "eiva": "Gimnasios cerca: reservar entrenamientos y comprar abonos en un par de toques.",
+      "hiv": "Un club de salud privado."
+    }
+  },
+  "packages": {
+    "title": "Soluciones para desarrolladores",
+    "subtitle": "Bibliotecas de código abierto para Flutter y Dart que desarrollamos y mantenemos. Todos los paquetes están publicados en pub.dev bajo el editor bangertstudio.kz.",
+    "viewOnPub": "Abrir en pub.dev",
+    "viewOnGithub": "GitHub",
+    "likes": "me gusta",
+    "points": "puntos",
+    "downloads": "descargas en 30 días",
+    "sdkFlutter": "Flutter",
+    "sdkDart": "Dart",
+    "allOnPub": "Todos los paquetes en pub.dev",
+    "items": {
+      "pike": "Gestión de estado basada en eventos: el estado cambia mediante eventos, no mediante mutaciones directas.",
+      "apollon": "Gestión de estado al estilo de Riverpod, pero con una API mínima: menos entidades y un arranque más simple.",
+      "depend": "Inicialización e inyección de dependencias a través del árbol de widgets, sin generación de código ni singletons globales.",
+      "fform": "Constructor de formularios: campos tipados, validación síncrona y asíncrona, manejo claro de errores.",
+      "fform_validator": "Conjunto de validaciones listas para formularios: correo, enlace, número de tarjeta, IP, longitud y formato del texto. Las reglas habituales no hay que reescribirlas en cada proyecto.",
+      "safe_route": "Navegación con seguridad de tipos: los argumentos y resultados de las rutas se comprueban en tiempo de compilación.",
+      "map_route": "Visualización del grafo de rutas de la aplicación: toda la navegación se ve completa al depurar y probar.",
+      "responsive_breakpoints": "Diseños adaptables con breakpoints propios, descritos con un enum corriente.",
+      "enum_picker": "Widget listo para elegir un valor de un enum, sin código repetitivo para cada lista.",
+      "herdsman": "Gestión centralizada de hooks de Git en proyectos Dart y Flutter: el equivalente a husky del mundo JS.",
+      "markup_analyzer": "Analizador CLI de la maquetación de un proyecto Flutter: encuentra textos y estilos escritos directamente en el código y genera un informe.",
+      "background_geo_tracker": "Seguimiento de ruta en segundo plano en iOS y Android: los puntos se recogen y se envían al servidor con código nativo, incluso con la app minimizada."
+    },
+    "home": {
+      "badge": "Código abierto",
+      "title": "Tu proyecto no empieza de cero",
+      "subtitle": "Parte del código de tu aplicación ya está escrita, probada y funcionando en proyectos reales. La publicamos abiertamente y la reutilizamos en tu producto.",
+      "statPackages": "soluciones listas en acceso abierto",
+      "statDownloads": "descargas al mes",
+      "statLikes": "me gusta de desarrolladores",
+      "benefits": {
+        "budget": {
+          "title": "Ahorro de presupuesto y de plazo",
+          "description": "Formularios, pantallas, navegación, adaptación a distintos tamaños de pantalla: esto se repite en cada aplicación. Con nosotros esas partes ya están escritas y rodadas, así que no pagas por un trabajo que de otro modo se haría otra vez desde cero."
+        },
+        "quality": {
+          "title": "No hace falta creernos sin más",
+          "description": "Publicamos este trabajo en acceso abierto: cualquier desarrollador puede abrir el código y ver cómo está hecho. Otros equipos ya lo usan en sus aplicaciones, y el código malo no se difunde así.",
+          "proof": "{{perfect}} de nuestras {{total}} soluciones obtienen la máxima puntuación en una comprobación automática independiente: si hay pruebas, si la documentación está escrita, si todo funciona en distintos dispositivos."
+        },
+        "freedom": {
+          "title": "Sin dependencia del proveedor",
+          "description": "Este trabajo es abierto y gratuito: no está encerrado dentro de nuestro estudio. Si algún día quieres cambiar de equipo, el nuevo lo entiende sin problema y continúa."
+        }
+      },
+      "cta": "Ver las soluciones"
+    },
+    "loading": "Cargando…",
+    "loadError": "No se ha podido cargar la lista de soluciones."
+  },
+  "process": {
+    "title": "Nuestro proceso",
+    "step1": {
+      "title": "Análisis y requisitos",
+      "description": "Analizamos tus objetivos de negocio y definimos el alcance del proyecto"
+    },
+    "step2": {
+      "title": "Diseño y prototipado",
+      "description": "Creación de wireframes y prototipos interactivos para validar"
+    },
+    "step3": {
+      "title": "Desarrollo",
+      "description": "Sprints ágiles con integración y entrega continuas"
+    },
+    "step4": {
+      "title": "Pruebas y QA",
+      "description": "Pruebas exhaustivas en distintos dispositivos y escenarios"
+    },
+    "step5": {
+      "title": "Lanzamiento y soporte",
+      "description": "Publicación en la App Store y mantenimiento continuo"
+    }
+  },
+  "technologies": {
+    "title": "Tecnologías que usamos"
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes"
+  },
+  "contact": {
+    "title": "Cuéntanos tu proyecto",
+    "subtitle": "Describe la tarea en dos líneas y te respondemos con una estimación y preguntas concretas en horario laboral.",
+    "name": "Nombre",
+    "email": "Email",
+    "company": "Empresa",
+    "description": "Descripción del proyecto",
+    "send": "Enviar",
+    "howContactWithYou": "¿Cómo te contactamos?",
+    "getInTouch": "O escríbenos directamente",
+    "reachOut": "Elige el canal que prefieras. Respondemos en horario laboral.",
+    "sent": "¡Solicitud enviada!",
+    "sendError": "Error al enviar. Inténtalo de nuevo.",
+    "sending": "Enviando..."
+  },
+  "footer": {
+    "description": "Desarrollo móvil y web de ciclo completo",
+    "services": "Servicios",
+    "company": "Empresa",
+    "about": "Sobre nosotros",
+    "careers": "Empleo",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "legal": "Información legal",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de uso",
+    "rights": "Todos los derechos reservados",
+    "news": "Novedades",
+    "writeToUs": "Escribir"
+  },
+  "calculator": {
+    "badge": "Estimación con IA",
+    "title": "Calculadora de coste de proyecto de TI",
+    "subtitle": "Obtén una estimación inmediata de tu próximo proyecto",
+    "back": "Atrás",
+    "description": "Descripción del proyecto",
+    "optional": "opcional",
+    "descriptionPlaceholder": "Por ejemplo: MVP de una app móvil con pagos y área de cliente",
+    "analyze": "Analizar con IA",
+    "analyzing": "Analizando...",
+    "analyzeError": "Se ha producido un error. Inténtalo de nuevo.",
+    "contactUs": "Contactar con nosotros",
+    "leaveRequest": "Dejar solicitud",
+    "stage": {
+      "title": "Fase del proyecto",
+      "mvpLabel": "MVP",
+      "mvpDesc": "Solo las funciones clave",
+      "matureLabel": "Producto maduro",
+      "matureDesc": "Aplicación con funcionalidad completa"
+    },
+    "platforms": {
+      "title": "Plataformas",
+      "webApp": "Aplicación web",
+      "webAppDesc": "Aplicación web en React",
+      "mobileApp": "Aplicación móvil",
+      "mobileAppDesc": "iOS y Android",
+      "macos": "macOS",
+      "macosDesc": "Aplicación nativa de macOS",
+      "windows": "Windows",
+      "windowsDesc": "Aplicación nativa de Windows"
+    },
+    "features": {
+      "title": "Funciones",
+      "customTitle": "Funciones personalizadas",
+      "addPlaceholder": "Añadir función...",
+      "add": "Añadir",
+      "landingPage": "Landing page",
+      "authentication": "Autenticación",
+      "payments": "Pagos",
+      "adminPanel": "Panel de administración",
+      "apiIntegration": "Integración de API",
+      "notifications": "Notificaciones",
+      "analytics": "Analítica",
+      "chat": "Chat / Mensajería",
+      "fileUpload": "Subida de archivos",
+      "search": "Búsqueda",
+      "socialLogin": "Acceso con redes sociales",
+      "userProfiles": "Perfiles de usuario",
+      "roleManagement": "Gestión de roles",
+      "permissions": "Sistema de permisos",
+      "dashboard": "Panel",
+      "settings": "Página de ajustes",
+      "twoFactorAuth": "Autenticación de dos factores",
+      "passwordRecovery": "Recuperación de contraseña",
+      "emailVerification": "Verificación de email",
+      "sessionManagement": "Gestión de sesiones",
+      "auditLogs": "Registro de auditoría",
+      "subscriptionBilling": "Suscripciones y pagos",
+      "invoices": "Facturas",
+      "coupons": "Cupones y descuentos",
+      "multiCurrency": "Multidivisa",
+      "checkout": "Proceso de compra",
+      "productCatalog": "Catálogo de productos",
+      "shoppingCart": "Carrito de compra",
+      "orderManagement": "Gestión de pedidos",
+      "wishlist": "Lista de deseos",
+      "productReviews": "Reseñas de productos",
+      "inventory": "Gestión de inventario",
+      "pushNotifications": "Notificaciones push",
+      "activityFeed": "Feed de actividad",
+      "comments": "Sistema de comentarios",
+      "likes": "Me gusta y reacciones",
+      "following": "Seguir usuarios",
+      "liveUpdates": "Actualizaciones en tiempo real",
+      "customReports": "Informes personalizados",
+      "dataVisualization": "Visualización de datos",
+      "userTracking": "Seguimiento de usuarios",
+      "eventTracking": "Seguimiento de eventos",
+      "exportData": "Exportación de datos",
+      "crm": "Integración con CRM",
+      "emailService": "Envío de email",
+      "sms": "Servicio de SMS",
+      "maps": "Google Maps",
+      "webhooks": "Soporte de webhooks",
+      "media": "Gestión de archivos multimedia",
+      "documents": "Almacenamiento de documentos",
+      "richText": "Editor de texto enriquecido",
+      "cms": "CMS",
+      "versionHistory": "Historial de versiones",
+      "multiLanguage": "Multiidioma",
+      "timezone": "Soporte de zonas horarias",
+      "ai": "Recomendaciones con IA",
+      "advancedSearch": "Búsqueda avanzada",
+      "backgroundJobs": "Tareas en segundo plano",
+      "caching": "Capa de caché",
+      "scalability": "Optimización de escalabilidad",
+      "offline": "Modo sin conexión",
+      "biometric": "Autenticación biométrica",
+      "appDeployment": "Publicación de la aplicación",
+      "testing": "Pruebas automatizadas",
+      "cicd": "Configuración de CI/CD",
+      "monitoring": "Monitorización y registro",
+      "errorTracking": "Seguimiento de errores",
+      "performance": "Optimización del rendimiento",
+      "security": "Refuerzo de seguridad",
+      "multitenant": "Arquitectura multiinquilino",
+      "whitelabel": "White-label",
+      "enterpriseSecurity": "Seguridad empresarial"
+    },
+    "team": {
+      "title": "Composición del equipo",
+      "projectManager": "Jefe de proyecto",
+      "designer": "Diseñador UI/UX",
+      "fullstack": "Desarrollador fullstack",
+      "frontend": "Desarrollador frontend",
+      "backend": "Desarrollador backend",
+      "mobile": "Desarrollador móvil",
+      "qa": "Ingeniero de QA",
+      "devops": "Ingeniero de DevOps"
+    },
+    "results": {
+      "title": "Estimación de coste",
+      "budget": "Presupuesto",
+      "timeline": "Plazo",
+      "weeks": "sem.",
+      "teamSize": "Tamaño del equipo",
+      "person": "persona",
+      "people": "personas",
+      "disclaimer": "La estimación se basa en promedios del sector. El coste final puede variar según los requisitos."
+    },
+    "cta": {
+      "badge": "Estimación en 30 segundos",
+      "title": "Conoce el presupuesto antes de la primera llamada",
+      "subtitle": "Describe la idea y recibe un rango de presupuesto, un plazo y la composición del equipo. Sin llamadas ni registro.",
+      "placeholder": "Por ejemplo: aplicación móvil de entrega de comida con pagos y área de cliente...",
+      "charsLength": "Caracteres: {{length}}",
+      "optional": "La descripción es opcional",
+      "button": "Calcular",
+      "note": "Gratis y sin registro, el resultado aparece al momento"
+    }
+  },
+  "proof": {
+    "projects": "proyectos en el portafolio",
+    "appstore": "apps en la App Store",
+    "packages": "soluciones abiertas",
+    "years": "años desarrollando"
+  },
+  "meta": {
+    "home": {
+      "title": "Bangert Studio — desarrollo móvil y web",
+      "description": "Desarrollo móvil y web de ciclo completo. Conoces el plazo y el presupuesto antes de empezar el trabajo, no después."
+    },
+    "cases": {
+      "title": "Trabajos — Bangert Studio",
+      "description": "Aplicaciones que ya están en el móvil de la gente. Proyectos móviles y web de Bangert Studio."
+    },
+    "packages": {
+      "title": "Soluciones de código abierto — Bangert Studio",
+      "description": "Bibliotecas abiertas para Flutter y Dart: estado, formularios, navegación, diseños adaptables y herramientas de desarrollo."
+    },
+    "calculator": {
+      "title": "Calculadora de coste de proyecto — Bangert Studio",
+      "description": "Describe la idea y recibe un rango de presupuesto, un plazo y la composición del equipo. Sin llamadas ni registro."
+    }
+  }
+}

@@ -39,6 +39,16 @@ https://pub.dev/publishers/bangertstudio.kz/packages
 типобезопасная навигация, адаптивные лейауты, фоновое отслеживание
 геопозиции, инструменты анализа вёрстки и управления Git-хуками.
 
+## Языковые версии
+
+Сайт доступен на пяти языках, каждая версия по своему адресу:
+
+- Русский: https://bangertstudio.kz/
+- English: https://bangertstudio.kz/en/
+- Қазақша: https://bangertstudio.kz/kk/
+- Português: https://bangertstudio.kz/pt/
+- Español: https://bangertstudio.kz/es/
+
 ## Связь
 
 - Telegram: https://t.me/alexanderbangert

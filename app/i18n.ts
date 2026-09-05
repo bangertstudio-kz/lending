@@ -1,6 +1,9 @@
 import { createInstance, type i18n as I18nInstance } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from './locales/en.json';
+import es from './locales/es.json';
+import kk from './locales/kk.json';
+import pt from './locales/pt.json';
 import ru from './locales/ru.json';
 
 import { DEFAULT_LOCALE, isLocale, type Locale } from './seo';
@@ -10,6 +13,9 @@ export { DEFAULT_LOCALE, isLocale, LOCALES, type Locale } from './seo';
 const resources = {
   ru: { translation: ru },
   en: { translation: en },
+  kk: { translation: kk },
+  pt: { translation: pt },
+  es: { translation: es },
 };
 
 function build(locale: Locale): I18nInstance {

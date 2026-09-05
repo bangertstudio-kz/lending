@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
-import { DEFAULT_LOCALE, LOCALES, OG_IMAGE, isLocale, urlFor } from '@/app/seo';
+import { DEFAULT_LOCALE, LOCALES, OG_IMAGE, OG_LOCALES, isLocale, urlFor } from '@/app/seo';
 
 export function SeoHead({ page, path }: { page: string; path: string }) {
   const { t } = useTranslation();
@@ -30,7 +30,7 @@ export function SeoHead({ page, path }: { page: string; path: string }) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={OG_IMAGE} />
-      <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'ru_RU'} />
+      <meta property="og:locale" content={OG_LOCALES[locale]} />
       <meta property="og:site_name" content="Bangert Studio" />
 
       <meta name="twitter:card" content="summary_large_image" />
