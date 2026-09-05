@@ -2,16 +2,11 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'motion/react';
-import { Boxes, Coins, ShieldCheck, GitFork, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Section, SectionHeading, Eyebrow } from './ui/section';
 import { usePackagesStore } from '@/app/store/packagesStore';
 
-const BENEFITS = [
-  { key: 'budget', Icon: Coins },
-  { key: 'quality', Icon: ShieldCheck },
-  { key: 'freedom', Icon: GitFork },
-] as const;
+const BENEFITS = ['budget', 'quality', 'freedom'] as const;
 
 export function DevSolutions() {
   const { t, i18n } = useTranslation();
@@ -35,86 +30,47 @@ export function DevSolutions() {
     },
   ];
 
-  const benefitCounts = {
-    perfect: packages.filter((pkg) => pkg.points === pkg.maxPoints).length,
-    total: packages.length,
-  };
-
   return (
-    <section className="py-24 px-6 bg-black">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white/70 px-4 py-2 rounded-full mb-6 text-sm">
-            <Boxes className="w-4 h-4 text-white/60" />
-            {t('packages.home.badge')}
-          </div>
-          <h2 className="text-white text-4xl font-bold mb-4">
-            {t('packages.home.title')}
-          </h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            {t('packages.home.subtitle')}
-          </p>
-        </motion.div>
+    <Section tone="surface">
+      <div className="mx-auto max-w-5xl">
+        <SectionHeading
+          eyebrow={<Eyebrow>{t('packages.home.badge')}</Eyebrow>}
+          title={t('packages.home.title')}
+          subtitle={t('packages.home.subtitle')}
+          className="mb-12"
+        />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="grid grid-cols-3 border-y border-white/10 divide-x divide-white/10 mb-12"
-        >
+        <dl className="mb-14 grid grid-cols-3 divide-x divide-hairline border-y border-hairline">
           {stats.map((stat) => (
-            <div key={stat.label} className="py-6 px-4 text-center">
-              <div className="text-white text-3xl font-bold mb-1 tabular-nums">
+            <div key={stat.label} className="px-5 py-8">
+              <dt className="font-mono text-h2 tabular-nums text-accent">
                 {loaded ? format(stat.value) : '—'}
-              </div>
-              <div className="text-white/40 text-xs leading-snug">{stat.label}</div>
+              </dt>
+              <dd className="mt-2 text-xs leading-snug text-faint">{stat.label}</dd>
             </div>
           ))}
-        </motion.div>
+        </dl>
 
-        <div className="grid gap-8 md:grid-cols-3 mb-12">
-          {BENEFITS.map(({ key, Icon }, index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-            >
-              <Icon className="w-5 h-5 text-white/60 mb-4" aria-hidden />
-              <h3 className="text-white text-base font-semibold mb-2">
+        <div className="mb-12 grid gap-10 md:grid-cols-3">
+          {BENEFITS.map((key) => (
+            <div key={key}>
+              <h3 className="mb-3 font-display font-semibold text-h3 text-fg">
                 {t(`packages.home.benefits.${key}.title`)}
               </h3>
-              <p className="text-white/50 text-sm leading-relaxed">
+              <p className="text-small leading-relaxed text-muted">
                 {t(`packages.home.benefits.${key}.description`)}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
+        <Link
+          href="/packages"
+          className="inline-block bg-fg px-6 py-3.5 text-small font-medium text-bg transition-colors hover:bg-accent"
         >
-          <Link
-            href="/packages"
-            className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-white/90 transition-colors"
-          >
-            {t('packages.home.cta')}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
+          {t('packages.home.cta')}
+        </Link>
       </div>
-    </section>
+    </Section>
   );
 }
