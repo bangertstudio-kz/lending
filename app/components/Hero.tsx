@@ -1,70 +1,68 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-import { Button } from './ui/button';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 
 export function Hero() {
   const { t } = useTranslation();
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
+  const reduceMotion = useReducedMotion();
+
+  const opacity = useTransform(scrollY, [0, 420], [1, 0]);
+  const lift = useTransform(scrollY, [0, 420], [0, 70]);
+
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  // Единственная неинтерактивная анимация на сайте: один вход на загрузке.
+  const enter = (delay: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 28 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-
+    <section
+      id="hero"
+      className="glow-warm relative flex min-h-[90vh] items-center overflow-hidden px-6"
+    >
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center"
-        style={{ opacity, scale }}
+        className="relative z-10 mx-auto w-full max-w-5xl py-32"
+        style={reduceMotion ? undefined : { opacity, y: lift }}
       >
         <motion.h1
-          className="text-white mb-6 max-w-4xl mx-auto leading-tight md:text-6xl text-4xl font-bold"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          className="font-display font-semibold text-display text-fg text-balance max-w-[16ch]"
+          {...enter(0.05)}
         >
           {t('hero.title')}
-          <span className="text-blue-500">{t('hero.title1')}</span>
-          {t('hero.title2')}
         </motion.h1>
 
         <motion.p
-          className="text-white/70 text-xl max-w-2xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-8 max-w-[52ch] text-body-lg text-muted text-pretty"
+          {...enter(0.18)}
         >
           {t('hero.subtitle')}
         </motion.p>
 
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Button
-            size="lg"
-            className="bg-white text-black hover:bg-white/90 px-8"
-            onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+        <motion.div className="mt-12 flex flex-col gap-3 sm:flex-row" {...enter(0.3)}>
+          <button
+            type="button"
+            onClick={() => scrollTo('contact')}
+            className="bg-fg px-8 py-4 text-small font-medium text-bg transition-colors hover:bg-accent"
           >
             {t('hero.ctaConsultation')}
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          </button>
 
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 px-8 hover:text-white"
-            onClick={() => {
-              document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+          <button
+            type="button"
+            onClick={() => scrollTo('case-studies')}
+            className="border border-hairline-strong px-8 py-4 text-small font-medium text-fg transition-colors hover:border-accent hover:text-accent"
           >
             {t('hero.ctaWork')}
-          </Button>
+          </button>
         </motion.div>
       </motion.div>
     </section>
