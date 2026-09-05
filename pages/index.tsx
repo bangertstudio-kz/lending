@@ -31,7 +31,7 @@ export default function Home() {
       </Head>
       <div className="relative min-h-screen bg-bg">
         <Header />
-        <div className="relative">
+        <main className="relative">
           <Hero />
           <ProofBar />
           <CaseStudies />
@@ -39,8 +39,8 @@ export default function Home() {
           <CalculatorCTA />
           <DevSolutions />
           <ContactForm />
-          <Footer />
-        </div>
+        </main>
+        <Footer />
         <MobileScrollButton />
       </div>
     </>

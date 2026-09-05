@@ -16,14 +16,32 @@ const jsonLd = {
       name: 'Bangert Studio',
       url: 'https://bangertstudio.kz',
       logo: 'https://bangertstudio.kz/og-image.png',
-      description: 'Разработка мобильных и веб-приложений под ключ для стартапов и бизнеса.',
-      sameAs: [],
+      email: 'alexganbert@gmail.com',
+      description:
+        'Студия мобильной и веб-разработки полного цикла: приложения для iOS и Android, веб-сервисы, проектирование и поддержка после релиза.',
+      // Профили, по которым поисковые и AI-системы связывают сайт с одной сущностью.
+      // Раньше здесь был пустой массив.
+      sameAs: [
+        'https://www.linkedin.com/company/bangertstudio/',
+        'https://t.me/bangertstudio',
+        'https://pub.dev/publishers/bangertstudio.kz/packages',
+      ],
+      knowsAbout: [
+        'Разработка мобильных приложений',
+        'iOS',
+        'Android',
+        'Flutter',
+        'Dart',
+        'Веб-разработка',
+        'Проектирование интерфейсов',
+      ],
     },
     {
       '@type': 'WebSite',
       '@id': 'https://bangertstudio.kz/#website',
       url: 'https://bangertstudio.kz',
       name: 'Bangert Studio',
+      inLanguage: 'ru',
       publisher: { '@id': 'https://bangertstudio.kz/#organization' },
     },
   ],
