@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { motion } from 'motion/react';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
@@ -17,68 +16,63 @@ export default function CasesPage() {
     <>
       <Head>
         <title>Кейсы — Bangert Studio</title>
-        <meta name="description" content="Наши работы: мобильные и веб-приложения для стартапов и бизнеса. Смотрите реальные проекты Bangert Studio." />
+        <meta name="description" content="Приложения, которые уже стоят у людей на телефонах. Мобильные и веб-проекты Bangert Studio." />
         <link rel="canonical" href="https://bangertstudio.kz/cases" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bangertstudio.kz/cases" />
         <meta property="og:title" content="Кейсы — Bangert Studio" />
-        <meta property="og:description" content="Наши работы: мобильные и веб-приложения для стартапов и бизнеса." />
+        <meta property="og:description" content="Приложения, которые уже стоят у людей на телефонах." />
         <meta property="og:image" content="https://bangertstudio.kz/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Кейсы — Bangert Studio" />
-        <meta name="twitter:description" content="Наши работы: мобильные и веб-приложения для стартапов и бизнеса." />
+        <meta name="twitter:description" content="Приложения, которые уже стоят у людей на телефонах." />
         <meta name="twitter:image" content="https://bangertstudio.kz/og-image.png" />
       </Head>
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-bg">
         <Header />
 
-        <main className="max-w-4xl mx-auto px-6 pt-32 pb-24">
-          <motion.h1
-            className="text-white text-4xl text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {t('caseStudies.title')}
-          </motion.h1>
+        <main className="mx-auto max-w-6xl px-6 pb-28 pt-36">
+          <h1 className="font-display font-semibold text-h1 text-fg">{t('caseStudies.title')}</h1>
+          <p className="mb-16 mt-4 max-w-[52ch] text-body-lg text-muted">
+            {t('caseStudies.subtitle')}
+          </p>
 
-          {loading && <p className="text-white/40 text-center text-sm">Loading...</p>}
-          {error && <p className="text-red-400 text-center text-sm">{error}</p>}
+          {loading && <p className="text-center text-small text-faint">{t('packages.loading')}</p>}
+          {error && <p role="alert" className="text-center text-small text-red-400">{error}</p>}
 
           {!loading && !error && (
-            <div className="flex flex-col">
-              {cases.map((project, index) => (
-                <motion.a
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {cases.map((project) => (
+                <a
                   key={project.name}
                   href={project.site}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-6 py-6 border-b border-white/10 group hover:border-white/30 transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="group flex flex-col border border-hairline bg-surface transition-colors hover:border-hairline-strong"
                 >
-                  <div className="w-24 h-24 flex-shrink-0 overflow-hidden bg-zinc-900">
+                  <div className="aspect-[4/3] overflow-hidden bg-raised">
                     <ImageWithFallback
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-full object-cover transition-all duration-500"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                   </div>
 
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-white text-lg">{project.name}</h2>
-                      <span className="text-xs text-white/40 border border-white/20 px-2 py-0.5 flex-shrink-0">
+                  <div className="flex flex-1 flex-col gap-3 p-6">
+                    <h2 className="font-display font-semibold text-h3 text-fg">{project.name}</h2>
+                    <p className="flex-1 text-small leading-relaxed text-muted">{project.description}</p>
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      <span className="border border-hairline px-2 py-0.5 text-xs text-faint">
                         {project.platform}
                       </span>
+                      {project.site.includes('apps.apple.com') && (
+                        <span className="border border-accent/40 bg-accent-soft px-2 py-0.5 text-xs text-accent">
+                          {t('caseStudies.inAppStore')}
+                        </span>
+                      )}
                     </div>
-                    <p className="text-white/50 text-sm leading-relaxed mb-3">{project.description}</p>
-                    <span className="text-white/40 text-xs border-b border-white/20 pb-px group-hover:text-white/70 group-hover:border-white/40 transition-colors">
-                      {t('caseStudies.viewSite')} →
-                    </span>
                   </div>
-                </motion.a>
+                </a>
               ))}
             </div>
           )}
