@@ -1,10 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
 import { useTranslation } from 'react-i18next';
 
 async function sendToTelegram(name: string, contact: string, description?: string, file?: File | null) {
@@ -17,6 +13,10 @@ async function sendToTelegram(name: string, contact: string, description?: strin
   const response = await fetch('/api/contact', { method: 'POST', body });
   if (!response.ok) throw new Error('API error');
 }
+
+const FIELD_CLASS =
+  'w-full border border-hairline bg-surface px-4 py-3.5 text-body text-fg ' +
+  'placeholder:text-faint transition-colors focus:border-accent focus:outline-none';
 
 interface ContactInlineFormProps {
   description?: string;
@@ -42,42 +42,38 @@ export function ContactInlineForm({ description, file }: ContactInlineFormProps)
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <Input
+      <input
         type="text"
         placeholder={t('contact.name')}
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+        className={FIELD_CLASS}
         required
       />
-      <Textarea
+      <textarea
         placeholder={t('contact.howContactWithYou')}
         value={formData.contact}
         onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 min-h-[100px]"
+        className={`${FIELD_CLASS} min-h-[110px] resize-none`}
         required
       />
       {status === 'success' && (
-        <div className="flex items-center gap-2 text-green-400 text-sm">
-          <CheckCircle className="w-4 h-4" />
-          <span>{t('contact.sent')}</span>
-        </div>
+        <p role="status" className="text-small text-accent">
+          {t('contact.sent')}
+        </p>
       )}
       {status === 'error' && (
-        <div className="flex items-center gap-2 text-red-400 text-sm">
-          <AlertCircle className="w-4 h-4" />
-          <span>{t('contact.sendError')}</span>
-        </div>
+        <p role="alert" className="text-small text-red-400">
+          {t('contact.sendError')}
+        </p>
       )}
-      <Button
+      <button
         type="submit"
-        size="lg"
         disabled={status === 'loading'}
-        className="w-full bg-white text-black hover:bg-white/90 disabled:opacity-60"
+        className="w-full bg-fg px-6 py-4 text-small font-medium text-bg transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
       >
         {status === 'loading' ? t('contact.sending') : t('contact.send')}
-        <Send className="ml-2 h-4 w-4" />
-      </Button>
+      </button>
     </form>
   );
 }
