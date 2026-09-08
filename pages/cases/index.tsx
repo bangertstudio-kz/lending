@@ -5,6 +5,7 @@ import { Footer } from '@/app/components/Footer';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { useTranslation } from 'react-i18next';
 import { useCasesStore } from '@/app/store/casesStore';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 export default function CasesPage() {
   const { t } = useTranslation();
@@ -35,6 +36,13 @@ export default function CasesPage() {
                   href={project.site}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackGoal(GOALS.caseOpen, {
+                      name: project.name,
+                      platform: project.platform,
+                      place: 'cases',
+                    })
+                  }
                   className="group flex flex-col border border-hairline bg-surface transition-colors hover:border-hairline-strong"
                 >
                   <div className="aspect-square overflow-hidden bg-raised">

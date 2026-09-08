@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 async function sendToTelegram(name: string, contact: string, description?: string, file?: File | null) {
   const body = new FormData();
@@ -21,9 +22,11 @@ const FIELD_CLASS =
 interface ContactInlineFormProps {
   description?: string;
   file?: File | null;
+  /** Откуда отправлена заявка: форма живёт и на главной, и в калькуляторе. */
+  place?: 'home' | 'calculator';
 }
 
-export function ContactInlineForm({ description, file }: ContactInlineFormProps) {
+export function ContactInlineForm({ description, file, place = 'home' }: ContactInlineFormProps) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: '', contact: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -31,12 +34,15 @@ export function ContactInlineForm({ description, file }: ContactInlineFormProps)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+    trackGoal(GOALS.contactFormSubmit, { place, withBrief: Boolean(description), withFile: Boolean(file) });
     try {
       await sendToTelegram(formData.name, formData.contact, description, file);
       setStatus('success');
       setFormData({ name: '', contact: '' });
+      trackGoal(GOALS.contactFormSuccess, { place });
     } catch {
       setStatus('error');
+      trackGoal(GOALS.contactFormError, { place });
     }
   };
 

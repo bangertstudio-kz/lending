@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 const sections = ['hero', 'case-studies', 'services', 'contact'];
 
@@ -36,6 +37,7 @@ export function MobileScrollButton() {
   const scrollToNext = () => {
     const nextIndex = currentSection + 1;
     if (nextIndex < sections.length) {
+      trackGoal(GOALS.mobileScrollNext, { to: sections[nextIndex] });
       document.getElementById(sections[nextIndex])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };

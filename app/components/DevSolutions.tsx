@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { Section, SectionHeading, Eyebrow } from './ui/section';
 import { usePackagesStore } from '@/app/store/packagesStore';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 const BENEFITS = ['budget', 'quality', 'freedom'] as const;
 
@@ -66,6 +67,7 @@ export function DevSolutions() {
 
         <Link
           href="/packages"
+          onClick={() => trackGoal(GOALS.devSolutionsCta)}
           className="inline-block bg-fg px-6 py-3.5 text-small font-medium text-bg transition-colors hover:bg-accent"
         >
           {t('packages.home.cta')}

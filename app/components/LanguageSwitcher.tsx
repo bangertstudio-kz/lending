@@ -5,6 +5,7 @@ import { Globe } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'motion/react';
 import { DEFAULT_LOCALE, LOCALES, LOCALE_LABELS, isLocale, type Locale } from '@/app/seo';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 interface LanguageSwitcherProps {
   onLanguageChange?: () => void;
@@ -37,6 +38,7 @@ export function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
   const select = (locale: Locale) => {
     setOpen(false);
     if (locale === current) return;
+    trackGoal(GOALS.langChange, { from: current, to: locale });
     // Язык — часть адреса, а не состояние в браузере: так каждая версия
     // существует по своему URL и попадает в индекс.
     const { pathname, asPath, query } = router;

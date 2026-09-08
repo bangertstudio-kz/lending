@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 // Переход на главную идёт через next/link — он сохраняет активную локаль.
 // С обычным <a href="/#hero"> клик по логотипу сбрасывал язык на дефолтный.
@@ -11,6 +12,7 @@ export function Logo() {
   return (
     <MotionLink
       href="/#hero"
+      onClick={() => trackGoal(GOALS.logoClick)}
       className="flex items-center gap-3"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}

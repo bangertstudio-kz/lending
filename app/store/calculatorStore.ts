@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import calculatorData from '@/app/data/calculator.json';
 import { getCurrentLanguage } from '@/app/i18n';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 const HOURS_PER_WEEK = 40;
 const FALLBACK_STAGE_MULTIPLIER = 1.0;
@@ -107,9 +108,9 @@ export const useCalculatorStore = create<CalculatorState>((set, get) => ({
         error?: string;
       };
 
-      console.log(data);
       if (!res.ok) {
         set({ analyzeError: 'error' });
+        trackGoal(GOALS.calculatorAnalyzeError, { reason: 'response', status: res.status });
         return;
       }
       const { features = [], customFeatures = [], stage = 'mvp' } = data;
@@ -117,9 +118,17 @@ export const useCalculatorStore = create<CalculatorState>((set, get) => ({
         customFeatures.map(({ key, cost, hours }) => [key, { cost, hours }])
       );
       const allFeatures = [...features, ...customFeatures.map((f) => f.key)];
-      set({ features: allFeatures, customFeatureData, stage, estimates: computeEstimates(allFeatures, stage, customFeatureData) });
+      const estimates = computeEstimates(allFeatures, stage, customFeatureData);
+      set({ features: allFeatures, customFeatureData, stage, estimates });
+      trackGoal(GOALS.calculatorAnalyzeSuccess, {
+        stage,
+        features: allFeatures.length,
+        minCost: estimates.minCost,
+        maxCost: estimates.maxCost,
+      });
     } catch {
       set({ analyzeError: 'error' });
+      trackGoal(GOALS.calculatorAnalyzeError, { reason: 'network' });
     } finally {
       set({ isAnalyzing: false });
     }

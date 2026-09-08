@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Header } from '@/app/components/Header';
 import { Footer } from '@/app/components/Footer';
 import { usePackagesStore } from '@/app/store/packagesStore';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 const PUB_PUBLISHER_URL = 'https://pub.dev/publishers/bangertstudio.kz/packages';
 
@@ -79,6 +80,7 @@ export default function PackagesPage() {
                     href={`https://pub.dev/packages/${pkg.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackGoal(GOALS.packagePubClick, { package: pkg.name })}
                     className="flex items-center gap-1 border-b border-hairline pb-px text-xs text-muted transition-colors hover:border-accent hover:text-accent"
                   >
                     {t('packages.viewOnPub')}
@@ -89,6 +91,7 @@ export default function PackagesPage() {
                       href={pkg.repo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackGoal(GOALS.packageGithubClick, { package: pkg.name })}
                       className="flex items-center gap-1 border-b border-hairline pb-px text-xs text-faint transition-colors hover:border-accent hover:text-accent"
                     >
                       {t('packages.viewOnGithub')}
@@ -105,6 +108,7 @@ export default function PackagesPage() {
               href={PUB_PUBLISHER_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackGoal(GOALS.packagesAllClick)}
               className="inline-flex items-center gap-1 border-b border-hairline pb-px text-small text-muted transition-colors hover:border-accent hover:text-accent"
             >
               {t('packages.allOnPub')}

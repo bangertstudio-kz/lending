@@ -2,6 +2,7 @@
 
 import { MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -29,6 +30,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-end gap-4">
             <a
               href="mailto:alexganbert@gmail.com"
+              onClick={() => trackGoal(GOALS.footerEmailClick)}
               className="text-muted hover:text-accent transition-colors"
             >
               alexganbert@gmail.com
@@ -39,6 +41,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/bangertstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackGoal(GOALS.footerSocialClick, { channel: 'linkedin' })}
                 className="text-faint hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
@@ -48,6 +51,7 @@ export function Footer() {
                 href="https://t.me/bangertstudio"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackGoal(GOALS.footerSocialClick, { channel: 'telegram_news' })}
                 className="text-faint hover:text-accent transition-colors"
                 aria-label={t('footer.news')}
               >
@@ -57,6 +61,7 @@ export function Footer() {
                 href="https://t.me/alexanderbangert"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackGoal(GOALS.footerSocialClick, { channel: 'telegram_direct' })}
                 className="text-faint hover:text-accent transition-colors"
                 aria-label={t('footer.writeToUs')}
               >

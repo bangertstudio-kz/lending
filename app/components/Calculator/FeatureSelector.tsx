@@ -3,6 +3,7 @@ import { Check, Plus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import data from '@/app/data/calculator.json';
 import { useCalculatorStore } from '@/app/store/calculatorStore';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 export default function FeatureSelector() {
   const { t } = useTranslation();
@@ -18,9 +19,15 @@ export default function FeatureSelector() {
   const handleAdd = () => {
     const trimmed = customInput.trim();
     if (trimmed) {
+      trackGoal(GOALS.calculatorFeatureCustomAdd, { feature: trimmed });
       addCustomFeature(trimmed);
       setCustomInput('');
     }
+  };
+
+  const handleToggle = (key: string, wasSelected: boolean) => {
+    trackGoal(GOALS.calculatorFeatureToggle, { feature: key, selected: !wasSelected });
+    toggleFeature(key);
   };
 
   return (
@@ -37,7 +44,7 @@ export default function FeatureSelector() {
           return (
             <button
               key={feature.key}
-              onClick={() => toggleFeature(feature.key)}
+              onClick={() => handleToggle(feature.key, isSelected)}
               className={`px-3 py-2 border transition-all flex items-center gap-2 ${isSelected ? 'border-hairline-strong bg-raised text-fg' : 'border-hairline bg-transparent text-muted hover:border-hairline-strong'}`}
             >
               {isSelected && <Check className="w-4 h-4" />}
@@ -59,7 +66,7 @@ export default function FeatureSelector() {
               return (
                 <button
                   key={key}
-                  onClick={() => toggleFeature(key)}
+                  onClick={() => handleToggle(key, true)}
                   className="px-3 py-2 border transition-all flex items-center gap-2 border-hairline-strong bg-raised text-fg"
                 >
                   <Check className="w-4 h-4" />

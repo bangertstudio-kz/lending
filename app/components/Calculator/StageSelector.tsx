@@ -2,6 +2,7 @@ import { Rocket, Building2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import data from '@/app/data/calculator.json';
 import { useCalculatorStore } from '@/app/store/calculatorStore';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 const stageIcons: Record<string, React.ElementType> = { mvp: Rocket, mature: Building2 };
 
@@ -19,7 +20,10 @@ export default function StageSelector() {
           return (
             <button
               key={s.id}
-              onClick={() => setStage(s.id)}
+              onClick={() => {
+                trackGoal(GOALS.calculatorStageSelect, { stage: s.id });
+                setStage(s.id);
+              }}
               className={`p-4 border transition-all text-left ${isSelected ? 'border-hairline-strong bg-raised' : 'border-hairline bg-transparent hover:border-hairline-strong'}`}
             >
               <Icon className={`w-8 h-8 mb-3 ${isSelected ? 'text-fg' : 'text-faint'}`} />

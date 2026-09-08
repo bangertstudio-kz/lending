@@ -8,6 +8,7 @@ import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ReadingProgress } from './ReadingProgress';
 import { useTranslation } from 'react-i18next';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 type NavItem = { label: string; href: string; external?: boolean };
 
@@ -66,8 +67,10 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem, place: 'desktop' | 'mobile') => {
+    trackGoal(GOALS.navClick, { item: item.href, place, external: Boolean(item.external) });
     setIsMobileMenuOpen(false);
+    const href = item.href;
     if (!href.startsWith('#')) return;
     e.preventDefault();
     const element = document.querySelector(href);
@@ -93,7 +96,7 @@ export function Header() {
                 <NavLink
                   key={item.href}
                   item={item}
-                  onClick={(e) => handleNavClick(e, item.href)}
+                  onClick={(e) => handleNavClick(e, item, 'desktop')}
                   className="text-small text-muted transition-colors hover:text-fg"
                 >
                   {t(item.label)}
@@ -104,7 +107,10 @@ export function Header() {
 
             <button
               className="md:hidden text-fg p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => {
+                if (!isMobileMenuOpen) trackGoal(GOALS.mobileMenuOpen);
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -138,7 +144,7 @@ export function Header() {
                   <NavLink
                     key={item.href}
                     item={item}
-                    onClick={(e) => handleNavClick(e, item.href)}
+                    onClick={(e) => handleNavClick(e, item, 'mobile')}
                     className="border-b border-hairline py-2 text-body-lg text-muted transition-colors last:border-0 hover:text-fg"
                   >
                     {t(item.label)}

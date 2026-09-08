@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { useRouter } from 'next/router';
+import { METRIKA_ID, trackPageView } from '../app/analytics';
 import { DEFAULT_LOCALE, getI18n, isLocale } from '../app/i18n';
 import { display, geistMono, geistSans } from '../app/fonts';
 import '../app/globals.css';
@@ -48,9 +50,17 @@ const jsonLd = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { locale } = useRouter();
-  const activeLocale = isLocale(locale) ? locale : DEFAULT_LOCALE;
+  const router = useRouter();
+  const activeLocale = isLocale(router.locale) ? router.locale : DEFAULT_LOCALE;
   const i18n = getI18n(activeLocale);
+
+  // Переходы между страницами клиентские, перезагрузки нет — Метрика сама
+  // засчитала бы только первый экран. Шлём hit на каждый завершённый переход.
+  useEffect(() => {
+    const handleRouteChange = (url: string) => trackPageView(url);
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => router.events.off('routeChangeComplete', handleRouteChange);
+  }, [router.events]);
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -73,9 +83,9 @@ export default function App({ Component, pageProps }: AppProps) {
               m[i].l=1*new Date();
               for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
               k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-          })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105997418', 'ym');
+          })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=${METRIKA_ID}', 'ym');
 
-          ym(105997418, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', accurateTrackBounce:true, trackLinks:true});
+          ym(${METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer', accurateTrackBounce:true, trackLinks:true});
         `}
       </Script>
       {/* Переменные шрифтов обязаны жить на :root. В @theme объявлено

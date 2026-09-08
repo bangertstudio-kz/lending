@@ -11,6 +11,7 @@ import FeatureSelector from './FeatureSelector';
 import EstimationResults from './EstimationResults';
 import { ContactInlineForm } from '../ContactInlineForm';
 import { ContactLinks } from '../ContactLinks';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 interface CostCalculatorProps {
   isOpen: boolean;
@@ -31,13 +32,30 @@ export default function CostCalculator({
   const [attachedFile, setAttachedFile] = useState<File | null>(null);
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAttachedFile(e.target.files?.[0] ?? null);
+    const file = e.target.files?.[0] ?? null;
+    if (file) trackGoal(GOALS.calculatorFileAttach, { size: file.size, type: file.type || 'unknown' });
+    setAttachedFile(file);
     e.target.value = '';
+  };
+
+  const handleAnalyze = () => {
+    trackGoal(GOALS.calculatorAnalyzeStart, {
+      source: 'button',
+      briefLength: description.trim().length,
+      withFile: Boolean(attachedFile),
+    });
+    analyzeDescription(attachedFile ? [attachedFile] : []);
   };
 
   useEffect(() => {
     if (projectDescription) {
       setDescription(projectDescription);
+      // Бриф приехал с главной — анализ стартует сам, без клика по кнопке.
+      trackGoal(GOALS.calculatorAnalyzeStart, {
+        source: 'brief',
+        briefLength: projectDescription.trim().length,
+        withFile: false,
+      });
       analyzeDescription();
     }
   }, [projectDescription]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -103,7 +121,7 @@ export default function CostCalculator({
               />
               <div className="flex items-center gap-3 mt-3">
                 <button
-                  onClick={() => analyzeDescription(attachedFile ? [attachedFile] : [])}
+                  onClick={handleAnalyze}
                   disabled={isAnalyzing || !description.trim()}
                   className="flex items-center gap-2 px-4 py-2 bg-fg text-bg text-small font-medium hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
@@ -152,11 +170,15 @@ export default function CostCalculator({
               <div className="mt-6 space-y-6">
                 <div>
                   <p className="text-fg text-small font-medium mb-4">{t('calculator.contactUs')}</p>
-                  <ContactLinks />
+                  <ContactLinks place="calculator" />
                 </div>
                 <div>
                   <p className="text-fg text-small font-medium mb-4">{t('calculator.leaveRequest')}</p>
-                  <ContactInlineForm description={contactDescription || undefined} file={attachedFile} />
+                  <ContactInlineForm
+                    description={contactDescription || undefined}
+                    file={attachedFile}
+                    place="calculator"
+                  />
                 </div>
               </div>
             </motion.div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { Section, SectionHeading, Eyebrow } from './ui/section';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 export function CalculatorCTA() {
   const { t } = useTranslation();
@@ -11,7 +12,9 @@ export function CalculatorCTA() {
   const router = useRouter();
 
   const handleSubmit = () => {
-    const query = description.trim() ? `?description=${encodeURIComponent(description)}` : '';
+    const brief = description.trim();
+    trackGoal(GOALS.calculatorCtaSubmit, { withBrief: brief.length > 0, briefLength: brief.length });
+    const query = brief ? `?description=${encodeURIComponent(brief)}` : '';
     router.push(`/calculator${query}`);
   };
 

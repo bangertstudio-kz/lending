@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import { GOALS, trackGoal } from '@/app/analytics';
 import { MagneticButton } from './MagneticButton';
 import { RevealWords } from './RevealWords';
 import { WorkMarquee } from './WorkMarquee';
@@ -26,14 +27,20 @@ export function Hero() {
 
           <div className="mt-11 flex flex-col gap-4 sm:flex-row">
             <MagneticButton
-              onClick={() => scrollTo('contact')}
+              onClick={() => {
+                trackGoal(GOALS.heroCtaConsultation);
+                scrollTo('contact');
+              }}
               className="bg-fg px-8 py-4 text-small font-medium text-bg transition-colors hover:bg-accent"
             >
               {t('hero.ctaConsultation')}
             </MagneticButton>
             <button
               type="button"
-              onClick={() => scrollTo('case-studies')}
+              onClick={() => {
+                trackGoal(GOALS.heroCtaWork);
+                scrollTo('case-studies');
+              }}
               className="border border-hairline-strong px-8 py-4 text-small font-medium text-fg transition-colors hover:border-accent hover:text-accent"
             >
               {t('hero.ctaWork')}

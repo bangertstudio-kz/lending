@@ -5,6 +5,7 @@ import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTran
 import { useTranslation } from 'react-i18next';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import type { Case } from '@/app/store/casesStore';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 export function CaseRow({ project, index }: { project: Case; index: number }) {
   const { t } = useTranslation();
@@ -42,6 +43,9 @@ export function CaseRow({ project, index }: { project: Case; index: number }) {
       href={project.site}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() =>
+        trackGoal(GOALS.caseOpen, { name: project.name, platform: project.platform, place: 'home' })
+      }
       className="group grid items-start gap-10 md:grid-cols-12 md:gap-20"
     >
       <div

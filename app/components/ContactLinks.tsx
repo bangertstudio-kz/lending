@@ -1,6 +1,7 @@
 'use client';
 
 import { MessageCircle, Phone } from 'lucide-react';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -16,7 +17,7 @@ const socialLinks = [
   { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://www.linkedin.com/company/bangertstudio/', label: 'BangertStudio' },
 ];
 
-export function ContactLinks() {
+export function ContactLinks({ place = 'home' }: { place?: 'home' | 'calculator' }) {
   return (
     <div className="space-y-3">
       {socialLinks.map((social) => (
@@ -25,6 +26,7 @@ export function ContactLinks() {
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackGoal(GOALS.contactLinkClick, { channel: social.name, place })}
           className="group flex items-center gap-4 border border-hairline bg-surface p-4 transition-colors hover:border-accent"
         >
           <div className="rounded-full bg-raised p-3 transition-colors group-hover:bg-accent-soft">

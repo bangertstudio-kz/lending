@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { CaseRow } from './CaseRow';
 import { Section, SectionHeading } from './ui/section';
 import cases from '@/app/data/cases.json';
+import { GOALS, trackGoal } from '@/app/analytics';
 
 // Крупным планом показываем только те работы, у которых исходник это выдержит.
 // Мелкие картинки живут в сетке на /cases, где они не разваливаются.
@@ -40,6 +41,7 @@ export function CaseStudies() {
 
         <Link
           href="/cases"
+          onClick={() => trackGoal(GOALS.casesViewAll)}
           className="mt-28 inline-block border-b border-hairline pb-1 text-small text-muted transition-colors hover:border-accent hover:text-accent"
         >
           {t('caseStudies.viewAll')}
