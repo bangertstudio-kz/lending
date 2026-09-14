@@ -87,7 +87,9 @@
       "qor": "A rapid-response platform bringing private clients, businesses, security agencies and independent consultants together.",
       "oro": "Rent out computing power to AI agents, with transparent pricing and clear billing.",
       "eiva": "Gyms nearby: book workouts and buy memberships in a couple of taps.",
-      "hiv": "A private health club."
+      "hiv": "A private health club.",
+      "manovermetal": "Metalworking orders and rolled metal suppliers in one app: post a job and get offers from verified contractors across Kazakhstan.",
+      "attractor": "An alumni community for Attractor School: find developers, follow their careers and make new connections in IT."
     }
   },
   "packages": {
@@ -344,7 +346,6 @@
   },
   "proof": {
     "projects": "projects in the portfolio",
-    "appstore": "apps on the App Store",
     "packages": "open-source solutions",
     "years": "years of development"
   },

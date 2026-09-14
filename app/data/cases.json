@@ -1,5 +1,21 @@
 [
   {
+    "id": "manovermetal",
+    "name": "Manover Metal",
+    "description": "Metalworking orders and rolled metal suppliers in one app: post a job and get offers from verified contractors across Kazakhstan.",
+    "platform": "iOS / Android / Web",
+    "image": "/assets/case13.png",
+    "site": "https://manovermetal.kz/"
+  },
+  {
+    "id": "attractor",
+    "name": "Attractor",
+    "description": "Alumni community of Attractor School: find developers, follow their careers and make new connections in IT.",
+    "platform": "Web",
+    "image": "/assets/case20.png",
+    "site": "https://attractor.bangertstudio.kz/"
+  },
+  {
     "id": "sapian",
     "name": "Sapian",
     "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",

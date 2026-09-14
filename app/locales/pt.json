@@ -87,7 +87,9 @@
       "qor": "Plataforma de resposta rápida: clientes particulares, empresas, agências de segurança e consultores independentes no mesmo circuito.",
       "oro": "Aluguer de capacidade de computação para agentes de IA, com tarifas transparentes e faturação clara.",
       "eiva": "Ginásios por perto: marcar treinos e comprar passes em poucos toques.",
-      "hiv": "Um clube de saúde privado."
+      "hiv": "Um clube de saúde privado.",
+      "manovermetal": "Pedidos de metalomecânica e fornecedores de laminados na mesma app: o cliente publica a tarefa e recebe propostas de executantes verificados em todo o Cazaquistão.",
+      "attractor": "Comunidade de antigos alunos da Attractor School: encontrar programadores, acompanhar o seu percurso e criar novas ligações em TI."
     }
   },
   "packages": {
@@ -344,7 +346,6 @@
   },
   "proof": {
     "projects": "projetos no portefólio",
-    "appstore": "apps na App Store",
     "packages": "soluções abertas",
     "years": "anos de desenvolvimento"
   },
