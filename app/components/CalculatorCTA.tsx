@@ -17,6 +17,7 @@ export function CalculatorCTA() {
     const query = brief ? `?description=${encodeURIComponent(brief)}` : '';
     router.push(`/calculator${query}`);
   };
+  
 
   return (
     <Section tone="raised" glow>
