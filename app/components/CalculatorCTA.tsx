@@ -18,7 +18,6 @@ export function CalculatorCTA() {
     router.push(`/calculator${query}`);
   };
   
-
   return (
     <Section tone="raised" glow>
       <div className="relative z-10 mx-auto max-w-3xl">
