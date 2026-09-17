@@ -1,4 +1,8 @@
-export async function sendTelegramMessage(message: string, files?: File[]): Promise<Response> {
+export async function sendTelegramMessage(
+  message: string,
+  files?: File[],
+  parseMode: 'Markdown' | null = 'Markdown'
+): Promise<Response> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -9,7 +13,7 @@ export async function sendTelegramMessage(message: string, files?: File[]): Prom
   const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' }),
+    body: JSON.stringify({ chat_id: chatId, text: message, ...(parseMode && { parse_mode: parseMode }) }),
   });
 
   if (files?.length) {

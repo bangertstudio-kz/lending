@@ -1,6 +1,7 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, after } from 'next/server';
 import OpenAI from 'openai';
 import calculatorData from '@/app/data/calculator.json';
+import { computeEstimates } from '@/app/data/estimates';
 import { sendTelegramMessage } from '../../send_telegram_message';
 
 type ContentPart =
@@ -24,7 +25,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: 'Server misconfigured' }, { status: 500 });
   }
 
-  sendTelegramMessage(`🧮 Calculator analysis requested\n\n📋 Description:\n${description}...`, uploadedFiles);
+  sendTelegramMessage(`🧮 Calculator analysis requested\n\n📋 Description:\n${description}...`, uploadedFiles, null);
 
   const featureKeys = calculatorData.features.map((f) => f.key);
   const stageIds = calculatorData.stages.map((s) => s.id);
@@ -126,5 +127,38 @@ Use locale "${lang}" for customFeature names. Keep all feature names concise —
     (f) => f.key && typeof f.cost === 'number' && typeof f.hours === 'number'
   );
 
+  after(() => sendTelegramMessage(formatResultMessage(validFeatures, customFeatures, validStage ?? 'mvp'), undefined, null));
+
   return Response.json({ features: validFeatures, customFeatures, stage: validStage });
+}
+
+function formatResultMessage(
+  features: string[],
+  customFeatures: { key: string; cost: number; hours: number }[],
+  stage: string
+) {
+  const allFeatures = [...features, ...customFeatures.map((f) => f.key)];
+  const { minCost, maxCost, minWeeks, maxWeeks } = computeEstimates(
+    allFeatures,
+    stage,
+    Object.fromEntries(customFeatures.map(({ key, cost, hours }) => [key, { cost, hours }]))
+  );
+
+  const lines = [
+    '🤖 Calculator analysis result',
+    '',
+    `🏁 Stage: ${stage}`,
+    `💰 Cost: $${minCost.toLocaleString('en-US')} – $${maxCost.toLocaleString('en-US')}`,
+    `⏱ Timeline: ${minWeeks}–${maxWeeks} weeks`,
+    '',
+    `✅ Features (${features.length}):`,
+    ...(features.length ? features.map((f) => `• ${f}`) : ['—']),
+  ];
+
+  if (customFeatures.length) {
+    lines.push('', `✨ Custom features (${customFeatures.length}):`);
+    lines.push(...customFeatures.map((f) => `• ${f.key} — $${f.cost}, ${f.hours}h`));
+  }
+
+  return lines.join('\n');
 }
