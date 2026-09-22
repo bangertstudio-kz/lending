@@ -186,7 +186,8 @@
     "reachOut": "Pick whichever channel suits you. We reply during business hours.",
     "sent": "Request sent!",
     "sendError": "Couldn't send. Please try again.",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "bookCall": "Book a call"
   },
   "footer": {
     "description": "Full-cycle mobile and web development",

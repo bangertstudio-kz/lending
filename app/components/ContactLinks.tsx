@@ -1,6 +1,7 @@
 'use client';
 
-import { MessageCircle, Phone } from 'lucide-react';
+import { MessageCircle, Phone, Video } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { GOALS, trackGoal } from '@/app/analytics';
 
 function LinkedinIcon({ className }: { className?: string }) {
@@ -12,12 +13,15 @@ function LinkedinIcon({ className }: { className?: string }) {
 }
 
 const socialLinks = [
+  { name: 'Google Meet', icon: Video, url: 'https://calendar.app.google/LZjMidqtq5BtFg7x6', labelKey: 'contact.bookCall' },
   { name: 'Telegram', icon: MessageCircle, url: 'https://t.me/alexanderbangert', label: '@alexanderbangert' },
   { name: 'WhatsApp', icon: Phone, url: 'https://wa.me/77074054405', label: '+7 (707) 405-4405' },
   { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://www.linkedin.com/company/bangertstudio/', label: 'BangertStudio' },
-];
+] as const;
 
 export function ContactLinks({ place = 'home' }: { place?: 'home' | 'calculator' }) {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-3">
       {socialLinks.map((social) => (
@@ -34,7 +38,7 @@ export function ContactLinks({ place = 'home' }: { place?: 'home' | 'calculator'
           </div>
           <div>
             <p className="text-xs text-faint">{social.name}</p>
-            <p className="text-small text-fg">{social.label}</p>
+            <p className="text-small text-fg">{'labelKey' in social ? t(social.labelKey) : social.label}</p>
           </div>
         </a>
       ))}

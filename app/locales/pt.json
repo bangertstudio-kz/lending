@@ -186,7 +186,8 @@
     "reachOut": "Escolha o canal que preferir. Respondemos em horário de expediente.",
     "sent": "Pedido enviado!",
     "sendError": "Erro no envio. Tente novamente.",
-    "sending": "A enviar..."
+    "sending": "A enviar...",
+    "bookCall": "Marcar chamada"
   },
   "footer": {
     "description": "Desenvolvimento móvel e web de ciclo completo",
