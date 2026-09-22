@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { GOALS, trackGoal } from '@/app/analytics';
 import { MagneticButton } from './MagneticButton';
 import { RevealWords } from './RevealWords';
-import { WorkMarquee } from './WorkMarquee';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -15,7 +14,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="glow-warm relative overflow-hidden pt-36"
+      className="glow-warm relative overflow-hidden pt-36 pb-32"
     >
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
         <h1 className="max-w-[19ch] font-display font-semibold text-display text-fg text-balance">
@@ -47,12 +46,6 @@ export function Hero() {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Работы на первом экране: студия мобильных приложений должна показывать
-          приложения, а не заголовок в пустоте. */}
-      <div className="rise relative z-10 mt-24 pb-20 [animation-delay:600ms]">
-        <WorkMarquee />
       </div>
     </section>
   );

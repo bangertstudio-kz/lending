@@ -111,18 +111,6 @@
   }
 }
 
-/* Лента работ на первом экране: единственная непрерывная анимация сайта.
-   Список дублируется в разметке, поэтому сдвиг на -50% замыкается бесшовно. */
-@keyframes work-drift {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
-}
-
-@utility work-marquee {
-  animation: work-drift 64s linear infinite;
-  will-change: transform;
-}
-
 /* Появление на первом экране — чистым CSS, без участия React.
    fill-mode both держит финальное состояние, поэтому даже при отключённых
    анимациях (см. prefers-reduced-motion выше) контент остаётся видимым.
