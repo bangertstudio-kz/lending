@@ -16,6 +16,14 @@
     "site": "https://attractor.bangertstudio.kz/"
   },
   {
+    "id": "request",
+    "name": "Request",
+    "description": "Material requests for on-site installers: pick items from a 300+ position catalog, set quantities and send the request in a couple of taps.",
+    "platform": "Android / Web",
+    "image": "/assets/case21.png",
+    "site": "https://bangertstudio-kz.github.io/requestapp/"
+  },
+  {
     "id": "sapian",
     "name": "Sapian",
     "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",

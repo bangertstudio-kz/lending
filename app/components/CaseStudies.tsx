@@ -19,6 +19,7 @@ const LARGE_ENOUGH = new Set([
   '/assets/case12.png',
   '/assets/case13.png',
   '/assets/case20.png',
+  '/assets/case21.png',
 ]);
 
 export function CaseStudies() {
