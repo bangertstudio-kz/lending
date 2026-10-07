@@ -7,25 +7,13 @@ import { Section, SectionHeading } from './ui/section';
 import cases from '@/app/data/cases.json';
 import { GOALS, trackGoal } from '@/app/analytics';
 
-// Крупным планом показываем только те работы, у которых исходник это выдержит.
-// Мелкие картинки живут в сетке на /cases, где они не разваливаются.
-const LARGE_ENOUGH = new Set([
-  '/assets/case1.png',
-  '/assets/case2.jpg',
-  '/assets/case3.jpg',
-  '/assets/case4.png',
-  '/assets/case6.png',
-  '/assets/case10.jpg',
-  '/assets/case12.png',
-  '/assets/case13.png',
-  '/assets/case20.png',
-  '/assets/case21.png',
-]);
+// Какие работы и в каком порядке показывать на главной. Остальные живут на /cases.
+const FEATURED = ['sapian', 'cookmyfridge', 'goatrock', 'pings'];
 
 export function CaseStudies() {
   const { t } = useTranslation();
 
-  const featured = cases.filter((project) => LARGE_ENOUGH.has(project.image)).slice(0, 6);
+  const featured = FEATURED.map((id) => cases.find((project) => project.id === id)!);
 
   return (
     <Section id="case-studies" tone="bg">

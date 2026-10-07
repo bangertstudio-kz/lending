@@ -28,6 +28,7 @@ export const GOALS = {
   heroCtaConsultation: 'hero_cta_consultation',
   heroCtaWork: 'hero_cta_work',
   caseOpen: 'case_open',
+  caseSiteOpen: 'case_site_open',
   casesViewAll: 'cases_view_all',
   devSolutionsCta: 'dev_solutions_cta',
 

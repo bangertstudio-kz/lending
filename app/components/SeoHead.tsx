@@ -3,13 +3,25 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_LOCALE, LOCALES, OG_IMAGE, OG_LOCALES, isLocale, urlFor } from '@/app/seo';
 
-export function SeoHead({ page, path }: { page: string; path: string }) {
+export function SeoHead({
+  page,
+  path,
+  title: titleOverride,
+  description: descriptionOverride,
+  image = OG_IMAGE,
+}: {
+  page: string;
+  path: string;
+  title?: string;
+  description?: string;
+  image?: string;
+}) {
   const { t } = useTranslation();
   const router = useRouter();
   const locale = isLocale(router.locale) ? router.locale : DEFAULT_LOCALE;
 
-  const title = t(`meta.${page}.title`);
-  const description = t(`meta.${page}.description`);
+  const title = titleOverride ?? t(`meta.${page}.title`);
+  const description = descriptionOverride ?? t(`meta.${page}.description`);
   const canonical = urlFor(locale, path);
 
   return (
@@ -29,14 +41,14 @@ export function SeoHead({ page, path }: { page: string; path: string }) {
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image" content={image} />
       <meta property="og:locale" content={OG_LOCALES[locale]} />
       <meta property="og:site_name" content="Bangert Studio" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={OG_IMAGE} />
+      <meta name="twitter:image" content={image} />
     </Head>
   );
 }

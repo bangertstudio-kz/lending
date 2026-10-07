@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SeoHead } from '@/app/components/SeoHead';
 import { useEffect } from 'react';
 import { Header } from '@/app/components/Header';
@@ -31,11 +32,9 @@ export default function CasesPage() {
           {!loading && !error && (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {cases.map((project) => (
-                <a
+                <Link
                   key={project.name}
-                  href={project.site}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/cases/${project.id}`}
                   onClick={() =>
                     trackGoal(GOALS.caseOpen, {
                       name: project.name,
@@ -67,7 +66,7 @@ export default function CasesPage() {
                       )}
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           )}

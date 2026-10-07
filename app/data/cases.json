@@ -24,6 +24,62 @@
     "site": "https://bangertstudio-kz.github.io/requestapp/"
   },
   {
+    "id": "ohmyvpns",
+    "name": "OhMyVPNs",
+    "description": "A white-label VPN platform: launch a branded Telegram bot, mini app and web cabinet in minutes — servers, keys, payments and analytics are handled for you.",
+    "platform": "Web / Telegram",
+    "image": "/assets/case22.png",
+    "site": "https://ohmyvpns.io"
+  },
+  {
+    "id": "ladim",
+    "name": "Ladim",
+    "description": "A shared space for couples and families: tasks and reminders, a calendar, shared expenses and subscriptions, gift wishlists — plus a Telegram bot.",
+    "platform": "iOS / Android / Web",
+    "image": "/assets/case23.png",
+    "site": "https://ladim.kz"
+  },
+  {
+    "id": "cookmyfridge",
+    "name": "Cook My Fridge",
+    "description": "Snap your fridge or groceries — the app recognizes the ingredients and suggests recipes you can cook right now, matching your diet and exclusions.",
+    "platform": "iOS",
+    "image": "/assets/case24.jpg",
+    "site": "https://apps.apple.com/kz/app/cook-my-fridge-snap-recipes/id6806873426"
+  },
+  {
+    "id": "vona",
+    "name": "Vona Sleep",
+    "description": "Curated music channels for sleep, focus, relaxation and energy, with ambient sound layers, alarm and sleep timer — just press play.",
+    "platform": "iOS",
+    "image": "/assets/case25.jpg",
+    "site": "https://apps.apple.com/kz/app/vona-sleep-music-for-relax/id6788856687"
+  },
+  {
+    "id": "goatrock",
+    "name": "Goat Rock",
+    "description": "Rock radio for every mood: hard rock, classic, alternative, metal and punk channels with a 24-preset equalizer, alarm and sleep timer.",
+    "platform": "iOS",
+    "image": "/assets/case26.jpg",
+    "site": "https://apps.apple.com/kz/app/goat-rock-prime-rock-music/id6504483451"
+  },
+  {
+    "id": "slemio",
+    "name": "Slemio",
+    "description": "A personal diet coach: individual meal plans, a calorie counter and warnings about foods that work against your goals.",
+    "platform": "iOS",
+    "image": "/assets/case27.jpg",
+    "site": "https://apps.apple.com/kz/app/slemio-personal-diet-coach/id1594088577"
+  },
+  {
+    "id": "geedeon",
+    "name": "Geedeon Radio",
+    "description": "Deep house, EDM, car bass and chill 24/7: a radio app with equalizer, alarm, sleep timer and favorites.",
+    "platform": "iOS",
+    "image": "/assets/case28.jpg",
+    "site": "https://apps.apple.com/kz/app/geedeon-radio-deep-edm-music/id1488123870"
+  },
+  {
     "id": "sapian",
     "name": "Sapian",
     "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",

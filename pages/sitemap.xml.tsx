@@ -2,6 +2,7 @@ import { statSync } from 'node:fs';
 import path from 'node:path';
 import { GetServerSideProps } from 'next';
 import { DEFAULT_LOCALE, LOCALES, urlFor } from '@/app/seo';
+import cases from '@/app/data/cases.json';
 
 // lastmod берём из времени изменения файлов, которые реально формируют страницу.
 // Проставлять сюда текущую дату — значит врать краулеру на каждом запросе.
@@ -10,6 +11,7 @@ const pages = [
   { path: '/cases',      changefreq: 'weekly',  priority: '0.8', sources: ['app/data/cases.json'] },
   { path: '/packages',   changefreq: 'weekly',  priority: '0.8', sources: ['app/locales/ru.json'] },
   { path: '/calculator', changefreq: 'monthly', priority: '0.7', sources: ['app/data/calculator.json'] },
+  ...cases.map((c) => ({ path: `/cases/${c.id}`, changefreq: 'monthly', priority: '0.6', sources: ['app/data/cases.json'] })),
 ];
 
 function lastModified(sources: string[]): string | null {

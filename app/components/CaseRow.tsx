@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Link from 'next/link';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -38,11 +39,9 @@ export function CaseRow({ project, index }: { project: Case; index: number }) {
   const flipped = index % 2 === 1;
 
   return (
-    <a
+    <Link
       ref={rowRef}
-      href={project.site}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/cases/${project.id}`}
       onClick={() =>
         trackGoal(GOALS.caseOpen, { name: project.name, platform: project.platform, place: 'home' })
       }
@@ -105,6 +104,6 @@ export function CaseRow({ project, index }: { project: Case; index: number }) {
           )}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

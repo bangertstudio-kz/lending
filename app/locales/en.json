@@ -77,6 +77,9 @@
     "viewSite": "Open project",
     "viewAll": "All projects",
     "inAppStore": "On the App Store",
+    "back": "All projects",
+    "openApp": "Open in the App Store",
+    "openSite": "Open website",
     "items": {
       "sapian": "Meet people nearby: find someone close by, send a request, and plan a meeting when the interest is mutual.",
       "pings": "A personal feed of ideas, guides and practices, curated by AI.",
@@ -90,7 +93,14 @@
       "hiv": "A private health club.",
       "manovermetal": "Metalworking orders and rolled metal suppliers in one app: post a job and get offers from verified contractors across Kazakhstan.",
       "attractor": "An alumni community for Attractor School: find developers, follow their careers and make new connections in IT.",
-      "request": "Material requests for on-site installers: pick items from a 300+ position catalog, set quantities and send the request in a couple of taps."
+      "request": "Material requests for on-site installers: pick items from a 300+ position catalog, set quantities and send the request in a couple of taps.",
+      "ohmyvpns": "A white-label VPN platform: launch a branded Telegram bot, mini app and web cabinet in minutes — servers, keys, payments and analytics are handled for you.",
+      "ladim": "A shared space for couples and families: tasks and reminders, a calendar, shared expenses and subscriptions, gift wishlists — plus a Telegram bot.",
+      "cookmyfridge": "Snap your fridge or groceries — the app recognizes the ingredients and suggests recipes you can cook right now, matching your diet and exclusions.",
+      "vona": "Curated music channels for sleep, focus, relaxation and energy, with ambient sound layers, alarm and sleep timer — just press play.",
+      "goatrock": "Rock radio for every mood: hard rock, classic, alternative, metal and punk channels with a 24-preset equalizer, alarm and sleep timer.",
+      "slemio": "A personal diet coach: individual meal plans, a calorie counter and warnings about foods that work against your goals.",
+      "geedeon": "Deep house, EDM, car bass and chill 24/7: a radio app with equalizer, alarm, sleep timer and favorites."
     }
   },
   "packages": {

@@ -77,6 +77,9 @@
     "viewSite": "Abrir projeto",
     "viewAll": "Todos os projetos",
     "inAppStore": "Na App Store",
+    "back": "Todos os projetos",
+    "openApp": "Abrir na App Store",
+    "openSite": "Ir para o site",
     "items": {
       "sapian": "Conhecer pessoas por perto: encontra quem está próximo, envia um pedido e combina um encontro se o interesse for mútuo.",
       "pings": "Um feed pessoal de ideias, análises e práticas, reunido por inteligência artificial.",
@@ -90,7 +93,14 @@
       "hiv": "Um clube de saúde privado.",
       "manovermetal": "Pedidos de metalomecânica e fornecedores de laminados na mesma app: o cliente publica a tarefa e recebe propostas de executantes verificados em todo o Cazaquistão.",
       "attractor": "Comunidade de antigos alunos da Attractor School: encontrar programadores, acompanhar o seu percurso e criar novas ligações em TI.",
-      "request": "Pedidos de materiais para instaladores na obra: escolha itens de um catálogo com mais de 300 posições, defina quantidades e envie o pedido em poucos toques."
+      "request": "Pedidos de materiais para instaladores na obra: escolha itens de um catálogo com mais de 300 posições, defina quantidades e envie o pedido em poucos toques.",
+      "ohmyvpns": "Plataforma VPN white-label: lance um bot do Telegram, um mini app e um painel web com a sua marca em minutos; servidores, chaves, pagamentos e análises ficam por conta da plataforma.",
+      "ladim": "Um espaço compartilhado para casais e famílias: tarefas e lembretes, calendário, despesas e assinaturas em comum, listas de presentes e um bot do Telegram.",
+      "cookmyfridge": "Fotografe a geladeira ou as compras: o app reconhece os ingredientes e sugere receitas para cozinhar agora mesmo, de acordo com a sua dieta e restrições.",
+      "vona": "Canais de música selecionados para dormir, focar, relaxar e recarregar energia, com camadas de sons ambiente, alarme e timer de sono.",
+      "goatrock": "Rádio de rock para qualquer humor: canais de hard rock, clássico, alternativo, metal e punk, equalizador com 24 presets, alarme e timer de sono.",
+      "slemio": "Um coach de dieta pessoal: planos alimentares individuais, contador de calorias e alertas sobre alimentos que atrapalham seus objetivos.",
+      "geedeon": "Deep house, EDM, car bass e chill 24/7: um app de rádio com equalizador, alarme, timer de sono e favoritos."
     }
   },
   "packages": {
