@@ -1,10 +1,8 @@
-import { statSync } from 'node:fs';
-import path from 'node:path';
 import { GetServerSideProps } from 'next';
 import { DEFAULT_LOCALE, LOCALES, urlFor } from '@/app/seo';
 import cases from '@/app/data/cases.json';
 
-// lastmod берём из времени изменения файлов, которые реально формируют страницу.
+// lastmod берём из даты последнего коммита файлов, которые реально формируют страницу.
 // Проставлять сюда текущую дату — значит врать краулеру на каждом запросе.
 const pages = [
   { path: '/',           changefreq: 'weekly',  priority: '1.0', sources: ['app/locales/ru.json', 'app/data/cases.json'] },
@@ -14,18 +12,12 @@ const pages = [
   ...cases.map((c) => ({ path: `/cases/${c.id}`, changefreq: 'monthly', priority: '0.6', sources: ['app/data/cases.json'] })),
 ];
 
-function lastModified(sources: string[]): string | null {
-  const times = sources
-    .map((file) => {
-      try {
-        return statSync(path.join(process.cwd(), file)).mtime.getTime();
-      } catch {
-        return null;
-      }
-    })
-    .filter((time): time is number => time !== null);
+// Даты коммитов посчитаны при сборке в next.config.ts.
+const commitDates: Record<string, string> = JSON.parse(process.env.SITEMAP_LASTMOD || '{}');
 
-  return times.length ? new Date(Math.max(...times)).toISOString().slice(0, 10) : null;
+function lastModified(sources: string[]): string | null {
+  const dates = sources.map((file) => commitDates[file]).filter(Boolean).sort();
+  return dates.at(-1) ?? null;
 }
 
 function Sitemap() {
