@@ -8,7 +8,7 @@ import { Providers } from './providers';
 export const metadata: Metadata = {
   title: 'Bangert Studio — Mobile & Web Development',
   description:
-    'Full-cycle mobile and web development. You know the timeline and the budget before the work starts.',
+    'Full-cycle mobile and web development. You know the timeline and the budget before the work starts.',    
 };
 
 export default function RootLayout({

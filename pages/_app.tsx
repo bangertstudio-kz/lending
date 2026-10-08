@@ -71,6 +71,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta name="theme-color" content="#0A0908" />
+        <meta name="yandex-verification" content="27e6de1adabd13b5" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
