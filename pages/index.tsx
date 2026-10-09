@@ -3,9 +3,12 @@
 import { SeoHead } from '@/app/components/SeoHead';
 import { Header } from '../app/components/Header';
 import { Hero } from '../app/components/Hero';
-import { ProofBar } from '../app/components/ProofBar';
 import { CaseStudies } from '../app/components/CaseStudies';
+import { Process } from '../app/components/Process';
 import { Services } from '../app/components/Services';
+import { Geography } from '../app/components/Geography';
+import { Blog } from '../app/components/Blog';
+import { Faq } from '../app/components/Faq';
 import { CalculatorCTA } from '../app/components/CalculatorCTA';
 import { DevSolutions } from '../app/components/DevSolutions';
 import { ContactForm } from '../app/components/ContactForm';
@@ -20,11 +23,14 @@ export default function Home() {
         <Header />
         <main className="relative">
           <Hero />
-          <ProofBar />
           <CaseStudies />
+          <Process />
           <Services />
-          <CalculatorCTA />
-          <DevSolutions />
+          <Geography />
+          <Blog />
+          <Faq />
+          {/* <CalculatorCTA />
+          <DevSolutions /> */}
           <ContactForm />
         </main>
         <Footer />

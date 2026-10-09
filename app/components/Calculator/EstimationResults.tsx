@@ -1,7 +1,7 @@
-import { DollarSign, Clock } from 'lucide-react';
 import { motion, useSpring, useTransform } from 'motion/react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { panel, panelTitle } from './styles';
 
 interface EstimationResultsProps {
   estimates: {
@@ -24,39 +24,34 @@ function AnimatedNumber({ value }: { value: number }) {
   return <motion.span className="inline-block tabular-nums">{display}</motion.span>;
 }
 
+const label = 'text-[14px] leading-6 font-medium tracking-[-0.02em] uppercase opacity-40';
+
 export default function EstimationResults({ estimates }: EstimationResultsProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-bg border border-hairline p-6 hover:border-hairline-strong transition-colors">
-      <h3 className="mb-6 font-display font-semibold text-h3 text-fg">{t('calculator.results.title')}</h3>
+    <div className={panel}>
+      <p className="flex gap-3">
+        <span aria-hidden className="w-1 shrink-0 bg-lime" />
+        <span className={panelTitle}>{t('calculator.results.title')}</span>
+      </p>
 
-      <div className="mb-8">
-        <div className="flex items-center gap-2 text-muted mb-2">
-          <DollarSign className="w-5 h-5" />
-          <span className="text-small font-medium">{t('calculator.results.budget')}</span>
-        </div>
-        <div className="mb-1 font-mono text-h1 tabular-nums text-accent">
-          $<AnimatedNumber value={estimates.minCost} />
-        </div>
-        <div className="font-mono text-h2 tabular-nums text-muted">
-          to $<AnimatedNumber value={estimates.maxCost} />
-        </div>
+      <div className="flex flex-col gap-1">
+        <span className={label}>{t('calculator.results.budget')}</span>
+        <span className="text-[clamp(2rem,3vw,3rem)] leading-tight font-semibold tracking-[-0.04em] text-lime">
+          $<AnimatedNumber value={estimates.minCost} /> – $<AnimatedNumber value={estimates.maxCost} />
+        </span>
       </div>
 
-      <div className="mb-8">
-        <div className="flex items-center gap-2 text-muted mb-2">
-          <Clock className="w-5 h-5" />
-          <span className="text-small font-medium">{t('calculator.results.timeline')}</span>
-        </div>
-        <div className="font-mono text-h2 tabular-nums text-fg">
-          <AnimatedNumber value={estimates.minWeeks} /> - <AnimatedNumber value={estimates.maxWeeks} /> {t('calculator.results.weeks')}
-        </div>
+      <div className="flex flex-col gap-1">
+        <span className={label}>{t('calculator.results.timeline')}</span>
+        <span className="text-[24px] leading-8 font-semibold tracking-[-0.02em]">
+          <AnimatedNumber value={estimates.minWeeks} />–<AnimatedNumber value={estimates.maxWeeks} /> {t('calculator.results.weeks')}
+        </span>
       </div>
 
-      <div className="mt-6 p-4 bg-raised border border-hairline">
-        <p className="text-small text-muted">{t('calculator.results.disclaimer')}</p>
-      </div>
+      <div className="h-px rounded-[4px] bg-white opacity-20" />
+      <p className="text-[14px] leading-6 tracking-[-0.02em] opacity-60">{t('calculator.results.disclaimer')}</p>
     </div>
   );
 }

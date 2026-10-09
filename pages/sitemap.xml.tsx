@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { DEFAULT_LOCALE, LOCALES, urlFor } from '@/app/seo';
 import cases from '@/app/data/cases.json';
+import { ALL_SERVICES } from '@/app/data/services';
+import { POSTS } from '@/app/data/blog';
 
 // lastmod берём из даты последнего коммита файлов, которые реально формируют страницу.
 // Проставлять сюда текущую дату — значит врать краулеру на каждом запросе.
@@ -9,6 +11,9 @@ const pages = [
   { path: '/cases',      changefreq: 'weekly',  priority: '0.8', sources: ['app/data/cases.json'] },
   { path: '/packages',   changefreq: 'weekly',  priority: '0.8', sources: ['app/locales/ru.json'] },
   { path: '/calculator', changefreq: 'monthly', priority: '0.7', sources: ['app/data/calculator.json'] },
+  { path: '/blog',       changefreq: 'weekly',  priority: '0.7', sources: ['app/data/blog.ts'] },
+  ...POSTS.map((p) => ({ path: `/blog/${p.slug}`, changefreq: 'monthly', priority: '0.6', sources: ['app/data/blog.ts', 'app/locales/ru.json'] })),
+  ...ALL_SERVICES.map((s) => ({ path: `/services/${s.slug}`, changefreq: 'monthly', priority: '0.8', sources: ['app/locales/ru.json'] })),
   ...cases.map((c) => ({ path: `/cases/${c.id}`, changefreq: 'monthly', priority: '0.6', sources: ['app/data/cases.json'] })),
 ];
 

@@ -4,6 +4,12 @@ import { useTranslation } from 'react-i18next';
 import data from '@/app/data/calculator.json';
 import { useCalculatorStore } from '@/app/store/calculatorStore';
 import { GOALS, trackGoal } from '@/app/analytics';
+import { field, limeButton, panel, panelTitle } from './styles';
+
+const chip =
+  'flex cursor-pointer items-center gap-2 rounded-[40px] border px-4 py-2 text-[14px] leading-6 tracking-[-0.02em] transition-colors';
+const chipOn = 'border-lime text-lime';
+const chipOff = 'border-white/20 hover:border-white/60';
 
 export default function FeatureSelector() {
   const { t } = useTranslation();
@@ -31,51 +37,42 @@ export default function FeatureSelector() {
   };
 
   return (
-    <div className="bg-bg border border-hairline p-6 hover:border-hairline-strong transition-colors">
-      <h3 className="mb-4 font-display font-semibold text-h3 text-fg">{t('calculator.features.title')}</h3>
+    <div className={panel}>
+      <h2 className={panelTitle}>{t('calculator.features.title')}</h2>
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {[...data.features].sort((a, b) => {
-          const aSelected = features.includes(a.key) ? 1 : 0;
-          const bSelected = features.includes(b.key) ? 1 : 0;
-          return bSelected - aSelected;
-        }).map((feature) => {
-          const isSelected = features.includes(feature.key);
-          return (
-            <button
-              key={feature.key}
-              onClick={() => handleToggle(feature.key, isSelected)}
-              className={`px-3 py-2 border transition-all flex items-center gap-2 ${isSelected ? 'border-hairline-strong bg-raised text-fg' : 'border-hairline bg-transparent text-muted hover:border-hairline-strong'}`}
-            >
-              {isSelected && <Check className="w-4 h-4" />}
-              <span className="font-medium text-small">{t(feature.tKey)}</span>
-              <span className={`text-xs font-semibold ${isSelected ? 'text-fg/80' : 'text-muted'}`}>
-                {formatCurrency(feature.cost)}
-              </span>
-            </button>
-          );
-        })}
+      <div className="flex flex-wrap gap-2">
+        {/* Выбранные — первыми. */}
+        {[...data.features]
+          .sort((a, b) => Number(features.includes(b.key)) - Number(features.includes(a.key)))
+          .map((feature) => {
+            const isSelected = features.includes(feature.key);
+            return (
+              <button
+                key={feature.key}
+                type="button"
+                aria-pressed={isSelected}
+                onClick={() => handleToggle(feature.key, isSelected)}
+                className={`${chip} ${isSelected ? chipOn : chipOff}`}
+              >
+                {isSelected && <Check className="size-4" />}
+                <span className="font-medium">{t(feature.tKey)}</span>
+                <span className="opacity-60">{formatCurrency(feature.cost)}</span>
+              </button>
+            );
+          })}
       </div>
 
       {customSelected.length > 0 && (
-        <div className="mb-4">
-          <div className="text-small font-medium text-muted mb-2">{t('calculator.features.customTitle')}:</div>
+        <div className="flex flex-col gap-2">
+          <div className="text-[14px] leading-6 tracking-[-0.02em] opacity-60">{t('calculator.features.customTitle')}:</div>
           <div className="flex flex-wrap gap-2">
             {customSelected.map((key) => {
-              const data = customFeatureData[key];
+              const custom = customFeatureData[key];
               return (
-                <button
-                  key={key}
-                  onClick={() => handleToggle(key, true)}
-                  className="px-3 py-2 border transition-all flex items-center gap-2 border-hairline-strong bg-raised text-fg"
-                >
-                  <Check className="w-4 h-4" />
-                  <span className="font-medium text-small">{key}</span>
-                  {data && (
-                    <span className="text-xs font-semibold text-fg/80">
-                      {formatCurrency(data.cost)}
-                    </span>
-                  )}
+                <button key={key} type="button" aria-pressed onClick={() => handleToggle(key, true)} className={`${chip} ${chipOn}`}>
+                  <Check className="size-4" />
+                  <span className="font-medium">{key}</span>
+                  {custom && <span className="opacity-60">{formatCurrency(custom.cost)}</span>}
                 </button>
               );
             })}
@@ -83,20 +80,17 @@ export default function FeatureSelector() {
         </div>
       )}
 
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <input
           type="text"
           value={customInput}
           onChange={(e) => setCustomInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
           placeholder={t('calculator.features.addPlaceholder')}
-          className="flex-1 px-4 py-2 border border-hairline bg-raised focus:outline-none focus:border-accent text-fg placeholder:text-faint transition-colors"
+          className={field}
         />
-        <button
-          onClick={handleAdd}
-          className="px-4 py-2 bg-fg text-bg hover:bg-accent transition-colors flex items-center gap-2"
-        >
-          <Plus className="w-4 h-4" />
+        <button type="button" onClick={handleAdd} className={limeButton}>
+          <Plus className="size-4" />
           {t('calculator.features.add')}
         </button>
       </div>

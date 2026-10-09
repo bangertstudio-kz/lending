@@ -22,11 +22,16 @@
   --color-accent: #D9A566;
   --color-accent-soft: rgba(217, 165, 102, 0.12);
 
+  /* Лайм из нового макета (первый экран) */
+  --color-lime: #D2F949;
+  --color-ink: #020202;
+
   /* Шрифты. --font-display-family и --font-geist-* приходят из next/font
      и объявлены на <html> в app/layout.tsx. */
   --font-display: var(--font-display-family), system-ui, sans-serif;
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-montserrat: var(--font-montserrat-family), system-ui, sans-serif;
 
   /* Типографическая шкала. Кегли задаются здесь, не в компонентах. */
   --text-display: clamp(2.25rem, 4.4vw, 3.75rem);

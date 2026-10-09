@@ -6,7 +6,7 @@ import { I18nextProvider } from 'react-i18next';
 import { useRouter } from 'next/router';
 import { METRIKA_ID, trackPageView } from '../app/analytics';
 import { DEFAULT_LOCALE, getI18n, isLocale } from '../app/i18n';
-import { display, geistMono, geistSans } from '../app/fonts';
+import { display, geistMono, geistSans, montserrat } from '../app/fonts';
 import '../app/globals.css';
 
 const jsonLd = {
@@ -99,6 +99,7 @@ export default function App({ Component, pageProps }: AppProps) {
           --font-geist-sans: ${geistSans.style.fontFamily};
           --font-geist-mono: ${geistMono.style.fontFamily};
           --font-display-family: ${display.style.fontFamily};
+          --font-montserrat-family: ${montserrat.style.fontFamily};
         }
       `}</style>
       <Component {...pageProps} />

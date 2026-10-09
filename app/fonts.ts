@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Unbounded } from 'next/font/google';
+import { Geist, Geist_Mono, Montserrat, Unbounded } from 'next/font/google';
 
 // Один источник шрифтов на оба роутера. Сайт рендерится через Pages Router
 // (pages/_app.tsx); app/layout.tsx обслуживает только /api и 404, поэтому
@@ -22,5 +22,11 @@ export const display = Unbounded({
   weight: ['400', '600'],
 });
 
+export const montserrat = Montserrat({
+  variable: '--font-montserrat-family',
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600', '700'],
+});
+
 // Для App Router (layout.tsx) — классы вешаются прямо на <html>, то есть на :root.
-export const fontVariables = `${geistSans.variable} ${geistMono.variable} ${display.variable}`;
+export const fontVariables = `${geistSans.variable} ${geistMono.variable} ${display.variable} ${montserrat.variable}`;

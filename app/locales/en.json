@@ -10,40 +10,86 @@
     "contact": "Contact",
     "calculator": "Calculator",
     "news": "News",
-    "packages": "For developers"
+    "packages": "For developers",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
   },
   "hero": {
-    "title": "We turn an idea into a working product",
-    "subtitle": "Full-cycle mobile and web development. You know the timeline and the budget before the work starts, not after.",
+    "eyebrow": "Mobile and web products\nfor businesses and startups",
+    "title1": "Idea",
+    "title2": "Product",
+    "title3": "Launch.",
+    "subtitle": "Full-cycle mobile and web products —\nfrom the first hypothesis to a working product.",
     "ctaConsultation": "Discuss your project",
-    "ctaWork": "See our work"
+    "ctaWork": "View portfolio",
+    "yearsLabel": "Years in\ndevelopment",
+    "projectsLabel": "Projects in portfolio",
+    "platformsLabel": "We build products for every platform",
+    "estimateTitle": "Project estimate in 30 seconds",
+    "estimateText": "Get a rough budget before writing a spec",
+    "openSourceLabel": "We open-source\nuseful tools"
   },
   "services": {
-    "title": "What we do",
-    "subtitle": "Full cycle: from requirements to release and support after launch.",
-    "iosDev": {
-      "title": "An app on the App Store",
-      "description": "We handle the build, Apple's requirements and the release — you never touch the review process."
+    "eyebrow": "03 / What we build",
+    "title": "Products built for business goals.",
+    "subtitle": "From the first prototype to a complex digital platform — design and development in one team.",
+    "cta": "Order a project",
+    "otherTitle": "Didn’t find your scenario?",
+    "otherText": "Tell us what you want to build by filling out the form",
+    "mobile": {
+      "title": "Mobile apps",
+      "tags": "iOS / Android",
+      "description": "Native and cross-platform solutions"
     },
-    "androidDev": {
-      "title": "Android at no extra cost",
-      "description": "Order the iOS version and the Android build comes with it, at no additional charge."
-    },
-    "webDev": {
-      "title": "A site that brings in leads",
-      "description": "Landing pages, corporate sites and web services built for load speed, search and conversion."
+    "web": {
+      "title": "Web products",
+      "tags": "Services / SaaS / platforms",
+      "description": "Websites of any complexity, online stores"
     },
     "uiux": {
-      "title": "An interface that needs no manual",
-      "description": "We design screens so people reach the action that matters instead of closing the app."
+      "title": "UX / UI",
+      "tags": "Research / UX / UI Kit",
+      "description": "Conversion-focused design and design systems"
     },
-    "analytics": {
-      "title": "We scope it before the first line of code",
-      "description": "Requirements are locked down early, so you don't pay twice for a rewrite halfway through."
+    "dev": {
+      "title": "Development",
+      "tags": "Frontend / Backend / API / QA",
+      "description": "Products that solve business problems"
     },
-    "maintenance": {
-      "title": "Your app won't be left unattended",
-      "description": "We keep it current with new iOS and Android releases, so it doesn't stop launching six months from now."
+    "page": {
+      "portfolio": "View portfolio",
+      "mobile": {
+        "title1": "Development",
+        "title2": "for iOS and Android",
+        "lead": "We build mobile apps that solve business problems and that users love."
+      },
+      "web": {
+        "title1": "Development",
+        "title2": "of web products",
+        "lead": "We build websites, services and SaaS platforms that are fast and bring in customers."
+      },
+      "uiux": {
+        "title1": "Design",
+        "title2": "UX / UI",
+        "lead": "We design interfaces and design systems where users always know what to do next."
+      },
+      "dev": {
+        "title1": "Development",
+        "title2": "end to end",
+        "lead": "Frontend, backend, APIs and testing in one team — from idea to a working product."
+      },
+      "audit": {
+        "title1": "Audit",
+        "title2": "of your system",
+        "lead": "We review the code, architecture and infrastructure of your live product and give you a clear plan: what to fix, what to speed up and where to start."
+      }
+    },
+    "audit": {
+      "title": "System audit",
+      "tags": "Code / Architecture / Security",
+      "description": "We review your live product and give you an improvement plan"
     }
   },
   "whyChooseUs": {
@@ -101,6 +147,25 @@
       "goatrock": "Rock radio for every mood: hard rock, classic, alternative, metal and punk channels with a 24-preset equalizer, alarm and sleep timer.",
       "slemio": "A personal diet coach: individual meal plans, a calorie counter and warnings about foods that work against your goals.",
       "geedeon": "Deep house, EDM, car bass and chill 24/7: a radio app with equalizer, alarm, sleep timer and favorites."
+    },
+    "home": {
+      "eyebrow": "01 / cases",
+      "title1": "Real products.",
+      "title2": "Real results.",
+      "lead": "We don’t tell you what we can do — we show what we’ve already built.",
+      "more": "Learn more",
+      "othersText": "See the rest of our projects here",
+      "viewAllCases": "View all cases",
+      "manoverTagline": "Digital platform for rolled metal",
+      "manoverText": "We brought rolled-metal ordering and supplier search into one service — from posting a job to getting offers\nfrom verified contractors across Kazakhstan."
+    },
+    "page": {
+      "home": "Home",
+      "title": "Portfolio",
+      "all": "All projects",
+      "mobile": "Mobile development",
+      "web": "Web development",
+      "about": "About the project"
     }
   },
   "packages": {
@@ -115,18 +180,22 @@
     "sdkDart": "Dart",
     "allOnPub": "All packages on pub.dev",
     "items": {
-      "pike": "Event-driven state management: state changes flow through events instead of direct mutations.",
-      "apollon": "Riverpod-inspired state management with a much smaller API surface — fewer concepts, faster start.",
-      "depend": "Dependency initialization and injection through the widget tree — no codegen, no global singletons.",
-      "fform": "Form builder with typed fields, sync and async validation, and clear error handling.",
-      "fform_validator": "A ready-made set of form checks: email, URL, credit card, IP, length and text format — the usual rules no longer get rewritten in every project.",
-      "safe_route": "Type-safe navigation: route arguments and results are checked at compile time.",
-      "map_route": "Visualizes the app's route graph — see the whole navigation at once while debugging and testing.",
-      "responsive_breakpoints": "Responsive layouts driven by your own breakpoints, declared as a plain enum.",
-      "enum_picker": "A ready-made picker widget for enum values — no boilerplate for every list.",
-      "herdsman": "Centralized Git hooks management for Dart and Flutter projects — the husky analog.",
-      "markup_analyzer": "CLI analyzer for Flutter markup: finds hardcoded strings and styles and generates a report.",
-      "background_geo_tracker": "Background route tracking on iOS and Android: points are collected and uploaded by native code, even while the app is in the background."
+      "depend": "Neatly prepares everything an app needs at launch — server connection, settings, database — and hands it to the screens. Less chaos in the code, easier changes later.",
+      "herdsman": "Automatically checks code before a developer adds it to the shared project. Mistakes and sloppy code are caught right away, not after release.",
+      "responsive_breakpoints": "Helps an app look good on any screen — phone, tablet or computer: the interface rearranges itself to fit the size.",
+      "fform": "A tool for forms — sign-up, checkout, questionnaires. It shows users where they made a mistake and keeps even forms with dozens of fields reliable.",
+      "fform_validator": "Ready-made checks for form fields: is the e-mail, link, card or phone number entered correctly? Users see the error immediately instead of a rejection after submitting.",
+      "background_geo_tracker": "Records the route even when the app is minimized and sends it to the server. Fits delivery, taxi, courier services and fitness trackers.",
+      "swagger_fixtures": "Creates test data from the server's description, so the app can be tested without waiting for the backend. Mobile and server parts are built in parallel — the project moves faster.",
+      "dependency_graph": "Draws a clear map of the parts a project is made of and how they connect. Helps you quickly understand someone else's or legacy code.",
+      "markup_analyzer": "Checks an app's interface for typical slips — for example, texts nobody prepared for translation into other languages — and produces a report.",
+      "apollon": "Keeps data up to date on every screen: change something in one place and it updates everywhere. Easy to learn, so a new team gets up to speed quickly.",
+      "pike": "Builds the app's behaviour around clear events — \"button pressed\", \"data arrived\". The app behaves predictably and bugs are easier to find.",
+      "enum_picker": "A ready-made interface element for choosing from a list — size, city, order status. No need to build such a list again in every project.",
+      "map_route": "Shows all of an app's screens and the transitions between them as a diagram. A handy way to make sure users never get \"stuck\".",
+      "safe_route": "Protects transitions between screens from errors: if a screen doesn't get the data it needs, the developer finds out immediately — not the user, as a crash.",
+      "graphview_plus": "Shows connections between objects as a live interactive diagram — like Obsidian's note graph: nodes can be dragged, zoomed and explored.",
+      "metro_map": "Draws the stages of a process as a metro map: parallel branches, where they meet and where it all leads. Fits roadmaps, funnels and task chains."
     },
     "home": {
       "badge": "Open source",
@@ -156,26 +225,40 @@
     "loadError": "Could not load our solutions."
   },
   "process": {
-    "title": "Our Process",
+    "eyebrow": "02 / Process",
+    "title1": "Not just",
+    "title2": "development.",
+    "title3": "We build products.",
+    "lead": "We take an idea, dig into the problem and see it through to a finished product.",
+    "outro": "From the first idea\nto a working product.",
+    "cta": "Discuss your project",
     "step1": {
-      "title": "Discovery & Requirements",
-      "description": "We analyze your business goals and define project scope"
+      "title": "Idea",
+      "text": "We study the business, research the market and find the best solution.",
+      "tag1": "Analytics",
+      "tag2": "Hypotheses",
+      "tag3": "Strategy"
     },
     "step2": {
-      "title": "Design & Prototyping",
-      "description": "Creating wireframes and interactive prototypes for validation"
+      "title": "Design",
+      "text": "We design the user experience, the interface and the design system.",
+      "tag1": "UX/UI",
+      "tag2": "Prototype",
+      "tag3": "Design system"
     },
     "step3": {
       "title": "Development",
-      "description": "Agile sprints with continuous integration and delivery"
+      "text": "We turn the design into a reliable, scalable product.",
+      "tag1": "iOS / Android",
+      "tag2": "Web",
+      "tag3": "Backend"
     },
     "step4": {
-      "title": "Testing & QA",
-      "description": "Comprehensive testing across devices and scenarios"
-    },
-    "step5": {
-      "title": "Launch & Support",
-      "description": "App store deployment and ongoing maintenance"
+      "title": "Launch",
+      "text": "We run QA, publish and help the product grow further.",
+      "tag1": "Analytics",
+      "tag2": "Release",
+      "tag3": "Support"
     }
   },
   "technologies": {
@@ -185,6 +268,7 @@
     "title": "What Our Clients Say"
   },
   "contact": {
+    "eyebrow": "09 / Contacts",
     "title": "Tell us about your project",
     "subtitle": "Describe the task in a couple of lines and we'll come back with an estimate and follow-up questions during business hours.",
     "name": "Name",
@@ -201,19 +285,20 @@
     "bookCall": "Book a call"
   },
   "footer": {
-    "description": "Full-cycle mobile and web development",
     "services": "Services",
     "company": "Company",
-    "about": "About Us",
-    "careers": "Careers",
-    "blog": "Blog",
-    "contact": "Contact",
-    "legal": "Legal",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "rights": "All rights reserved",
-    "news": "News",
-    "writeToUs": "Write to us"
+    "cases": "Cases",
+    "process": "Process",
+    "about": "About",
+    "contacts": "Contacts",
+    "geography": "Geography",
+    "cities": [
+      "Almaty",
+      "Astana",
+      "Shymkent",
+      "Kazakhstan"
+    ],
+    "legal": "BANGERT STUDIO LLP\nAlmaty, Republic of Kazakhstan\nAddress: 12A Kosmonavtov St."
   },
   "calculator": {
     "badge": "AI-Powered Estimation",
@@ -356,11 +441,6 @@
       "note": "Free, no sign-up, the result appears right on the page"
     }
   },
-  "proof": {
-    "projects": "projects in the portfolio",
-    "packages": "open-source solutions",
-    "years": "years of development"
-  },
   "meta": {
     "home": {
       "title": "Bangert Studio — mobile and web development",
@@ -378,5 +458,103 @@
       "title": "Project cost calculator — Bangert Studio",
       "description": "Describe your idea and get a budget range, a timeline and a team breakdown. No calls, no sign-up."
     }
+  },
+  "geography": {
+    "eyebrow": "05 / Geography",
+    "title1": "We build ",
+    "accent1": "digital products",
+    "title2": "for businesses ",
+    "accent2": "all across Kazakhstan.",
+    "lead": "Almaty. Astana. Shymkent. And other cities.",
+    "citiesTitle": "Main cities:",
+    "cities": [
+      "Almaty",
+      "Astana",
+      "Shymkent",
+      "Karaganda",
+      "Aktobe",
+      "Atyrau",
+      "Aktau",
+      "Pavlodar"
+    ],
+    "outro": "One team —\nprojects all across Kazakhstan.",
+    "note": "We work with companies, startups and entrepreneurs from Almaty, Astana and other cities of Kazakhstan — remotely and within a single digital process.",
+    "cta": "Discuss a project"
+  },
+  "blog": {
+    "eyebrow": "07 / Blog",
+    "title": "Blog and news",
+    "more": "Read more",
+    "page": {
+      "title": "Blog and news",
+      "all": "All articles",
+      "dev": "Interesting in development",
+      "business": "Key business challenges",
+      "back": "All articles"
+    },
+    "items": {
+      "openSource": {
+        "title": "We publish open-source code",
+        "excerpt": "We share the tools we use in our own projects: they're free and available to everyone on pub.dev.",
+        "body": [
+          "We build and release open source — code that is open and available to everyone. These are Flutter and Dart tools we use ourselves in client projects.",
+          "Sharing matters to us, and we only publish our best: every package passes pub.dev checks and is maintained by our team.",
+          "It's a plus for clients too: proven solutions speed up development, and open code means your project isn't tied to one studio — any team can pick it up."
+        ],
+        "linkLabel": "See our packages"
+      },
+      "aiEstimate": {
+        "title": "Project estimates with AI",
+        "excerpt": "Our site now has a calculator: describe your idea and get a ballpark budget with every feature estimated separately.",
+        "body": [
+          "We've added AI to our website to help you estimate a project before the first call. Describe your idea in your own words — the calculator breaks it into features and estimates each one.",
+          "You'll see a budget range, an approximate timeline and the team you'd need. It takes about 30 seconds, with no calls and no sign-up.",
+          "Note: this is a guideline, not a final price. Every project is unique and a precise estimate takes time — to get one, just contact us and we'll prepare a personal estimate."
+        ],
+        "linkLabel": "Estimate a project"
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "08 / FAQ",
+    "title": "Still have ",
+    "accent": "questions?",
+    "items": [
+      {
+        "q": "How much does a website cost?",
+        "a": "It depends on the scope: a landing page, a corporate site and a web service are priced differently. Get a rough range in our calculator in 30 seconds; the exact price is fixed before work starts."
+      },
+      {
+        "q": "How much does a mobile app cost?",
+        "a": "The price depends on the number of screens, platforms (iOS, Android) and the backend. Describe your idea in the calculator to see the budget range, timeline and team."
+      },
+      {
+        "q": "How long does development take?",
+        "a": "The timeline depends on the task and is agreed before work starts, not after. The calculator gives a timeline estimate too."
+      },
+      {
+        "q": "Can I order UX/UI only?",
+        "a": "Yes. We run research, design the interface and build a design system that your own team can take into development."
+      },
+      {
+        "q": "Do you work with companies from Almaty and Astana?",
+        "a": "Yes, and with other cities of Kazakhstan too. We work remotely with regular calls, updates and project documentation."
+      },
+      {
+        "q": "Can BangertStudio join an existing project?",
+        "a": "Yes. We first review the code and the current state of the product, then propose an improvement plan and join the process."
+      },
+      {
+        "q": "What should I prepare before we start?",
+        "a": "A short description of the task is enough. A technical specification is optional — we'll ask the clarifying questions ourselves."
+      },
+      {
+        "q": "What does product development include?",
+        "a": "The full cycle: analytics, UX/UI design, iOS, Android, web and backend development, testing, release and post-launch support."
+      }
+    ],
+    "outro": "Have an idea?\nLet's turn it into a working product.",
+    "note": "We reply within one business day",
+    "cta": "Discuss a project"
   }
 }

@@ -7,6 +7,8 @@ export interface Case {
   platform: string;
   image: string;
   site: string;
+  /** Широкая обложка (≈16:9) для фона шапки страницы кейса; у квадратных постеров её нет. */
+  wideCover?: string;
 }
 
 interface CasesState {

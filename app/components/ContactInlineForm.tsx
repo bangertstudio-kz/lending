@@ -15,9 +15,17 @@ async function sendToTelegram(name: string, contact: string, description?: strin
   if (!response.ok) throw new Error('API error');
 }
 
-const FIELD_CLASS =
-  'w-full border border-hairline bg-surface px-4 py-3.5 text-body text-fg ' +
-  'placeholder:text-faint transition-colors focus:border-accent focus:outline-none';
+const STYLES = {
+  // Форма тянется на высоту соседней колонки (на главной), лишнее место забирает поле «Как связаться».
+  form: 'flex h-full flex-col gap-3',
+  field:
+    'w-full rounded-[12px] border border-white/40 bg-transparent px-5 py-4 text-[16px] leading-6 tracking-[-0.02em] text-white ' +
+    'placeholder:text-white/40 transition-colors focus:border-lime focus:outline-none',
+  textarea: 'min-h-[110px] flex-1 resize-none',
+  success: 'text-[14px] leading-6 text-lime',
+  button:
+    'w-full cursor-pointer rounded-[40px] bg-lime px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] text-ink transition-opacity hover:opacity-85 disabled:pointer-events-none disabled:opacity-50',
+};
 
 interface ContactInlineFormProps {
   description?: string;
@@ -27,6 +35,7 @@ interface ContactInlineFormProps {
 }
 
 export function ContactInlineForm({ description, file, place = 'home' }: ContactInlineFormProps) {
+  const styles = STYLES;
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: '', contact: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -47,24 +56,24 @@ export function ContactInlineForm({ description, file, place = 'home' }: Contact
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} className={styles.form}>
       <input
         type="text"
         placeholder={t('contact.name')}
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className={FIELD_CLASS}
+        className={styles.field}
         required
       />
       <textarea
         placeholder={t('contact.howContactWithYou')}
         value={formData.contact}
         onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-        className={`${FIELD_CLASS} min-h-[110px] resize-none`}
+        className={`${styles.field} ${styles.textarea}`}
         required
       />
       {status === 'success' && (
-        <p role="status" className="text-small text-accent">
+        <p role="status" className={styles.success}>
           {t('contact.sent')}
         </p>
       )}
@@ -76,7 +85,7 @@ export function ContactInlineForm({ description, file, place = 'home' }: Contact
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-fg px-6 py-4 text-small font-medium text-bg transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
+        className={styles.button}
       >
         {status === 'loading' ? t('contact.sending') : t('contact.send')}
       </button>

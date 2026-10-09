@@ -11,7 +11,7 @@ export function ReadingProgress() {
     <motion.div
       aria-hidden
       style={{ scaleX }}
-      className="absolute inset-x-0 bottom-0 h-px origin-left bg-accent"
+      className="absolute inset-x-0 bottom-0 h-px origin-left bg-lime"
     />
   );
 }

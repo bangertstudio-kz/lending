@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowLeft, Wand2, Loader2, Paperclip, X } from 'lucide-react';
-import { Textarea } from '../ui/textarea';
+import { Wand2, Loader2, Paperclip, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useCalculatorStore } from '@/app/store/calculatorStore';
 import StageSelector from './StageSelector';
@@ -12,20 +10,9 @@ import EstimationResults from './EstimationResults';
 import { ContactInlineForm } from '../ContactInlineForm';
 import { ContactLinks } from '../ContactLinks';
 import { GOALS, trackGoal } from '@/app/analytics';
+import { field, limeButton, panel, panelTitle } from './styles';
 
-interface CostCalculatorProps {
-  isOpen: boolean;
-  onClose?: () => void;
-  projectDescription?: string;
-  inline?: boolean;
-}
-
-export default function CostCalculator({
-  isOpen,
-  onClose,
-  projectDescription = '',
-  inline = false,
-}: CostCalculatorProps) {
+export default function CostCalculator({ projectDescription = '' }: { projectDescription?: string }) {
   const { description, setDescription, features, estimates, isAnalyzing, analyzeError, analyzeDescription } = useCalculatorStore();
   const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -67,142 +54,67 @@ export default function CostCalculator({
     estimates.minWeeks > 0 && `🕐 Сроки: ${estimates.minWeeks}–${estimates.maxWeeks} нед.`,
   ].filter(Boolean).join('\n\n');
 
-  const content = (
-    <div className="min-h-screen p-6">
-      <div className="max-w-7xl mx-auto">
-        {!inline && onClose && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-8"
-          >
-            <button
-              onClick={onClose}
-              className="flex items-center gap-2 text-muted hover:text-fg transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="text-small font-medium">{t('calculator.back')}</span>
+  return (
+    <div className="grid items-start gap-5 lg:grid-cols-3 lg:gap-10">
+      <div className={`flex flex-col gap-5 transition-opacity duration-300 lg:col-span-2 ${isAnalyzing ? 'pointer-events-none opacity-50' : ''}`}>
+        <div className={panel}>
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className={panelTitle}>{t('calculator.description')}</h2>
+            <span className="text-[14px] leading-6 tracking-[-0.02em] opacity-40">{t('calculator.optional')}</span>
+          </div>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder={t('calculator.descriptionPlaceholder')}
+            className={`${field} max-h-[240px] min-h-[140px] resize-none`}
+          />
+          <div className="flex flex-wrap items-center gap-3">
+            <button type="button" onClick={handleAnalyze} disabled={isAnalyzing || !description.trim()} className={limeButton}>
+              {isAnalyzing ? <Loader2 className="size-4 animate-spin" /> : <Wand2 className="size-4" />}
+              {isAnalyzing ? t('calculator.analyzing') : t('calculator.analyze')}
             </button>
-          </motion.div>
-        )}
-
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 bg-raised border border-hairline text-fg/80 px-4 py-2 rounded-full mb-4">
-            <Sparkles className="w-4 h-4" />
-            <span className="text-small font-medium">{t('calculator.badge')}</span>
-          </div>
-          <h1 className="mb-3 font-display font-semibold text-h1 text-fg">{t('calculator.title')}</h1>
-          <p className="text-h3 text-muted">{t('calculator.subtitle')}</p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className={`lg:col-span-2 space-y-6 transition-opacity duration-300 ${isAnalyzing ? 'pointer-events-none opacity-50' : ''}`}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-bg border border-hairline p-6 space-y-1"
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-small text-muted">{t('calculator.description')}</span>
-                <span className="text-xs text-faint">{t('calculator.optional')}</span>
-              </div>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder={t('calculator.descriptionPlaceholder')}
-                className="bg-raised border-hairline text-fg placeholder:text-faint focus:border-accent min-h-[120px] max-h-[240px] overflow-y-auto resize-none"
-              />
-              <div className="flex items-center gap-3 mt-3">
+            <input ref={fileInputRef} type="file" className="hidden" onChange={handleFile} />
+            {attachedFile ? (
+              <span className="flex items-center gap-2 rounded-[40px] border border-white/40 py-2 pr-3 pl-4 text-[14px] leading-6">
+                <Paperclip className="size-4 shrink-0" />
+                <span className="max-w-[180px] truncate">{attachedFile.name}</span>
                 <button
-                  onClick={handleAnalyze}
-                  disabled={isAnalyzing || !description.trim()}
-                  className="flex items-center gap-2 px-4 py-2 bg-fg text-bg text-small font-medium hover:bg-accent disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  type="button"
+                  onClick={() => setAttachedFile(null)}
+                  aria-label="Remove file"
+                  className="cursor-pointer opacity-60 transition-opacity hover:opacity-100"
                 >
-                  {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
-                  {isAnalyzing ? t('calculator.analyzing') : t('calculator.analyze')}
+                  <X className="size-4" />
                 </button>
-                <input ref={fileInputRef} type="file" className="hidden" onChange={handleFile} />
-                {attachedFile ? (
-                  <div className="flex items-center gap-2 px-3 py-2 border border-hairline-strong bg-raised text-small text-fg">
-                    <Paperclip className="w-4 h-4 shrink-0" />
-                    <span className="max-w-[160px] truncate">{attachedFile.name}</span>
-                    <button type="button" onClick={() => setAttachedFile(null)} className="text-muted hover:text-fg transition-colors">
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center gap-2 px-3 py-2 border border-hairline text-muted text-small hover:border-accent hover:text-fg transition-colors"
-                  >
-                    <Paperclip className="w-4 h-4" />
-                  </button>
-                )}
-                {analyzeError && (
-                  <span className="text-small text-red-400">{t('calculator.analyzeError')}</span>
-                )}
-              </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
-              <StageSelector />
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 }}>
-              <FeatureSelector />
-            </motion.div>
+              </span>
+            ) : (
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                aria-label="Attach file"
+                className="flex cursor-pointer rounded-[40px] border border-white/40 p-3 transition-colors hover:border-lime hover:text-lime"
+              >
+                <Paperclip className="size-5" />
+              </button>
+            )}
+            {analyzeError && <span className="text-[14px] leading-6 text-red-400">{t('calculator.analyzeError')}</span>}
           </div>
+        </div>
+        <StageSelector />
+        <FeatureSelector />
+      </div>
 
-          <div className="lg:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="sticky top-24"
-            >
-              <EstimationResults estimates={estimates} />
-              <div className="mt-6 space-y-6">
-                <div>
-                  <p className="text-fg text-small font-medium mb-4">{t('calculator.contactUs')}</p>
-                  <ContactLinks place="calculator" />
-                </div>
-                <div>
-                  <p className="text-fg text-small font-medium mb-4">{t('calculator.leaveRequest')}</p>
-                  <ContactInlineForm
-                    description={contactDescription || undefined}
-                    file={attachedFile}
-                    place="calculator"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div>
+      <div className="flex flex-col gap-5 lg:sticky lg:top-28">
+        <EstimationResults estimates={estimates} />
+        <div className={panel}>
+          <h2 className={panelTitle}>{t('calculator.leaveRequest')}</h2>
+          <ContactInlineForm description={contactDescription || undefined} file={attachedFile} place="calculator" />
+        </div>
+        <div className="flex flex-col gap-3">
+          <h2 className={panelTitle}>{t('calculator.contactUs')}</h2>
+          <ContactLinks place="calculator" />
         </div>
       </div>
     </div>
-  );
-
-  if (inline) return isOpen ? content : null;
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-bg z-50 overflow-y-auto"
-        >
-          {content}
-        </motion.div>
-      )}
-    </AnimatePresence>
   );
 }

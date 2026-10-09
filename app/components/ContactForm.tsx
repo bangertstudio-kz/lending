@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import { Section } from './ui/section';
+import { Kicker, Lead } from './ui/block';
 import { ContactInlineForm } from './ContactInlineForm';
 import { ContactLinks } from './ContactLinks';
 
@@ -9,26 +9,28 @@ export function ContactForm() {
   const { t } = useTranslation();
 
   return (
-    <Section id="contact" tone="bg">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 items-start gap-20 md:grid-cols-2">
-          <div className="space-y-6">
-            <div>
-              <h2 className="mb-4 font-display font-semibold text-h2 text-fg">{t('contact.title')}</h2>
-              <p className="mb-8 text-body text-muted">{t('contact.subtitle')}</p>
-            </div>
-            <ContactInlineForm />
-          </div>
+    <section id="contact" className="relative bg-ink font-montserrat text-white">
+      <div className="mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 py-20 lg:px-20">
+        <div className="flex flex-col gap-3">
+          <Kicker>{t('contact.eyebrow')}</Kicker>
+          <h2 className="text-[clamp(2.25rem,3.125vw,3.75rem)] leading-[1.1333] font-semibold tracking-[-0.06em] uppercase">
+            {t('contact.title')}
+          </h2>
+          <Lead className="gap-2.5">{t('contact.subtitle')}</Lead>
+        </div>
 
-          <div className="space-y-8">
-            <div>
-              <h2 className="mb-4 font-display font-semibold text-h2 text-fg">{t('contact.getInTouch')}</h2>
-              <p className="mb-8 text-body text-muted">{t('contact.reachOut')}</p>
+        <div className="grid gap-10 lg:grid-cols-2">
+          <ContactInlineForm />
+
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1">
+              <h3 className="text-[24px] leading-8 font-semibold tracking-[-0.02em]">{t('contact.getInTouch')}</h3>
+              <p className="text-[18px] leading-7 tracking-[-0.02em] opacity-60 lg:text-[20px]">{t('contact.reachOut')}</p>
             </div>
             <ContactLinks />
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
