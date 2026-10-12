@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import cases from '@/app/data/cases.json';
-import { SeoHead } from '@/app/components/SeoHead';
-import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
-import { Faq } from '@/app/components/Faq';
-import { CaseCard, HOME_COVERS, cardTitle } from '@/app/components/CaseStudies';
-import { More } from '@/app/components/ui/block';
+import cases from '@/src/data/cases.json';
+import { SeoHead } from '@/src/components/SeoHead';
+import { Header } from '@/src/components/Header';
+import { Footer } from '@/src/components/Footer';
+import { Faq } from '@/src/components/Faq';
+import { CaseCard, HOME_COVERS } from '@/src/components/CaseStudies';
+import { More } from '@/src/components/ui/block';
 
 // Кейсы с обложками из макета главной идут первыми, остальные в порядке cases.json.
 const ORDERED = [...cases].sort((a, b) => {
@@ -22,9 +22,10 @@ const FILTERS = {
 };
 type Filter = keyof typeof FILTERS;
 
-const GRADIENT = 'bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.8)_83.654%)]';
-// У широкой карточки в макете затемнение до чистого чёрного — на обложке Manover свой текст.
-const FEATURED_GRADIENT = 'bg-[linear-gradient(180deg,transparent,#000_83.654%)]';
+const GRADIENT = 'bg-[linear-gradient(180deg,transparent_20%,rgba(0,0,0,0.65)_55%,#000_92%)]';
+// У широкой карточки градиент скрывает текст на обложке слева и плавно открывает 3D-мокап справа.
+const FEATURED_GRADIENT =
+  'bg-[linear-gradient(180deg,rgba(10,9,8,0.96)_0%,rgba(10,9,8,0.92)_60%,rgba(10,9,8,0.96)_100%)] md:bg-[linear-gradient(90deg,#0A0908_0%,#0A0908_48%,rgba(10,9,8,0.7)_65%,transparent_85%)]';
 
 export default function CasesPage() {
   const { t } = useTranslation();
@@ -33,7 +34,15 @@ export default function CasesPage() {
 
   return (
     <>
-      <SeoHead page="cases" path="/cases" />
+      <SeoHead
+        page="cases"
+        path="/cases"
+        includeFaq={true}
+        breadcrumbs={[
+          { name: t('caseStudies.page.home'), path: '/' },
+          { name: t('caseStudies.page.title'), path: '/cases' },
+        ]}
+      />
       <div className="min-h-screen bg-ink font-montserrat text-white">
         <Header />
 
@@ -80,27 +89,34 @@ export default function CasesPage() {
                     id={project.id}
                     place="cases"
                     gradient={featured ? FEATURED_GRADIENT : GRADIENT}
-                    sizes={featured ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw'}
-                    className={`h-[400px] md:h-[480px] xl:h-[540px] ${
-                      featured ? 'gap-2.5 shadow-[4px_4px_0_0_var(--color-lime)] md:col-span-2' : ''
+                    sizes={featured ? '(min-width: 1280px) 67vw, 100vw' : '(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw'}
+                    innerClassName={featured ? 'p-6 lg:p-10' : 'p-5 sm:p-6 lg:p-6 2xl:p-8'}
+                    className={`aspect-[16/9] w-full ${
+                      featured
+                        ? 'min-h-[380px] sm:min-h-0 gap-2.5 rounded-[12px] ring-1 ring-lime/50 shadow-[0_4px_24px_rgba(210,249,73,0.18)] md:col-span-2 xl:col-span-2 xl:row-span-2'
+                        : 'min-h-[220px] sm:min-h-0'
                     }`}
                   >
                     {featured ? (
                       <>
-                        <span className="flex flex-col gap-2.5">
-                          <span className="text-[18px] leading-6 font-semibold tracking-[-0.02em]">
+                        <span className="flex max-w-[620px] flex-col gap-2.5">
+                          <span className="text-[16px] sm:text-[18px] leading-6 font-semibold tracking-[-0.02em]">
                             {t('caseStudies.home.manoverTagline')}
                           </span>
-                          <span className={cardTitle}>{project.name}</span>
-                          <span className="max-w-[760px] text-[14px] leading-5 font-medium tracking-[-0.02em] opacity-40">
+                          <span className="text-[28px] sm:text-[36px] lg:text-[44px] 2xl:text-[48px] leading-none font-bold tracking-[-0.06em] uppercase">
+                            {project.name}
+                          </span>
+                          <span className="max-w-[760px] text-[13px] sm:text-[14px] leading-5 font-medium tracking-[-0.02em] opacity-40 line-clamp-3 lg:line-clamp-none">
                             {t('caseStudies.home.manoverText')}
                           </span>
                         </span>
                         <More label={t('caseStudies.home.more')} />
                       </>
                     ) : (
-                      <span className="flex flex-wrap items-end justify-between gap-x-6">
-                        <span className={cardTitle}>{project.name}</span>
+                      <span className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
+                        <span className="text-[20px] sm:text-[24px] lg:text-[22px] 2xl:text-[28px] leading-tight font-bold tracking-[-0.05em] uppercase">
+                          {project.name}
+                        </span>
                         <More label={t('caseStudies.home.more')} />
                       </span>
                     )}

@@ -1,37 +1,48 @@
 'use strict';
 
-import { SeoHead } from '@/app/components/SeoHead';
-import { Header } from '../app/components/Header';
-import { Hero } from '../app/components/Hero';
-import { CaseStudies } from '../app/components/CaseStudies';
-import { Process } from '../app/components/Process';
-import { Services } from '../app/components/Services';
-import { Geography } from '../app/components/Geography';
-import { Blog } from '../app/components/Blog';
-import { Faq } from '../app/components/Faq';
-import { CalculatorCTA } from '../app/components/CalculatorCTA';
-import { DevSolutions } from '../app/components/DevSolutions';
-import { ContactForm } from '../app/components/ContactForm';
-import { Footer } from '../app/components/Footer';
-import { MobileScrollButton } from '../app/components/MobileScrollButton';
+import { SeoHead } from '@/src/components/SeoHead';
+import { Header } from '../src/components/Header';
+import { Hero } from '../src/components/Hero';
+import { CaseStudies } from '../src/components/CaseStudies';
+import { Process } from '../src/components/Process';
+import { Services } from '../src/components/Services';
+import { Geography } from '../src/components/Geography';
+import { Blog } from '../src/components/Blog';
+import { Faq } from '../src/components/Faq';
+import { ContactForm } from '../src/components/ContactForm';
+import { Footer } from '../src/components/Footer';
+import { MobileScrollButton } from '../src/components/MobileScrollButton';
+import { SectionReveal } from '../src/components/ui/SectionReveal';
 
 export default function Home() {
   return (
     <>
-      <SeoHead page="home" path="/" />
+      <SeoHead page="home" path="/" includeFaq={true} />
       <div className="relative min-h-screen bg-bg">
         <Header />
         <main className="relative">
           <Hero />
           <CaseStudies />
-          <Process />
-          <Services />
-          <Geography />
-          <Blog />
-          <Faq />
+          <SectionReveal>
+            <Process />
+          </SectionReveal>
+          <SectionReveal>
+            <Services />
+          </SectionReveal>
+          <SectionReveal>
+            <Geography />
+          </SectionReveal>
+          <SectionReveal>
+            <Blog />
+          </SectionReveal>
+          <SectionReveal>
+            <Faq />
+          </SectionReveal>
           {/* <CalculatorCTA />
           <DevSolutions /> */}
-          <ContactForm />
+          <SectionReveal>
+            <ContactForm />
+          </SectionReveal>
         </main>
         <Footer />
         <MobileScrollButton />
@@ -41,6 +52,6 @@ export default function Home() {
 }
 
 
-export async function getServerSideProps() {
-  return { props: { 'data': 1 } }
+export async function getStaticProps() {
+  return { props: {} };
 }

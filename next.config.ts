@@ -6,7 +6,7 @@ import type { NextConfig } from 'next';
 // коммита. git есть только на этапе сборки, так что считаем здесь.
 // ponytail: Vercel клонирует репозиторий неглубоко; если файл давно не менялся,
 // git вернёт пустоту и lastmod просто не попадёт в sitemap.
-const SITEMAP_SOURCES = ['app/locales/ru.json', 'app/data/cases.json', 'app/data/calculator.json'];
+const SITEMAP_SOURCES = ['src/locales/ru.json', 'src/data/cases.json', 'src/data/calculator.json'];
 
 function gitDate(file: string): string {
   try {

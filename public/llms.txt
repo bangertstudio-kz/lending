@@ -1,47 +1,45 @@
 # Bangert Studio
 
 > Студия мобильной и веб-разработки полного цикла. Проектирует, разрабатывает и
-> публикует приложения для iOS и Android, а также веб-сервисы. Работает из
-> Казахстана, ведёт проекты от требований до релиза и поддержки после запуска.
+> публикует приложения для iOS и Android (Flutter, Swift, Kotlin), а также веб-сервисы.
+> Базируется в Казахстане (Алматы), работает по всему миру. Ведёт проекты от требований до релиза и поддержки.
 
 Сайт: https://bangertstudio.kz
+Основатель и ведущий архитектор: Александр Бангерт (Alexander Bangert)
+Локация: Алматы, Казахстан (Almaty, Kazakhstan)
 
-## Чем занимается
+## Проверяемые факты (Verified Facts)
 
-- Разработка приложений для iOS и публикация в App Store
-- Разработка под Android (входит в стоимость при заказе iOS-версии)
-- Веб-разработка: лендинги, корпоративные сайты, веб-сервисы
-- Проектирование интерфейсов
-- Аналитика и фиксация требований до начала разработки
-- Поддержка после релиза, обновления под новые версии iOS и Android
+- 20 коммерческих проектов в портфолио (из них 6+ с живыми ссылками в App Store)
+- 12 open-source библиотек для Flutter и Dart опубликованы на pub.dev под издателем bangertstudio.kz (2 600+ скачиваний в месяц)
+- Более 10 лет опыта коммерческой разработки
+- Прозрачная смета и расчет сроков до старта работ
+- Официальный договор по законодательству Республики Казахстан (ТОО / ИП), ЭСФ, поэтапная постоплата, обязательный NDA
+- Интеграции с локальными сервисами: Kaspi Pay, Halyk Bank, 1С, SMS-шлюзы, e-Gov API
 
-## Проверяемые факты
+## Чем занимается студия
 
-- 12 проектов в портфолио
-- 12 open-source библиотек для Flutter и Dart опубликованы на pub.dev
-  под издателем bangertstudio.kz
-- Более 10 лет опыта разработки
-- Оценка бюджета и сроков даётся до начала работ
+- Разработка мобильных приложений для iOS и Android из единой базы кода на Flutter
+- Разработка нативных приложений (iOS / Android) и публикация в App Store и Google Play
+- Разработка веб-сервисов, личных кабинетов, SaaS-платформ и порталов на React / Next.js / NestJS
+- Проектирование UI/UX интерфейсов и масштабируемых дизайн-систем
+- Аудит кода, архитектуры и безопасности действующих систем
+- Поддержка, обновления под новые версии iOS/Android и SLA
 
-## Страницы
+## Машиночитаемые файлы для ИИ-агентов
 
-- [Главная](https://bangertstudio.kz/): услуги, работы, открытые решения, контакты
-- [Работы](https://bangertstudio.kz/cases): выпущенные приложения и веб-проекты
-- [Открытые решения](https://bangertstudio.kz/packages): библиотеки для Flutter и Dart с метриками pub.dev
-- [Калькулятор](https://bangertstudio.kz/calculator): оценка бюджета, сроков и состава команды по описанию проекта
+- [Полная база знаний для LLM (llms-full.txt)](https://bangertstudio.kz/llms-full.txt): исчерпывающее описание всех 20 проектов, 12 библиотек и технологий.
+- [Машиночитаемый прайс-лист (pricing.md)](https://bangertstudio.kz/pricing.md): структурированная сетка цен и часов по модулям для ИИ-агентов.
 
-## Открытый код
+## Страницы сайта
 
-Библиотеки студии опубликованы на pub.dev и доступны любому разработчику:
-https://pub.dev/publishers/bangertstudio.kz/packages
+- [Главная](https://bangertstudio.kz/): услуги, работы, карта городов Казахстана, открытые решения, контакты
+- [Портфолио](https://bangertstudio.kz/cases): 20 выпущенных приложений и веб-проектов
+- [Открытые решения](https://bangertstudio.kz/packages): 12 библиотек для Flutter и Dart с живыми метриками pub.dev
+- [Калькулятор проекта](https://bangertstudio.kz/calculator): интерактивная оценка бюджета и сроков на базе ИИ
+- [Блог](https://bangertstudio.kz/blog): статьи об инженерных решениях и открытом коде
 
-Среди них: управление состоянием, конструктор форм с валидацией,
-типобезопасная навигация, адаптивные лейауты, фоновое отслеживание
-геопозиции, инструменты анализа вёрстки и управления Git-хуками.
-
-## Языковые версии
-
-Сайт доступен на пяти языках, каждая версия по своему адресу:
+## Языковые версии (5 языков)
 
 - Русский: https://bangertstudio.kz/
 - English: https://bangertstudio.kz/en/
@@ -49,9 +47,17 @@ https://pub.dev/publishers/bangertstudio.kz/packages
 - Português: https://bangertstudio.kz/pt/
 - Español: https://bangertstudio.kz/es/
 
-## Связь
+## English Summary
 
-- Telegram: https://t.me/alexanderbangert
-- Канал: https://t.me/bangertstudio
+Bangert Studio is a full-cycle mobile and web product development studio founded by Alexander Bangert, based in Almaty, Kazakhstan. Specializes in cross-platform iOS and Android apps (Flutter / Dart), modern web platforms (Next.js, React, Node.js), and UI/UX design. Creator of 12 open-source Dart/Flutter packages on pub.dev. Portfolio includes 20 verified projects across metalworking, fintech, VPN, audio, and enterprise SaaS.
+
+## Контакты для связи
+
+- Telegram фаундера: https://t.me/alexanderbangert
+- Telegram-канал: https://t.me/bangertstudio
+- WhatsApp: https://wa.me/77074054405 (+7 707 405-4405)
+- Google Meet (созвон): https://calendar.app.google/LZjMidqtq5BtFg7x6
 - LinkedIn: https://www.linkedin.com/company/bangertstudio/
-- Почта: alexganbert@gmail.com
+- GitHub: https://github.com/bangertstudio-kz
+- pub.dev: https://pub.dev/publishers/bangertstudio.kz/packages
+- Email: alexganbert@gmail.com

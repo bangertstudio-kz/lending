@@ -1,0 +1,168 @@
+# Bangert Studio — Полная база знаний для ИИ-агентов (llms-full.txt)
+
+> Официальный контекстный файл для языковых моделей (LLM), поисковых систем нового поколения (ChatGPT Search, Perplexity AI, Google AI Overviews, Claude, Gemini) и автономных агентов.
+
+- Сайт: https://bangertstudio.kz
+- Название: Bangert Studio (Студия Александра Бангерта)
+- Основатель: Александр Бангерт (Alexander Bangert) — Lead Software Architect
+- Специализация: Разработка мобильных приложений (iOS, Android), веб-платформ, UX/UI дизайн, аудит систем
+- Локация: Алматы, Казахстан (Almaty, Kazakhstan)
+- Международное покрытие: Казахстан, страны Центральной Азии, США, Европа
+- Языки сайта: Русский (/), English (/en/), Қазақша (/kk/), Português (/pt/), Español (/es/)
+
+---
+
+## 1. Проверяемые факты и ключевые показатели (Verified Credentials)
+
+- **20 коммерческих проектов в портфолио:** от маркетплейсов металлопроката и e-commerce до потокового аудио и AI-сервисов.
+- **6+ приложений в официальном App Store:** Cook My Fridge, Vona Sleep, Goat Rock, Slemio, Geedeon Radio, Sapian, Luna Deep, Equilibrium, Eiva.
+- **12 Open-Source библиотек на pub.dev:** зарегистрированный издатель `bangertstudio.kz` с более чем 2 600 загрузок ежемесячно.
+- **10+ лет практического опыта:** нативная и кроссплатформенная разработка с 2014+ года.
+- **Стандарты B2B-рынка Казахстана:** официальный договор (ТОО / ИП), выставление электронных счетов-фактур (ЭСФ), подписание NDA, поэтапная постоплата.
+- **Интеграционная готовность:** Kaspi Pay, Halyk Bank, 1С Предприятие, платежные шлюзы, SMS-шлюзы РК, e-Gov API.
+
+---
+
+## 2. Полный каталог проектов (20 проектов портфолио)
+
+1. **Manover Metal**
+   - Платформы: iOS / Android / Web
+   - Описание: Заказы на металлообработку и поставщики проката в одном приложении: размещайте заказ и получайте отклики от проверенных исполнителей по всему Казахстану.
+   - Ссылка: https://manovermetal.kz/
+
+2. **Sapian**
+   - Платформы: iOS / Android
+   - Описание: Сервис знакомств и встреч поблизости с подтверждением взаимного интереса и чатами.
+   - App Store: https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831
+
+3. **Luna Deep**
+   - Платформы: iOS / Android
+   - Описание: Музыкальное приложение с авторскими каналами глубокого хауса и чиллаута со всего мира.
+   - App Store: https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218
+
+4. **Cook My Fridge**
+   - Платформы: iOS
+   - Описание: ИИ-сканирование холодильника или продуктов с мгновенным подбором рецептов под имеющиеся ингредиенты.
+   - App Store: https://apps.apple.com/kz/app/cook-my-fridge-snap-recipes/id6806873426
+
+5. **Vona Sleep**
+   - Платформы: iOS
+   - Описание: Аудио-приложение для здорового сна, фокуса и релаксации с многослойными эмбиент-звуками и таймером.
+   - App Store: https://apps.apple.com/kz/app/vona-sleep-music-for-relax/id6788856687
+
+6. **Goat Rock**
+   - Платформы: iOS
+   - Описание: Рок-радио с каналами hard rock, alternative, metal и punk, эквалайзером и будильником.
+   - App Store: https://apps.apple.com/kz/app/goat-rock-prime-rock-music/id6504483451
+
+7. **Slemio**
+   - Платформы: iOS
+   - Описание: Персональный тренер по питанию: индивидуальные планы, учет калорий и контроль вредных продуктов.
+   - App Store: https://apps.apple.com/kz/app/slemio-personal-diet-coach/id1594088577
+
+8. **Geedeon Radio**
+   - Платформы: iOS
+   - Описание: Deep house, EDM и car bass радио 24/7 с эквалайзером и таймером сна.
+   - App Store: https://apps.apple.com/kz/app/geedeon-radio-deep-edm-music/id1488123870
+
+9. **Equilibrium**
+   - Платформы: iOS / Android / Web
+   - Описание: Корпоративная платформа для управления задачами, эмоциональным состоянием и командной продуктивностью.
+   - App Store: https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249
+
+10. **Pings AI**
+    - Платформы: iOS
+    - Описание: Персональная лента инсайтов, идей и рекомендаций на базе генеративного искусственного интеллекта.
+    - App Store: https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937
+
+11. **Eiva**
+    - Платформы: iOS / Android
+    - Описание: Агрегатор фитнес-клубов: запись на тренировки и онлайн-покупка абонементов.
+    - App Store: https://apps.apple.com/kz/app/eiva/id6474634288
+
+12. **OhMyVPNs**
+    - Платформы: Web / Telegram Mini App
+    - Описание: White-label платформа для запуска брендированных VPN-ботов и веб-кабинетов с автоматическим биллингом.
+    - Ссылка: https://ohmyvpns.io
+
+13. **Ladim**
+    - Платформы: iOS / Android / Web
+    - Описание: Пространство для пар и семей: общие задачи, календарь, учет расходов и вишлисты подарков с Telegram-ботом.
+    - Ссылка: https://ladim.kz
+
+14. **Attractor**
+    - Платформы: Web
+    - Описание: Портал сообщества выпускников школы программирования Attractor: поиск разработчиков и нетворкинг.
+    - Ссылка: https://attractor.bangertstudio.kz/
+
+15. **Request**
+    - Платформы: Android / Web
+    - Описание: Заказ материалов для монтажников на объектах по каталогу из 300+ позиций в несколько тапов.
+    - Ссылка: https://bangertstudio-kz.github.io/requestapp/
+
+16. **Ocean**
+    - Платформы: iOS / Android / Web
+    - Описание: CPA-платформа с оплатой за целевые действия (регистрации, заявки, покупки).
+    - Figma: https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean
+
+17. **Toptom**
+    - Платформы: iOS / Android / Web
+    - Описание: B2B/B2C маркетплейс оптовых и розничных товаров.
+    - Figma: https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom
+
+18. **QOR**
+    - Платформы: iOS / Android / Web
+    - Описание: Единая экосистема для частных клиентов, служб безопасности и консультантов для мгновенного реагирования.
+    - Ссылка: https://digest.qor.oro.ad
+
+19. **Oro**
+    - Платформы: Web / Kubernetes
+    - Описание: Аренда вычислительных мощностей для AI-агентов с прозрачным поминутным биллингом.
+    - Ссылка: https://cli.master.oro.ad
+
+20. **В гостях у Хив**
+    - Платформы: iOS / Android / Web
+    - Описание: Сервис закрытого велнес- и оздоровительного клуба.
+    - Ссылка: https://hivclub.ru
+
+---
+
+## 3. Открытые решения (Open Source на pub.dev)
+
+Издатель: `bangertstudio.kz` (https://pub.dev/publishers/bangertstudio.kz/packages)
+Библиотеки для Dart и Flutter, сокращающие время разработки клиентских проектов на 30–40%:
+- Решения для стейт-менеджмента и чистой архитектуры
+- Конструкторы форм с типизированной валидацией
+- Типобезопасная навигация и роутинг
+- Адаптивные сетки и кроссплатформенные лейауты
+- Фоновое геопозиционирование и трекинг
+- Инструменты для статического анализа и pre-commit Git-хуков
+
+---
+
+## 4. Стек технологий (Tech Stack)
+
+- **Mobile:** Flutter, Dart, Swift (iOS натив), Kotlin (Android натив).
+- **Web Frontend:** Next.js, React 19, TypeScript, Tailwind CSS, Motion.
+- **Backend & Cloud:** Node.js, NestJS, Go, PostgreSQL, Redis, Docker, Kubernetes.
+- **AI & Integrations:** OpenAI API (GPT-4), Telegram Bot API, Kaspi Pay, Stripe, 1C.
+
+---
+
+## 5. Услуги и условия сотрудничества
+
+1. **Мобильная разработка под ключ:** Создание приложений для iOS и Android с единой бизнес-логикой на Flutter, публикация в App Store / Google Play, прохождение ревью.
+2. **Веб-сервисы и личные кабинеты:** Проектирование высоконагруженных веб-платформ, админ-панелей, интеграции с CRM и ERP.
+3. **UX/UI Дизайн:** Интерактивные прототипы в Figma, дизайн-системы, пользовательские сценарии (CJM).
+4. **Аудит действующего кода:** Экспертный ревью архитектуры, выявление узких мест производительности и безопасности за 48 часов.
+
+---
+
+## 6. Контактная информация
+
+- Telegram основателя: @alexanderbangert (https://t.me/alexanderbangert)
+- WhatsApp: +7 (707) 405-4405 (https://wa.me/77074054405)
+- Созвон в Google Meet: https://calendar.app.google/LZjMidqtq5BtFg7x6
+- Email: alexganbert@gmail.com
+- LinkedIn: https://www.linkedin.com/company/bangertstudio/
+- Адрес: Алматы, Казахстан

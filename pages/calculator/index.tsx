@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
-import { SeoHead } from '@/app/components/SeoHead';
-import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
-import { Faq } from '@/app/components/Faq';
-import { Kicker, Lead } from '@/app/components/ui/block';
-import CostCalculator from '@/app/components/Calculator/CostCalculator';
+import { SeoHead } from '@/src/components/SeoHead';
+import { Header } from '@/src/components/Header';
+import { Footer } from '@/src/components/Footer';
+import { Faq } from '@/src/components/Faq';
+import { Kicker, Lead } from '@/src/components/ui/block';
+import CostCalculator from '@/src/components/Calculator/CostCalculator';
 
 export default function CalculatorPage() {
   const { t } = useTranslation();
@@ -15,7 +15,15 @@ export default function CalculatorPage() {
 
   return (
     <>
-      <SeoHead page="calculator" path="/calculator" />
+      <SeoHead
+        page="calculator"
+        path="/calculator"
+        includeFaq={true}
+        breadcrumbs={[
+          { name: t('caseStudies.page.home'), path: '/' },
+          { name: t('header.calculator'), path: '/calculator' },
+        ]}
+      />
       <div className="min-h-screen bg-ink font-montserrat text-white">
         <Header />
 

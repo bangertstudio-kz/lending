@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { SeoHead } from '@/app/components/SeoHead';
-import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
-import { Faq } from '@/app/components/Faq';
-import { BlogCard } from '@/app/components/Blog';
-import { BLOG_CATEGORIES, POSTS, type BlogCategory } from '@/app/data/blog';
+import { SeoHead } from '@/src/components/SeoHead';
+import { Header } from '@/src/components/Header';
+import { Footer } from '@/src/components/Footer';
+import { Faq } from '@/src/components/Faq';
+import { BlogCard } from '@/src/components/Blog';
+import { BLOG_CATEGORIES, POSTS, type BlogCategory } from '@/src/data/blog';
 
 type Filter = 'all' | BlogCategory;
 
@@ -18,7 +18,17 @@ export default function BlogPage() {
 
   return (
     <>
-      <SeoHead page="home" path="/blog" title={`${t('blog.page.title')} — Bangert Studio`} description={t('blog.items.openSource.excerpt')} />
+      <SeoHead
+        page="home"
+        path="/blog"
+        title={`${t('blog.page.title')} — Bangert Studio`}
+        description={t('blog.items.openSource.excerpt')}
+        includeFaq={true}
+        breadcrumbs={[
+          { name: t('caseStudies.page.home'), path: '/' },
+          { name: t('blog.page.title'), path: '/blog' },
+        ]}
+      />
       <div className="min-h-screen bg-ink font-montserrat text-white">
         <Header />
 

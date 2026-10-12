@@ -1,13 +1,13 @@
-import { SeoHead } from '@/app/components/SeoHead';
+import { SeoHead } from '@/src/components/SeoHead';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { Heart, BadgeCheck, Download, ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
-import { Lead } from '@/app/components/ui/block';
-import { usePackagesStore } from '@/app/store/packagesStore';
-import { GOALS, trackGoal } from '@/app/analytics';
+import { Header } from '@/src/components/Header';
+import { Footer } from '@/src/components/Footer';
+import { Lead } from '@/src/components/ui/block';
+import { usePackagesStore } from '@/src/store/packagesStore';
+import { GOALS, trackGoal } from '@/src/analytics';
 
 const PUB_PUBLISHER_URL = 'https://pub.dev/publishers/bangertstudio.kz/packages';
 
@@ -23,7 +23,14 @@ export default function PackagesPage() {
 
   return (
     <>
-      <SeoHead page="packages" path="/packages" />
+      <SeoHead
+        page="packages"
+        path="/packages"
+        breadcrumbs={[
+          { name: t('caseStudies.page.home'), path: '/' },
+          { name: t('header.packages'), path: '/packages' },
+        ]}
+      />
 
       <div className="min-h-screen bg-ink font-montserrat text-white">
         <Header />

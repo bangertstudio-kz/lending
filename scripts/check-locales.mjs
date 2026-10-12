@@ -13,7 +13,7 @@ const flatten = (obj, prefix = '') =>
   });
 
 const load = (locale) =>
-  new Map(flatten(JSON.parse(readFileSync(`app/locales/${locale}.json`, 'utf8'))));
+  new Map(flatten(JSON.parse(readFileSync(`src/locales/${locale}.json`, 'utf8'))));
 
 const reference = load(REFERENCE);
 const problems = [];
@@ -25,9 +25,9 @@ for (const locale of LOCALES) {
   const missing = [...reference.keys()].filter((key) => !current.has(key));
   const extra = [...current.keys()].filter((key) => !reference.has(key));
   const empty = [...current].filter(([, v]) => typeof v === 'string' && !v.trim()).map(([k]) => k);
-  // Непереведённый ключ обычно выглядит как дословная копия русского.
+  // Непереведённый ключ обычно выглядит как дословная копия русского (кроме глобальных тех-тегов).
   const untouched = [...current].filter(
-    ([key, value]) => typeof value === 'string' && value === reference.get(key) && value.length > 24,
+    ([key, value]) => typeof value === 'string' && value === reference.get(key) && value.length > 24 && key !== 'services.dev.tags',
   ).map(([k]) => k);
 
   if (missing.length) problems.push(`${locale}: нет ${missing.length} ключей\n  ${missing.slice(0, 10).join('\n  ')}`);

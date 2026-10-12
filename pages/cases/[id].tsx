@@ -2,14 +2,14 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'ne
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { SeoHead } from '@/app/components/SeoHead';
-import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
-import { Faq } from '@/app/components/Faq';
-import { GOALS, trackGoal } from '@/app/analytics';
-import { SITE_URL } from '@/app/seo';
-import cases from '@/app/data/cases.json';
-import type { Case } from '@/app/store/casesStore';
+import { SeoHead } from '@/src/components/SeoHead';
+import { Header } from '@/src/components/Header';
+import { Footer } from '@/src/components/Footer';
+import { Faq } from '@/src/components/Faq';
+import { GOALS, trackGoal } from '@/src/analytics';
+import { SITE_URL } from '@/src/seo';
+import cases from '@/src/data/cases.json';
+import type { Case } from '@/src/store/casesStore';
 
 export const getStaticPaths: GetStaticPaths = ({ locales = [] }) => ({
   paths: cases.flatMap((c) => locales.map((locale) => ({ params: { id: c.id }, locale }))),
@@ -28,6 +28,22 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
   const isApp = project.site.includes('apps.apple.com');
   const description = t(`caseStudies.items.${project.id}`, { defaultValue: project.description });
 
+  const caseSchema = {
+    '@context': 'https://schema.org',
+    '@type': isApp ? 'SoftwareApplication' : 'CreativeWork',
+    name: project.name,
+    description,
+    operatingSystem: project.platform,
+    applicationCategory: 'BusinessApplication',
+    image: `${SITE_URL}${project.image}`,
+    author: {
+      '@type': 'ProfessionalService',
+      name: 'Bangert Studio',
+      url: SITE_URL,
+    },
+    url: project.site,
+  };
+
   return (
     <>
       <SeoHead
@@ -36,6 +52,13 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
         title={`${project.name} — Bangert Studio`}
         description={description}
         image={`${SITE_URL}${project.image}`}
+        includeFaq={true}
+        breadcrumbs={[
+          { name: t('caseStudies.page.home'), path: '/' },
+          { name: t('caseStudies.page.title'), path: '/cases' },
+          { name: project.name, path: `/cases/${project.id}` },
+        ]}
+        schema={caseSchema}
       />
       <div className="min-h-screen bg-ink font-montserrat text-white">
         <Header />
@@ -50,7 +73,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
                 <Image src={project.wideCover} alt="" fill priority sizes="100vw" className="-z-10 object-cover" />
                 <div
                   aria-hidden
-                  className="absolute inset-0 -z-10 bg-black/75 md:bg-transparent md:bg-[linear-gradient(90deg,#000_16.346%,transparent)]"
+                  className="absolute inset-0 -z-10 bg-black/85 md:bg-transparent md:bg-[linear-gradient(90deg,#000_0%,#000_44%,rgba(0,0,0,0.7)_62%,transparent_82%)]"
                 />
               </>
             )}
@@ -82,7 +105,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
           {/* Картинки кейсов — квадратные постеры с текстом: показываем целиком в квадратной рамке. */}
           <section className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 py-10 lg:grid-cols-[minmax(0,640px)_1fr] lg:px-20">
             <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-white/5">
-              <Image src={project.image} alt={project.name} fill sizes="(min-width: 1024px) 640px, 100vw" className="object-contain" />
+              <Image src={project.image} alt={`${project.name} — проект Bangert Studio (${project.platform})`} fill sizes="(min-width: 1024px) 640px, 100vw" className="object-contain" />
             </div>
 
             <div className="flex flex-col items-start gap-10">

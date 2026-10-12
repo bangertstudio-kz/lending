@@ -2,12 +2,12 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'ne
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { SeoHead } from '@/app/components/SeoHead';
-import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
-import { Faq } from '@/app/components/Faq';
-import { SITE_URL } from '@/app/seo';
-import { POSTS } from '@/app/data/blog';
+import { SeoHead } from '@/src/components/SeoHead';
+import { Header } from '@/src/components/Header';
+import { Footer } from '@/src/components/Footer';
+import { Faq } from '@/src/components/Faq';
+import { SITE_URL } from '@/src/seo';
+import { POSTS } from '@/src/data/blog';
 
 type Post = (typeof POSTS)[number];
 
@@ -28,6 +28,31 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
   const body = t(`blog.items.${post.key}.body`, { returnObjects: true }) as string[];
   const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.date));
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: text('title'),
+    description: text('excerpt'),
+    datePublished: post.date,
+    dateModified: post.date,
+    image: `${SITE_URL}${post.image}`,
+    author: {
+      '@type': 'Person',
+      name: 'Alexander Bangert',
+      jobTitle: 'Founder & Lead Architect',
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Bangert Studio',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/og-image.png`,
+      },
+    },
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+  };
+
   return (
     <>
       <SeoHead
@@ -36,6 +61,19 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
         title={`${text('title')} — Bangert Studio`}
         description={text('excerpt')}
         image={`${SITE_URL}${post.image}`}
+        type="article"
+        article={{
+          publishedTime: post.date,
+          author: 'Alexander Bangert',
+          tags: [post.category],
+        }}
+        includeFaq={true}
+        breadcrumbs={[
+          { name: t('caseStudies.page.home'), path: '/' },
+          { name: t('blog.page.title'), path: '/blog' },
+          { name: text('title'), path: `/blog/${post.slug}` },
+        ]}
+        schema={articleSchema}
       />
       <div className="min-h-screen bg-ink font-montserrat text-white">
         <Header />
@@ -72,7 +110,7 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
 
             <div className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 py-10 lg:grid-cols-2 lg:px-20">
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[12px] bg-white/5 lg:self-start">
-                <Image src={post.image} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+                <Image src={post.image} alt={text('title')} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
               </div>
               <div className="flex flex-col items-start gap-5">
                 {body.map((paragraph) => (
