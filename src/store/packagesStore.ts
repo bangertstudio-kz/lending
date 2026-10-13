@@ -9,9 +9,11 @@ export interface DevPackage {
   description: string;
   version: string;
   likes: number;
-  points: number;
-  maxPoints: number;
   downloads30d: number;
+  /** ISO date of the latest release, null if pub.dev didn't report one. */
+  published: string | null;
+  /** pub.dev platform tags without the prefix: android, ios, web, windows, macos, linux. */
+  platforms: string[];
 }
 
 interface PackagesState {

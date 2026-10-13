@@ -174,8 +174,9 @@
     "viewOnPub": "Abrir no pub.dev",
     "viewOnGithub": "GitHub",
     "likes": "gostos",
-    "points": "pontos",
-    "downloads": "transferências em 30 dias",
+    "downloads": "transferências por mês",
+    "updated": "última versão",
+    "platforms": "plataformas",
     "sdkFlutter": "Flutter",
     "sdkDart": "Dart",
     "allOnPub": "Todos os pacotes no pub.dev",
@@ -220,9 +221,7 @@
         }
       },
       "cta": "Ver as soluções"
-    },
-    "loading": "A carregar…",
-    "loadError": "Não foi possível carregar a lista de soluções."
+    }
   },
   "process": {
     "eyebrow": "02 / Processo",

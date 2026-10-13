@@ -174,8 +174,9 @@
     "viewOnPub": "pub.dev-те ашу",
     "viewOnGithub": "GitHub",
     "likes": "ұнату",
-    "points": "ұпай",
-    "downloads": "30 күндегі жүктеу",
+    "downloads": "айына жүктеу",
+    "updated": "соңғы шығарылым",
+    "platforms": "платформалар",
     "sdkFlutter": "Flutter",
     "sdkDart": "Dart",
     "allOnPub": "pub.dev-тегі барлық пакеттер",
@@ -220,9 +221,7 @@
         }
       },
       "cta": "Шешімдерді қарау"
-    },
-    "loading": "Жүктеп жатырмыз…",
-    "loadError": "Шешімдер тізімін жүктеу мүмкін болмады."
+    }
   },
   "process": {
     "eyebrow": "02 / Процесс",

@@ -1,25 +1,42 @@
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { SeoHead } from '@/src/components/SeoHead';
-import { useEffect } from 'react';
 import Link from 'next/link';
-import { Heart, BadgeCheck, Download, ArrowUpRight } from 'lucide-react';
+import { Heart, Download, ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Header } from '@/src/components/Header';
 import { Footer } from '@/src/components/Footer';
 import { Lead } from '@/src/components/ui/block';
-import { usePackagesStore } from '@/src/store/packagesStore';
+import type { DevPackage } from '@/src/store/packagesStore';
+import { loadPackages } from '@/src/api/packages/route';
 import { GOALS, trackGoal } from '@/src/analytics';
 
 const PUB_PUBLISHER_URL = 'https://pub.dev/publishers/bangertstudio.kz/packages';
+
+const PLATFORM_LABEL: Record<string, string> = {
+  android: 'Android',
+  ios: 'iOS',
+  web: 'Web',
+  windows: 'Windows',
+  macos: 'macOS',
+  linux: 'Linux',
+};
 
 const tag = 'rounded-[30px] border border-white/20 px-3 py-1 text-[14px] leading-6 tracking-[-0.02em]';
 const link =
   'flex items-center gap-1.5 text-[14px] leading-6 font-medium tracking-[-0.02em] uppercase transition-opacity hover:opacity-70';
 
-export default function PackagesPage() {
-  const { t } = useTranslation();
-  const { packages, loading, error, fetch } = usePackagesStore();
+// Страница собирается на сервере и обновляется раз в час (ISR). Если pub.dev недоступен,
+// бросаем: при сборке это честный фейл, при ревалидации Next оставит предыдущую версию.
+export const getStaticProps: GetStaticProps<{ packages: DevPackage[] }> = async () => {
+  const packages = await loadPackages();
+  if (packages.length === 0) throw new Error('pub.dev unavailable');
+  return { props: { packages }, revalidate: 3600 };
+};
 
-  useEffect(() => { fetch(); }, [fetch]);
+export default function PackagesPage({ packages }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { t, i18n } = useTranslation();
+  const number = new Intl.NumberFormat(i18n.language);
+  const date = new Intl.DateTimeFormat(i18n.language, { month: 'short', year: 'numeric' });
 
   return (
     <>
@@ -54,13 +71,20 @@ export default function PackagesPage() {
             </div>
           </div>
 
-          {/* До первого запроса стор пуст и не «loading» — без этого мелькала пустая страница. */}
-          {(loading || (!packages.length && !error)) && <p className="text-[14px] leading-6 opacity-40">{t('packages.loading')}</p>}
-          {error && (
-            <p role="alert" className="text-[14px] leading-6 text-red-400">
-              {t(error)}
-            </p>
-          )}
+          <dl className="grid grid-cols-3 divide-x divide-white/20 border-y border-white/20">
+            {[
+              { label: t('packages.home.statPackages'), value: packages.length },
+              { label: t('packages.home.statDownloads'), value: packages.reduce((sum, pkg) => sum + pkg.downloads30d, 0) },
+              { label: t('packages.home.statLikes'), value: packages.reduce((sum, pkg) => sum + pkg.likes, 0) },
+            ].map((stat) => (
+              <div key={stat.label} className="flex flex-col gap-2 px-6 py-8 first:pl-0">
+                <dd className="order-1 font-mono text-[clamp(2rem,3.5vw,3.5rem)] leading-none font-semibold tracking-[-0.04em] text-lime tabular-nums">
+                  {number.format(stat.value)}
+                </dd>
+                <dt className="order-2 text-[14px] leading-5 tracking-[-0.02em] opacity-60">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
 
           <div className="grid gap-[22px] md:grid-cols-2 xl:grid-cols-3">
             {packages.map((pkg) => (
@@ -86,27 +110,37 @@ export default function PackagesPage() {
                   {t(`packages.items.${pkg.name}`, { defaultValue: pkg.description })}
                 </p>
 
-                <dl className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[14px] leading-6 tabular-nums">
-                  <div className="flex items-center gap-1.5" title={`${pkg.likes} ${t('packages.likes')}`}>
-                    <dt>
-                      <Heart size={16} aria-label={t('packages.likes')} className="text-lime" />
-                    </dt>
-                    <dd>{pkg.likes}</dd>
-                  </div>
-                  <div className="flex items-center gap-1.5" title={`${pkg.points}/${pkg.maxPoints} ${t('packages.points')}`}>
-                    <dt>
-                      <BadgeCheck size={16} aria-label={t('packages.points')} className="text-lime" />
-                    </dt>
-                    <dd>
-                      {pkg.points}/{pkg.maxPoints}
+                <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-white/20 pt-5">
+                  <div className="flex flex-col gap-1">
+                    <dd className="order-1 flex items-center gap-2 font-mono text-[28px] leading-8 font-semibold tracking-[-0.02em] tabular-nums">
+                      <Download size={20} aria-hidden className="text-lime" />
+                      {number.format(pkg.downloads30d)}
                     </dd>
+                    <dt className="order-2 text-[14px] leading-5 tracking-[-0.02em] opacity-60">{t('packages.downloads')}</dt>
                   </div>
-                  <div className="flex items-center gap-1.5" title={`${pkg.downloads30d} ${t('packages.downloads')}`}>
-                    <dt>
-                      <Download size={16} aria-label={t('packages.downloads')} className="text-lime" />
-                    </dt>
-                    <dd>{pkg.downloads30d}</dd>
+                  <div className="flex flex-col gap-1">
+                    <dd className="order-1 flex items-center gap-2 font-mono text-[28px] leading-8 font-semibold tracking-[-0.02em] tabular-nums">
+                      <Heart size={20} aria-hidden className="text-lime" />
+                      {number.format(pkg.likes)}
+                    </dd>
+                    <dt className="order-2 text-[14px] leading-5 tracking-[-0.02em] opacity-60">{t('packages.likes')}</dt>
                   </div>
+                  {pkg.published && (
+                    <div className="flex flex-col gap-1">
+                      <dd className="order-1 font-mono text-[16px] leading-6 tracking-[-0.02em]">
+                        <time dateTime={pkg.published}>{date.format(new Date(pkg.published))}</time>
+                      </dd>
+                      <dt className="order-2 text-[14px] leading-5 tracking-[-0.02em] opacity-60">{t('packages.updated')}</dt>
+                    </div>
+                  )}
+                  {pkg.platforms.length > 0 && (
+                    <div className="flex flex-col gap-1">
+                      <dd className="order-1 text-[16px] leading-6 tracking-[-0.02em]">
+                        {pkg.platforms.map((platform) => PLATFORM_LABEL[platform] ?? platform).join(', ')}
+                      </dd>
+                      <dt className="order-2 text-[14px] leading-5 tracking-[-0.02em] opacity-60">{t('packages.platforms')}</dt>
+                    </div>
+                  )}
                 </dl>
 
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/20 pt-5">
@@ -137,18 +171,16 @@ export default function PackagesPage() {
             ))}
           </div>
 
-          {packages.length > 0 && (
-            <a
-              href={PUB_PUBLISHER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackGoal(GOALS.packagesAllClick)}
-              className="flex items-center gap-2.5 self-start rounded-[40px] border border-white px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] transition-colors hover:border-lime hover:text-lime"
-            >
-              {t('packages.allOnPub')}
-              <ArrowUpRight size={20} aria-hidden />
-            </a>
-          )}
+          <a
+            href={PUB_PUBLISHER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackGoal(GOALS.packagesAllClick)}
+            className="flex items-center gap-2.5 self-start rounded-[40px] border border-white px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] transition-colors hover:border-lime hover:text-lime"
+          >
+            {t('packages.allOnPub')}
+            <ArrowUpRight size={20} aria-hidden />
+          </a>
         </main>
 
         <Footer />

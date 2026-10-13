@@ -174,8 +174,9 @@
     "viewOnPub": "Открыть на pub.dev",
     "viewOnGithub": "GitHub",
     "likes": "лайков",
-    "points": "баллов",
-    "downloads": "загрузок за 30 дней",
+    "downloads": "загрузок в месяц",
+    "updated": "последний релиз",
+    "platforms": "платформы",
     "sdkFlutter": "Flutter",
     "sdkDart": "Dart",
     "allOnPub": "Все пакеты на pub.dev",
@@ -220,9 +221,7 @@
         }
       },
       "cta": "Посмотреть решения"
-    },
-    "loading": "Загружаем…",
-    "loadError": "Не удалось загрузить список решений."
+    }
   },
   "process": {
     "eyebrow": "02 / Процесс",

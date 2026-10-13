@@ -174,8 +174,9 @@
     "viewOnPub": "View on pub.dev",
     "viewOnGithub": "GitHub",
     "likes": "likes",
-    "points": "points",
-    "downloads": "downloads / 30 days",
+    "downloads": "downloads per month",
+    "updated": "latest release",
+    "platforms": "platforms",
     "sdkFlutter": "Flutter",
     "sdkDart": "Dart",
     "allOnPub": "All packages on pub.dev",
@@ -220,9 +221,7 @@
         }
       },
       "cta": "See the solutions"
-    },
-    "loading": "Loading…",
-    "loadError": "Could not load our solutions."
+    }
   },
   "process": {
     "eyebrow": "02 / Process",

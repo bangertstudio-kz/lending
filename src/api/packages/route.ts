@@ -49,21 +49,26 @@ async function fetchPackage(name: string): Promise<DevPackage | null> {
       description: pubspec.description ?? '',
       version: latest.version ?? '',
       likes: score.likeCount ?? 0,
-      points: score.grantedPoints ?? 0,
-      maxPoints: score.maxPoints ?? 0,
       downloads30d: score.downloadCount30Days ?? 0,
+      published: latest.published ?? null,
+      platforms: tags.filter((tag) => tag.startsWith('platform:')).map((tag) => tag.slice('platform:'.length)),
     };
   } catch {
     return null;
   }
 }
 
-export async function GET() {
+/** All of the studio's pub.dev packages, most downloaded first. Empty only when pub.dev is unreachable. */
+export async function loadPackages(): Promise<DevPackage[]> {
   const names = await fetchPublishedNames().catch(() => [] as string[]);
   const resolved = await Promise.all(names.map(fetchPackage));
-  const data = resolved
+  return resolved
     .filter((entry): entry is DevPackage => entry !== null)
     .sort((a, b) => b.downloads30d - a.downloads30d);
+}
+
+export async function GET() {
+  const data = await loadPackages();
 
   // Nothing resolved means pub.dev is unreachable, not that we publish nothing —
   // fail loudly so the UI shows its error state instead of an empty page.
