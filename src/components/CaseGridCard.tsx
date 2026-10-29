@@ -50,10 +50,18 @@ const IMAGES = '/assets/home-cases';
 // Длительность кроссфейда петли видео, с — совпадает с duration-700 у <video>.
 const VIDEO_FADE = 0.7;
 
+/** Первый кадр видео лежит рядом с ним: `luna.mp4` → `luna.jpg`. */
+export const videoPoster = (video: string) => video.replace(/\.mp4$/, '.jpg');
+
 // У этих кейсов есть обложки из макета главной; у остальных — картинка из cases.json.
 export const HOME_COVERS = ['manovermetal', 'sapian', 'luna'];
-export const caseCover = (project: { id: string; image: string }) =>
-  HOME_COVERS.includes(project.id) ? `${IMAGES}/${project.id}.png` : project.image;
+// Кейсы с видео — под первым кадром, иначе при проявлении видео картинка скачет.
+export const caseCover = (project: { id: string; image: string; video?: string }) =>
+  project.video
+    ? videoPoster(project.video)
+    : HOME_COVERS.includes(project.id)
+      ? `${IMAGES}/${project.id}.png`
+      : project.image;
 
 /** Обложка кейса; когда карточка видна — поверх неё плавно проявляется видео, если оно есть. */
 export function CaseMedia({

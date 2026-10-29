@@ -6,6 +6,7 @@ import { SeoHead } from '@/src/components/SeoHead';
 import { Header } from '@/src/components/Header';
 import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
+import { videoPoster } from '@/src/components/CaseGridCard';
 import { GOALS, trackGoal } from '@/src/analytics';
 import { SITE_URL } from '@/src/seo';
 import cases from '@/src/data/cases.json';
@@ -149,6 +150,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
             <section className={`mx-auto w-full max-w-[1920px] px-6 pb-10 lg:px-20 ${project.wideCover ? 'pt-10' : ''}`}>
               <video
                 src={project.video}
+                poster={videoPoster(project.video)}
                 autoPlay
                 muted
                 loop
