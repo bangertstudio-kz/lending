@@ -126,6 +126,8 @@
     "back": "All projects",
     "openApp": "Open in the App Store",
     "openSite": "Open website",
+    "openGooglePlay": "Get it on Google Play",
+    "openDownload": "Download for desktop",
     "items": {
       "sapian": "Meet people nearby: find someone close by, send a request, and plan a meeting when the interest is mutual.",
       "pings": "A personal feed of ideas, guides and practices, curated by AI.",

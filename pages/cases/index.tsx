@@ -17,8 +17,8 @@ const ORDERED = [...cases].sort((a, b) => {
 
 const FILTERS = {
   all: () => true,
-  mobile: (platform: string) => /iOS|Android/.test(platform),
-  web: (platform: string) => platform.includes('Web'),
+  mobile: (platforms: string[]) => platforms.some((p) => p === 'iOS' || p === 'Android'),
+  web: (platforms: string[]) => platforms.includes('Web'),
 };
 type Filter = keyof typeof FILTERS;
 
@@ -26,7 +26,7 @@ export default function CasesPage() {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<Filter>('all');
   const variant = useCardVariant();
-  const visible = ORDERED.filter((project) => FILTERS[filter](project.platform));
+  const visible = ORDERED.filter((project) => FILTERS[filter](project.platforms));
 
   return (
     <>

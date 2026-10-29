@@ -126,6 +126,8 @@
     "back": "Todos los proyectos",
     "openApp": "Abrir en el App Store",
     "openSite": "Ir al sitio web",
+    "openGooglePlay": "Abrir en Google Play",
+    "openDownload": "Descargar para escritorio",
     "items": {
       "sapian": "Conocer gente cerca: encuentras a quien está próximo, envías una solicitud y quedáis si el interés es mutuo.",
       "pings": "Un feed personal de ideas, análisis y prácticas, reunido por inteligencia artificial.",

@@ -98,7 +98,7 @@ export function CaseMedia({
     <div ref={ref} className="absolute inset-0">
       <Image
         src={src ?? caseCover(project)}
-        alt={`${project.name} — проект Bangert Studio (${project.platform})`}
+        alt={`${project.name} — проект Bangert Studio (${project.platforms.join(' / ')})`}
         fill
         sizes={sizes}
         preload={preload}
@@ -157,7 +157,7 @@ export function CaseGridCard({
   const title = featured ? featuredName : name;
   const link = {
     href: `/cases/${project.id}`,
-    onClick: () => trackGoal(GOALS.caseOpen, { name: project.name, platform: project.platform, place, variant }),
+    onClick: () => trackGoal(GOALS.caseOpen, { name: project.name, platform: project.platforms.join(' / '), place, variant }),
   };
   const media = <CaseMedia project={project} sizes={sizes} preload={preload} />;
   const tagline = featured && (
@@ -176,9 +176,9 @@ export function CaseGridCard({
             <span className={title}>{project.name}</span>
           </span>
           <span className="flex gap-1.5">
-            {project.platform.split('/').map((p) => (
+            {project.platforms.map((p) => (
               <span key={p} className="rounded-[30px] border border-white/15 px-2.5 py-0.5 text-[12px] font-medium opacity-60">
-                {p.trim()}
+                {p}
               </span>
             ))}
           </span>
@@ -205,7 +205,7 @@ export function CaseGridCard({
           <span className={featured ? featuredName : 'text-[16px] lg:text-[20px] leading-tight font-bold tracking-[-0.04em] uppercase'}>
             {project.name}
           </span>
-          <span className="text-[12px] font-medium opacity-75">{project.platform}</span>
+          <span className="text-[12px] font-medium opacity-75">{project.platforms.join(' / ')}</span>
         </span>
         <span className="absolute right-3.5 bottom-3.5 z-[2] grid size-13 place-items-center rounded-full bg-lime text-ink transition-transform duration-300 group-hover:scale-105 group-hover:rotate-45">
           <ArrowUpRight size={22} />
@@ -224,7 +224,7 @@ export function CaseGridCard({
           {tagline}
           <span className={title}>{project.name}</span>
           <span className="text-[14px] font-medium tracking-[-0.02em] opacity-40">
-            {featured ? description : project.platform}
+            {featured ? description : project.platforms.join(' / ')}
           </span>
         </span>
         <span className="grid size-12 shrink-0 place-items-center rounded-full border border-white/20 transition-all duration-300 group-hover:rotate-45 group-hover:border-lime group-hover:bg-lime group-hover:text-ink">

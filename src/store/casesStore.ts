@@ -4,9 +4,10 @@ export interface Case {
   id: string;
   name: string;
   description: string;
-  platform: string;
+  platforms: string[];
   image: string;
-  site: string;
+  /** Куда ведут кнопки кейса; первая — основная. Ссылка на App Store подписывается «Открыть в App Store». */
+  links: string[];
   /** Широкая обложка (≈16:9) для фона шапки страницы кейса; у квадратных постеров её нет. */
   wideCover?: string;
   /** Видео-превью кейса (16:9, без звука, по кругу). */

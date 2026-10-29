@@ -3,171 +3,171 @@
     "id": "manovermetal",
     "name": "Manover Metal",
     "description": "Metalworking orders and rolled metal suppliers in one app: post a job and get offers from verified contractors across Kazakhstan.",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "Web"],
     "image": "/assets/case13.png",
     "wideCover": "/assets/home-cases/manovermetal.png",
     "video": "/assets/cases-video/manovermetal.mp4",
-    "site": "https://manovermetal.kz/"
+    "links": ["https://manovermetal.kz/"]
   },
   {
     "id": "attractor",
     "name": "Attractor",
     "description": "Alumni community of Attractor School: find developers, follow their careers and make new connections in IT.",
-    "platform": "iOS / Web",
+    "platforms": ["iOS", "Web"],
     "image": "/assets/case20.png",
-    "site": "https://apps.apple.com/kz/app/attractor-community/id6791804167"
+    "links": ["https://apps.apple.com/kz/app/attractor-community/id6791804167", "https://attractor.bangertstudio.kz/"]
   },
   {
     "id": "request",
     "name": "Request",
     "description": "Material requests for on-site installers: pick items from a 300+ position catalog, set quantities and send the request in a couple of taps.",
-    "platform": "Android / Web",
+    "platforms": ["Android", "Web"],
     "image": "/assets/case21.png",
-    "site": "https://bangertstudio-kz.github.io/requestapp/"
+    "links": ["https://bangertstudio-kz.github.io/requestapp/"]
   },
   {
     "id": "ohmyvpns",
     "name": "OhMyVPNs",
     "description": "A white-label VPN platform: launch a branded Telegram bot, mini app and web cabinet in minutes — servers, keys, payments and analytics are handled for you.",
-    "platform": "Web / Telegram",
+    "platforms": ["Web", "Telegram"],
     "image": "/assets/case22.png",
-    "site": "https://ohmyvpns.io"
+    "links": ["https://ohmyvpns.io"]
   },
   {
     "id": "ladim",
     "name": "Ladim",
     "description": "A shared space for couples and families: tasks and reminders, a calendar, shared expenses and subscriptions, gift wishlists — plus a Telegram bot.",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "Web"],
     "image": "/assets/case23.png",
-    "site": "https://ladim.kz"
+    "links": ["https://ladim.kz"]
   },
   {
     "id": "cookmyfridge",
     "name": "Cook My Fridge",
     "description": "Snap your fridge or groceries — the app recognizes the ingredients and suggests recipes you can cook right now, matching your diet and exclusions.",
-    "platform": "iOS",
+    "platforms": ["iOS"],
     "image": "/assets/case24.jpg",
     "video": "/assets/cases-video/cookmyfridge.mp4",
-    "site": "https://apps.apple.com/kz/app/cook-my-fridge-snap-recipes/id6806873426"
+    "links": ["https://apps.apple.com/kz/app/cook-my-fridge-snap-recipes/id6806873426"]
   },
   {
     "id": "vona",
     "name": "Vona Sleep",
     "description": "Curated music channels for sleep, focus, relaxation and energy, with ambient sound layers, alarm and sleep timer — just press play.",
-    "platform": "iOS",
+    "platforms": ["iOS"],
     "image": "/assets/case25.jpg",
     "video": "/assets/cases-video/vona.mp4",
-    "site": "https://apps.apple.com/kz/app/vona-sleep-music-for-relax/id6788856687"
+    "links": ["https://apps.apple.com/kz/app/vona-sleep-music-for-relax/id6788856687"]
   },
   {
     "id": "goatrock",
     "name": "Goat Rock",
     "description": "Rock radio for every mood: hard rock, classic, alternative, metal and punk channels with a 24-preset equalizer, alarm and sleep timer.",
-    "platform": "iOS",
+    "platforms": ["iOS"],
     "image": "/assets/case26.jpg",
     "video": "/assets/cases-video/goatrock.mp4",
-    "site": "https://apps.apple.com/kz/app/goat-rock-prime-rock-music/id6504483451"
+    "links": ["https://apps.apple.com/kz/app/goat-rock-prime-rock-music/id6504483451"]
   },
   {
     "id": "slemio",
     "name": "Slemio",
     "description": "A personal diet coach: individual meal plans, a calorie counter and warnings about foods that work against your goals.",
-    "platform": "iOS",
+    "platforms": ["iOS"],
     "image": "/assets/case27.jpg",
     "video": "/assets/cases-video/slemio.mp4",
-    "site": "https://apps.apple.com/kz/app/slemio-personal-diet-coach/id1594088577"
+    "links": ["https://apps.apple.com/kz/app/slemio-personal-diet-coach/id1594088577"]
   },
   {
     "id": "geedeon",
     "name": "Geedeon Radio",
     "description": "Deep house, EDM, car bass and chill 24/7: a radio app with equalizer, alarm, sleep timer and favorites.",
-    "platform": "iOS",
+    "platforms": ["iOS"],
     "image": "/assets/case28.jpg",
     "video": "/assets/cases-video/geedeon.mp4",
-    "site": "https://apps.apple.com/kz/app/geedeon-radio-deep-edm-music/id1488123870"
+    "links": ["https://apps.apple.com/kz/app/geedeon-radio-deep-edm-music/id1488123870"]
   },
   {
     "id": "sapian",
     "name": "Sapian",
     "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",
-    "platform": "iOS / Android",
+    "platforms": ["iOS", "Android"],
     "image": "/assets/case4.png",
     "video": "/assets/cases-video/sapian.mp4",
-    "site": "https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831"
+    "links": ["https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831"]
   },
   {
     "id": "pings",
     "name": "Pings Ai",
     "description": "Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.",
-    "platform": "iOS",
+    "platforms": ["iOS"],
     "image": "/assets/case1.png",
     "video": "/assets/cases-video/pings.mp4",
-    "site": "https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937"
+    "links": ["https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937"]
   },
   {
     "id": "luna",
     "name": "Luna Deep",
     "description": "Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.",
-    "platform": "iOS / Android",
+    "platforms": ["iOS", "Android"],
     "image": "/assets/case2.jpg",
     "video": "/assets/cases-video/luna.mp4",
-    "site": "https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218"
+    "links": ["https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218"]
   },
   {
     "id": "equilibrium",
     "name": "Equilibrium",
     "description": "Enterprise productivity suite with team collaboration and project management tools",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "macOS", "Windows", "Web"],
     "image": "/assets/case3.jpg",
     "video": "/assets/cases-video/equilibrium.mp4",
-    "site": "https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249"
+    "links": ["https://apps.apple.com/kz/app/equilibrium-ai-task-planner/id6754636249", "https://equilibrium.bangertstudio.kz/download"]
   },
   {
     "id": "ocean",
     "name": "Ocean",
     "description": "A Cost Per Action (CPA) platform is a service where payment is made only for a specific user action (registration, application, purchase).",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "Web"],
     "image": "/assets/case5.png",
-    "site": "https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"
+    "links": ["https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean?node-id=17-25&t=oKPlh9IpLjY0DjWx-1"]
   },
   {
     "id": "toptom",
     "name": "Toptom",
     "description": "A B2C/B2B marketplace is a platform where individuals and companies buy and sell goods or services.",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "Web"],
     "image": "/assets/case6.png",
-    "site": "https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"
+    "links": ["https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom?node-id=6053-28716&t=LRLKd76Mt7nkUXeN-1"]
   },
   {
     "id": "qor",
     "name": "QOR",
     "description": "QOR is a unified ecosystem where private customers, businesses, security agencies, and independent consultants are brought together on a single platform for instant response.",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "Web"],
     "image": "/assets/case11.png",
-    "site": "https://digest.qor.oro.ad"
+    "links": ["https://digest.qor.oro.ad"]
   },
   {
     "id": "oro",
     "name": "Oro",
     "description": "Oro rents your computing power for AI agents. Fair pricing, transparent billing.",
-    "platform": "Web / Kubernetes",
+    "platforms": ["Web", "Kubernetes"],
     "image": "/assets/case12.png",
-    "site": "https://cli.master.oro.ad"
+    "links": ["https://cli.master.oro.ad"]
   },
   {
     "id": "eiva",
     "name": "Eiva",
     "description": "Find fitness clubs, sign up for workouts, and purchase gym memberships",
-    "platform": "iOS / Android",
+    "platforms": ["iOS", "Android"],
     "image": "/assets/case8.png",
-    "site": "https://apps.apple.com/kz/app/eiva/id6474634288"
+    "links": ["https://apps.apple.com/kz/app/eiva/id6474634288"]
   },
   {
     "id": "hiv",
     "name": "В гостях у Хив",
     "description": "An exclusive health club",
-    "platform": "iOS / Android / Web",
+    "platforms": ["iOS", "Android", "Web"],
     "image": "/assets/case7.png",
-    "site": "https://hivclub.ru"
+    "links": ["https://hivclub.ru"]
   }
 ]

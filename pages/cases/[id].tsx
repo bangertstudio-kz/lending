@@ -22,10 +22,20 @@ export const getStaticProps: GetStaticProps<{ project: Case }> = ({ params }) =>
 };
 
 // ponytail: в макете ещё полноширинный блок с длинным текстом о проекте — у кейсов пока есть только
-// короткое описание. Появятся тексты: добавить поле в cases.json и вывести блок после «О проекте».
+// короткое описание. Появятся тексты: добавить поле в cases.json и вывести блок после видео.
 export default function CasePage({ project }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
-  const isApp = project.site.includes('apps.apple.com');
+  const isAppStore = (url: string) => url.includes('apps.apple.com');
+  const isApp = project.links.some(isAppStore);
+  // Подпись кнопки — по адресу ссылки: сторы, страница загрузки десктоп-версии, иначе сайт.
+  const linkLabel = (url: string) =>
+    isAppStore(url)
+      ? 'caseStudies.openApp'
+      : url.includes('play.google.com')
+        ? 'caseStudies.openGooglePlay'
+        : /\/download\/?$/.test(url)
+          ? 'caseStudies.openDownload'
+          : 'caseStudies.openSite';
   const description = t(`caseStudies.items.${project.id}`, { defaultValue: project.description });
 
   const caseSchema = {
@@ -33,7 +43,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
     '@type': isApp ? 'SoftwareApplication' : 'CreativeWork',
     name: project.name,
     description,
-    operatingSystem: project.platform,
+    operatingSystem: project.platforms.join(', '),
     applicationCategory: 'BusinessApplication',
     image: `${SITE_URL}${project.image}`,
     author: {
@@ -41,7 +51,8 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
       name: 'Bangert Studio',
       url: SITE_URL,
     },
-    url: project.site,
+    url: project.links[0],
+    ...(project.links.length > 1 && { sameAs: project.links.slice(1) }),
   };
 
   return (
@@ -77,7 +88,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
                 />
               </>
             )}
-            <div className="mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 py-10 lg:min-h-[412px] lg:px-20">
+            <div className={`mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 py-10 lg:px-20 ${project.wideCover ? 'lg:min-h-[412px]' : ''}`}>
               <nav aria-label="breadcrumb" className="flex flex-wrap items-center gap-3 text-[14px] leading-6 font-medium tracking-[-0.02em]">
                 <Link href="/" className="opacity-40 transition-opacity hover:opacity-100">
                   {t('caseStudies.page.home')}
@@ -98,12 +109,44 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
                 <p className="max-w-[880px] text-[18px] leading-8 font-medium tracking-[-0.02em] opacity-60 lg:text-[20px]">
                   {description}
                 </p>
+                <ul className="flex flex-wrap gap-3">
+                  <li className="rounded-[30px] border border-white/20 px-3 py-1 text-[14px] leading-6 tracking-[-0.02em]">
+                    <span className="opacity-60">
+                      {t('caseStudies.platform')}: {project.platforms.join(' / ')}
+                    </span>
+                  </li>
+                  {isApp && (
+                    <li className="rounded-[30px] border border-lime/40 px-3 py-1 text-[14px] leading-6 tracking-[-0.02em] text-lime">
+                      {t('caseStudies.inAppStore')}
+                    </li>
+                  )}
+                </ul>
+              </div>
+              {/* Первая ссылка — основная кнопка, остальные — контурные. */}
+              <div className="flex flex-wrap gap-3">
+                {project.links.map((url, i) => (
+                  <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackGoal(GOALS.caseSiteOpen, { name: project.name, platform: project.platforms.join(' / '), url })}
+                    className={`flex items-center gap-2.5 rounded-[40px] px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] whitespace-nowrap transition-colors ${
+                      i === 0 ? 'bg-lime text-ink hover:opacity-85' : 'border border-white text-white hover:border-lime hover:text-lime'
+                    }`}
+                  >
+                    {t(linkLabel(url))}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={i === 0 ? '/assets/hero/arrow-dark.svg' : '/assets/hero/arrow-light-2.svg'} alt="" width={24} height={24} />
+                  </a>
+                ))}
               </div>
             </div>
           </section>
 
+          {/* Под широкой обложкой шапка заканчивается фоном — отступаем, иначе видео прилипает к нему. */}
           {project.video && (
-            <section className="mx-auto w-full max-w-[1920px] px-6 pt-10 lg:px-20">
+            <section className={`mx-auto w-full max-w-[1920px] px-6 pb-10 lg:px-20 ${project.wideCover ? 'pt-10' : ''}`}>
               <video
                 src={project.video}
                 autoPlay
@@ -116,47 +159,6 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
               />
             </section>
           )}
-
-          {/* Картинки кейсов — квадратные постеры с текстом: показываем целиком в квадратной рамке. */}
-          <section className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 py-10 lg:grid-cols-[minmax(0,640px)_1fr] lg:px-20">
-            <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-white/5">
-              <Image src={project.image} alt={`${project.name} — проект Bangert Studio (${project.platform})`} fill sizes="(min-width: 1024px) 640px, 100vw" className="object-contain" />
-            </div>
-
-            <div className="flex flex-col items-start gap-10">
-              <h2 className="text-[clamp(2.25rem,3.125vw,3.75rem)] leading-[1.1333] font-semibold tracking-[-0.06em] uppercase">
-                {t('caseStudies.page.about')}
-              </h2>
-              <div className="flex flex-col gap-5">
-                <p className="max-w-[880px] text-[18px] leading-8 font-medium tracking-[-0.02em] opacity-60 lg:text-[20px]">
-                  {description}
-                </p>
-                <ul className="flex flex-wrap gap-3">
-                  <li className="rounded-[30px] border border-white/20 px-3 py-1 text-[14px] leading-6 tracking-[-0.02em]">
-                    <span className="opacity-60">
-                      {t('caseStudies.platform')}: {project.platform}
-                    </span>
-                  </li>
-                  {isApp && (
-                    <li className="rounded-[30px] border border-lime/40 px-3 py-1 text-[14px] leading-6 tracking-[-0.02em] text-lime">
-                      {t('caseStudies.inAppStore')}
-                    </li>
-                  )}
-                </ul>
-              </div>
-              <a
-                href={project.site}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackGoal(GOALS.caseSiteOpen, { name: project.name, platform: project.platform })}
-                className="flex items-center gap-2.5 rounded-[40px] bg-lime px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] whitespace-nowrap text-ink transition-opacity hover:opacity-85"
-              >
-                {t(isApp ? 'caseStudies.openApp' : 'caseStudies.openSite')}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/assets/hero/arrow-dark.svg" alt="" width={24} height={24} />
-              </a>
-            </div>
-          </section>
 
           <Faq />
         </main>
