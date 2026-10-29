@@ -111,7 +111,8 @@ export function CaseMedia({
             ref={(el) => {
               videoRefs.current[index] = el;
             }}
-            src={seen ? project.video : undefined}
+            // Второй экземпляр нужен только к концу первого — не делим с ним канал на старте.
+            src={seen && (index === 0 || playing) ? project.video : undefined}
             muted
             playsInline
             preload={seen ? 'auto' : 'none'}
