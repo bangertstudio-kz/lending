@@ -102,6 +102,21 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
             </div>
           </section>
 
+          {project.video && (
+            <section className="mx-auto w-full max-w-[1920px] px-6 pt-10 lg:px-20">
+              <video
+                src={project.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={`${project.name} — видео проекта`}
+                className="aspect-video w-full rounded-[12px] bg-white/5 object-cover"
+              />
+            </section>
+          )}
+
           {/* Картинки кейсов — квадратные постеры с текстом: показываем целиком в квадратной рамке. */}
           <section className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 py-10 lg:grid-cols-[minmax(0,640px)_1fr] lg:px-20">
             <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-white/5">

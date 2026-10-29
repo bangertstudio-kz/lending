@@ -46,6 +46,7 @@
     "description": "Snap your fridge or groceries — the app recognizes the ingredients and suggests recipes you can cook right now, matching your diet and exclusions.",
     "platform": "iOS",
     "image": "/assets/case24.jpg",
+    "video": "/assets/cases-video/cookmyfridge.mp4",
     "site": "https://apps.apple.com/kz/app/cook-my-fridge-snap-recipes/id6806873426"
   },
   {
@@ -86,6 +87,7 @@
     "description": "Browse people around you, send a request, and if the interest is mutual, you can start chatting and plan a meeting.",
     "platform": "iOS / Android",
     "image": "/assets/case4.png",
+    "video": "/assets/cases-video/sapian.mp4",
     "site": "https://apps.apple.com/kz/app/sapian-walks-talks-nearby/id6756068831"
   },
   {
@@ -94,6 +96,7 @@
     "description": "Welcome to Pings AI — your personal feed of handpicked insights, ideas, guides, and wisdom powered by AI.",
     "platform": "iOS",
     "image": "/assets/case1.png",
+    "video": "/assets/cases-video/pings.mp4",
     "site": "https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937"
   },
   {
@@ -102,6 +105,7 @@
     "description": "Luna Deep offers music channels for any moment and mood. We gather the best tracks from around the world to bring you inspiration, energy, and the soundtrack to your life.",
     "platform": "iOS / Android",
     "image": "/assets/case2.jpg",
+    "video": "/assets/cases-video/luna.mp4",
     "site": "https://apps.apple.com/kz/app/luna-deep-prime-music-wave/id6449427218"
   },
   {

@@ -9,6 +9,8 @@ export interface Case {
   site: string;
   /** Широкая обложка (≈16:9) для фона шапки страницы кейса; у квадратных постеров её нет. */
   wideCover?: string;
+  /** Видео-превью кейса (16:9, без звука, по кругу). */
+  video?: string;
 }
 
 interface CasesState {

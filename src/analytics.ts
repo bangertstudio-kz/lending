@@ -78,6 +78,11 @@ export function trackGoal(goal: Goal, params?: GoalParams) {
   send('reachGoal', goal);
 }
 
+/** Параметры визита — например, вариант A/B-теста, чтобы строить отчёты в разрезе вариантов. */
+export function trackParams(params: GoalParams) {
+  send('params', params);
+}
+
 /**
  * Просмотр страницы при клиентском переходе. Счётчик сам считает только
  * первую загрузку, а тут SPA: без ручного hit весь маршрут после первого

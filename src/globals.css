@@ -67,6 +67,8 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 130px;
+    /* motion/useScroll меряет target относительно html — со static-позицией он ругается на неточный offset. */
+    position: relative;
     overflow-x: clip;
   }
 
