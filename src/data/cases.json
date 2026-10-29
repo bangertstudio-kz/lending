@@ -6,15 +6,16 @@
     "platform": "iOS / Android / Web",
     "image": "/assets/case13.png",
     "wideCover": "/assets/home-cases/manovermetal.png",
+    "video": "/assets/cases-video/manovermetal.mp4",
     "site": "https://manovermetal.kz/"
   },
   {
     "id": "attractor",
     "name": "Attractor",
     "description": "Alumni community of Attractor School: find developers, follow their careers and make new connections in IT.",
-    "platform": "Web",
+    "platform": "iOS / Web",
     "image": "/assets/case20.png",
-    "site": "https://attractor.bangertstudio.kz/"
+    "site": "https://apps.apple.com/kz/app/attractor-community/id6791804167"
   },
   {
     "id": "request",
@@ -55,6 +56,7 @@
     "description": "Curated music channels for sleep, focus, relaxation and energy, with ambient sound layers, alarm and sleep timer — just press play.",
     "platform": "iOS",
     "image": "/assets/case25.jpg",
+    "video": "/assets/cases-video/vona.mp4",
     "site": "https://apps.apple.com/kz/app/vona-sleep-music-for-relax/id6788856687"
   },
   {
@@ -63,6 +65,7 @@
     "description": "Rock radio for every mood: hard rock, classic, alternative, metal and punk channels with a 24-preset equalizer, alarm and sleep timer.",
     "platform": "iOS",
     "image": "/assets/case26.jpg",
+    "video": "/assets/cases-video/goatrock.mp4",
     "site": "https://apps.apple.com/kz/app/goat-rock-prime-rock-music/id6504483451"
   },
   {
@@ -71,6 +74,7 @@
     "description": "A personal diet coach: individual meal plans, a calorie counter and warnings about foods that work against your goals.",
     "platform": "iOS",
     "image": "/assets/case27.jpg",
+    "video": "/assets/cases-video/slemio.mp4",
     "site": "https://apps.apple.com/kz/app/slemio-personal-diet-coach/id1594088577"
   },
   {
@@ -79,6 +83,7 @@
     "description": "Deep house, EDM, car bass and chill 24/7: a radio app with equalizer, alarm, sleep timer and favorites.",
     "platform": "iOS",
     "image": "/assets/case28.jpg",
+    "video": "/assets/cases-video/geedeon.mp4",
     "site": "https://apps.apple.com/kz/app/geedeon-radio-deep-edm-music/id1488123870"
   },
   {
@@ -114,6 +119,7 @@
     "description": "Enterprise productivity suite with team collaboration and project management tools",
     "platform": "iOS / Android / Web",
     "image": "/assets/case3.jpg",
+    "video": "/assets/cases-video/equilibrium.mp4",
     "site": "https://apps.apple.com/kz/app/equilibrium-task-emotion/id6754636249"
   },
   {
