@@ -8,10 +8,11 @@ import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
 import { CaseGridCard, HOME_COVERS, useCardVariant } from '@/src/components/CaseGridCard';
 
-// Кейсы с обложками из макета главной идут первыми, остальные в порядке cases.json.
+// Сначала кейсы с обложками из макета главной, затем остальные с видео, дальше — в порядке cases.json.
 const ORDERED = [...cases].sort((a, b) => {
-  const rank = (id: string) => (HOME_COVERS.includes(id) ? HOME_COVERS.indexOf(id) : HOME_COVERS.length);
-  return rank(a.id) - rank(b.id);
+  const rank = (c: (typeof cases)[number]) =>
+    HOME_COVERS.includes(c.id) ? HOME_COVERS.indexOf(c.id) : HOME_COVERS.length + ('video' in c && c.video ? 0 : 1);
+  return rank(a) - rank(b);
 });
 
 const FILTERS = {
