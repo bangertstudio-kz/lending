@@ -32,9 +32,11 @@ export function isLocale(value: string | undefined): value is Locale {
  *
  * Форма адреса должна совпадать в canonical, hreflang и sitemap: `/en` и
  * `/en/` для поисковика — разные URL, и рассинхрон дробит сигнал между ними.
- * Договорённость: корень со слешем, остальные пути без.
+ * Договорённость: `/` со слешем, всё остальное без — включая `/en`,
+ * иначе Next отвечает 308 с `/en/` на `/en`, и canonical ведёт на редирект.
  */
 export function urlFor(locale: string, path: string): string {
   const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
-  return path === '/' ? `${SITE_URL}${prefix}/` : `${SITE_URL}${prefix}${path}`;
+  if (path === '/') return prefix ? `${SITE_URL}${prefix}` : `${SITE_URL}/`;
+  return `${SITE_URL}${prefix}${path}`;
 }
