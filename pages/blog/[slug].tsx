@@ -108,7 +108,7 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
               </div>
             </header>
 
-            <div className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 py-10 lg:grid-cols-2 lg:px-20">
+            <div className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 pt-10 pb-20 lg:grid-cols-2 lg:px-20">
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[12px] bg-white/5 lg:self-start">
                 <Image src={post.image} alt={text('title')} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
               </div>
@@ -121,6 +121,8 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
                 {post.link && (
                   <Link
                     href={post.link}
+                    // Статьи о пакетах ведут на pub.dev — внешнее открываем в новой вкладке.
+                    {...(post.link.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
                     className="mt-5 flex items-center gap-2.5 rounded-[40px] bg-lime px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] whitespace-nowrap text-ink transition-opacity hover:opacity-85"
                   >
                     {text('linkLabel')}

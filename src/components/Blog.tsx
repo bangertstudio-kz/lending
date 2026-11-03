@@ -7,28 +7,38 @@ import { POSTS } from '@/src/data/blog';
 import { Kicker, More } from './ui/block';
 import { cn } from './ui/utils';
 
-/** Карточка-ссылка на статью: обложка на весь фон, затемнение снизу, текст прижат к низу. */
+/** Карточка-ссылка на статью: обложка сверху, под ней дата, рубрика, заголовок и анонс. */
 export function BlogCard({ post, className = '' }: { post: (typeof POSTS)[number]; className?: string }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.date));
   return (
     <Link
       href={`/blog/${post.slug}`}
       // cn (tailwind-merge): className вроде «hidden md:flex» должен перебивать базовый flex.
-      className={cn('group relative isolate flex h-[400px] flex-col justify-end gap-2.5 overflow-hidden rounded-[12px] p-6 lg:p-10', className)}
+      className={cn('group flex flex-col gap-5', className)}
     >
-      <Image
-        src={post.image}
-        alt=""
-        fill
-        sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
-        className="-z-10 object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-      />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-black/0 to-black/80 to-[83.654%]" />
-      <span className="flex flex-col gap-2">
-        <span className="text-[24px] leading-8 font-semibold tracking-[-0.02em]">{t(`blog.items.${post.key}.title`)}</span>
-        <span className="text-[14px] leading-6 tracking-[-0.02em]">{t(`blog.items.${post.key}.excerpt`)}</span>
+      <span className="relative aspect-[16/10] overflow-hidden rounded-[12px] bg-white/5">
+        <Image
+          src={post.image}
+          alt=""
+          fill
+          sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+        />
       </span>
-      <More label={t('blog.more')} />
+      <span className="flex flex-col gap-2.5">
+        <span className="flex flex-wrap gap-x-3 gap-y-1 text-[13px] leading-5 tracking-[-0.02em]">
+          <time dateTime={post.date} className="opacity-40">
+            {date}
+          </time>
+          <span className="text-lime">{t(`blog.page.${post.category}`)}</span>
+        </span>
+        <span className="text-[24px] leading-8 font-semibold tracking-[-0.02em] text-balance transition-colors duration-300 group-hover:text-lime">
+          {t(`blog.items.${post.key}.title`)}
+        </span>
+        <span className="text-[14px] leading-6 tracking-[-0.02em] opacity-60">{t(`blog.items.${post.key}.excerpt`)}</span>
+        <More label={t('blog.more')} />
+      </span>
     </Link>
   );
 }

@@ -8,6 +8,7 @@ import { METRIKA_ID, trackPageView } from '../src/analytics';
 import { DEFAULT_LOCALE, getI18n, isLocale } from '../src/i18n';
 import { display, geistMono, geistSans, montserrat } from '../src/fonts';
 import { CookieConsent } from '../src/components/CookieConsent';
+import { PageSweep } from '../src/components/PageSweep';
 import '../src/globals.css';
 
 function getJsonLd(locale: string) {
@@ -150,7 +151,9 @@ export default function App({ Component, pageProps }: AppProps) {
           --font-montserrat-family: ${montserrat.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />
+      <PageSweep pageKey={`${activeLocale}${router.asPath.split('#')[0]}`}>
+        <Component {...pageProps} />
+      </PageSweep>
       <CookieConsent />
     </I18nextProvider>
   );

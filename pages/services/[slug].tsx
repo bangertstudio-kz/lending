@@ -77,22 +77,23 @@ export default function ServicePage({ service }: InferGetStaticPropsType<typeof 
             <div aria-hidden className="pointer-events-none absolute -right-20 top-1/4 -z-20 h-[500px] w-[500px] rounded-full bg-lime/10 blur-[130px]" />
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(2,2,2,0)_50%,var(--color-ink))]" />
 
-            <div className="relative mx-auto flex w-full max-w-[1920px] flex-col justify-center px-6 pt-[128px] pb-12 lg:min-h-[664px] lg:px-20">
-              {/* Десктопная иллюстрация (справа, от самого верха под хэдер, без черной полосы сверху) */}
+            <div className="relative mx-auto flex w-full max-w-[1920px] flex-col justify-center px-6 pt-[128px] pb-20 lg:min-h-[664px] lg:px-20">
+              {/* Иллюстрация только на десктопе (lg+): на мобилке и планшете её нет. */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute right-0 top-0 bottom-0 z-0 hidden lg:flex items-start justify-end w-[50%] xl:w-[54%] 2xl:w-[58%] max-w-[1170px] 2xl:max-w-[1220px]"
+                className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden lg:block w-[62%] 2xl:w-[60%] max-w-[1220px]"
               >
-                <div className="relative h-full w-full max-h-[664px]">
-                  <Image
-                    src={service.image}
-                    alt=""
-                    fill
-                    priority
-                    sizes="(min-width: 1920px) 1170px, 54vw"
-                    className="object-contain object-right-top"
-                  />
-                </div>
+                {/* Высота — весь первый экран, прижата вправо; на узких экранах
+                    обрезается слева (там тёмный фон картинки), край гаснет в ink. */}
+                <Image
+                  src={service.image}
+                  alt=""
+                  fill
+                  priority
+                  quality={90}
+                  sizes="1220px"
+                  className="object-cover object-right mask-l-from-50% mask-b-from-85%"
+                />
               </div>
 
               {/* Текстовая колонка слева */}
@@ -134,21 +135,6 @@ export default function ServicePage({ service }: InferGetStaticPropsType<typeof 
                     {t('services.page.portfolio')}
                   </Link>
                 </div>
-              </div>
-
-              {/* Мобильная иллюстрация под кнопками */}
-              <div
-                aria-hidden
-                className="relative mx-auto mt-8 w-full max-w-[480px] aspect-[1170/664] lg:hidden"
-              >
-                <Image
-                  src={service.image}
-                  alt=""
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 480px"
-                  className="object-contain object-center"
-                />
               </div>
             </div>
           </section>

@@ -89,7 +89,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
                 />
               </>
             )}
-            <div className={`mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 py-10 lg:px-20 ${project.wideCover ? 'lg:min-h-[412px]' : ''}`}>
+            <div className={`mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 pt-10 ${project.video ? 'pb-10' : 'pb-20'} lg:px-20 ${project.wideCover ? 'lg:min-h-[412px]' : ''}`}>
               <nav aria-label="breadcrumb" className="flex flex-wrap items-center gap-3 text-[14px] leading-6 font-medium tracking-[-0.02em]">
                 <Link href="/" className="opacity-40 transition-opacity hover:opacity-100">
                   {t('caseStudies.page.home')}
@@ -147,7 +147,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
 
           {/* Под широкой обложкой шапка заканчивается фоном — отступаем, иначе видео прилипает к нему. */}
           {project.video && (
-            <section className={`mx-auto w-full max-w-[1920px] px-6 pb-10 lg:px-20 ${project.wideCover ? 'pt-10' : ''}`}>
+            <section className={`mx-auto w-full max-w-[1920px] px-6 pb-20 lg:px-20 ${project.wideCover ? 'pt-10' : ''}`}>
               <video
                 src={project.video}
                 poster={videoPoster(project.video)}

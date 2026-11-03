@@ -497,6 +497,196 @@
       "back": "Todos los artículos"
     },
     "items": {
+      "aiMobile": {
+        "title": "Inteligencia artificial en apps móviles",
+        "excerpt": "Búsqueda inteligente, asistentes, reconocimiento de fotos y voz. Te contamos qué funciones de IA ya funcionan de verdad en las apps y cómo añadirlas.",
+        "body": [
+          "La IA en una app ya no es un chatbot de adorno. Ayuda a la persona a hacer más rápido aquello para lo que abrió la app: encontrar un producto por foto, dictar una solicitud, recibir una sugerencia o un resumen de un texto largo.",
+          "Parte de estas funciones ya se ejecuta en el propio teléfono, sin enviar datos a un servidor: es más rápido y cuida mejor la información personal. Las tareas más pesadas usan modelos en la nube, y elegimos la opción adecuada para la tarea y el presupuesto.",
+          "Nosotros también usamos IA en nuestro trabajo: por ejemplo, la calculadora de nuestro sitio divide la descripción de una idea en funciones y estima cada una. Si quieres añadir IA a tu producto, empezamos con una función que aporte valor real al usuario y crecemos desde ahí."
+        ],
+        "linkLabel": "Estimar proyecto"
+      },
+      "flutterDuo": {
+        "title": "Apps Flutter en el iPhone Duo",
+        "excerpt": "El iPhone Duo tiene dos pantallas, y la app debe verse bien en ambas. Te contamos cómo preparamos las apps Flutter para ello.",
+        "body": [
+          "Una app Flutter funcionará en el iPhone Duo incluso sin cambios. Pero en la gran pantalla interior, una interfaz pensada para un teléfono normal simplemente se estira: las líneas quedan demasiado largas y sobra espacio vacío.",
+          "Por eso construimos el diseño a partir del tamaño de la ventana, no del modelo del dispositivo: en una pantalla estrecha, una columna; en una ancha, la lista y los detalles uno al lado del otro. También importa que la app no pierda su estado al desplegar el teléfono: el texto escrito, la pantalla abierta, la posición del scroll.",
+          "También hay limitaciones: por ahora Flutter en iOS no le indica a la app dónde está el pliegue, así que esos datos deben obtenerse con código nativo. Probamos las apps en ambas pantallas y actualizamos los proyectos según los requisitos actuales de iOS 27."
+        ],
+        "linkLabel": "Sobre desarrollo móvil"
+      },
+      "iphoneDuo": {
+        "title": "iPhone Duo: el primer iPhone plegable",
+        "excerpt": "Apple ha lanzado un smartphone plegable con dos pantallas. Qué es el dispositivo y qué cambia para quienes tienen una app.",
+        "body": [
+          "El 9 de septiembre de 2026 Apple presentó el iPhone Duo, su primer smartphone plegable, que salió a la venta el 23 de octubre. Se abre como un libro: la pantalla exterior mide unas 5,4 pulgadas y la interior 7,6 pulgadas, cerca de una tableta pequeña. El precio parte de 1999 dólares.",
+          "Dentro lleva el mismo chip A20 Pro que el iPhone 18 Pro. No tiene Face ID: el teléfono se desbloquea con Touch ID en el botón lateral. Funciona con iOS 27, donde la interfaz se adapta a si el teléfono está plegado o abierto.",
+          "Para las empresas, es un nuevo formato de pantalla en el que la gente abrirá tu app. Si la interfaz no está adaptada, se ve estirada en la pantalla interior. Conviene comprobar cómo se comporta tu app en ambas pantallas y ajustar el diseño cuando haga falta."
+        ],
+        "linkLabel": "Sobre desarrollo móvil"
+      },
+      "pkgGraphviewPlus": {
+        "title": "graphview_plus: un grafo interactivo para Flutter",
+        "excerpt": "Un widget de Flutter que coloca los nodos de un grafo con física al estilo d3 y permite moverlos, hacer zoom y arrastrarlos.",
+        "body": [
+          "Las relaciones entre tareas, personas o entidades se entienden mejor cuando se ven en un diagrama. Pero un grafo con disposición física suele temblar sin fin, los nodos se superponen y el procesador sigue trabajando aunque nada cambie en pantalla.",
+          "graphview_plus coloca los nodos con un modelo al estilo d3-force: las fuerzas se enfrían poco a poco y en unos segundos el grafo se detiene y deja de redibujarse. Los nodos no se superponen, el grafo se puede mover y ampliar, los nodos se pueden arrastrar y pulsar, y con el controller se añaden nodos y enlaces sobre la marcha sin desplazar los que ya están colocados. El paquete solo depende de Flutter, y el núcleo de la simulación, GraphSimulation, es Dart puro y sirve para pruebas unitarias.",
+          "El paquete es útil para equipos que necesitan mostrar en una app las relaciones entre datos, como tareas y sus subtareas. La repulsión, la distancia y la rigidez de los enlaces son propiedades simples, así que el grafo se ajusta fácilmente a los datos de cada proyecto."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgDependencyGraph": {
+        "title": "dependency_graph: el mapa de imports en Dart",
+        "excerpt": "Una herramienta de línea de comandos que muestra quién importa a quién en un paquete Dart o pub workspace en una sola página HTML interactiva.",
+        "body": [
+          "Cuando un proyecto tiene muchos paquetes, cuesta recordar quién depende de quién y qué bibliotecas externas se usan de verdad. Las dependencias mutuas entre paquetes también se pasan por alto con facilidad.",
+          "dependency_graph analiza un paquete o la raíz de un pub workspace y genera una sola página HTML interactiva con grafos. En ella se ven los paquetes y el número de directivas entre ellos, los archivos de un paquete agrupados por carpeta y todas las bibliotecas externas de pubspec.lock con su versión, y los paquetes que se importan entre sí aparecen en rojo. La herramienta se ejecuta con dart run dependency_graph y, como biblioteca, devuelve los mismos datos para tus propias herramientas.",
+          "La herramienta es útil para equipos con un pub workspace o una app dividida en paquetes. El mapa de imports ayuda a ver dependencias mutuas y enlaces innecesarios y a discutir la arquitectura a partir de lo que realmente hay en el código."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgDepend": {
+        "title": "depend: gestión de dependencias en Flutter",
+        "excerpt": "Una biblioteca que prepara servicios y repositorios antes de que arranque la app y da acceso a ellos desde cualquier punto del árbol de widgets.",
+        "body": [
+          "Casi toda app de Flutter necesita servicios y repositorios que hay que crear antes de la primera pantalla y pasar por el árbol de widgets. Sin un enfoque común, esa inicialización se dispersa por el código y es fácil olvidar liberar los recursos.",
+          "depend se basa en InheritedWidget: las dependencias se describen en un DependencyContainer, se crean de forma síncrona o asíncrona en una DependencyFactory y se proporcionan con un DependencyScope que muestra un placeholder durante la carga y gestiona los errores. El scope crea el contenedor una sola vez y lo libera cuando se elimina, y los contenedores se pueden anidar. Para la creación diferida existen LazyGet y LazyFutureGet, con los que el servicio se crea solo en el primer acceso.",
+          "La biblioteca sirve a equipos que buscan una forma predecible de inicializar servicios y pasarlos por la app. Se puede integrar en código existente con cambios mínimos, y reemplazar dependencias mediante la factory ayuda en las pruebas de widgets."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgHerdsman": {
+        "title": "herdsman: Git hooks para proyectos Dart",
+        "excerpt": "Una herramienta de línea de comandos en Dart que guarda los Git hooks en una carpeta del repositorio y ayuda a crearlos, activarlos y desactivarlos.",
+        "body": [
+          "Los Git hooks ayudan a ejecutar comprobaciones antes de un commit o un push, pero gestionarlos a mano resulta incómodo. herdsman está pensado como un equivalente de husky del mundo JavaScript, hecho para proyectos Dart.",
+          "El comando --init crea la carpeta .herdsman/githooks, copia en ella los hooks existentes de .git/hooks y configura Git para usar esa ruta. Con --add se crean hooks nuevos con shebang y manejo de errores, --active hace ejecutables todos los hooks y --delete convierte un hook en un archivo .sample conservando su contenido.",
+          "La herramienta es útil para equipos que quieren gestionar los hooks de forma centralizada, en una carpeta dentro del repositorio. Se instala como dependencia de desarrollo o de forma global y se ejecuta con dart run herdsman."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgSwaggerFixtures": {
+        "title": "swagger_fixtures: fixtures de prueba desde Swagger",
+        "excerpt": "Genera fixtures JSON para pruebas directamente desde la especificación Swagger u OpenAPI, para comprobar los modelos de Dart con las respuestas que documenta el backend.",
+        "body": [
+          "Probar cómo se leen las respuestas de la API funciona mejor con ejemplos realistas, pero escribir JSON a mano lleva tiempo y se queda desactualizado pronto. Cuando el backend cambia una respuesta, las fixtures manuales no se enteran, y el error aparece ya en la aplicación.",
+          "swagger_fixtures lee una o varias especificaciones por URL o ruta local y crea un archivo JSON independiente para cada respuesta documentada, con todos los códigos de estado. Los cuerpos se construyen a partir de los valores example de la especificación, y la clase Fixtures generada ofrece acceso tipado a cada archivo. Al volver a ejecutarlo, las fixtures se actualizan y las respuestas que ya no están en la especificación se eliminan.",
+          "El paquete es útil para equipos de Dart y Flutter cuyo backend está descrito en Swagger u OpenAPI. Basta con regenerar las fixtures después de un cambio en la API, y las pruebas muestran si los modelos siguen encajando con las nuevas respuestas."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgResponsiveBreakpoints": {
+        "title": "responsive_breakpoints: diseños adaptables",
+        "excerpt": "Ayuda a adaptar la interfaz de una app Flutter al ancho de la pantalla con breakpoints definidos como enums.",
+        "body": [
+          "La misma app Flutter se abre a menudo en pantallas de distinto ancho, y la interfaz tiene que adaptarse a ellas. Cuando los umbrales están repartidos por el código como números sueltos, cuesta mantenerlos y es fácil que dejen de coincidir.",
+          "responsive_breakpoints se conecta como la extensión de tema ResponsiveBreakpointTheme y permite obtener el breakpoint actual en cualquier punto del árbol de widgets. El paquete incluye conjuntos listos basados en Tailwind, Bootstrap, Ant Design y Material, y puedes describir tus propios breakpoints implementando la interfaz BreakpointSpec. Los breakpoints se comparan con los operadores habituales <, >, <= y >=.",
+          "El paquete encaja con equipos que hacen apps Flutter para varios tamaños de pantalla. Los breakpoints se definen en un solo lugar, y el código de los widgets usa nombres claros en lugar de números, así que el diseño es más fácil de leer y cambiar."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgFform": {
+        "title": "fform: formularios y validación en Flutter",
+        "excerpt": "Facilita el trabajo con formularios Flutter con muchos campos y reglas de validación: el estado de cada campo y del formulario completo se gestiona automáticamente.",
+        "body": [
+          "Los formularios con muchos campos acumulan código enseguida: hay que guardar valores, validarlos, mostrar errores y seguir el estado del formulario completo. Cuando esta lógica crece, cuesta mantenerla ordenada y reutilizarla.",
+          "En fform, un campo es una clase FFormField con su propio validador, y los campos se agrupan en un formulario basado en FForm, que también puede contener formularios anidados. El widget FFormBuilder actualiza la interfaz con los cambios mediante streams, y los mixins añaden validación asíncrona, valor en caché y seguimiento del foco. Los tipos de valor y de error se definen con genéricos, y FFormObserver permite observar los eventos de todos los formularios.",
+          "El paquete está pensado para apps con formularios grandes y reglas de validación complejas. La lógica del formulario está separada de los widgets, así que es más fácil mantenerla y reutilizarla en distintas pantallas."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgBackgroundGeoTracker": {
+        "title": "background_geo_tracker: rutas en segundo plano",
+        "excerpt": "Registra la ruta en iOS y Android en segundo plano y envía los puntos al servidor desde código nativo, incluso cuando la app se ha eliminado de la memoria.",
+        "body": [
+          "Grabar una ruta en segundo plano en plataformas móviles no es sencillo: el sistema saca la app de la memoria, limita el trabajo con el ahorro de batería y pide permisos aparte. Si la recogida de puntos depende del código Dart, el seguimiento se corta con facilidad y el servidor deja de recibir coordenadas.",
+          "background_geo_tracker recoge los puntos y los envía al backend en la capa nativa, sin un isolate de Dart activo, y la sesión sigue en segundo plano y se reanuda sola después de que la app sale de la memoria. Los puntos solo salen de la cola cuando el servidor confirma su recepción, y cuando el dispositivo está quieto el paquete apaga el GPS y lo vuelve a encender al detectar movimiento. Hay modos de energía para ahorrar batería, y la frecuencia con la que se guardan los puntos depende de la velocidad.",
+          "El paquete encaja con equipos que necesitan un seguimiento continuo de la ruta en iOS y Android enviado a su propio servidor. El README describe en detalle la configuración de ambas plataformas y los errores habituales, lo que facilita dejar la integración funcionando."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgMetroMap": {
+        "title": "metro_map: el plan del proyecto como mapa de metro",
+        "excerpt": "Mostramos tareas enlazadas como un mapa de metro: las ramas paralelas van una junto a otra, las uniones se ven al instante y todo lleva a la meta.",
+        "body": [
+          "Cuando las tareas de un proyecto dependen unas de otras, una lista común muestra mal qué trabajos avanzan en paralelo y dónde se juntan. Necesitábamos una forma clara de ver todo el camino hasta el lanzamiento en una sola pantalla.",
+          "metro_map dibuja elementos y los enlaces entre ellos como un mapa de metro para Flutter. El elemento que termina último se convierte en la meta, y los demás se reparten en filas según cuántos enlaces los separan de ella, así que las ramas paralelas comparten fila. El mapa puede ser vertical u horizontal, las líneas muestran el progreso con color, las estaciones responden al toque y la disposición se calcula en Dart puro y funciona con cualquier modelo de datos.",
+          "El paquete es útil para equipos que muestran planes, etapas o cadenas de tareas en sus aplicaciones. No depende de nada más que Flutter, por lo que es fácil de añadir a un proyecto e igual de fácil de mantener."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgApollon": {
+        "title": "apollon: gestión de estado sencilla en Flutter",
+        "excerpt": "Un paquete mínimo de gestión de estado al estilo de Riverpod, sin dependencias externas, construido sobre Listenable y ChangeNotifier.",
+        "body": [
+          "Las soluciones populares de gestión de estado en Flutter ofrecen muchas posibilidades, pero traen consigo una API grande que hay que aprender. A muchas pantallas les basta un conjunto de herramientas mucho menor.",
+          "apollon está inspirado en Riverpod y construido sobre los estándares Listenable y ChangeNotifier, sin dependencias externas. Los providers se crean en el primer acceso y viven en un único ProviderScope, se leen con context.read, y container.watch los enlaza para que el provider dependiente se vuelva a crear cuando cambia el de origen. Para depurar hay una pantalla integrada, ApollonDebugScreen, que lista todos los providers activos y su estado.",
+          "El paquete conviene a equipos que quieren una forma clara de gestionar el estado sin infraestructura aparte. La reconstrucción usa los estándares ListenableBuilder y ValueListenableBuilder, así que el código se mantiene cerca del Flutter habitual y un desarrollador nuevo lo entiende con facilidad."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgMarkupAnalyzer": {
+        "title": "markup_analyzer: revisar localización en Flutter",
+        "excerpt": "Un plugin del analizador de Dart que encuentra cadenas pasadas directamente a los widgets de Flutter en lugar de a través de la localización.",
+        "body": [
+          "Un texto escrito directamente en un widget se escapa con facilidad en la revisión y luego aparece sin traducir en alguna de las versiones de idioma de la aplicación. Cuantas más pantallas e idiomas hay, más difícil es seguir esos lugares a mano.",
+          "markup_analyzer funciona como un plugin nativo del analizador de Dart y se activa en analysis_options.yaml, sin cambios en pubspec.yaml. Revisa los argumentos de los constructores de widgets y señala literales de cadena, interpolación, cadenas unidas, llamadas a métodos que devuelven String y otros casos. Cada regla se configura por separado: puede ser error, advertencia, información o quedar desactivada.",
+          "El paquete es para equipos que crean aplicaciones multilingües y quieren detectar traducciones olvidadas ya en la fase de análisis del código. La comprobación se ejecuta con el dart analyze habitual, así que es fácil sumarla al proceso de desarrollo de siempre."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgSafeRoute": {
+        "title": "safe_route: navegación tipada y segura en Flutter",
+        "excerpt": "Tipamos los argumentos y resultados de las rutas de Flutter para que los errores de navegación se detecten al compilar y no con la aplicación en marcha.",
+        "body": [
+          "El Navigator.pushNamed estándar recibe los argumentos como Object?, y el compilador no comprueba que la pantalla reciba datos del tipo correcto. Un error en ese punto solo aparece con la aplicación en marcha.",
+          "safe_route describe cada ruta como una SafeRoute con un tipo de argumento y un tipo de resultado, y SafeRouter las registra y se conecta a MaterialApp mediante onGenerateRoute. Una extensión de NavigatorState ofrece equivalentes tipados de los métodos estándar: pushRoute en lugar de pushNamed, popRoute en lugar de pop, y variantes para reemplazar la pantalla, limpiar la pila y restaurar el estado. También admite rutas anidadas.",
+          "El paquete conviene a equipos que usan rutas con nombre y quieren que el compilador revise los datos que pasan entre pantallas. El código de navegación se lee con más facilidad y los errores se encuentran antes."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgFformValidator": {
+        "title": "fform_validator: validación de formularios Flutter",
+        "excerpt": "Comprobaciones listas para campos de formulario: email, URL, longitud de texto, dirección IP, número de tarjeta, sin escribir validación desde cero.",
+        "body": [
+          "Casi todas las apps tienen formularios, y en cada proyecto acabamos reescribiendo las comprobaciones de email, enlaces o longitud de contraseña. Ese código es fácil de copiar con un error, y las expresiones regulares dispersas por el proyecto son difíciles de mantener.",
+          "fform_validator es un paquete Dart ligero: creas un FFormValidator con una cadena y llamas a la comprobación que necesitas, cada una devuelve true o false. Comprueba valor no vacío, email, URL, longitud mínima, máxima y exacta, IPv4 e IPv6, dígitos, mayúsculas y minúsculas, caracteres especiales y número de tarjeta de crédito, también con espacios. Combina bien con fform: en un campo de contraseña, por ejemplo, puedes comprobar por separado la longitud, los dígitos y los caracteres especiales y mostrar un error detallado.",
+          "El paquete es útil para equipos Flutter que crean pantallas de registro, pago y otras con formularios. Las mismas comprobaciones se pueden reutilizar en todos los formularios de la app, así se comportan de forma predecible, y el código con licencia MIT está abierto para cualquier equipo."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgEnumPicker": {
+        "title": "enum_picker: selección de valores enum en Flutter",
+        "excerpt": "Muestra un bottom sheet con un selector desplazable de estilo Cupertino para cualquier enum de Dart y devuelve el valor elegido.",
+        "body": [
+          "Las apps a menudo necesitan que el usuario elija una opción de un conjunto fijo: modo de pantalla, estado, tipo. Montar cada vez un panel con selector lleva tiempo, y el código acaba siendo repetitivo.",
+          "enum_picker es un widget de Flutter que muestra un bottom sheet con un selector desplazable de estilo Cupertino para cualquier enum de Dart. Basta con pasar los values del enum y llamar a view(context). El método devuelve el valor elegido, o null si el usuario cerró el panel.",
+          "El paquete sirve a equipos cuyas interfaces tienen muchas elecciones basadas en enums. Lo usamos para que esas pantallas se vean igual y no necesiten código propio para cada enum."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgMapRoute": {
+        "title": "map_route: mapa de rutas Flutter para pruebas",
+        "excerpt": "Permite registrar las pantallas de la app y ver sus conexiones como un grafo interactivo, para comprobar la navegación durante las pruebas.",
+        "body": [
+          "Cuando una app tiene muchas pantallas, es difícil recordar cómo se conectan y abrir rápido la que hay que revisar. Normalmente hay que recorrer de nuevo todo el flujo del usuario solo para llegar a una pantalla.",
+          "map_route permite describir las rutas en un único MRouteRegistry: cada pantalla se envuelve en un MRouteItem, opcionalmente con argumentos tipados, y las conexiones se definen con MRouteEdge. MapRouteScreen muestra esas rutas como lista, lista agrupada o grafo, y desde ahí se puede abrir la pantalla deseada. Según su descripción en pub.dev, el paquete está pensado solo para pruebas.",
+          "Es una herramienta para desarrolladores y testers, no para builds de producción. Nos ayuda a revisar pantallas más rápido y a ver la navegación del proyecto en conjunto, lo que simplifica el trabajo en las apps de nuestros clientes."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
+      "pkgPike": {
+        "title": "pike: gestión de estado por eventos en Flutter",
+        "excerpt": "Una biblioteca de gestión de estado para Flutter basada en el patrón orientado a eventos: el estado cambia solo en respuesta a eventos.",
+        "body": [
+          "A medida que crece la lógica de una pantalla, cuesta entender qué cambió el estado y por qué. Cuando los cambios llegan solo a través de eventos explícitos, el comportamiento de la app es más fácil de leer y verificar.",
+          "pike es una biblioteca de gestión de estado basada en el patrón Event-Driven y en flujos de eventos. Defines un Pike con un estado inicial, registras manejadores de eventos con on y envías eventos con add, y el manejador emite un nuevo estado mediante emit. Para la interfaz hay PikeProvider, PikeBuilder para reconstruir widgets y PikeConsumer para efectos secundarios, mientras que PikeObserver permite seguir la creación de instancias y los eventos.",
+          "La biblioteca sirve a equipos que quieren una estructura clara de evento, manejador y estado. Escribimos con ella la lógica de las pantallas, y cualquier desarrollador que conozca este enfoque entiende rápido un proyecto así."
+        ],
+        "linkLabel": "Abrir en pub.dev"
+      },
       "openSource": {
         "title": "Publicamos código abierto",
         "excerpt": "Compartimos las herramientas que usamos en nuestros proyectos: son gratuitas y están disponibles para todos en pub.dev.",

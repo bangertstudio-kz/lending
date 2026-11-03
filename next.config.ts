@@ -22,6 +22,8 @@ const nextConfig: NextConfig = {
   env: {
     SITEMAP_LASTMOD: JSON.stringify(Object.fromEntries(SITEMAP_SOURCES.map((f) => [f, gitDate(f)]))),
   },
+  // 90 — для иллюстраций услуг: на 75 в WebP мылятся свечения и градиенты.
+  images: { qualities: [75, 90] },
   i18n: {
     locales: ['ru', 'en', 'kk', 'pt', 'es'],
     defaultLocale: 'ru',

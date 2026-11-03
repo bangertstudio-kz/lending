@@ -46,8 +46,9 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0"
       >
-        <Image src={`${ICONS}/bg.png`} alt="" fill preload sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_78.365%,#000_100%),linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6))]" />
+        {/* Фон как на странице 404: картинка и так тёмная, сплошное затемнение погасило бы свечение скал. */}
+        <Image src="/assets/404.png" alt="" fill preload sizes="100vw" className="object-cover object-bottom" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(0,0,0,0.8)_78%,#000_100%),linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))]" />
       </div>
 
       <div
