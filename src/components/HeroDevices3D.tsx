@@ -111,9 +111,7 @@ export function HeroDevices3D({ heroRef, scrollYProgress: externalProgress }: He
         style={{
           background:
             'radial-gradient(55% 55% at 50% 50%, rgba(210, 249, 73, 0.28) 0%, rgba(217, 165, 102, 0.18) 45%, transparent 75%)',
-          scale: glowScale,
-          opacity: glowOpacity,
-          y: glowTranslateY,
+          ...(isDesktop ? { scale: glowScale, opacity: glowOpacity, y: glowTranslateY } : { opacity: 0.45 }),
         }}
       />
 
@@ -123,7 +121,7 @@ export function HeroDevices3D({ heroRef, scrollYProgress: externalProgress }: He
         className="pointer-events-none absolute top-[20%] left-[10%] h-[60%] w-[80%] -z-15 rounded-full blur-[90px]"
         style={{
           background: 'radial-gradient(circle, rgba(210, 249, 73, 0.15) 0%, transparent 70%)',
-          scale: glowScale,
+          ...(isDesktop && { scale: glowScale }),
         }}
       />
 
@@ -158,16 +156,22 @@ export function HeroDevices3D({ heroRef, scrollYProgress: externalProgress }: He
 
       {/* 3. Главный 3D-слой с девайсами (Левитация + Скролл-ротация + Мышь) */}
       <motion.div
-        className="relative size-full will-change-transform"
-        style={{
-          transformStyle: 'preserve-3d',
-          rotateX: totalRotateX,
-          rotateY: totalRotateY,
-          rotateZ: scrollRotateZ,
-          scale: scrollScale,
-          y: scrollTranslateY,
-          z: scrollTranslateZ,
-        }}
+        // На телефонах девайсы стоят на месте: 3D-поворот с тенями и размытиями перерисовывается
+        // каждый кадр скролла, и iOS Safari падает по памяти (серый экран и перезагрузка наверх).
+        className={`relative size-full ${isDesktop ? 'will-change-transform' : ''}`}
+        style={
+          isDesktop
+            ? {
+                transformStyle: 'preserve-3d',
+                rotateX: totalRotateX,
+                rotateY: totalRotateY,
+                rotateZ: scrollRotateZ,
+                scale: scrollScale,
+                y: scrollTranslateY,
+                z: scrollTranslateZ,
+              }
+            : undefined
+        }
       >
         {/* Нулевая гравитация (Idle Floating): девайсы парят в пространстве */}
         <motion.div

@@ -128,8 +128,17 @@ export function Header() {
 
   return (
     <>
+      {/* Заглушка над страницей для встроенного браузера Telegram на iOS: он не обрезает веб-вью под своей
+          панелью, и в зазоре над шапкой видна прокрученная страница (TelegramMessenger/Telegram-iOS#2347).
+          fixed-элементы WebKit там не рисует, а фон самого sticky-блока — рисует и не отстаёт при инерции.
+          Блок всегда лежит выше вьюпорта (-200px…0) и места в потоке не занимает. */}
+      <div aria-hidden className="pointer-events-none sticky top-[-200px] z-50 -mt-[200px] h-[200px] bg-ink" />
+      {/* sticky вместо fixed: во встроенном браузере Telegram на iOS fixed-шапка остаётся на месте,
+          когда его панель сворачивается, и над ней появляется пустая полоса. Обёртка нулевой высоты —
+          шапка по-прежнему лежит поверх первого экрана и не занимает места в потоке. */}
+      <div className="sticky top-0 z-50 h-0">
       <header
-        className={`fixed top-0 left-0 right-0 z-50 font-montserrat text-white transition-colors duration-300 ${
+        className={`font-montserrat text-white transition-colors duration-300 ${
           isScrolled || isMenuOpen ? 'bg-ink/85 backdrop-blur-xl' : 'bg-transparent'
         }`}
       >
@@ -237,6 +246,7 @@ export function Header() {
         </nav>
         <ReadingProgress />
       </header>
+      </div>
 
       <AnimatePresence>
         {isMenuOpen && (

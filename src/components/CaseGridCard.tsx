@@ -50,6 +50,19 @@ const IMAGES = '/assets/home-cases';
 // Длительность кроссфейда петли видео, с — совпадает с duration-700 у <video>.
 const VIDEO_FADE = 0.7;
 
+// На телефонах видео не крутим: несколько 1080p-роликов разом роняют iOS Safari по памяти — остаётся обложка.
+const DESKTOP = '(min-width: 1024px)';
+const useDesktop = () =>
+  useSyncExternalStore(
+    (onChange) => {
+      const mq = window.matchMedia(DESKTOP);
+      mq.addEventListener('change', onChange);
+      return () => mq.removeEventListener('change', onChange);
+    },
+    () => window.matchMedia(DESKTOP).matches,
+    () => false,
+  );
+
 /** Первый кадр видео лежит рядом с ним: `luna.mp4` → `luna.jpg`. */
 export const videoPoster = (video: string) => video.replace(/\.mp4$/, '.jpg');
 
@@ -81,15 +94,22 @@ export function CaseMedia({
   // так петля идёт кроссфейдом видео в видео, без вспышки обложки.
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [active, setActive] = useState(0);
-  // Видео грузим только когда карточка доехала до экрана; вне экрана — пауза.
+  // Видео живёт, только пока карточка на экране. Вне экрана выгружаем его целиком: на iOS Safari
+  // десяток загруженных 1080p-видео съедает память, вкладка падает (серый экран и перезагрузка наверх).
   const inView = useInView(ref, { amount: 0.3 });
-  const seen = useInView(ref, { amount: 0.3, once: true });
   const [playing, setPlaying] = useState(false);
+  const desktop = useDesktop();
 
   useEffect(() => {
-    const video = videoRefs.current[active];
-    if (inView) video?.play().catch(() => {});
-    else video?.pause();
+    if (inView) {
+      videoRefs.current[active]?.play().catch(() => {});
+      return;
+    }
+    // React уже снял src — load() освобождает буферы и декодер, затем придёт onEmptied.
+    videoRefs.current.forEach((v) => {
+      v?.pause();
+      v?.load();
+    });
   }, [inView, active]);
 
   const handleTimeUpdate = (index: number) => (e: React.SyntheticEvent<HTMLVideoElement>) => {
@@ -113,6 +133,7 @@ export function CaseMedia({
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
       />
       {project.video &&
+        desktop &&
         [0, 1].map((index) => (
           <video
             key={index}
@@ -120,12 +141,17 @@ export function CaseMedia({
               videoRefs.current[index] = el;
             }}
             // Второй экземпляр нужен только к концу первого — не делим с ним канал на старте.
-            src={seen && (index === 0 || playing) ? project.video : undefined}
+            src={inView && (index === 0 || playing) ? project.video : undefined}
             muted
             playsInline
-            preload={seen ? 'auto' : 'none'}
+            preload={inView ? 'auto' : 'none'}
             aria-hidden
             onPlaying={() => setPlaying(true)}
+            // Видео выгружено — при возврате на экран начинаем с первого экземпляра под обложкой.
+            onEmptied={() => {
+              setPlaying(false);
+              setActive(0);
+            }}
             onTimeUpdate={handleTimeUpdate(index)}
             // Уходящее видео гаснет с задержкой, когда новое уже проявилось, — обложка не просвечивает.
             className={`absolute inset-0 size-full object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03] ${

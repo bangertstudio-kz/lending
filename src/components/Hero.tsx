@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { GOALS, trackGoal } from '@/src/analytics';
 import cases from '@/src/data/cases.json';
 import { LimeButton } from './ui/block';
-import { HeroDevices3D } from './HeroDevices3D';
+// import { HeroDevices3D } from './HeroDevices3D';
 import { Magnetic } from './ui/Magnetic';
 import { SpotlightCard } from './ui/SpotlightCard';
 
@@ -100,7 +100,8 @@ export function Hero() {
             </div>
           </div>
 
-          <HeroDevices3D heroRef={heroRef} />
+          {/* ВРЕМЕННО: проверяем, не картинка ли с устройствами роняет iOS Safari. */}
+          {/* <HeroDevices3D heroRef={heroRef} /> */}
         </div>
 
         <div className="relative shrink-0 flex flex-col gap-3 lg:gap-4 xl:gap-5 pt-3 lg:pt-4">
