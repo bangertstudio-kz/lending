@@ -137,9 +137,9 @@
       "toptom": "Marketplace para empresas y particulares: vender y comprar productos en una sola plataforma.",
       "qor": "Plataforma de respuesta rápida: clientes particulares, empresas, agencias de seguridad y consultores independientes en un mismo circuito.",
       "oro": "Alquiler de capacidad de cómputo para agentes de IA, con tarifas transparentes y facturación clara.",
-      "eiva": "Gimnasios cerca: reservar entrenamientos y comprar abonos en un par de toques.",
       "hiv": "Un club de salud privado.",
       "manovermetal": "Pedidos de metalmecánica y proveedores de laminados en la misma app: el cliente publica la tarea y recibe ofertas de contratistas verificados en todo Kazajistán.",
+      "pddtest": "Preparación para el examen teórico de conducir: preguntas por temas, modo examen con temporizador como el real, explicación de cada pregunta y nivel de preparación.",
       "attractor": "Comunidad de antiguos alumnos de Attractor School: encontrar desarrolladores, seguir su trayectoria y crear nuevos contactos en TI.",
       "request": "Solicitudes de materiales para instaladores en obra: elige artículos de un catálogo de más de 300 posiciones, indica cantidades y envía la solicitud en un par de toques.",
       "ohmyvpns": "Plataforma VPN white-label: lanza un bot de Telegram, una mini app y un panel web con tu marca en minutos; servidores, claves, pagos y analítica corren por cuenta de la plataforma.",
@@ -167,7 +167,8 @@
       "all": "Todos los proyectos",
       "mobile": "Desarrollo móvil",
       "web": "Desarrollo web",
-      "about": "Sobre el proyecto"
+      "about": "Sobre el proyecto",
+      "more": "Otros proyectos"
     }
   },
   "packages": {
@@ -494,7 +495,8 @@
       "all": "Todos los artículos",
       "dev": "Lo interesante del desarrollo",
       "business": "Principales retos del negocio",
-      "back": "Todos los artículos"
+      "back": "Todos los artículos",
+      "more": "Otros artículos"
     },
     "items": {
       "aiMobile": {

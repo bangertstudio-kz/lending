@@ -6,6 +6,7 @@ import { SeoHead } from '@/src/components/SeoHead';
 import { Header } from '@/src/components/Header';
 import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
+import { BlogCard } from '@/src/components/Blog';
 import { SITE_URL } from '@/src/seo';
 import { POSTS } from '@/src/data/blog';
 
@@ -26,6 +27,9 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
   const { t, i18n } = useTranslation();
   const text = (field: string) => t(`blog.items.${post.key}.${field}`);
   const body = t(`blog.items.${post.key}.body`, { returnObjects: true }) as string[];
+  // Перелинковка: следующие 3 статьи по кругу, чтобы статья не была тупиком для читателя и краулера.
+  const i = POSTS.findIndex((p) => p.slug === post.slug);
+  const more = [1, 2, 3].map((k) => POSTS[(i + k) % POSTS.length]);
   const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.date));
 
   const articleSchema = {
@@ -133,6 +137,15 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
               </div>
             </div>
           </article>
+
+          <section className="mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 pb-20 lg:px-20">
+            <h2 className="text-[clamp(2rem,4vw,4rem)] leading-none font-medium tracking-[-0.06em]">{t('blog.page.more')}</h2>
+            <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+              {more.map((p, k) => (
+                <BlogCard key={p.slug} post={p} className={k === 2 ? 'md:hidden xl:flex' : ''} />
+              ))}
+            </div>
+          </section>
 
           <Faq />
         </main>

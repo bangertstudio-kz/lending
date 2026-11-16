@@ -10,6 +10,14 @@
     "links": ["https://manovermetal.kz/"]
   },
   {
+    "id": "pddtest",
+    "name": "ПДД Тесты",
+    "description": "Driving theory test prep: tickets by topic, an exam mode with a timer like the real one, an explanation for every question and a readiness score.",
+    "platforms": ["iOS", "Android", "Web"],
+    "image": "/assets/case29.jpg",
+    "links": ["https://apps.apple.com/app/id6817777413", "https://pddtest.bangertstudio.kz/"]
+  },
+  {
     "id": "attractor",
     "name": "Attractor",
     "description": "Alumni community of Attractor School: find developers, follow their careers and make new connections in IT.",
@@ -153,14 +161,6 @@
     "platforms": ["Web", "Kubernetes"],
     "image": "/assets/case12.png",
     "links": ["https://cli.master.oro.ad"]
-  },
-  {
-    "id": "eiva",
-    "name": "Eiva",
-    "description": "Find fitness clubs, sign up for workouts, and purchase gym memberships",
-    "platforms": ["iOS", "Android"],
-    "image": "/assets/case8.png",
-    "links": ["https://apps.apple.com/kz/app/eiva/id6474634288"]
   },
   {
     "id": "hiv",

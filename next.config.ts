@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
   },
   // 90 — для иллюстраций услуг: на 75 в WebP мылятся свечения и градиенты.
   images: { qualities: [75, 90] },
+  // Удалённые кейсы: адреса уже в индексе Google — ведём на список, а не в 404.
+  redirects: async () => [{ source: '/cases/eiva', destination: '/cases', permanent: true }],
   i18n: {
     locales: ['ru', 'en', 'kk', 'pt', 'es'],
     defaultLocale: 'ru',

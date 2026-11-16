@@ -15,7 +15,7 @@
 ## 1. Проверяемые факты и ключевые показатели (Verified Credentials)
 
 - **20 коммерческих проектов в портфолио:** от маркетплейсов металлопроката и e-commerce до потокового аудио и AI-сервисов.
-- **6+ приложений в официальном App Store:** Cook My Fridge, Vona Sleep, Goat Rock, Slemio, Geedeon Radio, Sapian, Luna Deep, Equilibrium, Eiva.
+- **6+ приложений в официальном App Store:** Cook My Fridge, Vona Sleep, Goat Rock, Slemio, Geedeon Radio, Sapian, Luna Deep, Equilibrium.
 - **12 Open-Source библиотек на pub.dev:** зарегистрированный издатель `bangertstudio.kz` с более чем 2 600 загрузок ежемесячно.
 - **10+ лет практического опыта:** нативная и кроссплатформенная разработка с 2014+ года.
 - **Стандарты B2B-рынка Казахстана:** официальный договор (ТОО / ИП), выставление электронных счетов-фактур (ЭСФ), подписание NDA, поэтапная постоплата.
@@ -75,55 +75,56 @@
     - Описание: Персональная лента инсайтов, идей и рекомендаций на базе генеративного искусственного интеллекта.
     - App Store: https://apps.apple.com/kz/app/smart-ideas-daily-pings-ai/id6742242937
 
-11. **Eiva**
-    - Платформы: iOS / Android
-    - Описание: Агрегатор фитнес-клубов: запись на тренировки и онлайн-покупка абонементов.
-    - App Store: https://apps.apple.com/kz/app/eiva/id6474634288
-
-12. **OhMyVPNs**
+11. **OhMyVPNs**
     - Платформы: Web / Telegram Mini App
     - Описание: White-label платформа для запуска брендированных VPN-ботов и веб-кабинетов с автоматическим биллингом.
     - Ссылка: https://ohmyvpns.io
 
-13. **Ladim**
+12. **Ladim**
     - Платформы: iOS / Android / Web
     - Описание: Пространство для пар и семей: общие задачи, календарь, учет расходов и вишлисты подарков с Telegram-ботом.
     - Ссылка: https://ladim.kz
 
-14. **Attractor**
+13. **Attractor**
     - Платформы: Web
     - Описание: Портал сообщества выпускников школы программирования Attractor: поиск разработчиков и нетворкинг.
     - Ссылка: https://attractor.bangertstudio.kz/
 
-15. **Request**
+14. **Request**
     - Платформы: Android / Web
     - Описание: Заказ материалов для монтажников на объектах по каталогу из 300+ позиций в несколько тапов.
     - Ссылка: https://bangertstudio-kz.github.io/requestapp/
 
-16. **Ocean**
+15. **Ocean**
     - Платформы: iOS / Android / Web
     - Описание: CPA-платформа с оплатой за целевые действия (регистрации, заявки, покупки).
     - Figma: https://www.figma.com/design/1mMrCM6CuUwmYHlFA4kupl/Ocean
 
-17. **Toptom**
+16. **Toptom**
     - Платформы: iOS / Android / Web
     - Описание: B2B/B2C маркетплейс оптовых и розничных товаров.
     - Figma: https://www.figma.com/design/qHvGwxdHvEgZryOkKxzi3d/Toptom
 
-18. **QOR**
+17. **QOR**
     - Платформы: iOS / Android / Web
     - Описание: Единая экосистема для частных клиентов, служб безопасности и консультантов для мгновенного реагирования.
     - Ссылка: https://digest.qor.oro.ad
 
-19. **Oro**
+18. **Oro**
     - Платформы: Web / Kubernetes
     - Описание: Аренда вычислительных мощностей для AI-агентов с прозрачным поминутным биллингом.
     - Ссылка: https://cli.master.oro.ad
 
-20. **В гостях у Хив**
+19. **В гостях у Хив**
     - Платформы: iOS / Android / Web
     - Описание: Сервис закрытого велнес- и оздоровительного клуба.
     - Ссылка: https://hivclub.ru
+
+20. **ПДД Тесты**
+    - Платформы: iOS / Android / Web
+    - Описание: Подготовка к теории ПДД: билеты по темам, экзамен с таймером как на настоящем и объяснение к каждому вопросу.
+    - App Store: https://apps.apple.com/app/id6817777413
+    - Ссылка: https://pddtest.bangertstudio.kz/
 
 ---
 

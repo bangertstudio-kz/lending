@@ -6,7 +6,7 @@ import { SeoHead } from '@/src/components/SeoHead';
 import { Header } from '@/src/components/Header';
 import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
-import { videoPoster } from '@/src/components/CaseGridCard';
+import { CaseGridCard, useCardVariant, videoPoster } from '@/src/components/CaseGridCard';
 import { GOALS, trackGoal } from '@/src/analytics';
 import { SITE_URL } from '@/src/seo';
 import cases from '@/src/data/cases.json';
@@ -26,6 +26,10 @@ export const getStaticProps: GetStaticProps<{ project: Case }> = ({ params }) =>
 // короткое описание. Появятся тексты: добавить поле в cases.json и вывести блок после видео.
 export default function CasePage({ project }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
+  const variant = useCardVariant();
+  // Перелинковка: следующие 4 кейса по кругу — без них страница кейса тупиковая и Google медленно находит остальные.
+  const i = cases.findIndex((c) => c.id === project.id);
+  const more = [1, 2, 3, 4].map((k) => cases[(i + k) % cases.length]);
   const isAppStore = (url: string) => url.includes('apps.apple.com');
   const isApp = project.links.some(isAppStore);
   // Подпись кнопки — по адресу ссылки: сторы, страница загрузки десктоп-версии, иначе сайт.
@@ -161,6 +165,15 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
               />
             </section>
           )}
+
+          <section className="mx-auto flex w-full max-w-[1920px] flex-col gap-10 px-6 pb-20 lg:px-20">
+            <h2 className="text-[clamp(2rem,4vw,4rem)] leading-none font-medium tracking-[-0.06em]">{t('caseStudies.page.more')}</h2>
+            <div className="grid gap-[22px] md:grid-cols-2">
+              {more.map((c) => (
+                <CaseGridCard key={c.id} project={c} variant={variant ?? 'caption'} />
+              ))}
+            </div>
+          </section>
 
           <Faq />
         </main>

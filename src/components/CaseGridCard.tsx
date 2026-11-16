@@ -130,7 +130,7 @@ export function CaseMedia({
         fill
         sizes={sizes}
         preload={preload}
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
       />
       {project.video &&
         desktop &&
@@ -154,7 +154,7 @@ export function CaseMedia({
             }}
             onTimeUpdate={handleTimeUpdate(index)}
             // Уходящее видео гаснет с задержкой, когда новое уже проявилось, — обложка не просвечивает.
-            className={`absolute inset-0 size-full object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03] ${
+            className={`absolute inset-0 size-full object-cover object-top transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03] ${
               playing && index === active ? 'z-[1] opacity-100' : 'opacity-0 delay-700'
             }`}
           />

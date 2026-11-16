@@ -42,10 +42,10 @@
 ## Языковые версии (5 языков)
 
 - Русский: https://bangertstudio.kz/
-- English: https://bangertstudio.kz/en/
-- Қазақша: https://bangertstudio.kz/kk/
-- Português: https://bangertstudio.kz/pt/
-- Español: https://bangertstudio.kz/es/
+- English: https://bangertstudio.kz/en
+- Қазақша: https://bangertstudio.kz/kk
+- Português: https://bangertstudio.kz/pt
+- Español: https://bangertstudio.kz/es
 
 ## English Summary
 
