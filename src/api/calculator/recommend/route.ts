@@ -10,6 +10,21 @@ type ContentPart =
 
 export async function POST(request: Request) {
   const form = await request.formData();
+  try {
+    return await recommend(form);
+  } catch (err: unknown) {
+    const e = err as { status?: number; message?: string };
+    const description = String(form.get('description') ?? '').slice(0, 500);
+    await sendTelegramMessage(
+      `❌ Calculator error\n\n${e?.status ? `Status: ${e.status}\n` : ''}${e?.message ?? String(err)}\n\n📋 Description:\n${description}`,
+      undefined,
+      null
+    ).catch(() => undefined);
+    return Response.json({ error: 'error' }, { status: e?.status === 429 ? 429 : 502 });
+  }
+}
+
+async function recommend(form: FormData) {
   const description = form.get('description') as string | null;
   const locale = form.get('locale') as string | null;
   const uploadedFiles = form.getAll('files') as File[];
@@ -20,9 +35,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Missing description' }, { status: 400 });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
-    return Response.json({ error: 'Server misconfigured' }, { status: 500 });
-  }
+  if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY is not set');
 
   sendTelegramMessage(`🧮 Calculator analysis requested\n\n📋 Description:\n${description}...`, uploadedFiles, null);
 
@@ -58,61 +71,52 @@ Use locale "${lang}" for customFeature names. Keep all feature names concise —
     }
   }
 
-  let response;
-
-  try {
-    response = await client.responses.create({
-      model: 'gpt-4.1',
-      input: [{ role: 'user', content: contentParts }],
-      temperature: 0.2,
-      text: {
-        format: {
-          type: 'json_schema',
-          name: 'calculator_recommendation',
-          strict: true,
-          schema: {
-            type: 'object',
-            properties: {
-              features: {
-                type: 'array',
-                items: { type: 'string' },
-                description: 'List of selected feature keys from the available list',
-              },
-              customFeatures: {
-                type: 'array',
-                description: 'Features not in the available list that the project requires',
-                items: {
-                  type: 'object',
-                  properties: {
-                    key: { type: 'string', description: 'Short descriptive feature name in English' },
-                    cost: { type: 'number', description: 'Estimated cost in USD' },
-                    hours: { type: 'number', description: 'Estimated development hours' },
-                  },
-                  required: ['key', 'cost', 'hours'],
-                  additionalProperties: false,
+  const response = await client.responses.create({
+    model: 'gpt-4.1',
+    input: [{ role: 'user', content: contentParts }],
+    temperature: 0.2,
+    text: {
+      format: {
+        type: 'json_schema',
+        name: 'calculator_recommendation',
+        strict: true,
+        schema: {
+          type: 'object',
+          properties: {
+            features: {
+              type: 'array',
+              items: { type: 'string' },
+              description: 'List of selected feature keys from the available list',
+            },
+            customFeatures: {
+              type: 'array',
+              description: 'Features not in the available list that the project requires',
+              items: {
+                type: 'object',
+                properties: {
+                  key: { type: 'string', description: 'Short descriptive feature name in English' },
+                  cost: { type: 'number', description: 'Estimated cost in USD' },
+                  hours: { type: 'number', description: 'Estimated development hours' },
                 },
-              },
-              stage: {
-                type: 'string',
-                enum: stageIds,
-                description: 'Project stage',
+                required: ['key', 'cost', 'hours'],
+                additionalProperties: false,
               },
             },
-            required: ['features', 'customFeatures', 'stage'],
-            additionalProperties: false,
+            stage: {
+              type: 'string',
+              enum: stageIds,
+              description: 'Project stage',
+            },
           },
+          required: ['features', 'customFeatures', 'stage'],
+          additionalProperties: false,
         },
       },
-    });
-  } catch (err: unknown) {
-    const e = err as { status?: number };
-    return Response.json({ error: 'error' }, { status: e?.status === 429 ? 429 : 502 });
-  }
+    },
+  });
 
   const content = response.output_text;
-  if (!content) {
-    return Response.json({ error: 'No response from AI' }, { status: 502 });
-  }
+  if (!content) throw new Error('No response from AI');
 
   const parsed = JSON.parse(content) as {
     features?: string[];
