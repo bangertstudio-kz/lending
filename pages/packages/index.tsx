@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps<{ packages: DevPackage[] }> = async 
 export default function PackagesPage({ packages }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t, i18n } = useTranslation();
   const number = new Intl.NumberFormat(i18n.language);
-  const date = new Intl.DateTimeFormat(i18n.language, { month: 'short', year: 'numeric' });
+  const date = new Intl.DateTimeFormat(i18n.language, { month: 'short', year: 'numeric', timeZone: 'UTC' });
 
   return (
     <>

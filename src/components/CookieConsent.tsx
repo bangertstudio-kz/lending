@@ -45,7 +45,7 @@ export function CookieConsent() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.aside
+        <motion.div
           role="dialog"
           aria-label="Cookie consent"
           initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -90,7 +90,7 @@ export function CookieConsent() {
               </button>
             </div>
           </div>
-        </motion.aside>
+        </motion.div>
       )}
     </AnimatePresence>
   );

@@ -6,7 +6,7 @@ import { cn } from './utils';
 export function Kicker({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-fit flex-col gap-0.5">
-      <span className="text-[14px] leading-6 font-medium tracking-[-0.02em] uppercase opacity-40">{children}</span>
+      <span className="text-[14px] leading-6 font-medium tracking-[-0.02em] uppercase opacity-60">{children}</span>
       <span
         aria-hidden
         className="h-px bg-[linear-gradient(90deg,rgba(210,249,73,0.6),rgba(210,249,73,0)),linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2))]"

@@ -10,7 +10,7 @@ import { cn } from './ui/utils';
 /** Карточка-ссылка на статью: обложка сверху, под ней дата, рубрика, заголовок и анонс. */
 export function BlogCard({ post, className = '' }: { post: (typeof POSTS)[number]; className?: string }) {
   const { t, i18n } = useTranslation();
-  const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.date));
+  const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(post.date));
   return (
     <Link
       href={`/blog/${post.slug}`}

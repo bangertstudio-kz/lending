@@ -40,7 +40,7 @@ export function CaseStudies() {
             place="home"
             featured={{ tagline: t('caseStudies.home.manoverTagline'), text: t('caseStudies.home.manoverText') }}
             aspect="aspect-[16/9]"
-            sizes="(min-width: 1280px) 67vw, 100vw"
+            sizes="(min-width: 1280px) 67vw, calc(100vw - 48px)"
             className="xl:w-[calc(66.666%-10px)] xl:shrink-0"
           />
           <div className="grid gap-5 sm:grid-cols-2 xl:flex xl:w-[calc(33.333%-10px)] xl:flex-col xl:justify-between">
@@ -51,7 +51,7 @@ export function CaseStudies() {
                 variant={variant ?? 'caption'}
                 place="home"
                 aspect="aspect-[16/9]"
-                sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)"
               />
             ))}
           </div>
@@ -59,7 +59,7 @@ export function CaseStudies() {
 
         {/* В макете группа прижата вправо с отступом 772px из 1760 — кнопка стоит на месте при любой длине текста. */}
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-10 lg:justify-end lg:pr-[43.864%]">
-          <span className="text-[14px] leading-5 font-medium tracking-[-0.02em] opacity-40">
+          <span className="text-[14px] leading-5 font-medium tracking-[-0.02em] opacity-60">
             {t('caseStudies.home.othersText')}
           </span>
           <Magnetic strength={0.3}>

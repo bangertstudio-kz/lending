@@ -30,7 +30,7 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
   // Перелинковка: следующие 3 статьи по кругу, чтобы статья не была тупиком для читателя и краулера.
   const i = POSTS.findIndex((p) => p.slug === post.slug);
   const more = [1, 2, 3].map((k) => POSTS[(i + k) % POSTS.length]);
-  const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.date));
+  const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(post.date));
 
   const articleSchema = {
     '@context': 'https://schema.org',
