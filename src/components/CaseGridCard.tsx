@@ -3,9 +3,8 @@ import Image from 'next/image';
 import { useInView } from 'motion/react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { GOALS, trackGoal, trackParams } from '@/src/analytics';
-import type { Case } from '@/src/store/casesStore';
+import type { Case } from '@/src/data/content';
 
 /**
  * A/B-тест вида карточки кейса — на главной и в сетке /cases. Вариант выпадает посетителю один раз и живёт в localStorage;
@@ -66,7 +65,7 @@ const useDesktop = () =>
 /** Первый кадр видео лежит рядом с ним: `luna.mp4` → `luna.jpg`. */
 export const videoPoster = (video: string) => video.replace(/\.mp4$/, '.jpg');
 
-// У этих кейсов есть обложки из макета главной; у остальных — картинка из cases.json.
+// У этих кейсов есть обложки из макета главной; у остальных — картинка из таблицы cases.
 export const HOME_COVERS = ['manovermetal', 'sapian', 'luna'];
 // Кейсы с видео — под первым кадром, иначе при проявлении видео картинка скачет.
 export const caseCover = (project: { id: string; image: string; video?: string }) =>
@@ -186,8 +185,7 @@ export function CaseGridCard({
   place?: 'home' | 'cases';
   className?: string;
 }) {
-  const { t } = useTranslation();
-  const description = featured?.text ?? t(`caseStudies.items.${project.id}`, { defaultValue: project.description });
+  const description = featured?.text ?? project.description;
   const title = featured ? featuredName : name;
   const link = {
     href: `/cases/${project.id}`,

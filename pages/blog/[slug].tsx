@@ -8,38 +8,36 @@ import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
 import { BlogCard } from '@/src/components/Blog';
 import { SITE_URL } from '@/src/seo';
-import { POSTS } from '@/src/data/blog';
+import { getPosts, REVALIDATE, type Post } from '@/src/data/content';
 
-type Post = (typeof POSTS)[number];
-
-export const getStaticPaths: GetStaticPaths = ({ locales = [] }) => ({
-  paths: POSTS.flatMap((p) => locales.map((locale) => ({ params: { slug: p.slug }, locale }))),
-  fallback: false,
+// blocking: статья, добавленная в базу после сборки, отрисуется при первом заходе, без пересборки.
+export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => ({
+  paths: (await getPosts()).flatMap((p) => locales.map((locale) => ({ params: { slug: p.slug }, locale }))),
+  fallback: 'blocking',
 });
 
-export const getStaticProps: GetStaticProps<{ post: Post }> = ({ params }) => {
-  const post = POSTS.find((p) => p.slug === params?.slug);
-  return post ? { props: { post } } : { notFound: true };
+export const getStaticProps: GetStaticProps<{ post: Post; more: Post[] }> = async ({ params, locale }) => {
+  const posts = await getPosts(locale);
+  const i = posts.findIndex((p) => p.slug === params?.slug);
+  if (i < 0) return { notFound: true, revalidate: REVALIDATE };
+  // Перелинковка: следующие 3 статьи по кругу, чтобы статья не была тупиком для читателя и краулера.
+  const more = [1, 2, 3].map((k) => posts[(i + k) % posts.length]);
+  return { props: { post: posts[i], more }, revalidate: REVALIDATE };
 };
 
 // Макета статьи нет — собрано в стиле страницы кейса: шапка с хлебными крошками, затем обложка и текст.
-export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function BlogPostPage({ post, more }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t, i18n } = useTranslation();
-  const text = (field: string) => t(`blog.items.${post.key}.${field}`);
-  const body = t(`blog.items.${post.key}.body`, { returnObjects: true }) as string[];
-  // Перелинковка: следующие 3 статьи по кругу, чтобы статья не была тупиком для читателя и краулера.
-  const i = POSTS.findIndex((p) => p.slug === post.slug);
-  const more = [1, 2, 3].map((k) => POSTS[(i + k) % POSTS.length]);
   const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(post.date));
 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: text('title'),
-    description: text('excerpt'),
+    headline: post.title,
+    description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    image: `${SITE_URL}${post.image}`,
+    image: post.image,
     author: {
       '@type': 'Person',
       name: 'Alexander Bangert',
@@ -62,9 +60,9 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
       <SeoHead
         page="home"
         path={`/blog/${post.slug}`}
-        title={`${text('title')} — Bangert Studio`}
-        description={text('excerpt')}
-        image={`${SITE_URL}${post.image}`}
+        title={`${post.title} — Bangert Studio`}
+        description={post.excerpt}
+        image={post.image}
         type="article"
         article={{
           publishedTime: post.date,
@@ -75,7 +73,7 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
         breadcrumbs={[
           { name: t('caseStudies.page.home'), path: '/' },
           { name: t('blog.page.title'), path: '/blog' },
-          { name: text('title'), path: `/blog/${post.slug}` },
+          { name: post.title, path: `/blog/${post.slug}` },
         ]}
         schema={articleSchema}
       />
@@ -98,7 +96,7 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
                 <span aria-hidden className="opacity-40">
                   /
                 </span>
-                <span aria-current="page">{text('title')}</span>
+                <span aria-current="page">{post.title}</span>
               </nav>
               <div className="flex flex-col gap-5">
                 <p className="flex flex-wrap gap-3 text-[14px] leading-6 tracking-[-0.02em]">
@@ -107,17 +105,17 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
                   </time>
                   <span className="text-lime">{t(`blog.page.${post.category}`)}</span>
                 </p>
-                <h1 className="max-w-[1400px] text-[clamp(2.5rem,5vw,6rem)] leading-none font-medium tracking-[-0.06em]">{text('title')}</h1>
-                <p className="max-w-[880px] text-[18px] leading-8 font-medium tracking-[-0.02em] opacity-60 lg:text-[20px]">{text('excerpt')}</p>
+                <h1 className="max-w-[1400px] text-[clamp(2.5rem,5vw,6rem)] leading-none font-medium tracking-[-0.06em]">{post.title}</h1>
+                <p className="max-w-[880px] text-[18px] leading-8 font-medium tracking-[-0.02em] opacity-60 lg:text-[20px]">{post.excerpt}</p>
               </div>
             </header>
 
             <div className="mx-auto grid w-full max-w-[1920px] gap-10 px-6 pt-10 pb-20 lg:grid-cols-2 lg:px-20">
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[12px] bg-white/5 lg:self-start">
-                <Image src={post.image} alt={text('title')} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+                <Image src={post.image} alt={post.title} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
               </div>
               <div className="flex flex-col items-start gap-5">
-                {body.map((paragraph) => (
+                {post.body.map((paragraph) => (
                   <p key={paragraph.slice(0, 32)} className="max-w-[880px] text-[18px] leading-8 font-medium tracking-[-0.02em] opacity-60 lg:text-[20px]">
                     {paragraph}
                   </p>
@@ -129,7 +127,7 @@ export default function BlogPostPage({ post }: InferGetStaticPropsType<typeof ge
                     {...(post.link.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
                     className="mt-5 flex items-center gap-2.5 rounded-[40px] bg-lime px-6 py-3 text-[14px] leading-6 font-semibold tracking-[-0.02em] whitespace-nowrap text-ink transition-opacity hover:opacity-85"
                   >
-                    {text('linkLabel')}
+                    {post.linkLabel}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/assets/hero/arrow-dark.svg" alt="" width={24} height={24} />
                   </Link>

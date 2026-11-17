@@ -2,18 +2,15 @@
 
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import cases from '@/src/data/cases.json';
 import { GOALS, trackGoal } from '@/src/analytics';
 import { Kicker } from './ui/block';
 import { Magnetic } from './ui/Magnetic';
 import { TextScrub } from './ui/TextScrub';
 import { CaseGridCard, useCardVariant } from './CaseGridCard';
-import type { Case } from '@/src/store/casesStore';
+import type { Case } from '@/src/data/content';
 
-export const caseById = (id: string): Case => cases.find((project) => project.id === id)!;
-
-
-export function CaseStudies() {
+export function CaseStudies({ cases }: { cases: Case[] }) {
+  const caseById = (id: string) => cases.find((project) => project.id === id)!;
   const { t } = useTranslation();
   const variant = useCardVariant();
 

@@ -9,27 +9,28 @@ import { Faq } from '@/src/components/Faq';
 import { CaseGridCard, useCardVariant, videoPoster } from '@/src/components/CaseGridCard';
 import { GOALS, trackGoal } from '@/src/analytics';
 import { SITE_URL } from '@/src/seo';
-import cases from '@/src/data/cases.json';
-import type { Case } from '@/src/store/casesStore';
+import { getCases, REVALIDATE, type Case } from '@/src/data/content';
 
-export const getStaticPaths: GetStaticPaths = ({ locales = [] }) => ({
-  paths: cases.flatMap((c) => locales.map((locale) => ({ params: { id: c.id }, locale }))),
-  fallback: false,
+// blocking: кейс, добавленный в базу после сборки, отрисуется при первом заходе, без пересборки.
+export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => ({
+  paths: (await getCases()).flatMap((c) => locales.map((locale) => ({ params: { id: c.id }, locale }))),
+  fallback: 'blocking',
 });
 
-export const getStaticProps: GetStaticProps<{ project: Case }> = ({ params }) => {
-  const project = cases.find((c) => c.id === params?.id);
-  return project ? { props: { project } } : { notFound: true };
+export const getStaticProps: GetStaticProps<{ project: Case; more: Case[] }> = async ({ params, locale }) => {
+  const cases = await getCases(locale);
+  const i = cases.findIndex((c) => c.id === params?.id);
+  if (i < 0) return { notFound: true, revalidate: REVALIDATE };
+  // Перелинковка: следующие 4 кейса по кругу — без них страница кейса тупиковая и Google медленно находит остальные.
+  const more = [1, 2, 3, 4].map((k) => cases[(i + k) % cases.length]);
+  return { props: { project: cases[i], more }, revalidate: REVALIDATE };
 };
 
 // ponytail: в макете ещё полноширинный блок с длинным текстом о проекте — у кейсов пока есть только
-// короткое описание. Появятся тексты: добавить поле в cases.json и вывести блок после видео.
-export default function CasePage({ project }: InferGetStaticPropsType<typeof getStaticProps>) {
+// короткое описание. Появятся тексты: добавить колонку в таблицу cases и вывести блок после видео.
+export default function CasePage({ project, more }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const variant = useCardVariant();
-  // Перелинковка: следующие 4 кейса по кругу — без них страница кейса тупиковая и Google медленно находит остальные.
-  const i = cases.findIndex((c) => c.id === project.id);
-  const more = [1, 2, 3, 4].map((k) => cases[(i + k) % cases.length]);
   const isAppStore = (url: string) => url.includes('apps.apple.com');
   const isApp = project.links.some(isAppStore);
   // Подпись кнопки — по адресу ссылки: сторы, страница загрузки десктоп-версии, иначе сайт.
@@ -41,7 +42,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
         : /\/download\/?$/.test(url)
           ? 'caseStudies.openDownload'
           : 'caseStudies.openSite';
-  const description = t(`caseStudies.items.${project.id}`, { defaultValue: project.description });
+  const { description } = project;
 
   const caseSchema = {
     '@context': 'https://schema.org',
@@ -50,7 +51,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
     description,
     operatingSystem: project.platforms.join(', '),
     applicationCategory: 'BusinessApplication',
-    image: `${SITE_URL}${project.image}`,
+    image: project.image,
     author: {
       '@type': 'ProfessionalService',
       name: 'Bangert Studio',
@@ -67,7 +68,7 @@ export default function CasePage({ project }: InferGetStaticPropsType<typeof get
         path={`/cases/${project.id}`}
         title={`${project.name} — Bangert Studio`}
         description={description}
-        image={`${SITE_URL}${project.image}`}
+        image={project.image}
         includeFaq={true}
         breadcrumbs={[
           { name: t('caseStudies.page.home'), path: '/' },

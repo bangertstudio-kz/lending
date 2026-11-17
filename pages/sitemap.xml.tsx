@@ -1,20 +1,18 @@
 import { GetServerSideProps } from 'next';
 import { DEFAULT_LOCALE, LOCALES, urlFor } from '@/src/seo';
-import cases from '@/src/data/cases.json';
 import { ALL_SERVICES } from '@/src/data/services';
-import { POSTS } from '@/src/data/blog';
+import { getCases, getPosts } from '@/src/data/content';
 
 // lastmod берём из даты последнего коммита файлов, которые реально формируют страницу.
 // Проставлять сюда текущую дату — значит врать краулеру на каждом запросе.
-const pages = [
-  { path: '/',           changefreq: 'weekly',  priority: '1.0', sources: ['src/locales/ru.json', 'src/data/cases.json'] },
-  { path: '/cases',      changefreq: 'weekly',  priority: '0.8', sources: ['src/data/cases.json'] },
+// Кейсы и статьи — из Supabase: у статьи lastmod — её дата, у кейсов даты нет, и мы её не выдумываем.
+const staticPages = [
+  { path: '/',           changefreq: 'weekly',  priority: '1.0', sources: ['src/locales/ru.json'] },
+  { path: '/cases',      changefreq: 'weekly',  priority: '0.8', sources: [] },
   { path: '/packages',   changefreq: 'weekly',  priority: '0.8', sources: ['src/locales/ru.json'] },
   { path: '/calculator', changefreq: 'monthly', priority: '0.7', sources: ['src/data/calculator.json'] },
-  { path: '/blog',       changefreq: 'weekly',  priority: '0.7', sources: ['src/data/blog.ts'] },
-  ...POSTS.map((p) => ({ path: `/blog/${p.slug}`, changefreq: 'monthly', priority: '0.6', sources: ['src/data/blog.ts', 'src/locales/ru.json'] })),
+  { path: '/blog',       changefreq: 'weekly',  priority: '0.7', sources: [] },
   ...ALL_SERVICES.map((s) => ({ path: `/services/${s.slug}`, changefreq: 'monthly', priority: '0.8', sources: ['src/locales/ru.json'] })),
-  ...cases.map((c) => ({ path: `/cases/${c.id}`, changefreq: 'monthly', priority: '0.6', sources: ['src/data/cases.json'] })),
 ];
 
 // Даты коммитов посчитаны при сборке в next.config.ts.
@@ -30,8 +28,13 @@ function Sitemap() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const entries = pages.flatMap(({ path: urlPath, changefreq, priority, sources }) => {
-    const lastmod = lastModified(sources);
+  const [cases, posts] = await Promise.all([getCases(), getPosts()]);
+  const pages = [
+    ...staticPages.map((p) => ({ ...p, lastmod: lastModified(p.sources) })),
+    ...posts.map((p) => ({ path: `/blog/${p.slug}`, changefreq: 'monthly', priority: '0.6', lastmod: p.date })),
+    ...cases.map((c) => ({ path: `/cases/${c.id}`, changefreq: 'monthly', priority: '0.6', lastmod: null })),
+  ];
+  const entries = pages.flatMap(({ path: urlPath, changefreq, priority, lastmod }) => {
 
     // Каждая языковая версия — отдельный адрес, и каждая перечисляет все
     // остальные через xhtml:link. Без этого версии конкурируют друг с другом.

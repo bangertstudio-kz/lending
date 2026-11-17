@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { SeoHead } from '@/src/components/SeoHead';
@@ -6,15 +7,20 @@ import { Header } from '@/src/components/Header';
 import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
 import { BlogCard } from '@/src/components/Blog';
-import { BLOG_CATEGORIES, POSTS, type BlogCategory } from '@/src/data/blog';
+import { BLOG_CATEGORIES, getPosts, REVALIDATE, type BlogCategory, type Post } from '@/src/data/content';
 
 type Filter = 'all' | BlogCategory;
 
+export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async ({ locale }) => ({
+  props: { posts: await getPosts(locale) },
+  revalidate: REVALIDATE,
+});
+
 // ponytail: в макете после сетки ещё блок-калькулятор — его пока нет на сайте в новом стиле.
-export default function BlogPage() {
+export default function BlogPage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<Filter>('all');
-  const visible = POSTS.filter((post) => filter === 'all' || post.category === filter);
+  const visible = posts.filter((post) => filter === 'all' || post.category === filter);
 
   return (
     <>
@@ -22,7 +28,7 @@ export default function BlogPage() {
         page="home"
         path="/blog"
         title={`${t('blog.page.title')} — Bangert Studio`}
-        description={t('blog.items.openSource.excerpt')}
+        description={t('blog.page.description')}
         includeFaq={true}
         breadcrumbs={[
           { name: t('caseStudies.page.home'), path: '/' },

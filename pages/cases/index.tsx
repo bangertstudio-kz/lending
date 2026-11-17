@@ -1,19 +1,21 @@
 import { useState } from 'react';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import cases from '@/src/data/cases.json';
+import { getCases, REVALIDATE, type Case } from '@/src/data/content';
 import { SeoHead } from '@/src/components/SeoHead';
 import { Header } from '@/src/components/Header';
 import { Footer } from '@/src/components/Footer';
 import { Faq } from '@/src/components/Faq';
 import { CaseGridCard, HOME_COVERS, useCardVariant } from '@/src/components/CaseGridCard';
 
-// Сначала кейсы с обложками из макета главной, затем остальные с видео, дальше — в порядке cases.json.
-const ORDERED = [...cases].sort((a, b) => {
-  const rank = (c: (typeof cases)[number]) =>
-    HOME_COVERS.includes(c.id) ? HOME_COVERS.indexOf(c.id) : HOME_COVERS.length + ('video' in c && c.video ? 0 : 1);
-  return rank(a) - rank(b);
+export const getStaticProps: GetStaticProps<{ cases: Case[] }> = async ({ locale }) => ({
+  props: { cases: await getCases(locale) },
+  revalidate: REVALIDATE,
 });
+
+// Сначала кейсы с обложками из макета главной, затем остальные с видео, дальше — в порядке поля sort.
+const rank = (c: Case) => (HOME_COVERS.includes(c.id) ? HOME_COVERS.indexOf(c.id) : HOME_COVERS.length + (c.video ? 0 : 1));
 
 const FILTERS = {
   all: () => true,
@@ -22,11 +24,11 @@ const FILTERS = {
 };
 type Filter = keyof typeof FILTERS;
 
-export default function CasesPage() {
+export default function CasesPage({ cases }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<Filter>('all');
   const variant = useCardVariant();
-  const visible = ORDERED.filter((project) => FILTERS[filter](project.platforms));
+  const visible = [...cases].sort((a, b) => rank(a) - rank(b)).filter((project) => FILTERS[filter](project.platforms));
 
   return (
     <>

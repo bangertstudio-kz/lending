@@ -6,7 +6,7 @@ import type { NextConfig } from 'next';
 // коммита. git есть только на этапе сборки, так что считаем здесь.
 // ponytail: Vercel клонирует репозиторий неглубоко; если файл давно не менялся,
 // git вернёт пустоту и lastmod просто не попадёт в sitemap.
-const SITEMAP_SOURCES = ['src/locales/ru.json', 'src/data/cases.json', 'src/data/calculator.json'];
+const SITEMAP_SOURCES = ['src/locales/ru.json', 'src/data/calculator.json'];
 
 function gitDate(file: string): string {
   try {
@@ -23,7 +23,11 @@ const nextConfig: NextConfig = {
     SITEMAP_LASTMOD: JSON.stringify(Object.fromEntries(SITEMAP_SOURCES.map((f) => [f, gitDate(f)]))),
   },
   // 90 — для иллюстраций услуг: на 75 в WebP мылятся свечения и градиенты.
-  images: { qualities: [75, 90] },
+  // Обложки кейсов и статей лежат в Supabase Storage (bucket media).
+  images: {
+    qualities: [75, 90],
+    remotePatterns: [new URL('https://zmrnbqmgocsnqudctdbn.supabase.co/storage/v1/object/public/media/**')],
+  },
   // Удалённые кейсы: адреса уже в индексе Google — ведём на список, а не в 404.
   redirects: async () => [{ source: '/cases/eiva', destination: '/cases', permanent: true }],
   i18n: {

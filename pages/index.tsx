@@ -13,16 +13,18 @@ import { ContactForm } from '../src/components/ContactForm';
 import { Footer } from '../src/components/Footer';
 import { MobileScrollButton } from '../src/components/MobileScrollButton';
 import { SectionReveal } from '../src/components/ui/SectionReveal';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { getCases, getPosts, REVALIDATE, type Case, type Post } from '@/src/data/content';
 
-export default function Home() {
+export default function Home({ cases, posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <SeoHead page="home" path="/" includeFaq={true} />
       <div className="relative min-h-screen bg-bg">
         <Header />
         <main className="relative">
-          <Hero />
-          <CaseStudies />
+          <Hero projectCount={cases.length} />
+          <CaseStudies cases={cases} />
           <SectionReveal>
             <Process />
           </SectionReveal>
@@ -33,7 +35,7 @@ export default function Home() {
             <Geography />
           </SectionReveal>
           <SectionReveal>
-            <Blog />
+            <Blog posts={posts} />
           </SectionReveal>
           <SectionReveal>
             <Faq />
@@ -52,6 +54,7 @@ export default function Home() {
 }
 
 
-export async function getStaticProps() {
-  return { props: {} };
-}
+export const getStaticProps: GetStaticProps<{ cases: Case[]; posts: Post[] }> = async ({ locale }) => {
+  const [cases, posts] = await Promise.all([getCases(locale), getPosts(locale)]);
+  return { props: { cases, posts }, revalidate: REVALIDATE };
+};

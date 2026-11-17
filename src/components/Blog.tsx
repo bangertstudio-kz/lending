@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { POSTS } from '@/src/data/blog';
+import type { Post } from '@/src/data/content';
 import { Kicker, More } from './ui/block';
 import { cn } from './ui/utils';
 
 /** Карточка-ссылка на статью: обложка сверху, под ней дата, рубрика, заголовок и анонс. */
-export function BlogCard({ post, className = '' }: { post: (typeof POSTS)[number]; className?: string }) {
+export function BlogCard({ post, className = '' }: { post: Post; className?: string }) {
   const { t, i18n } = useTranslation();
   const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(post.date));
   return (
@@ -34,9 +34,9 @@ export function BlogCard({ post, className = '' }: { post: (typeof POSTS)[number
           <span className="text-lime">{t(`blog.page.${post.category}`)}</span>
         </span>
         <span className="text-[24px] leading-8 font-semibold tracking-[-0.02em] text-balance transition-colors duration-300 group-hover:text-lime">
-          {t(`blog.items.${post.key}.title`)}
+          {post.title}
         </span>
-        <span className="text-[14px] leading-6 tracking-[-0.02em] opacity-60">{t(`blog.items.${post.key}.excerpt`)}</span>
+        <span className="text-[14px] leading-6 tracking-[-0.02em] opacity-60">{post.excerpt}</span>
         <More label={t('blog.more')} />
       </span>
     </Link>
@@ -46,7 +46,7 @@ export function BlogCard({ post, className = '' }: { post: (typeof POSTS)[number
 // Только один ряд: карточки за пределами числа колонок (1 / md:2 / xl:3) прячем.
 const ROW = ['flex', 'hidden md:flex', 'hidden xl:flex'];
 
-export function Blog() {
+export function Blog({ posts }: { posts: Post[] }) {
   const { t } = useTranslation();
 
   return (
@@ -62,8 +62,8 @@ export function Blog() {
         </div>
 
         <div className="grid gap-[22px] md:grid-cols-2 xl:grid-cols-3">
-          {POSTS.map((post, i) => (
-            <BlogCard key={post.slug} post={post} className={ROW[i] ?? 'hidden'} />
+          {posts.slice(0, ROW.length).map((post, i) => (
+            <BlogCard key={post.slug} post={post} className={ROW[i]} />
           ))}
         </div>
       </div>

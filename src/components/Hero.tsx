@@ -5,16 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { GOALS, trackGoal } from '@/src/analytics';
-import cases from '@/src/data/cases.json';
 import { LimeButton } from './ui/block';
 // import { HeroDevices3D } from './HeroDevices3D';
 import { Magnetic } from './ui/Magnetic';
 import { SpotlightCard } from './ui/SpotlightCard';
 
 const ICONS = '/assets/hero';
-
-// Число считается из статичного файла, а не из макета: так оно попадает в серверный HTML.
-const PROJECT_COUNT = cases.length;
 
 function Icon({ name, size = 24 }: { name: string; size?: number }) {
   // eslint-disable-next-line @next/next/no-img-element
@@ -23,7 +19,8 @@ function Icon({ name, size = 24 }: { name: string; size?: number }) {
 
 const Divider = () => <div aria-hidden className="hidden w-px self-stretch rounded-[2px] bg-white/40 xl:block" />;
 
-export function Hero() {
+// Число проектов приходит из getStaticProps главной (таблица cases), поэтому попадает в серверный HTML.
+export function Hero({ projectCount }: { projectCount: number }) {
   const { t } = useTranslation();
   const heroRef = useRef<HTMLElement>(null);
 
@@ -119,7 +116,7 @@ export function Hero() {
             <div className="flex w-auto sm:w-[130px] 2xl:w-[160px] shrink-0 flex-col gap-1">
               <div className="flex items-center gap-2 2xl:gap-3">
                 <Icon name="stack" size={32} />
-                <span className="text-[32px] 2xl:text-[40px] leading-10 2xl:leading-12 font-semibold tracking-[-0.02em]">{PROJECT_COUNT}</span>
+                <span className="text-[32px] 2xl:text-[40px] leading-10 2xl:leading-12 font-semibold tracking-[-0.02em]">{projectCount}</span>
               </div>
               <span className="opacity-40">{t('hero.projectsLabel')}</span>
             </div>
